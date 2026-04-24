@@ -3,6 +3,7 @@
 
 import type { CSSProperties, MouseEvent } from "react";
 import { memo, useEffect, useRef, useState } from "react";
+import heroParticleUgcAssets from "./data/hero-particle-ugc.json";
 
 type FlyCard = {
   id: string;
@@ -225,6 +226,52 @@ const flyCards: FlyCard[] = [
 const toParticleAsset = (assetPath: string) =>
   assetPath.replace("/figma/assets/", "/figma/assets/hero-particles/");
 
+type HeroBurstVisualAsset = {
+  id: string;
+  asset: string;
+  ratio: number;
+};
+
+const heroBurstLegacyAssetsInUgc: HeroBurstVisualAsset[] = flyCards.map((card) => ({
+  id: `legacy-ugc-${card.id}`,
+  asset: `/figma/assets/hero-particles/ugc/legacy-fly-${card.id}.webp`,
+  ratio: card.width / card.height,
+}));
+
+const heroBurstLegacyAssets: HeroBurstVisualAsset[] = flyCards.map((card) => ({
+  id: `legacy-${card.id}`,
+  asset: toParticleAsset(card.asset),
+  ratio: card.width / card.height,
+}));
+
+const heroBurstUgcPoolAssets: HeroBurstVisualAsset[] = heroParticleUgcAssets.map(
+  (item, index) => ({
+    id: `ugc-${index + 1}`,
+    asset: item.asset,
+    ratio: item.ratio,
+  })
+);
+
+const heroBurstVisualAssets: HeroBurstVisualAsset[] = [
+  ...heroBurstUgcPoolAssets,
+  ...heroBurstLegacyAssetsInUgc,
+  ...heroBurstLegacyAssets,
+];
+
+const pickHeroBurstVisualAssetBySeed = (seed: number): HeroBurstVisualAsset => {
+  const total = heroBurstVisualAssets.length;
+  if (total === 0) {
+    return {
+      id: "legacy-fallback",
+      asset: toParticleAsset(flyCards[0].asset),
+      ratio: flyCards[0].width / flyCards[0].height,
+    };
+  }
+
+  const index = ((seed % total) + total) % total;
+  return heroBurstVisualAssets[index];
+};
+
 const HERO_BURST_PARTICLE_COUNT = Math.round(flyCards.length * 2.35);
 const HERO_BURST_SECONDARY_EMITTER_RATE = 0.62;
 
@@ -235,8 +282,12 @@ const pickRandom = <T,>(items: readonly T[]) =>
   items[Math.floor(Math.random() * items.length)];
 
 const createRandomHeroBurstParticle = (seed: number): HeroBurstParticle => {
-  const source = pickRandom(flyCards);
-  const nearWeight = Math.min(1, Math.max(0, (source.depth - 640) / (1450 - 640)));
+  const motionSource = pickRandom(flyCards);
+  const visualSource = pickHeroBurstVisualAssetBySeed(seed);
+  const nearWeight = Math.min(
+    1,
+    Math.max(0, (motionSource.depth - 640) / (1450 - 640))
+  );
   const farWeight = 1 - nearWeight;
   const isNearPass = Math.random() < 0.12;
   const useSecondaryEmitter = Math.random() < HERO_BURST_SECONDARY_EMITTER_RATE;
@@ -277,7 +328,7 @@ const createRandomHeroBurstParticle = (seed: number): HeroBurstParticle => {
   const curveXVw = endXVw * randomBetween(0.66, 0.78) + tangentX * curveBias;
   const curveYVh = endYVh * randomBetween(0.66, 0.78) + tangentY * curveBias * 0.84;
 
-  const ratio = source.width / source.height;
+  const ratio = visualSource.ratio;
   const rareLargeBoost = isNearPass
     ? randomBetween(1.4, 1.86)
     : Math.random() < 0.16
@@ -287,7 +338,7 @@ const createRandomHeroBurstParticle = (seed: number): HeroBurstParticle => {
     2.5,
     Math.min(
       isNearPass ? 14.4 : 11.6,
-      source.wPct *
+      motionSource.wPct *
         randomBetween(0.46, 0.66) *
         (1 + nearWeight * 0.12) *
         rareLargeBoost
@@ -313,8 +364,8 @@ const createRandomHeroBurstParticle = (seed: number): HeroBurstParticle => {
   );
 
   return {
-    id: `${source.id}-${seed}-${Math.random().toString(36).slice(2, 7)}`,
-    asset: toParticleAsset(source.asset),
+    id: `${visualSource.id}-${seed}-${Math.random().toString(36).slice(2, 7)}`,
+    asset: visualSource.asset,
     ratio,
     sizeVw,
     originXVw,
