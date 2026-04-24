@@ -843,6 +843,70 @@ const StatsLoopScene = memo(function StatsLoopScene() {
   );
 });
 
+const MobileStatsLoopScene = memo(function MobileStatsLoopScene() {
+  const [statsActiveIndex, setStatsActiveIndex] = useState(0);
+  const statsPrevIndex =
+    (statsActiveIndex - 1 + swiperStates.length) % swiperStates.length;
+  const statsNextIndex = (statsActiveIndex + 1) % swiperStates.length;
+
+  useEffect(() => {
+    const timer = window.setInterval(() => {
+      setStatsActiveIndex((prev) => (prev + 1) % swiperStates.length);
+    }, 1200);
+    return () => window.clearInterval(timer);
+  }, []);
+
+  return (
+    <section className="mobile-fly-divider mobile-stats-loop" aria-label="Game play stats">
+      <div className="mobile-stats-loop-canvas" aria-hidden="true">
+        <div className="stats-carousel-shell">
+          <div className="stats-strip">
+            <div className="stats-strip-track">
+              {[0, 1, 2].flatMap((copy) =>
+                swiperStripOrder.map((state, index) => (
+                  <div className="stats-strip-card" key={`${state.id}-mobile-strip-${copy}-${index}`}>
+                    <img
+                      src={state.asset}
+                      alt={state.alt}
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
+                ))
+              )}
+            </div>
+          </div>
+
+          <div className="stats-carousel-stage">
+            {swiperStates.map((state, index) => (
+              <div
+                key={`${state.id}-mobile-state`}
+                className={`stats-state ${
+                  index === statsActiveIndex
+                    ? "is-active"
+                    : index === statsNextIndex
+                      ? "is-next"
+                      : index === statsPrevIndex
+                        ? "is-prev"
+                        : "is-hidden"
+                }`}
+              >
+                <img
+                  className="stats-state-image"
+                  src={state.asset}
+                  alt={state.alt}
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+});
+
 export default function Home() {
   const [isMobile, setIsMobile] = useState<boolean | null>(null);
   const [isAppModalOpen, setIsAppModalOpen] = useState(false);
@@ -1377,16 +1441,7 @@ export default function Home() {
             ))}
           </section>
 
-          <section className="mobile-fly-divider">
-            <img
-              src="/figma/assets/mobile-fly-divider-1110-1800@2x.png"
-              alt="Game plays stats"
-              width={375}
-              height={232}
-              loading="lazy"
-              decoding="async"
-            />
-          </section>
+          <MobileStatsLoopScene />
 
           <section className="mobile-showcase-list">
             {mobileShowcaseScenes.map((scene) => (
