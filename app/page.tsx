@@ -4,6 +4,7 @@
 import type { CSSProperties, MouseEvent } from "react";
 import { memo, useEffect, useRef, useState } from "react";
 import heroParticleUgcAssets from "./data/hero-particle-ugc.json";
+import footerDinoAnimation from "./data/footer-dino-animation.json";
 
 type FlyCard = {
   id: string;
@@ -295,11 +296,13 @@ const createRandomHeroBurstParticle = (seed: number): HeroBurstParticle => {
   const farWeight = 1 - nearWeight;
   const isNearPass = Math.random() < 0.12;
   const useSecondaryEmitter = Math.random() < HERO_BURST_SECONDARY_EMITTER_RATE;
-  const emitterOffsetXVw = 6.2;
-  const originXVw = useSecondaryEmitter
-    ? emitterOffsetXVw + randomBetween(-1.2, 1.2)
-    : -emitterOffsetXVw + randomBetween(-1.2, 1.2);
-  const originYVh = randomBetween(-0.9, 0.9);
+  const emitterBaseXVw = -8.8;
+  const emitterOffsetXVw = 1.9;
+  const originXVw =
+    emitterBaseXVw +
+    (useSecondaryEmitter ? emitterOffsetXVw : -emitterOffsetXVw) +
+    randomBetween(-0.9, 0.9);
+  const originYVh = randomBetween(-0.7, 0.7);
 
   const goldenAngle = Math.PI * (3 - Math.sqrt(5));
   const angle = (seed * goldenAngle + randomBetween(-0.42, 0.42)) % (Math.PI * 2);
@@ -357,8 +360,8 @@ const createRandomHeroBurstParticle = (seed: number): HeroBurstParticle => {
   const midScale = randomBetween(0.46, isNearPass ? 0.82 : 0.72) + nearWeight * 0.08;
   const endScale = randomBetween(isNearPass ? 1.24 : 1.02, isNearPass ? 1.56 : 1.28) +
     nearWeight * (isNearPass ? 0.28 : 0.2);
-  const zStartPx = randomBetween(-1240, -780) + nearWeight * 180;
-  const zMidPx = randomBetween(-760, -340) + nearWeight * 170;
+  const zStartPx = randomBetween(-1520, -980) + nearWeight * 160;
+  const zMidPx = randomBetween(-940, -460) + nearWeight * 150;
   const zEndPx = randomBetween(isNearPass ? -24 : -120, isNearPass ? 224 : 84) +
     nearWeight * (isNearPass ? 156 : 120);
   const alpha = Math.min(
@@ -885,6 +888,72 @@ const mobileFooterSocialSlices = [
 const asVars = (values: Record<string, string | number>) =>
   values as CSSProperties;
 
+const DinoLottie = memo(function DinoLottie({
+  className,
+  fallbackSrc,
+  alt,
+}: {
+  className: string;
+  fallbackSrc: string;
+  alt: string;
+}) {
+  const containerRef = useRef<HTMLDivElement | null>(null);
+  const animationRef = useRef<import("lottie-web").AnimationItem | null>(null);
+  const [isReady, setIsReady] = useState(false);
+
+  useEffect(() => {
+    let isMounted = true;
+    const mountNode = containerRef.current;
+    if (!mountNode) return;
+
+    const mountAnimation = async () => {
+      try {
+        const lottieModule = await import("lottie-web");
+        const lottie = lottieModule.default;
+        if (!isMounted) return;
+
+        animationRef.current = lottie.loadAnimation({
+          container: mountNode,
+          renderer: "svg",
+          loop: true,
+          autoplay: true,
+          animationData: footerDinoAnimation,
+          rendererSettings: {
+            preserveAspectRatio: "xMidYMid meet",
+          },
+        });
+        setIsReady(true);
+      } catch {
+        setIsReady(false);
+      }
+    };
+
+    mountAnimation();
+
+    return () => {
+      isMounted = false;
+      animationRef.current?.destroy();
+      animationRef.current = null;
+    };
+  }, []);
+
+  return (
+    <div className={`${className} dino-lottie-shell`} role="img" aria-label={alt}>
+      <div className="dino-lottie-canvas" ref={containerRef} aria-hidden="true" />
+      {!isReady && (
+        <img
+          className="dino-lottie-fallback"
+          src={fallbackSrc}
+          alt=""
+          loading="lazy"
+          decoding="async"
+          aria-hidden="true"
+        />
+      )}
+    </div>
+  );
+});
+
 const StatsLoopScene = memo(function StatsLoopScene() {
   const [statsActiveIndex, setStatsActiveIndex] = useState(0);
   const statsPrevIndex =
@@ -1017,6 +1086,8 @@ export default function Home() {
   const [isMobile, setIsMobile] = useState<boolean | null>(null);
   const [isSmallDesktop, setIsSmallDesktop] = useState(false);
   const [isAppModalOpen, setIsAppModalOpen] = useState(false);
+  const [mobileHeroPanelsReady, setMobileHeroPanelsReady] = useState(false);
+  const mobileHeroPanelsLoadedRef = useRef(0);
   const [heroGameIndex, setHeroGameIndex] = useState(0);
   const [heroGameLoading, setHeroGameLoading] = useState(true);
   const [heroGameLiveMode, setHeroGameLiveMode] = useState(false);
@@ -1068,6 +1139,28 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
+    const syncMobileViewportHeight = () => {
+      const viewportHeight = window.visualViewport?.height ?? window.innerHeight;
+      document.documentElement.style.setProperty(
+        "--mobile-screen-h",
+        `${Math.max(viewportHeight, 1) * 0.01}px`
+      );
+    };
+
+    syncMobileViewportHeight();
+
+    window.addEventListener("resize", syncMobileViewportHeight, { passive: true });
+    window.addEventListener("orientationchange", syncMobileViewportHeight);
+    window.visualViewport?.addEventListener("resize", syncMobileViewportHeight);
+
+    return () => {
+      window.removeEventListener("resize", syncMobileViewportHeight);
+      window.removeEventListener("orientationchange", syncMobileViewportHeight);
+      window.visualViewport?.removeEventListener("resize", syncMobileViewportHeight);
+    };
+  }, []);
+
+  useEffect(() => {
     if (isMobile === null) return;
 
     const animatedSections = Array.from(
@@ -1106,29 +1199,42 @@ export default function Home() {
   }, [isMobile]);
 
   useEffect(() => {
+    if (!isMobile) return;
+    mobileHeroPanelsLoadedRef.current = 0;
+    setMobileHeroPanelsReady(false);
+  }, [isMobile]);
+
+  const handleMobileHeroPanelAssetReady = () => {
+    if (mobileHeroPanelsReady) return;
+    mobileHeroPanelsLoadedRef.current += 1;
+    if (mobileHeroPanelsLoadedRef.current < 3) return;
+    requestAnimationFrame(() => {
+      setMobileHeroPanelsReady(true);
+    });
+  };
+
+  useEffect(() => {
     if (isMobile !== false) return;
 
     const heroFlyScene = document.querySelector<HTMLElement>(
       '[data-scene="hero-fly"]'
     );
     if (!heroFlyScene) return;
+    const statsLoopScene = document.querySelector<HTMLElement>(
+      '[data-scene="stats-loop"]'
+    );
 
     const clamp = (value: number, min: number, max: number) =>
       Math.min(max, Math.max(min, value));
     const easeInOutCubic = (value: number) =>
       value < 0.5 ? 4 * value * value * value : 1 - Math.pow(-2 * value + 2, 3) / 2;
-    const heroCopyExitParticleStart = 0.88;
-    const heroCopyExitTriggerPx = 360;
-    const heroCopyExitTravelPx = 140;
+    const heroCopyExitTriggerPx = 200;
+    const heroCopyExitTravelPx = isSmallDesktop ? 72 : 88;
     const styleWriteThreshold = isSmallDesktop ? 0.0065 : 0.0012;
     const minFrameGapMs = isSmallDesktop ? 20 : 0;
-    const invertEaseInOutCubic = (value: number) =>
-      value < 0.5
-        ? Math.cbrt(value / 4)
-        : 1 - Math.cbrt((1 - value) / 4);
     let heroTravel = 1;
-    let particleStartPx = 0;
     let heroSceneTopPx = 0;
+    let heroCopyExitAnchorScrollY: number | null = null;
     let lastHeroOut = -1;
     let lastHeroCopyExit = -1;
     let lastFrameTime = 0;
@@ -1138,8 +1244,6 @@ export default function Home() {
       const viewportHeight = Math.max(window.innerHeight, 1);
       heroTravel = Math.max(heroFlyScene.offsetHeight - viewportHeight, 1);
       heroSceneTopPx = heroFlyScene.getBoundingClientRect().top + window.scrollY;
-      const particleStartRaw = invertEaseInOutCubic(heroCopyExitParticleStart);
-      particleStartPx = heroTravel * particleStartRaw;
     };
 
     const update = () => {
@@ -1152,12 +1256,23 @@ export default function Home() {
         lastHeroOut = heroOut;
       }
 
-      const particleScrolledPx = Math.max(0, scrolledInHeroPx - particleStartPx);
-      const exitRaw = clamp(
-        (particleScrolledPx - heroCopyExitTriggerPx) / heroCopyExitTravelPx,
-        0,
-        1
-      );
+      let exitRaw = 0;
+      if (statsLoopScene) {
+        const statsTop = statsLoopScene.getBoundingClientRect().top;
+        const isStatsVisible = statsTop <= window.innerHeight;
+        if (!isStatsVisible) {
+          heroCopyExitAnchorScrollY = null;
+        } else if (heroCopyExitAnchorScrollY === null) {
+          heroCopyExitAnchorScrollY = scrollY;
+        }
+        const anchorScrollY = heroCopyExitAnchorScrollY ?? scrollY;
+        exitRaw = clamp(
+          (scrollY - anchorScrollY - heroCopyExitTriggerPx) /
+            heroCopyExitTravelPx,
+          0,
+          1
+        );
+      }
       const heroCopyExit = easeInOutCubic(exitRaw);
       if (Math.abs(heroCopyExit - lastHeroCopyExit) >= styleWriteThreshold) {
         heroFlyScene.style.setProperty("--hero-copy-exit", heroCopyExit.toFixed(4));
@@ -1403,12 +1518,10 @@ export default function Home() {
           ))}
 
           <div className="footer-tail-composed">
-            <img
+            <DinoLottie
               className="footer-bottom-dino"
-              src="/figma/assets/footer-dino-loading-animation-1.svg"
+              fallbackSrc="/figma/assets/footer-dino-loading-animation-1.svg"
               alt="Dino"
-              loading="lazy"
-              decoding="async"
             />
             <img
               className="footer-bottom-brand"
@@ -1439,7 +1552,7 @@ export default function Home() {
               aria-label="Open Google Play"
             >
               <img
-                src="/figma/assets/store-qr-new.png"
+                src="/figma/assets/store-qr-new.webp"
                 alt="Google Play"
                 loading="lazy"
                 decoding="async"
@@ -1447,7 +1560,7 @@ export default function Home() {
             </a>
             <img
               className="footer-bottom-qr"
-              src="/figma/assets/store-googleplay-new.png"
+              src="/figma/assets/store-googleplay-new.webp"
               alt="QR"
               loading="lazy"
               decoding="async"
@@ -1476,13 +1589,18 @@ export default function Home() {
       {isMobile && (
         <div className="mobile-layout">
         <section className="mobile-hero-section">
-          <div className="mobile-hero-panels" aria-hidden="true">
+          <div
+            className={`mobile-hero-panels${mobileHeroPanelsReady ? " is-ready" : ""}`}
+            aria-hidden="true"
+          >
             <img
               className="mobile-hero-panel mobile-hero-panel-1"
               src="/figma/WebsiteMaterials/Mobile/MB_YourIDEA.webp"
               alt=""
               loading="eager"
               decoding="async"
+              onLoad={handleMobileHeroPanelAssetReady}
+              onError={handleMobileHeroPanelAssetReady}
             />
             <img
               className="mobile-hero-panel mobile-hero-panel-2"
@@ -1490,6 +1608,8 @@ export default function Home() {
               alt=""
               loading="eager"
               decoding="async"
+              onLoad={handleMobileHeroPanelAssetReady}
+              onError={handleMobileHeroPanelAssetReady}
             />
             <img
               className="mobile-hero-panel mobile-hero-panel-3"
@@ -1497,6 +1617,8 @@ export default function Home() {
               alt=""
               loading="eager"
               decoding="async"
+              onLoad={handleMobileHeroPanelAssetReady}
+              onError={handleMobileHeroPanelAssetReady}
             />
           </div>
 
@@ -1653,12 +1775,12 @@ export default function Home() {
 
           <footer className="mobile-footer">
             <div className="mobile-footer-top">
-              <img
-                className="mobile-footer-qr"
-                src="/figma/assets/store-googleplay-new.png"
-                alt="QR code"
-                width={61}
-                height={61}
+            <img
+              className="mobile-footer-qr"
+              src="/figma/assets/store-googleplay-new.webp"
+              alt="QR code"
+              width={61}
+              height={61}
                 loading="lazy"
                 decoding="async"
               />
@@ -1685,7 +1807,7 @@ export default function Home() {
                   aria-label="Open Google Play"
                 >
                   <img
-                    src="/figma/assets/store-qr-new.png"
+                    src="/figma/assets/store-qr-new.webp"
                     alt="Google Play"
                     width={120}
                     height={40}
@@ -1726,14 +1848,10 @@ export default function Home() {
               loading="lazy"
               decoding="async"
             />
-            <img
+            <DinoLottie
               className="mobile-footer-dino"
-              src="/figma/assets/footer-dino-loading-animation-1.svg"
+              fallbackSrc="/figma/assets/footer-dino-loading-animation-1.svg"
               alt="Dino walking"
-              width={200}
-              height={200}
-              loading="lazy"
-              decoding="async"
             />
           </footer>
         </div>
@@ -1777,7 +1895,7 @@ export default function Home() {
               <div className="app-download-modal-qr-frame">
                 <div className="app-download-modal-qr-inner">
                   <img
-                    src="/figma/assets/popup-qr-content-1083-7914@2x.png"
+                    src="/figma/assets/popup-qr-content-1083-7914@2x.webp"
                     alt="Scan QR code to download the app"
                     width={262}
                     height={267}

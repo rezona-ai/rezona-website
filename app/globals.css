@@ -4,6 +4,22 @@
   font-family: "Wister";
   src: url("/fonts/Wister-Bold.otf") format("opentype");
   font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Wister";
+  src: url("/fonts/Wister-Bold.otf") format("opentype");
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Wister";
+  src: url("/fonts/Wister-Bold.otf") format("opentype");
+  font-style: normal;
   font-weight: 700;
   font-display: swap;
 }
@@ -39,6 +55,25 @@ body {
 
 body {
   overflow-x: hidden;
+  font-family: var(--font-wister);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+span,
+button,
+a,
+li,
+label,
+input,
+textarea,
+select {
+  font-family: var(--font-wister);
 }
 
 .rezona-page {
@@ -93,6 +128,8 @@ body {
   --p: 0;
   --hero-out: 0;
   --hero-stage-aspect: 2.0042; /* 1920 / 958 */
+  --hero-particle-source-x: 41.2%;
+  --hero-particle-source-y: 50.4%;
   --hero-out-soft: clamp(0, calc(var(--hero-out) * 0.82), 1);
   --hero-out-strong: clamp(0, calc(var(--hero-out) * 1.16), 1);
   --hero-out-enter: clamp(0, calc((var(--hero-out) - 0.16) * 1.4), 1);
@@ -564,8 +601,8 @@ body {
 .meme-transition-canvas::after {
   content: "";
   position: absolute;
-  left: 50%;
-  top: 50%;
+  left: var(--hero-particle-source-x, 50%);
+  top: var(--hero-particle-source-y, 50%);
   width: min(24vw, 380px);
   aspect-ratio: 1;
   border-radius: 999px;
@@ -585,8 +622,8 @@ body {
 
 .meme-static-card {
   position: absolute;
-  left: 50%;
-  top: 50%;
+  left: var(--hero-particle-source-x, 50%);
+  top: var(--hero-particle-source-y, 50%);
   width: clamp(48px, var(--size), 360px);
   aspect-ratio: var(--ratio);
   height: auto;
@@ -1059,7 +1096,7 @@ body {
   height: 77.96875%;
   display: grid;
   grid-template-columns: 32.407407% 57.75463%;
-  column-gap: 9.837963%;
+  column-gap: calc(9.837963% - 60px);
   align-items: center;
   --copy-enter-x: -34px;
   --media-enter-x: 42px;
@@ -1143,9 +1180,9 @@ body {
 .showcase-title {
   margin: 0;
   white-space: pre-line;
-  font-family: var(--font-montserrat), sans-serif;
+  font-family: var(--font-wister) !important;
   font-size: min(60px, calc(100vw * 0.03125));
-  font-weight: 700;
+  font-weight: 700 !important;
   line-height: 1.1;
   letter-spacing: 0.5px;
   color: #fff;
@@ -1153,7 +1190,7 @@ body {
 
 .showcase-description {
   margin: min(24px, calc(100vw * 0.0125)) 0 0;
-  font-family: var(--font-montserrat), sans-serif;
+  font-family: var(--font-wister);
   font-size: min(24px, calc(100vw * 0.0125));
   font-weight: 500;
   line-height: 1.3;
@@ -1417,6 +1454,31 @@ body {
   height: 35.6303%;
 }
 
+.dino-lottie-shell {
+  overflow: hidden;
+  isolation: isolate;
+  pointer-events: none;
+}
+
+.dino-lottie-canvas,
+.dino-lottie-fallback {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.dino-lottie-canvas > svg {
+  width: 100% !important;
+  height: 100% !important;
+  display: block;
+}
+
+.dino-lottie-fallback {
+  object-fit: contain;
+}
+
 .footer-bottom-brand {
   left: 16.6146%;
   top: 38.4874%;
@@ -1527,7 +1589,7 @@ body {
 .app-download-modal-header h2 {
   margin: 0;
   text-align: center;
-  font-family: "Poppins", var(--font-montserrat), sans-serif;
+  font-family: var(--font-wister);
   font-size: 24px;
   line-height: 1.4;
   font-weight: 700;
@@ -1632,7 +1694,7 @@ body {
   position: relative;
   width: 100%;
   margin: 0;
-  height: calc(var(--mobile-w) * 700 / 375);
+  height: calc(var(--mobile-screen-h, 1vh) * 100);
   overflow: hidden;
 }
 
@@ -1653,6 +1715,7 @@ body {
 }
 
 .mobile-hero-panels {
+  --mobile-panel-enter-x: calc(var(--mobile-w) * 96 / 375);
   position: absolute;
   left: 50%;
   top: calc(var(--mobile-w) * 60 / 375);
@@ -1675,20 +1738,29 @@ body {
 
 .mobile-hero-panel-1 {
   top: 0;
-  animation: mobile-hero-panel-in-left 0.78s cubic-bezier(0.22, 1, 0.36, 1)
-    0.08s forwards;
 }
 
 .mobile-hero-panel-2 {
   top: calc(var(--mobile-w) * 140 / 375);
-  animation: mobile-hero-panel-in-right 0.82s cubic-bezier(0.22, 1, 0.36, 1)
-    0.46s forwards;
 }
 
 .mobile-hero-panel-3 {
   top: calc(var(--mobile-w) * 310 / 375);
-  animation: mobile-hero-panel-in-left 0.78s cubic-bezier(0.22, 1, 0.36, 1)
-    0.88s forwards;
+}
+
+.mobile-hero-panels.is-ready .mobile-hero-panel-1 {
+  animation: mobile-hero-panel-in-right 1.9s cubic-bezier(0.2, 0.82, 0.2, 1)
+    0s forwards;
+}
+
+.mobile-hero-panels.is-ready .mobile-hero-panel-2 {
+  animation: mobile-hero-panel-in-left 1.9s cubic-bezier(0.2, 0.82, 0.2, 1)
+    0s forwards;
+}
+
+.mobile-hero-panels.is-ready .mobile-hero-panel-3 {
+  animation: mobile-hero-panel-in-right 1.9s cubic-bezier(0.2, 0.82, 0.2, 1)
+    0s forwards;
 }
 
 .mobile-top-nav {
@@ -1781,7 +1853,7 @@ body {
 .mobile-hero-copy {
   position: absolute;
   left: 50%;
-  top: calc(var(--mobile-w) * 560 / 375);
+  top: calc(var(--mobile-w) * 570 / 375);
   width: calc(var(--mobile-w) * 343 / 375);
   transform: translateX(-50%);
   height: calc(var(--mobile-w) * 138 / 375);
@@ -1819,7 +1891,7 @@ body {
 @keyframes mobile-hero-panel-in-left {
   0% {
     opacity: 0;
-    transform: translateX(calc(var(--mobile-w) * -22 / 375))
+    transform: translateX(calc(var(--mobile-panel-enter-x) * -1))
       scale(1.01);
     filter: blur(8px);
   }
@@ -1833,7 +1905,7 @@ body {
 @keyframes mobile-hero-panel-in-right {
   0% {
     opacity: 0;
-    transform: translateX(calc(var(--mobile-w) * 22 / 375))
+    transform: translateX(var(--mobile-panel-enter-x))
       scale(1.01);
     filter: blur(8px);
   }
@@ -2184,7 +2256,7 @@ body {
 .mobile-showcase-title {
   margin: calc(var(--mobile-w) * 32 / 375) 0 0;
   white-space: pre-line;
-  font-family: "Poppins", var(--font-montserrat), sans-serif;
+  font-family: var(--font-wister);
   font-size: calc(var(--mobile-w) * 24 / 375);
   font-weight: 700;
   line-height: 1.1;
@@ -2194,7 +2266,7 @@ body {
 
 .mobile-showcase-description {
   margin: calc(var(--mobile-w) * 20 / 375) 0 0;
-  font-family: "Poppins", var(--font-montserrat), sans-serif;
+  font-family: var(--font-wister);
   font-size: calc(var(--mobile-w) * 14 / 375);
   font-weight: 400;
   line-height: 1.3;
@@ -2395,8 +2467,8 @@ body {
   }
 
   .hero-center-copy-layer {
-    transform: translate3d(0, calc(var(--hero-copy-exit) * -12vh), 0)
-      scale(calc(1 - var(--hero-copy-exit) * 0.04));
+    transform: translate3d(0, calc(var(--hero-copy-exit) * -26vh), 0)
+      scale(calc(1 - var(--hero-copy-exit) * 0.08));
   }
 
   .meme-transition-canvas {
