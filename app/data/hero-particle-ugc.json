@@ -1,374 +1,102 @@
 [
   {
-    "asset": "/figma/assets/hero-particles/ugc/ugc-0001.webp",
-    "ratio": 0.635496
+    "asset": "/figma/assets/hero-particles/ugc-new/ai-fruit-story-1.webp",
+    "ratio": 0.746791
   },
   {
-    "asset": "/figma/assets/hero-particles/ugc/ugc-0002.webp",
-    "ratio": 0.730526
+    "asset": "/figma/assets/hero-particles/ugc-new/ai-fruit-story-2.webp",
+    "ratio": 0.749854
   },
   {
-    "asset": "/figma/assets/hero-particles/ugc/ugc-0003.webp",
-    "ratio": 0.494253
+    "asset": "/figma/assets/hero-particles/ugc-new/ai-fruit-story.webp",
+    "ratio": 0.746791
   },
   {
-    "asset": "/figma/assets/hero-particles/ugc/ugc-0004.webp",
-    "ratio": 0.611009
+    "asset": "/figma/assets/hero-particles/ugc-new/brainrot-67.gif",
+    "ratio": 1
   },
   {
-    "asset": "/figma/assets/hero-particles/ugc/ugc-0006.webp",
-    "ratio": 0.730526
+    "asset": "/figma/assets/hero-particles/ugc-new/brainrot-zebra.gif",
+    "ratio": 0.565068
   },
   {
-    "asset": "/figma/assets/hero-particles/ugc/ugc-0007.webp",
-    "ratio": 0.63128
+    "asset": "/figma/assets/hero-particles/ugc-new/capybara.webp",
+    "ratio": 1
   },
   {
-    "asset": "/figma/assets/hero-particles/ugc/ugc-0008.webp",
-    "ratio": 0.802746
+    "asset": "/figma/assets/hero-particles/ugc-new/chinese-cat.webp",
+    "ratio": 0.894289
   },
   {
-    "asset": "/figma/assets/hero-particles/ugc/ugc-0009.webp",
-    "ratio": 0.494253
+    "asset": "/figma/assets/hero-particles/ugc-new/clearly-innocent-blue-emoji.webp",
+    "ratio": 1
   },
   {
-    "asset": "/figma/assets/hero-particles/ugc/ugc-0010.webp",
-    "ratio": 0.494253
+    "asset": "/figma/assets/hero-particles/ugc-new/cookie-muncher-blue-emoji.webp",
+    "ratio": 1
   },
   {
-    "asset": "/figma/assets/hero-particles/ugc/ugc-0011.webp",
-    "ratio": 0.603261
+    "asset": "/figma/assets/hero-particles/ugc-new/doomer-1.gif",
+    "ratio": 1.127208
   },
   {
-    "asset": "/figma/assets/hero-particles/ugc/ugc-0012.webp",
-    "ratio": 0.651032
+    "asset": "/figma/assets/hero-particles/ugc-new/doomer-cat.webp",
+    "ratio": 0.650442
   },
   {
-    "asset": "/figma/assets/hero-particles/ugc/ugc-0013.webp",
-    "ratio": 0.494253
+    "asset": "/figma/assets/hero-particles/ugc-new/doomer.webp",
+    "ratio": 1.777778
   },
   {
-    "asset": "/figma/assets/hero-particles/ugc/ugc-0015.webp",
-    "ratio": 0.494253
+    "asset": "/figma/assets/hero-particles/ugc-new/gigachad.webp",
+    "ratio": 0.867347
   },
   {
-    "asset": "/figma/assets/hero-particles/ugc/ugc-0016.webp",
-    "ratio": 0.494253
+    "asset": "/figma/assets/hero-particles/ugc-new/i-can-has-cheezburger.webp",
+    "ratio": 0.68593
   },
   {
-    "asset": "/figma/assets/hero-particles/ugc/ugc-0018.webp",
-    "ratio": 0.802746
+    "asset": "/figma/assets/hero-particles/ugc-new/ishowspeed-blue-emoji.webp",
+    "ratio": 1
   },
   {
-    "asset": "/figma/assets/hero-particles/ugc/ugc-0019.webp",
-    "ratio": 0.632013
+    "asset": "/figma/assets/hero-particles/ugc-new/john-pork-1.webp",
+    "ratio": 0.666667
   },
   {
-    "asset": "/figma/assets/hero-particles/ugc/ugc-0020.webp",
-    "ratio": 0.494253
+    "asset": "/figma/assets/hero-particles/ugc-new/john-pork.webp",
+    "ratio": 0.609167
   },
   {
-    "asset": "/figma/assets/hero-particles/ugc/ugc-0021.webp",
-    "ratio": 1.0
+    "asset": "/figma/assets/hero-particles/ugc-new/karen-doge.webp",
+    "ratio": 0.598053
   },
   {
-    "asset": "/figma/assets/hero-particles/ugc/ugc-0022.webp",
-    "ratio": 0.494253
+    "asset": "/figma/assets/hero-particles/ugc-new/lollipop-dog.webp",
+    "ratio": 0.943052
   },
   {
-    "asset": "/figma/assets/hero-particles/ugc/ugc-0023.webp",
-    "ratio": 0.494253
+    "asset": "/figma/assets/hero-particles/ugc-new/npc-1.webp",
+    "ratio": 1.777778
   },
   {
-    "asset": "/figma/assets/hero-particles/ugc/ugc-0024.webp",
-    "ratio": 0.629256
+    "asset": "/figma/assets/hero-particles/ugc-new/npc.webp",
+    "ratio": 1.010101
   },
   {
-    "asset": "/figma/assets/hero-particles/ugc/ugc-0026.webp",
-    "ratio": 0.494253
+    "asset": "/figma/assets/hero-particles/ugc-new/rickrolling-screenshot-from-video.webp",
+    "ratio": 1
   },
   {
-    "asset": "/figma/assets/hero-particles/ugc/ugc-0027.webp",
-    "ratio": 0.494253
+    "asset": "/figma/assets/hero-particles/ugc-new/sigma-cat.gif",
+    "ratio": 0.878505
   },
   {
-    "asset": "/figma/assets/hero-particles/ugc/ugc-0028.webp",
-    "ratio": 0.794212
+    "asset": "/figma/assets/hero-particles/ugc-new/skater-cat.webp",
+    "ratio": 1
   },
   {
-    "asset": "/figma/assets/hero-particles/ugc/ugc-0029.webp",
-    "ratio": 0.60217
-  },
-  {
-    "asset": "/figma/assets/hero-particles/ugc/ugc-0030.webp",
-    "ratio": 0.61529
-  },
-  {
-    "asset": "/figma/assets/hero-particles/ugc/ugc-0031.webp",
-    "ratio": 0.625
-  },
-  {
-    "asset": "/figma/assets/hero-particles/ugc/ugc-0033.webp",
-    "ratio": 0.60217
-  },
-  {
-    "asset": "/figma/assets/hero-particles/ugc/ugc-0034.webp",
-    "ratio": 0.774216
-  },
-  {
-    "asset": "/figma/assets/hero-particles/ugc/ugc-0035.webp",
-    "ratio": 0.619195
-  },
-  {
-    "asset": "/figma/assets/hero-particles/ugc/ugc-0036.webp",
-    "ratio": 0.494253
-  },
-  {
-    "asset": "/figma/assets/hero-particles/ugc/ugc-0037.webp",
-    "ratio": 0.730526
-  },
-  {
-    "asset": "/figma/assets/hero-particles/ugc/ugc-0038.webp",
-    "ratio": 0.619181
-  },
-  {
-    "asset": "/figma/assets/hero-particles/ugc/ugc-0039.webp",
-    "ratio": 0.615527
-  },
-  {
-    "asset": "/figma/assets/hero-particles/ugc/ugc-0040.webp",
-    "ratio": 0.627119
-  },
-  {
-    "asset": "/figma/assets/hero-particles/ugc/ugc-0041.webp",
-    "ratio": 0.494253
-  },
-  {
-    "asset": "/figma/assets/hero-particles/ugc/ugc-0042.webp",
-    "ratio": 0.613022
-  },
-  {
-    "asset": "/figma/assets/hero-particles/ugc/ugc-0043.webp",
-    "ratio": 0.61529
-  },
-  {
-    "asset": "/figma/assets/hero-particles/ugc/ugc-0044.webp",
-    "ratio": 0.855491
-  },
-  {
-    "asset": "/figma/assets/hero-particles/ugc/ugc-0046.webp",
-    "ratio": 0.634286
-  },
-  {
-    "asset": "/figma/assets/hero-particles/ugc/ugc-0047.webp",
-    "ratio": 0.604356
-  },
-  {
-    "asset": "/figma/assets/hero-particles/ugc/ugc-0048.webp",
-    "ratio": 0.627119
-  },
-  {
-    "asset": "/figma/assets/hero-particles/ugc/ugc-0049.webp",
-    "ratio": 1.0
-  },
-  {
-    "asset": "/figma/assets/hero-particles/ugc/ugc-0050.webp",
-    "ratio": 0.774216
-  },
-  {
-    "asset": "/figma/assets/hero-particles/ugc/ugc-0051.webp",
-    "ratio": 0.494253
-  },
-  {
-    "asset": "/figma/assets/hero-particles/ugc/ugc-0052.webp",
-    "ratio": 0.494253
-  },
-  {
-    "asset": "/figma/assets/hero-particles/ugc/ugc-0053.webp",
-    "ratio": 0.621269
-  },
-  {
-    "asset": "/figma/assets/hero-particles/ugc/ugc-0054.webp",
-    "ratio": 0.494253
-  },
-  {
-    "asset": "/figma/assets/hero-particles/ugc/ugc-0055.webp",
-    "ratio": 0.620595
-  },
-  {
-    "asset": "/figma/assets/hero-particles/ugc/ugc-0056.webp",
-    "ratio": 0.494253
-  },
-  {
-    "asset": "/figma/assets/hero-particles/ugc/ugc-0057.webp",
-    "ratio": 0.473684
-  },
-  {
-    "asset": "/figma/assets/hero-particles/ugc/ugc-0058.webp",
-    "ratio": 0.812135
-  },
-  {
-    "asset": "/figma/assets/hero-particles/ugc/ugc-0059.webp",
-    "ratio": 0.494253
-  },
-  {
-    "asset": "/figma/assets/hero-particles/ugc/ugc-0060.webp",
-    "ratio": 0.494253
-  },
-  {
-    "asset": "/figma/assets/hero-particles/ugc/ugc-0061.webp",
-    "ratio": 0.494253
-  },
-  {
-    "asset": "/figma/assets/hero-particles/ugc/ugc-0062.webp",
-    "ratio": 0.494253
-  },
-  {
-    "asset": "/figma/assets/hero-particles/ugc/ugc-0063.webp",
-    "ratio": 0.494253
-  },
-  {
-    "asset": "/figma/assets/hero-particles/ugc/ugc-0064.webp",
-    "ratio": 0.494253
-  },
-  {
-    "asset": "/figma/assets/hero-particles/ugc/ugc-0065.webp",
-    "ratio": 0.494253
-  },
-  {
-    "asset": "/figma/assets/hero-particles/ugc/ugc-0066.webp",
-    "ratio": 0.494253
-  },
-  {
-    "asset": "/figma/assets/hero-particles/ugc/ugc-0067.webp",
-    "ratio": 0.814286
-  },
-  {
-    "asset": "/figma/assets/hero-particles/ugc/ugc-0068.webp",
-    "ratio": 0.494253
-  },
-  {
-    "asset": "/figma/assets/hero-particles/ugc/ugc-0069.webp",
-    "ratio": 0.494253
-  },
-  {
-    "asset": "/figma/assets/hero-particles/ugc/ugc-0070.webp",
-    "ratio": 0.494253
-  },
-  {
-    "asset": "/figma/assets/hero-particles/ugc/ugc-0071.webp",
-    "ratio": 0.494253
-  },
-  {
-    "asset": "/figma/assets/hero-particles/ugc/ugc-0072.webp",
-    "ratio": 0.494253
-  },
-  {
-    "asset": "/figma/assets/hero-particles/ugc/ugc-0073.webp",
-    "ratio": 0.623596
-  },
-  {
-    "asset": "/figma/assets/hero-particles/ugc/ugc-0074.webp",
-    "ratio": 0.494253
-  },
-  {
-    "asset": "/figma/assets/hero-particles/ugc/ugc-0075.webp",
-    "ratio": 0.494253
-  },
-  {
-    "asset": "/figma/assets/hero-particles/ugc/ugc-0076.webp",
-    "ratio": 0.494253
-  },
-  {
-    "asset": "/figma/assets/hero-particles/ugc/ugc-0077.webp",
-    "ratio": 0.494253
-  },
-  {
-    "asset": "/figma/assets/hero-particles/ugc/ugc-0078.webp",
-    "ratio": 0.494253
-  },
-  {
-    "asset": "/figma/assets/hero-particles/ugc/ugc-0079.webp",
-    "ratio": 0.494253
-  },
-  {
-    "asset": "/figma/assets/hero-particles/ugc/ugc-0080.webp",
-    "ratio": 0.825893
-  },
-  {
-    "asset": "/figma/assets/hero-particles/ugc/ugc-0081.webp",
-    "ratio": 1.5
-  },
-  {
-    "asset": "/figma/assets/hero-particles/ugc/ugc-0082.webp",
-    "ratio": 0.494253
-  },
-  {
-    "asset": "/figma/assets/hero-particles/ugc/ugc-0083.webp",
-    "ratio": 0.494253
-  },
-  {
-    "asset": "/figma/assets/hero-particles/ugc/ugc-0084.webp",
-    "ratio": 0.494253
-  },
-  {
-    "asset": "/figma/assets/hero-particles/ugc/ugc-0085.webp",
-    "ratio": 0.494253
-  },
-  {
-    "asset": "/figma/assets/hero-particles/ugc/ugc-0086.webp",
-    "ratio": 0.494253
-  },
-  {
-    "asset": "/figma/assets/hero-particles/ugc/ugc-0087.webp",
-    "ratio": 0.494253
-  },
-  {
-    "asset": "/figma/assets/hero-particles/ugc/ugc-0088.webp",
-    "ratio": 0.494253
-  },
-  {
-    "asset": "/figma/assets/hero-particles/ugc/ugc-0089.webp",
-    "ratio": 0.598086
-  },
-  {
-    "asset": "/figma/assets/hero-particles/ugc/ugc-0090.webp",
-    "ratio": 0.494253
-  },
-  {
-    "asset": "/figma/assets/hero-particles/ugc/ugc-0091.webp",
-    "ratio": 0.494253
-  },
-  {
-    "asset": "/figma/assets/hero-particles/ugc/ugc-0092.webp",
-    "ratio": 1.602287
-  },
-  {
-    "asset": "/figma/assets/hero-particles/ugc/ugc-0093.webp",
-    "ratio": 0.494253
-  },
-  {
-    "asset": "/figma/assets/hero-particles/ugc/ugc-0094.webp",
-    "ratio": 0.741656
-  },
-  {
-    "asset": "/figma/assets/hero-particles/ugc/ugc-0096.webp",
-    "ratio": 0.494253
-  },
-  {
-    "asset": "/figma/assets/hero-particles/ugc/ugc-0097.webp",
-    "ratio": 0.494253
-  },
-  {
-    "asset": "/figma/assets/hero-particles/ugc/ugc-0098.webp",
-    "ratio": 0.494253
-  },
-  {
-    "asset": "/figma/assets/hero-particles/ugc/ugc-0099.webp",
-    "ratio": 0.494253
-  },
-  {
-    "asset": "/figma/assets/hero-particles/ugc/ugc-0100.webp",
-    "ratio": 0.494253
+    "asset": "/figma/assets/hero-particles/ugc-new/tung-tung-tung-sahur.webp",
+    "ratio": 1
   }
 ]

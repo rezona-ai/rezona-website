@@ -224,26 +224,11 @@ const flyCards: FlyCard[] = [
   },
 ];
 
-const toParticleAsset = (assetPath: string) =>
-  assetPath.replace("/figma/assets/", "/figma/assets/hero-particles/");
-
 type HeroBurstVisualAsset = {
   id: string;
   asset: string;
   ratio: number;
 };
-
-const heroBurstLegacyAssetsInUgc: HeroBurstVisualAsset[] = flyCards.map((card) => ({
-  id: `legacy-ugc-${card.id}`,
-  asset: `/figma/assets/hero-particles/ugc/legacy-fly-${card.id}.webp`,
-  ratio: card.width / card.height,
-}));
-
-const heroBurstLegacyAssets: HeroBurstVisualAsset[] = flyCards.map((card) => ({
-  id: `legacy-${card.id}`,
-  asset: toParticleAsset(card.asset),
-  ratio: card.width / card.height,
-}));
 
 const heroBurstUgcPoolAssets: HeroBurstVisualAsset[] = heroParticleUgcAssets.map(
   (item, index) => ({
@@ -253,19 +238,15 @@ const heroBurstUgcPoolAssets: HeroBurstVisualAsset[] = heroParticleUgcAssets.map
   })
 );
 
-const heroBurstVisualAssets: HeroBurstVisualAsset[] = [
-  ...heroBurstUgcPoolAssets,
-  ...heroBurstLegacyAssetsInUgc,
-  ...heroBurstLegacyAssets,
-];
+const heroBurstVisualAssets: HeroBurstVisualAsset[] = [...heroBurstUgcPoolAssets];
 
 const pickHeroBurstVisualAssetBySeed = (seed: number): HeroBurstVisualAsset => {
   const total = heroBurstVisualAssets.length;
   if (total === 0) {
     return {
-      id: "legacy-fallback",
-      asset: toParticleAsset(flyCards[0].asset),
-      ratio: flyCards[0].width / flyCards[0].height,
+      id: "ugc-fallback",
+      asset: "/figma/assets/hero-particles/ugc-new/capybara.webp",
+      ratio: 1,
     };
   }
 
