@@ -540,7 +540,7 @@ const HeroBurstCanvas = memo(function HeroBurstCanvas({
 const mobileFlyCards: MobileFlyCard[] = [
   {
     id: "1",
-    asset: "/figma/assets/mobile-fly-1-1110-1790@2x.png",
+    asset: "/figma/assets/mobile-fly-1-2x.png",
     xPct: 2.1333,
     yPct: 1.81,
     wPct: 21.3333,
@@ -548,7 +548,7 @@ const mobileFlyCards: MobileFlyCard[] = [
   },
   {
     id: "8",
-    asset: "/figma/assets/mobile-fly-8-1110-1791@2x.png",
+    asset: "/figma/assets/mobile-fly-8-2x.png",
     xPct: 61.0667,
     yPct: 0,
     wPct: 21.3333,
@@ -556,7 +556,7 @@ const mobileFlyCards: MobileFlyCard[] = [
   },
   {
     id: "4",
-    asset: "/figma/assets/mobile-fly-4-1110-1792@2x.png",
+    asset: "/figma/assets/mobile-fly-4-2x.png",
     xPct: 76.5333,
     yPct: 18.0995,
     wPct: 21.3333,
@@ -564,7 +564,7 @@ const mobileFlyCards: MobileFlyCard[] = [
   },
   {
     id: "6",
-    asset: "/figma/assets/mobile-fly-6-1110-1793@2x.png",
+    asset: "/figma/assets/mobile-fly-6-2x.png",
     xPct: 31.7333,
     yPct: 5.8824,
     wPct: 21.3333,
@@ -572,7 +572,7 @@ const mobileFlyCards: MobileFlyCard[] = [
   },
   {
     id: "11",
-    asset: "/figma/assets/mobile-fly-11-1110-1794@2x.png",
+    asset: "/figma/assets/mobile-fly-11-2x.png",
     xPct: 50.1333,
     yPct: 29.1855,
     wPct: 21.3333,
@@ -580,7 +580,7 @@ const mobileFlyCards: MobileFlyCard[] = [
   },
   {
     id: "5",
-    asset: "/figma/assets/mobile-fly-5-1110-1795@2x.png",
+    asset: "/figma/assets/mobile-fly-5-2x.png",
     xPct: 2.1333,
     yPct: 35.7466,
     wPct: 21.3333,
@@ -588,7 +588,7 @@ const mobileFlyCards: MobileFlyCard[] = [
   },
   {
     id: "3",
-    asset: "/figma/assets/mobile-fly-3-1110-1796@2x.png",
+    asset: "/figma/assets/mobile-fly-3-2x.png",
     xPct: 71.7333,
     yPct: 56.5611,
     wPct: 21.3333,
@@ -596,7 +596,7 @@ const mobileFlyCards: MobileFlyCard[] = [
   },
   {
     id: "10",
-    asset: "/figma/assets/mobile-fly-10-1110-1797@2x.png",
+    asset: "/figma/assets/mobile-fly-10-2x.png",
     xPct: 26.1333,
     yPct: 54.9774,
     wPct: 21.3333,
@@ -604,7 +604,7 @@ const mobileFlyCards: MobileFlyCard[] = [
   },
   {
     id: "9",
-    asset: "/figma/assets/mobile-fly-9-1110-1798@2x.png",
+    asset: "/figma/assets/mobile-fly-9-2x.png",
     xPct: 14.6667,
     yPct: 69.0045,
     wPct: 21.3333,
@@ -612,7 +612,7 @@ const mobileFlyCards: MobileFlyCard[] = [
   },
   {
     id: "7",
-    asset: "/figma/assets/mobile-fly-7-1110-1799@2x.png",
+    asset: "/figma/assets/mobile-fly-7-2x.png",
     xPct: 43.2,
     yPct: 69.0045,
     wPct: 21.3333,
@@ -623,7 +623,7 @@ const mobileFlyCards: MobileFlyCard[] = [
 const heroBgSlices: HeroSlice[] = [
   {
     id: "left",
-    asset: "/figma/WebsiteMaterials/Mobile/Desktop/PC_YOURIDEAS.webp",
+    asset: "/figma/website-materials/mobile/desktop/pc-yourideas.webp",
     xPct: -1.2,
     yPct: 4.9,
     wPct: 26.4,
@@ -631,7 +631,7 @@ const heroBgSlices: HeroSlice[] = [
   },
   {
     id: "right",
-    asset: "/figma/WebsiteMaterials/Mobile/Desktop/PC_YourTool.webp",
+    asset: "/figma/website-materials/mobile/desktop/pc-yourtool.webp",
     xPct: 74.8,
     yPct: 4.9,
     wPct: 26.4,
@@ -639,7 +639,7 @@ const heroBgSlices: HeroSlice[] = [
   },
   {
     id: "bottom",
-    asset: "/figma/WebsiteMaterials/Mobile/Desktop/PC_Games.webp",
+    asset: "/figma/website-materials/mobile/desktop/pc-games.webp",
     xPct: -3.6,
     yPct: 81,
     wPct: 107.4,
@@ -647,7 +647,7 @@ const heroBgSlices: HeroSlice[] = [
   },
   {
     id: "top",
-    asset: "/figma/WebsiteMaterials/Mobile/Desktop/PC_RZNAI.webp",
+    asset: "/figma/website-materials/mobile/desktop/pc-rznai.webp",
     xPct: -2,
     yPct: -0.6,
     wPct: 104,
@@ -658,7 +658,7 @@ const heroBgSlices: HeroSlice[] = [
 const heroGameSlices: HeroSlice[] = [
   {
     id: "main",
-    asset: "/figma/assets/hero-game-main-941-22455@2x.avif",
+    asset: "/figma/assets/hero-game-main-2x.avif",
     xPct: 53.2,
     yPct: 19.8,
     wPct: 21.8,
@@ -666,7 +666,7 @@ const heroGameSlices: HeroSlice[] = [
   },
   {
     id: "up",
-    asset: "/figma/assets/hero-game-up-941-22455@2x.png",
+    asset: "/figma/assets/hero-game-up-2x.png",
     xPct: 75.6,
     yPct: 65.8,
     wPct: 4.562422,
@@ -674,7 +674,7 @@ const heroGameSlices: HeroSlice[] = [
   },
   {
     id: "down",
-    asset: "/figma/assets/hero-game-down-941-22455@2x.png",
+    asset: "/figma/assets/hero-game-down-2x.png",
     xPct: 75.6,
     yPct: 73.7,
     wPct: 4.562422,
@@ -693,7 +693,7 @@ const heroGameUrls = [
 const mobileShowcaseScenes: ShowcaseScene[] = [
   {
     id: "mobile-showcase-sec4",
-    media: "/figma/assets/mobile-sec4-media-1110-1807@2x.webp",
+    media: "/figma/assets/mobile-sec4-media-2x.webp",
     mediaAlt: "Fresh memes collage",
     title: "Freshest memes\nfrom every corner",
     description:
@@ -702,7 +702,7 @@ const mobileShowcaseScenes: ShowcaseScene[] = [
   },
   {
     id: "mobile-showcase-sec5",
-    media: "/figma/assets/mobile-sec5-media-1110-1829@2x.webp",
+    media: "/figma/assets/mobile-sec5-media-2x.webp",
     mediaAlt: "VR creator portrait",
     title: "Total creative\ncontrol",
     description:
@@ -711,7 +711,7 @@ const mobileShowcaseScenes: ShowcaseScene[] = [
   },
   {
     id: "mobile-showcase-sec6",
-    media: "/figma/assets/mobile-sec6-media-1110-1836@2x.webp",
+    media: "/figma/assets/mobile-sec6-media-2x.webp",
     mediaAlt: "Sound production studio",
     title: "Your sounds —\nor ours",
     description:
@@ -720,7 +720,7 @@ const mobileShowcaseScenes: ShowcaseScene[] = [
   },
   {
     id: "mobile-showcase-sec7",
-    media: "/figma/assets/mobile-sec7-media-1110-1843@2x.webp",
+    media: "/figma/assets/mobile-sec7-media-2x.webp",
     mediaAlt: "Cyber crew group portrait",
     title: "Bring the crew",
     description:
@@ -732,7 +732,7 @@ const mobileShowcaseScenes: ShowcaseScene[] = [
 const showcaseScenes: ShowcaseScene[] = [
   {
     id: "showcase-sec4",
-    media: "/figma/assets/sec4-media-968-23809@2x.webp",
+    media: "/figma/assets/sec4-media-2x.webp",
     mediaAlt: "Fresh memes collage",
     title: "Freshest memes\nfrom every\ncorner",
     description:
@@ -741,7 +741,7 @@ const showcaseScenes: ShowcaseScene[] = [
   },
   {
     id: "showcase-sec5",
-    media: "/figma/assets/sec5-media-968-23811@2x.webp",
+    media: "/figma/assets/sec5-media-2x.webp",
     mediaAlt: "VR creator portrait",
     title: "Total creative\ncontrol",
     description:
@@ -750,7 +750,7 @@ const showcaseScenes: ShowcaseScene[] = [
   },
   {
     id: "showcase-sec6",
-    media: "/figma/assets/sec6-media-968-23813@2x.webp",
+    media: "/figma/assets/sec6-media-2x.webp",
     mediaAlt: "Sound production studio",
     title: "Your sounds – or Ours",
     description:
@@ -759,7 +759,7 @@ const showcaseScenes: ShowcaseScene[] = [
   },
   {
     id: "showcase-sec7",
-    media: "/figma/assets/sec7-media-968-23815@2x.webp",
+    media: "/figma/assets/sec7-media-2x.webp",
     mediaAlt: "Cyber crew group portrait",
     title: "Bring The Crew",
     description:
@@ -771,8 +771,8 @@ const showcaseScenes: ShowcaseScene[] = [
 const swiperStates = [
   { id: "yellow", asset: "/figma/swiper/1.webp", alt: "10M game play yellow card" },
   { id: "pink", asset: "/figma/swiper/3.webp", alt: "10M game play pink card" },
-  { id: "blue", asset: "/figma/swiper/4'.webp", alt: "10M game play blue card" },
-  { id: "green", asset: "/figma/swiper/2'.webp", alt: "10M game play green card" },
+  { id: "blue", asset: "/figma/swiper/4.webp", alt: "10M game play blue card" },
+  { id: "green", asset: "/figma/swiper/2.webp", alt: "10M game play green card" },
 ];
 
 const swiperStripOrder = [
@@ -785,7 +785,7 @@ const swiperStripOrder = [
 const tailScenes: TailScene[] = [
   {
     id: "tail-998-25744",
-    asset: "/figma/assets/tail-998-25744@2x.avif",
+    asset: "/figma/assets/tail-2x.avif",
     alt: "Rezona tail section top",
     ratio: "1920 / 790",
   },
@@ -794,49 +794,49 @@ const tailScenes: TailScene[] = [
 const footerSocialSlices = [
   {
     id: "x",
-    asset: "/figma/assets/footer-social-x-968-23986@2x.png",
+    asset: "/figma/assets/footer-social-x-2x.png",
     left: 66.1667,
     href: "https://x.com/rezona_ai",
   },
   {
     id: "telegram",
-    asset: "/figma/assets/footer-social-telegram-968-23986@2x.png",
+    asset: "/figma/assets/footer-social-telegram-2x.png",
     left: 70.3333,
     href: "https://t.me/rezona_ai",
   },
   {
     id: "discord",
-    asset: "/figma/assets/footer-social-discord-968-23986@2x.png",
+    asset: "/figma/assets/footer-social-discord-2x.png",
     left: 74.5,
     href: "https://discord.gg/rezona",
   },
   {
     id: "tiktok",
-    asset: "/figma/assets/footer-social-tiktok-968-23986@2x.png",
+    asset: "/figma/assets/footer-social-tiktok-2x.png",
     left: 78.6667,
     href: "https://www.tiktok.com/@rezona.ai",
   },
   {
     id: "youtube",
-    asset: "/figma/assets/footer-social-youtube-968-23986@2x.png",
+    asset: "/figma/assets/footer-social-youtube-2x.png",
     left: 82.8333,
     href: "https://www.youtube.com/@rezona-app",
   },
   {
     id: "instagram",
-    asset: "/figma/assets/footer-social-instagram-968-23986@2x.png",
+    asset: "/figma/assets/footer-social-instagram-2x.png",
     left: 87.0,
     href: "https://www.instagram.com/rezona.ai",
   },
   {
     id: "threads",
-    asset: "/figma/assets/footer-social-threads-968-23986@2x.png",
+    asset: "/figma/assets/footer-social-threads-2x.png",
     left: 91.1667,
     href: "https://www.threads.com/@rezona.ai",
   },
   {
     id: "social",
-    asset: "/figma/assets/social.png",
+    asset: "/figma/assets/social.webp",
     left: 95.1667,
     href: "https://www.reddit.com/r/rezona/",
   },
@@ -845,42 +845,42 @@ const footerSocialSlices = [
 const mobileFooterSocialSlices = [
   {
     id: "x",
-    asset: "/figma/assets/mobile-social-x-1110-1865@2x.png",
+    asset: "/figma/assets/mobile-social-x-2x.png",
     href: "https://x.com/rezona_ai",
   },
   {
     id: "telegram",
-    asset: "/figma/assets/mobile-social-telegram-1110-1867@2x.png",
+    asset: "/figma/assets/mobile-social-telegram-2x.png",
     href: "https://t.me/rezona_ai",
   },
   {
     id: "discord",
-    asset: "/figma/assets/mobile-social-discord-1110-1869@2x.png",
+    asset: "/figma/assets/mobile-social-discord-2x.png",
     href: "https://discord.gg/rezona",
   },
   {
     id: "tiktok",
-    asset: "/figma/assets/mobile-social-tiktok-1110-1871@2x.png",
+    asset: "/figma/assets/mobile-social-tiktok-2x.png",
     href: "https://www.tiktok.com/@rezona.ai",
   },
   {
     id: "youtube",
-    asset: "/figma/assets/mobile-social-youtube-1110-1873@2x.png",
+    asset: "/figma/assets/mobile-social-youtube-2x.png",
     href: "https://www.youtube.com/@rezona-app",
   },
   {
     id: "instagram",
-    asset: "/figma/assets/mobile-social-instagram-1110-1875@2x.png",
+    asset: "/figma/assets/mobile-social-instagram-2x.png",
     href: "https://www.instagram.com/rezona.ai",
   },
   {
     id: "threads",
-    asset: "/figma/assets/mobile-social-threads-1110-1877@2x.png",
+    asset: "/figma/assets/mobile-social-threads-2x.png",
     href: "https://www.threads.com/@rezona.ai",
   },
   {
     id: "social",
-    asset: "/figma/assets/social-mobile.png",
+    asset: "/figma/assets/social-mobile.webp",
     href: "https://www.reddit.com/r/rezona/",
   },
 ];
@@ -1349,7 +1349,7 @@ export default function Home() {
         <>
           <header className="figma-header desktop-only">
             <img
-              src="/figma/assets/header.png"
+              src="/figma/assets/header.webp"
               alt="Rezona Header"
               width={1920}
               height={109}
@@ -1408,7 +1408,7 @@ export default function Home() {
                       ) : (
                         <img
                           className="hero-game-poster"
-                          src="/figma/assets/hero-game-main-941-22455@2x.avif"
+                          src="/figma/assets/hero-game-main-2x.avif"
                           alt="Hero game preview"
                           loading="eager"
                           decoding="async"
@@ -1525,7 +1525,7 @@ export default function Home() {
             />
             <img
               className="footer-bottom-brand"
-              src="/figma/assets/footer-rezona-text-968-23986@2x.png"
+              src="/figma/assets/footer-rezona-text-2x.png"
               alt="REZONA.AI"
               loading="lazy"
               decoding="async"
@@ -1538,7 +1538,7 @@ export default function Home() {
               aria-label="Open App Store"
             >
               <img
-                src="/figma/assets/store-appstore-new.png"
+                src="/figma/assets/store-appstore-new.webp"
                 alt="App Store"
                 loading="lazy"
                 decoding="async"
@@ -1595,7 +1595,7 @@ export default function Home() {
           >
             <img
               className="mobile-hero-panel mobile-hero-panel-1"
-              src="/figma/WebsiteMaterials/Mobile/MB_YourIDEA.webp"
+              src="/figma/website-materials/mobile/mb-youridea.webp"
               alt=""
               loading="eager"
               decoding="async"
@@ -1604,7 +1604,7 @@ export default function Home() {
             />
             <img
               className="mobile-hero-panel mobile-hero-panel-2"
-              src="/figma/WebsiteMaterials/Mobile/MB_YourTOOL.webp"
+              src="/figma/website-materials/mobile/mb-yourtool.webp"
               alt=""
               loading="eager"
               decoding="async"
@@ -1613,7 +1613,7 @@ export default function Home() {
             />
             <img
               className="mobile-hero-panel mobile-hero-panel-3"
-              src="/figma/WebsiteMaterials/Mobile/MB_YourGame.webp"
+              src="/figma/website-materials/mobile/mb-yourgame.webp"
               alt=""
               loading="eager"
               decoding="async"
@@ -1625,7 +1625,7 @@ export default function Home() {
           <div className="mobile-top-nav">
             <img
               className="mobile-top-logo"
-              src="/figma/assets/mobile-top-logo-1110-1771@2x.png"
+              src="/figma/assets/mobile-top-logo-2x.png"
               alt="Rezona"
               width={173}
               height={28}
@@ -1641,7 +1641,7 @@ export default function Home() {
               onClick={openAppModal}
             >
               <img
-                src="/figma/assets/mobile-top-cta-1110-1774@2x.png"
+                src="/figma/assets/mobile-top-cta-2x.png"
                 alt="Get App"
                 width={90}
                 height={40}
@@ -1662,7 +1662,7 @@ export default function Home() {
               onClick={openAppModal}
             >
               <img
-                src="/figma/assets/mobile-hero-cta-1110-1787@2x.png"
+                src="/figma/assets/mobile-hero-cta-2x.png"
                 alt="Get App Now"
                 width={156}
                 height={44}
@@ -1691,7 +1691,7 @@ export default function Home() {
               ) : (
                 <img
                   className="mobile-content-game-main hero-game-poster"
-                  src="/figma/assets/hero-game-main-941-22455@2x.avif"
+                  src="/figma/assets/hero-game-main-2x.avif"
                   alt="Hero game preview"
                   loading="eager"
                   decoding="async"
@@ -1709,7 +1709,7 @@ export default function Home() {
                 onClick={() => switchHeroGame(-1)}
               >
                 <img
-                  src="/figma/assets/hero-game-up-941-22455@2x.png"
+                  src="/figma/assets/hero-game-up-2x.png"
                   alt=""
                   width={58}
                   height={58}
@@ -1724,7 +1724,7 @@ export default function Home() {
                 onClick={() => switchHeroGame(1)}
               >
                 <img
-                  src="/figma/assets/hero-game-down-941-22455@2x.png"
+                  src="/figma/assets/hero-game-down-2x.png"
                   alt=""
                   width={58}
                   height={58}
@@ -1764,7 +1764,7 @@ export default function Home() {
 
           <section className="mobile-built-section">
             <img
-              src="/figma/assets/mobile-built-1110-1849@2x.png"
+              src="/figma/assets/mobile-built-2x.png"
               alt="Built for meme"
               width={359}
               height={102}
@@ -1792,7 +1792,7 @@ export default function Home() {
                   aria-label="Open App Store"
                 >
                   <img
-                    src="/figma/assets/store-appstore-new.png"
+                    src="/figma/assets/store-appstore-new.webp"
                     alt="App Store"
                     width={120}
                     height={40}
@@ -1841,7 +1841,7 @@ export default function Home() {
 
             <img
               className="mobile-footer-brand"
-              src="/figma/assets/mobile-footer-brand-1110-1878@2x.png"
+              src="/figma/assets/mobile-footer-brand-2x.png"
               alt="REZONA.AI"
               width={343}
               height={47}
@@ -1874,7 +1874,7 @@ export default function Home() {
             <div className="app-download-modal-card">
               <img
                 className="app-download-modal-texture"
-                src="/figma/assets/popup-bg-texture-1083-7906@2x.png"
+                src="/figma/assets/popup-bg-texture-2x.png"
                 alt=""
                 aria-hidden="true"
               />
@@ -1895,7 +1895,7 @@ export default function Home() {
               <div className="app-download-modal-qr-frame">
                 <div className="app-download-modal-qr-inner">
                   <img
-                    src="/figma/assets/popup-qr-content-1083-7914@2x.webp"
+                    src="/figma/assets/popup-qr-content-2x.webp"
                     alt="Scan QR code to download the app"
                     width={262}
                     height={267}
@@ -1906,7 +1906,7 @@ export default function Home() {
 
             <img
               className="app-download-modal-mascot"
-              src="/figma/assets/popup-mascot-1178-8299@2x.png"
+              src="/figma/assets/popup-mascot-2x.png"
               alt=""
               aria-hidden="true"
             />
