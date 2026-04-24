@@ -1922,7 +1922,7 @@ select {
   --mobile-particle-center-y: 50%;
   position: relative;
   width: var(--mobile-w);
-  margin: calc(var(--mobile-w) * 54 / 375) 0 0;
+  margin: 0;
   height: calc(var(--mobile-w) * 520 / 375);
   overflow: hidden;
   isolation: isolate;
