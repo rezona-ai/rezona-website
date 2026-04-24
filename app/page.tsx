@@ -551,24 +551,24 @@ const heroGameSlices: HeroSlice[] = [
     id: "main",
     asset: "/figma/assets/hero-game-main-941-22455@2x.avif",
     xPct: 53.2,
-    yPct: 20.8,
+    yPct: 19.8,
     wPct: 21.8,
-    hPct: 59.5,
+    hPct: 61.3,
   },
   {
     id: "up",
     asset: "/figma/assets/hero-game-up-941-22455@2x.png",
-    xPct: 75.4,
+    xPct: 74.6,
     yPct: 65.8,
-    wPct: 3.041615,
+    wPct: 4.562422,
     hPct: 4.562422,
   },
   {
     id: "down",
     asset: "/figma/assets/hero-game-down-941-22455@2x.png",
-    xPct: 75.4,
+    xPct: 74.6,
     yPct: 73.7,
-    wPct: 3.041615,
+    wPct: 4.562422,
     hPct: 4.562422,
   },
 ];
@@ -1274,8 +1274,8 @@ export default function Home() {
                 <img
                   src="/figma/assets/mobile-hero-up-1110-1782@2x.png"
                   alt=""
-                  width={24}
-                  height={24}
+                  width={58}
+                  height={58}
                   loading="lazy"
                   decoding="async"
                 />
@@ -1289,8 +1289,8 @@ export default function Home() {
                 <img
                   src="/figma/assets/mobile-hero-down-1110-1784@2x.png"
                   alt=""
-                  width={24}
-                  height={24}
+                  width={58}
+                  height={58}
                   loading="lazy"
                   decoding="async"
                 />
