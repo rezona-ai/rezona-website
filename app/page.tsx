@@ -1334,64 +1334,6 @@ export default function Home() {
             </a>
           </div>
 
-          <div className="mobile-hero-game-wrap">
-            <div className="mobile-hero-game-frame">
-              {heroGameLiveMode ? (
-                <iframe
-                  className="mobile-hero-game-main"
-                  src={heroGameUrls[heroGameIndex]}
-                  title="Rezona game hero"
-                  loading="eager"
-                  allow="autoplay; fullscreen; gamepad; gyroscope; accelerometer; xr-spatial-tracking"
-                  onLoad={() => setHeroGameLoading(false)}
-                />
-              ) : (
-                <img
-                  className="mobile-hero-game-main hero-game-poster"
-                  src="/figma/assets/hero-game-main-941-22455@2x.avif"
-                  alt="Hero game preview"
-                  loading="eager"
-                  decoding="async"
-                />
-              )}
-              {heroGameLiveMode && heroGameLoading && (
-                <div className="game-skeleton" aria-hidden="true" />
-              )}
-            </div>
-            <div className="mobile-hero-game-nav">
-              <button
-                className="mobile-hero-nav-btn"
-                type="button"
-                aria-label="Previous game"
-                onClick={() => switchHeroGame(-1)}
-              >
-                <img
-                  src="/figma/assets/mobile-hero-up-1110-1782@2x.png"
-                  alt=""
-                  width={58}
-                  height={58}
-                  loading="lazy"
-                  decoding="async"
-                />
-              </button>
-              <button
-                className="mobile-hero-nav-btn"
-                type="button"
-                aria-label="Next game"
-                onClick={() => switchHeroGame(1)}
-              >
-                <img
-                  src="/figma/assets/mobile-hero-down-1110-1784@2x.png"
-                  alt=""
-                  width={58}
-                  height={58}
-                  loading="lazy"
-                  decoding="async"
-                />
-              </button>
-            </div>
-          </div>
-
           <div className="mobile-hero-copy">
             <img
               className="mobile-hero-title"
@@ -1424,6 +1366,64 @@ export default function Home() {
         <div className="mobile-content-shell">
           <section className="mobile-fly-section">
             <HeroBurstCanvas />
+          </section>
+
+          <section className="mobile-content-game-section">
+            <div className="mobile-content-game-frame">
+              {heroGameLiveMode ? (
+                <iframe
+                  className="mobile-content-game-main"
+                  src={heroGameUrls[heroGameIndex]}
+                  title="Rezona game hero"
+                  loading="eager"
+                  allow="autoplay; fullscreen; gamepad; gyroscope; accelerometer; xr-spatial-tracking"
+                  onLoad={() => setHeroGameLoading(false)}
+                />
+              ) : (
+                <img
+                  className="mobile-content-game-main hero-game-poster"
+                  src="/figma/assets/hero-game-main-941-22455@2x.avif"
+                  alt="Hero game preview"
+                  loading="eager"
+                  decoding="async"
+                />
+              )}
+              {heroGameLiveMode && heroGameLoading && (
+                <div className="game-skeleton" aria-hidden="true" />
+              )}
+            </div>
+            <div className="mobile-content-game-nav">
+              <button
+                className="mobile-content-game-nav-btn"
+                type="button"
+                aria-label="Previous game"
+                onClick={() => switchHeroGame(-1)}
+              >
+                <img
+                  src="/figma/assets/mobile-hero-up-1110-1782@2x.png"
+                  alt=""
+                  width={58}
+                  height={58}
+                  loading="lazy"
+                  decoding="async"
+                />
+              </button>
+              <button
+                className="mobile-content-game-nav-btn"
+                type="button"
+                aria-label="Next game"
+                onClick={() => switchHeroGame(1)}
+              >
+                <img
+                  src="/figma/assets/mobile-hero-down-1110-1784@2x.png"
+                  alt=""
+                  width={58}
+                  height={58}
+                  loading="lazy"
+                  decoding="async"
+                />
+              </button>
+            </div>
           </section>
 
           <MobileStatsLoopScene />

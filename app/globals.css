@@ -1190,11 +1190,11 @@ body {
 }
 
 .mobile-hero-section {
-  --mobile-w: 100vw;
+  --mobile-w: min(100vw, 375px);
   position: relative;
   width: 100%;
   margin: 0;
-  height: calc(var(--mobile-w) * 1504 / 375);
+  height: calc(var(--mobile-w) * 860 / 375);
   overflow: hidden;
 }
 
@@ -1216,9 +1216,10 @@ body {
 
 .mobile-top-nav {
   position: absolute;
-  left: 0;
+  left: 50%;
   top: 0;
   width: var(--mobile-w);
+  transform: translateX(-50%);
   height: calc(var(--mobile-w) * 60 / 375);
   display: flex;
   align-items: center;
@@ -1292,11 +1293,20 @@ body {
   object-fit: contain;
 }
 
-.mobile-hero-copy {
+.mobile-hero-particle-wrap {
   position: absolute;
   left: calc(var(--mobile-w) * 16 / 375);
-  top: calc(var(--mobile-w) * 1366 / 375);
+  top: calc(var(--mobile-w) * 720 / 375);
   width: calc(var(--mobile-w) * 343 / 375);
+  height: calc(var(--mobile-w) * 614 / 375);
+}
+
+.mobile-hero-copy {
+  position: absolute;
+  left: 50%;
+  top: calc(var(--mobile-w) * 700 / 375);
+  width: calc(var(--mobile-w) * 343 / 375);
+  transform: translateX(-50%);
   height: calc(var(--mobile-w) * 138 / 375);
   text-align: center;
 }
@@ -1330,6 +1340,14 @@ body {
   overflow: hidden;
   isolation: isolate;
   background: #000;
+}
+
+.mobile-fly-section--hero {
+  --mobile-w: calc(100vw - 32px);
+  margin: 0;
+  width: 100%;
+  height: calc(var(--mobile-w) * 546 / 343);
+  border-radius: calc(var(--mobile-w) * 16 / 343);
 }
 
 .mobile-fly-card {
@@ -1371,6 +1389,59 @@ body {
   border-radius: clamp(2px, 0.8vw, 6px) !important;
   filter: drop-shadow(0 7px 14px rgba(0, 0, 0, 0.3)) blur(0.55px)
     saturate(0.88) brightness(0.86);
+}
+
+.mobile-content-game-section {
+  --mobile-w: calc(100vw - 32px);
+  position: relative;
+  width: var(--mobile-w);
+  margin: calc(var(--mobile-w) * 54 / 375) 0 0;
+  height: calc(var(--mobile-w) * 614 / 343);
+}
+
+.mobile-content-game-frame {
+  position: relative;
+  width: 100%;
+  height: calc(var(--mobile-w) * 546 / 343);
+  border-radius: calc(var(--mobile-w) * 16 / 343);
+  overflow: hidden;
+  background: #000;
+}
+
+.mobile-content-game-main {
+  width: 100%;
+  height: 100%;
+  display: block;
+  border: 0;
+  background: #000;
+}
+
+.mobile-content-game-nav {
+  position: absolute;
+  left: 0;
+  top: calc(var(--mobile-w) * 561 / 343);
+  width: 100%;
+  height: calc(var(--mobile-w) * 58 / 343);
+  display: flex;
+  justify-content: center;
+  gap: calc(var(--mobile-w) * 20 / 343);
+}
+
+.mobile-content-game-nav-btn {
+  width: calc(var(--mobile-w) * 58 / 343);
+  height: calc(var(--mobile-w) * 58 / 343);
+  border: none;
+  border-radius: 999px;
+  background: transparent;
+  display: grid;
+  place-items: center;
+  padding: 0;
+}
+
+.mobile-content-game-nav-btn img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 .mobile-fly-divider {
