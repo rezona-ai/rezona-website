@@ -273,6 +273,10 @@ const pickHeroBurstVisualAssetBySeed = (seed: number): HeroBurstVisualAsset => {
 };
 
 const HERO_BURST_PARTICLE_COUNT = Math.round(flyCards.length * 2.35);
+const HERO_BURST_PARTICLE_COUNT_LITE = Math.max(
+  12,
+  Math.round(HERO_BURST_PARTICLE_COUNT * 0.5)
+);
 const HERO_BURST_SECONDARY_EMITTER_RATE = 0.62;
 
 const randomBetween = (min: number, max: number) =>
@@ -391,13 +395,17 @@ const createRandomHeroBurstParticle = (seed: number): HeroBurstParticle => {
 const HeroBurstParticleCard = memo(function HeroBurstParticleCard({
   cardId,
   seed,
+  performanceLite = false,
   onExited,
 }: {
   cardId: number;
   seed: number;
+  performanceLite?: boolean;
   onExited: (cardId: number) => void;
 }) {
   const [particle] = useState<HeroBurstParticle>(() => createRandomHeroBurstParticle(seed));
+  const durationS = performanceLite ? particle.durationS * 1.24 : particle.durationS;
+  const alpha = performanceLite ? particle.alpha * 0.88 : particle.alpha;
 
   return (
     <img
@@ -413,7 +421,7 @@ const HeroBurstParticleCard = memo(function HeroBurstParticleCard({
         "--curve-y": `${particle.curveYVh.toFixed(3)}vh`,
         "--end-x": `${particle.endXVw.toFixed(3)}vw`,
         "--end-y": `${particle.endYVh.toFixed(3)}vh`,
-        "--duration": `${particle.durationS.toFixed(2)}s`,
+        "--duration": `${durationS.toFixed(2)}s`,
         "--delay": `${particle.delayS.toFixed(2)}s`,
         "--s-start": particle.startScale.toFixed(3),
         "--s-mid": particle.midScale.toFixed(3),
@@ -421,7 +429,7 @@ const HeroBurstParticleCard = memo(function HeroBurstParticleCard({
         "--z-start": `${particle.zStartPx}px`,
         "--z-mid": `${particle.zMidPx}px`,
         "--z-end": `${particle.zEndPx}px`,
-        "--alpha": particle.alpha.toFixed(3),
+        "--alpha": alpha.toFixed(3),
       })}
       src={particle.asset}
       alt={`Meme card ${particle.id}`}
@@ -432,35 +440,81 @@ const HeroBurstParticleCard = memo(function HeroBurstParticleCard({
   );
 });
 
-const HeroBurstCanvas = memo(function HeroBurstCanvas() {
-  const particleSeedRef = useRef(HERO_BURST_PARTICLE_COUNT);
-  const particleCardIdRef = useRef(HERO_BURST_PARTICLE_COUNT);
+const HeroBurstCanvas = memo(function HeroBurstCanvas({
+  performanceLite = false,
+}: {
+  performanceLite?: boolean;
+}) {
+  const particleCount = performanceLite
+    ? HERO_BURST_PARTICLE_COUNT_LITE
+    : HERO_BURST_PARTICLE_COUNT;
+  const particleSeedRef = useRef(particleCount);
+  const particleCardIdRef = useRef(particleCount);
+  const pendingExitedIdsRef = useRef<number[]>([]);
+  const recycleFrameRef = useRef<number | null>(null);
   const [cards, setCards] = useState<{ id: number; seed: number }[]>(() =>
-    Array.from({ length: HERO_BURST_PARTICLE_COUNT }, (_, index) => ({
+    Array.from({ length: particleCount }, (_, index) => ({
       id: index,
       seed: index,
     }))
   );
 
-  const handleCardExited = (cardId: number) => {
+  useEffect(() => {
+    particleSeedRef.current = particleCount;
+    particleCardIdRef.current = particleCount;
+    pendingExitedIdsRef.current = [];
+    if (recycleFrameRef.current !== null) {
+      cancelAnimationFrame(recycleFrameRef.current);
+      recycleFrameRef.current = null;
+    }
+    setCards(
+      Array.from({ length: particleCount }, (_, index) => ({
+        id: index,
+        seed: index,
+      }))
+    );
+    return () => {
+      if (recycleFrameRef.current !== null) {
+        cancelAnimationFrame(recycleFrameRef.current);
+        recycleFrameRef.current = null;
+      }
+    };
+  }, [particleCount]);
+
+  const flushExitedCards = () => {
+    recycleFrameRef.current = null;
+    const exitedIds = Array.from(new Set(pendingExitedIdsRef.current));
+    if (exitedIds.length === 0) return;
+    pendingExitedIdsRef.current = [];
+
     setCards((prevCards) => {
-      const cardIndex = prevCards.findIndex((card) => card.id === cardId);
-      if (cardIndex < 0) return prevCards;
-
-      const nextSeed = particleSeedRef.current;
-      particleSeedRef.current += 1;
-
-      const nextCardId = particleCardIdRef.current;
-      particleCardIdRef.current += 1;
-
       const nextCards = [...prevCards];
-      nextCards.splice(cardIndex, 1);
-      nextCards.push({
-        id: nextCardId,
-        seed: nextSeed,
+
+      exitedIds.forEach((cardId) => {
+        const cardIndex = nextCards.findIndex((card) => card.id === cardId);
+        if (cardIndex < 0) return;
+
+        const nextSeed = particleSeedRef.current;
+        particleSeedRef.current += 1;
+
+        const nextCardId = particleCardIdRef.current;
+        particleCardIdRef.current += 1;
+
+        nextCards.splice(cardIndex, 1);
+        nextCards.push({
+          id: nextCardId,
+          seed: nextSeed,
+        });
       });
+
       return nextCards;
     });
+  };
+
+  const handleCardExited = (cardId: number) => {
+    pendingExitedIdsRef.current.push(cardId);
+    if (recycleFrameRef.current !== null) return;
+    recycleFrameRef.current = requestAnimationFrame(flushExitedCards);
   };
 
   return (
@@ -471,6 +525,7 @@ const HeroBurstCanvas = memo(function HeroBurstCanvas() {
             key={`meme-transition-card-${card.id}`}
             cardId={card.id}
             seed={card.seed}
+            performanceLite={performanceLite}
             onExited={handleCardExited}
           />
         ))}
@@ -960,6 +1015,7 @@ const MobileStatsLoopScene = memo(function MobileStatsLoopScene() {
 
 export default function Home() {
   const [isMobile, setIsMobile] = useState<boolean | null>(null);
+  const [isSmallDesktop, setIsSmallDesktop] = useState(false);
   const [isAppModalOpen, setIsAppModalOpen] = useState(false);
   const [heroGameIndex, setHeroGameIndex] = useState(0);
   const [heroGameLoading, setHeroGameLoading] = useState(true);
@@ -983,19 +1039,71 @@ export default function Home() {
   };
 
   useEffect(() => {
-    const query = window.matchMedia("(max-width: 900px)");
-    const syncLayout = () => setIsMobile(query.matches);
+    const mobileQuery = window.matchMedia("(max-width: 900px)");
+    const smallDesktopQuery = window.matchMedia(
+      "(max-width: 1366px) and (min-width: 901px)"
+    );
+    const syncLayout = () => {
+      setIsMobile(mobileQuery.matches);
+      setIsSmallDesktop(smallDesktopQuery.matches);
+    };
 
     syncLayout();
 
-    if (typeof query.addEventListener === "function") {
-      query.addEventListener("change", syncLayout);
-      return () => query.removeEventListener("change", syncLayout);
+    if (typeof mobileQuery.addEventListener === "function") {
+      mobileQuery.addEventListener("change", syncLayout);
+      smallDesktopQuery.addEventListener("change", syncLayout);
+      return () => {
+        mobileQuery.removeEventListener("change", syncLayout);
+        smallDesktopQuery.removeEventListener("change", syncLayout);
+      };
     }
 
-    query.addListener(syncLayout);
-    return () => query.removeListener(syncLayout);
+    mobileQuery.addListener(syncLayout);
+    smallDesktopQuery.addListener(syncLayout);
+    return () => {
+      mobileQuery.removeListener(syncLayout);
+      smallDesktopQuery.removeListener(syncLayout);
+    };
   }, []);
+
+  useEffect(() => {
+    if (isMobile === null) return;
+
+    const animatedSections = Array.from(
+      document.querySelectorAll<HTMLElement>(
+        '[data-scene], .mobile-fly-section, .mobile-stats-loop'
+      )
+    );
+    if (animatedSections.length === 0) return;
+
+    if (typeof IntersectionObserver !== "function") {
+      animatedSections.forEach((section) =>
+        section.setAttribute("data-active", "true")
+      );
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          entry.target.setAttribute(
+            "data-active",
+            entry.isIntersecting ? "true" : "false"
+          );
+        });
+      },
+      {
+        root: null,
+        rootMargin: "12% 0px 12% 0px",
+        threshold: 0.16,
+      }
+    );
+
+    animatedSections.forEach((section) => observer.observe(section));
+
+    return () => observer.disconnect();
+  }, [isMobile]);
 
   useEffect(() => {
     if (isMobile !== false) return;
@@ -1012,12 +1120,15 @@ export default function Home() {
     const heroCopyExitParticleStart = 0.88;
     const heroCopyExitTriggerPx = 360;
     const heroCopyExitTravelPx = 140;
+    const styleWriteThreshold = isSmallDesktop ? 0.0042 : 0.0012;
     const invertEaseInOutCubic = (value: number) =>
       value < 0.5
         ? Math.cbrt(value / 4)
         : 1 - Math.cbrt((1 - value) / 4);
     let heroTravel = 1;
     let particleStartPx = 0;
+    let lastHeroOut = -1;
+    let lastHeroCopyExit = -1;
 
     const syncHeroMetrics = () => {
       const viewportHeight = Math.max(window.innerHeight, 1);
@@ -1030,7 +1141,10 @@ export default function Home() {
       const rectTop = heroFlyScene.getBoundingClientRect().top;
       const heroOutRaw = clamp(-rectTop / heroTravel, 0, 1);
       const heroOut = easeInOutCubic(heroOutRaw);
-      heroFlyScene.style.setProperty("--hero-out", heroOut.toFixed(4));
+      if (Math.abs(heroOut - lastHeroOut) >= styleWriteThreshold) {
+        heroFlyScene.style.setProperty("--hero-out", heroOut.toFixed(4));
+        lastHeroOut = heroOut;
+      }
 
       const scrolledInHeroPx = Math.max(0, -rectTop);
       const particleScrolledPx = Math.max(0, scrolledInHeroPx - particleStartPx);
@@ -1040,7 +1154,10 @@ export default function Home() {
         1
       );
       const heroCopyExit = easeInOutCubic(exitRaw);
-      heroFlyScene.style.setProperty("--hero-copy-exit", heroCopyExit.toFixed(4));
+      if (Math.abs(heroCopyExit - lastHeroCopyExit) >= styleWriteThreshold) {
+        heroFlyScene.style.setProperty("--hero-copy-exit", heroCopyExit.toFixed(4));
+        lastHeroCopyExit = heroCopyExit;
+      }
     };
 
     let ticking = false;
@@ -1072,7 +1189,7 @@ export default function Home() {
       window.removeEventListener("resize", onResize);
       window.removeEventListener("load", onLoad);
     };
-  }, [isMobile]);
+  }, [isMobile, isSmallDesktop]);
 
   useEffect(() => {
     if (!isAppModalOpen) return;
@@ -1113,10 +1230,10 @@ export default function Home() {
           </header>
 
           <div className="desktop-layout">
-      <section className="scene hero-fly-scene" data-scene="hero-fly">
+      <section className="scene hero-fly-scene" data-scene="hero-fly" data-active="true">
         <div className="sticky">
           <div className="hero-canvas">
-            <HeroBurstCanvas />
+            <HeroBurstCanvas performanceLite={isSmallDesktop} />
 
             <div className="hero-world">
               {heroBgSlices.map((slice) => (

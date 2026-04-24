@@ -287,6 +287,68 @@ body {
 
 .hero-bg-slice {
   z-index: 1;
+  --slice-out-start: 0.08;
+  --slice-out-speed: 1.7;
+  --slice-out: clamp(
+    0,
+    calc((var(--hero-out) - var(--slice-out-start)) * var(--slice-out-speed)),
+    1
+  );
+  --slice-x-move: 0vw;
+  --slice-y-move: 0vh;
+  --slice-scale-gain: 0;
+  --slice-rot-gain: 0deg;
+  --slice-fade-gain: 0.72;
+  transform-origin: 50% 50%;
+  opacity: calc(1 - var(--slice-out) * var(--slice-fade-gain));
+  transform: translate3d(
+      calc(var(--slice-x-move) * var(--slice-out)),
+      calc(var(--slice-y-move) * var(--slice-out)),
+      0
+    )
+    scale(calc(1 + var(--slice-scale-gain) * var(--slice-out)))
+    rotate(calc(var(--slice-rot-gain) * var(--slice-out)));
+  will-change: transform, opacity;
+}
+
+.hero-bg-slice[data-slice-id="left"] {
+  --slice-out-start: 0.04;
+  --slice-out-speed: 1.92;
+  --slice-x-move: -8.8vw;
+  --slice-y-move: -1.3vh;
+  --slice-scale-gain: 0.08;
+  --slice-rot-gain: -3deg;
+  --slice-fade-gain: 0.68;
+}
+
+.hero-bg-slice[data-slice-id="right"] {
+  --slice-out-start: 0.07;
+  --slice-out-speed: 1.88;
+  --slice-x-move: 9.4vw;
+  --slice-y-move: -1.15vh;
+  --slice-scale-gain: 0.08;
+  --slice-rot-gain: 3deg;
+  --slice-fade-gain: 0.68;
+}
+
+.hero-bg-slice[data-slice-id="top"] {
+  --slice-out-start: 0.01;
+  --slice-out-speed: 2;
+  --slice-x-move: 0vw;
+  --slice-y-move: -8.5vh;
+  --slice-scale-gain: 0.12;
+  --slice-rot-gain: -1.4deg;
+  --slice-fade-gain: 0.78;
+}
+
+.hero-bg-slice[data-slice-id="bottom"] {
+  --slice-out-start: 0.12;
+  --slice-out-speed: 1.74;
+  --slice-x-move: 0vw;
+  --slice-y-move: 9.8vh;
+  --slice-scale-gain: 0.12;
+  --slice-rot-gain: 1.5deg;
+  --slice-fade-gain: 0.78;
 }
 
 .hero-game-slice {
@@ -469,6 +531,7 @@ body {
   transform-origin: 50% 50%;
   transform-style: preserve-3d;
   animation: hero-camera-breathe 12.8s ease-in-out infinite;
+  animation-play-state: paused;
   will-change: transform, filter;
 }
 
@@ -517,6 +580,7 @@ body {
     transparent 72%
   );
   animation: hero-source-pulse 4.8s ease-in-out infinite;
+  animation-play-state: paused;
 }
 
 .meme-static-card {
@@ -604,6 +668,48 @@ body {
   }
 }
 
+@keyframes hero-card-stream-lite {
+  0% {
+    opacity: 0;
+    transform: translate3d(
+        calc(-50% + var(--origin-x)),
+        calc(-50% + var(--origin-y)),
+        var(--z-start)
+      )
+      scale(var(--s-start));
+    animation-timing-function: cubic-bezier(0.12, 0.82, 0.26, 1);
+  }
+  20% {
+    opacity: calc(var(--alpha) * 0.78);
+    transform: translate3d(
+        calc(-50% + var(--origin-x) + var(--mid-x) * 0.52),
+        calc(-50% + var(--origin-y) + var(--mid-y) * 0.52),
+        calc((var(--z-start) * 0.56 + var(--z-mid) * 0.44))
+      )
+      scale(calc(var(--s-start) * 0.6 + var(--s-mid) * 0.4));
+    animation-timing-function: cubic-bezier(0.42, 0.08, 0.18, 1);
+  }
+  64% {
+    opacity: calc(var(--alpha) * 0.9);
+    transform: translate3d(
+        calc(-50% + var(--origin-x) + var(--mid-x)),
+        calc(-50% + var(--origin-y) + var(--mid-y)),
+        var(--z-mid)
+      )
+      scale(var(--s-mid));
+    animation-timing-function: cubic-bezier(0.38, 0.06, 0.2, 1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(
+        calc(-50% + var(--origin-x) + var(--end-x)),
+        calc(-50% + var(--origin-y) + var(--end-y)),
+        var(--z-end)
+      )
+      scale(var(--s-end));
+  }
+}
+
 @keyframes hero-camera-breathe {
   0%,
   100% {
@@ -617,6 +723,19 @@ body {
   72% {
     transform: translate3d(0.35vw, 0.18vh, 0) scale(1.004);
     filter: brightness(1.01) saturate(1.01);
+  }
+}
+
+@keyframes hero-camera-breathe-lite {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  45% {
+    transform: translate3d(-0.3vw, -0.18vh, 0) scale(1.005);
+  }
+  72% {
+    transform: translate3d(0.26vw, 0.14vh, 0) scale(1.003);
   }
 }
 
@@ -762,6 +881,22 @@ body {
   filter: blur(var(--stats-strip-blur)) saturate(0.8) brightness(0.68);
   transform: translateZ(-180px) scale(0.88);
   animation: stats-strip-marquee var(--stats-strip-speed) linear infinite;
+  animation-play-state: paused;
+}
+
+.hero-fly-scene[data-active="true"] .meme-transition-stage,
+.mobile-fly-section[data-active="true"] .meme-transition-stage {
+  animation-play-state: running;
+}
+
+.hero-fly-scene[data-active="true"] .meme-transition-canvas::after,
+.mobile-fly-section[data-active="true"] .meme-transition-canvas::after {
+  animation-play-state: running;
+}
+
+.stats-loop-scene[data-active="true"] .stats-strip-track,
+.mobile-stats-loop[data-active="true"] .stats-strip-track {
+  animation-play-state: running;
 }
 
 .stats-strip-card {
@@ -844,6 +979,19 @@ body {
 .showcase-scene {
   background: #000;
   width: 100%;
+}
+
+@supports (content-visibility: auto) {
+  .showcase-scene,
+  .footer-scene,
+  .mobile-content-game-section,
+  .mobile-fly-divider,
+  .mobile-showcase-list,
+  .mobile-built-section,
+  .mobile-footer {
+    content-visibility: auto;
+    contain-intrinsic-size: 1000px;
+  }
 }
 
 .showcase-frame {
@@ -1764,6 +1912,77 @@ body {
     font-size: clamp(18px, 1.75vw, 24px);
   }
 
+}
+
+@media (max-width: 1366px) and (min-width: 901px) {
+  .hero-fly-scene {
+    height: 178vh;
+  }
+
+  .hero-canvas::before,
+  .hero-canvas::after,
+  .meme-transition-canvas::before {
+    display: none;
+  }
+
+  .hero-world,
+  .hero-focus-stage,
+  .hero-center-copy-layer,
+  .hero-game-frame,
+  .meme-transition-canvas,
+  .meme-static-card {
+    filter: none;
+  }
+
+  .meme-transition-stage {
+    animation: hero-camera-breathe-lite 10.8s ease-in-out infinite;
+    will-change: transform;
+  }
+
+  .meme-static-card {
+    animation-name: hero-card-stream-lite;
+    border-radius: clamp(8px, 0.62vw, 12px);
+  }
+
+  .hero-bg-slice[data-slice-id="left"],
+  .hero-bg-slice[data-slice-id="right"] {
+    --slice-scale-gain: 0.05;
+    --slice-rot-gain: 0deg;
+  }
+
+  .hero-bg-slice[data-slice-id="top"],
+  .hero-bg-slice[data-slice-id="bottom"] {
+    --slice-scale-gain: 0.08;
+    --slice-rot-gain: 0deg;
+  }
+
+  .hero-game-frame {
+    transform: translate3d(
+        calc(var(--hero-out-soft) * 1.6vw),
+        calc(var(--hero-out-soft) * -0.72vh),
+        0
+      )
+      scale(calc(1 + var(--hero-out-soft) * 0.24));
+  }
+
+  .hero-center-copy-layer {
+    transform: translate3d(0, calc(var(--hero-copy-exit) * -12vh), 0)
+      scale(calc(1 - var(--hero-copy-exit) * 0.04));
+  }
+
+  .meme-transition-canvas {
+    transform: translate3d(
+        calc(var(--hero-out-enter) * 1.8vw),
+        calc(var(--hero-out-enter) * -1.4vh),
+        0
+      )
+      scale(calc(1 + var(--hero-out-enter) * 0.15));
+  }
+
+  .meme-transition-canvas::after {
+    animation: none;
+    opacity: clamp(0, calc((var(--hero-out-enter) - 0.06) * 0.72), 0.09);
+  }
 }
 
 @media (max-width: 1460px) and (min-width: 901px) {
