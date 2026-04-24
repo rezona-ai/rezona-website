@@ -1321,10 +1321,15 @@ body {
 
 .mobile-fly-section {
   --mobile-w: calc(100vw - 32px);
+  --mobile-particle-center-x: 50%;
+  --mobile-particle-center-y: 50%;
   position: relative;
   width: var(--mobile-w);
   margin: calc(var(--mobile-w) * 54 / 375) 0 0;
-  height: calc(var(--mobile-w) * 442 / 375);
+  height: calc(var(--mobile-w) * 520 / 375);
+  overflow: hidden;
+  isolation: isolate;
+  background: #000;
 }
 
 .mobile-fly-card {
@@ -1335,6 +1340,37 @@ body {
   height: var(--h);
   border-radius: calc(var(--mobile-w) * 12 / 375);
   display: block;
+  z-index: 1;
+}
+
+.mobile-fly-section .meme-transition-canvas {
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 1;
+  transform: none;
+  filter: saturate(1) brightness(1) contrast(1);
+}
+
+.mobile-fly-section .meme-transition-canvas::before {
+  opacity: 0.2;
+  filter: blur(10px);
+}
+
+.mobile-fly-section .meme-transition-canvas::after {
+  left: var(--mobile-particle-center-x);
+  top: var(--mobile-particle-center-y);
+  width: min(34vw, 160px);
+  opacity: 0.16;
+}
+
+.mobile-fly-section .meme-static-card {
+  left: var(--mobile-particle-center-x);
+  top: var(--mobile-particle-center-y);
+  width: clamp(86px, calc(var(--size) * 2.1), 390px) !important;
+  border-radius: clamp(2px, 0.8vw, 6px) !important;
+  filter: drop-shadow(0 7px 14px rgba(0, 0, 0, 0.3)) blur(0.55px)
+    saturate(0.88) brightness(0.86);
 }
 
 .mobile-fly-divider {

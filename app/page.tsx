@@ -1423,22 +1423,7 @@ export default function Home() {
         </section>
         <div className="mobile-content-shell">
           <section className="mobile-fly-section">
-            {mobileFlyCards.map((card) => (
-              <img
-                key={`mobile-fly-${card.id}`}
-                className="mobile-fly-card"
-                style={asVars({
-                  "--x": `${card.xPct}%`,
-                  "--y": `${card.yPct}%`,
-                  "--w": `${card.wPct}%`,
-                  "--h": `${card.hPct}%`,
-                })}
-                src={card.asset}
-                alt={`Mobile meme card ${card.id}`}
-                loading="lazy"
-                decoding="async"
-              />
-            ))}
+            <HeroBurstCanvas />
           </section>
 
           <MobileStatsLoopScene />
