@@ -605,6 +605,7 @@ body {
   image-rendering: auto;
   backface-visibility: hidden;
   animation: hero-card-stream var(--duration) linear var(--delay) 1 both;
+  animation-play-state: paused;
   will-change: transform, opacity, filter;
 }
 
@@ -886,6 +887,11 @@ body {
 
 .hero-fly-scene[data-active="true"] .meme-transition-stage,
 .mobile-fly-section[data-active="true"] .meme-transition-stage {
+  animation-play-state: running;
+}
+
+.hero-fly-scene[data-active="true"] .meme-static-card,
+.mobile-fly-section[data-active="true"] .meme-static-card {
   animation-play-state: running;
 }
 
