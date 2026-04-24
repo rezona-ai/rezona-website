@@ -274,8 +274,8 @@ const pickHeroBurstVisualAssetBySeed = (seed: number): HeroBurstVisualAsset => {
 
 const HERO_BURST_PARTICLE_COUNT = Math.round(flyCards.length * 2.35);
 const HERO_BURST_PARTICLE_COUNT_LITE = Math.max(
-  12,
-  Math.round(HERO_BURST_PARTICLE_COUNT * 0.5)
+  10,
+  Math.round(HERO_BURST_PARTICLE_COUNT * 0.4)
 );
 const HERO_BURST_SECONDARY_EMITTER_RATE = 0.62;
 
@@ -1072,7 +1072,7 @@ export default function Home() {
 
     const animatedSections = Array.from(
       document.querySelectorAll<HTMLElement>(
-        '[data-scene], .mobile-fly-section, .mobile-stats-loop'
+        '[data-scene], .mobile-fly-section, .mobile-stats-loop, .mobile-showcase-item'
       )
     );
     if (animatedSections.length === 0) return;
@@ -1120,33 +1120,38 @@ export default function Home() {
     const heroCopyExitParticleStart = 0.88;
     const heroCopyExitTriggerPx = 360;
     const heroCopyExitTravelPx = 140;
-    const styleWriteThreshold = isSmallDesktop ? 0.0042 : 0.0012;
+    const styleWriteThreshold = isSmallDesktop ? 0.0065 : 0.0012;
+    const minFrameGapMs = isSmallDesktop ? 20 : 0;
     const invertEaseInOutCubic = (value: number) =>
       value < 0.5
         ? Math.cbrt(value / 4)
         : 1 - Math.cbrt((1 - value) / 4);
     let heroTravel = 1;
     let particleStartPx = 0;
+    let heroSceneTopPx = 0;
     let lastHeroOut = -1;
     let lastHeroCopyExit = -1;
+    let lastFrameTime = 0;
+    let rafId: number | null = null;
 
     const syncHeroMetrics = () => {
       const viewportHeight = Math.max(window.innerHeight, 1);
       heroTravel = Math.max(heroFlyScene.offsetHeight - viewportHeight, 1);
+      heroSceneTopPx = heroFlyScene.getBoundingClientRect().top + window.scrollY;
       const particleStartRaw = invertEaseInOutCubic(heroCopyExitParticleStart);
       particleStartPx = heroTravel * particleStartRaw;
     };
 
     const update = () => {
-      const rectTop = heroFlyScene.getBoundingClientRect().top;
-      const heroOutRaw = clamp(-rectTop / heroTravel, 0, 1);
+      const scrollY = window.scrollY;
+      const scrolledInHeroPx = clamp(scrollY - heroSceneTopPx, 0, heroTravel);
+      const heroOutRaw = clamp(scrolledInHeroPx / heroTravel, 0, 1);
       const heroOut = easeInOutCubic(heroOutRaw);
       if (Math.abs(heroOut - lastHeroOut) >= styleWriteThreshold) {
         heroFlyScene.style.setProperty("--hero-out", heroOut.toFixed(4));
         lastHeroOut = heroOut;
       }
 
-      const scrolledInHeroPx = Math.max(0, -rectTop);
       const particleScrolledPx = Math.max(0, scrolledInHeroPx - particleStartPx);
       const exitRaw = clamp(
         (particleScrolledPx - heroCopyExitTriggerPx) / heroCopyExitTravelPx,
@@ -1164,7 +1169,13 @@ export default function Home() {
     const onScrollOrResize = () => {
       if (ticking) return;
       ticking = true;
-      requestAnimationFrame(() => {
+      rafId = requestAnimationFrame((timestamp) => {
+        rafId = null;
+        if (minFrameGapMs > 0 && timestamp - lastFrameTime < minFrameGapMs) {
+          ticking = false;
+          return;
+        }
+        lastFrameTime = timestamp;
         update();
         ticking = false;
       });
@@ -1185,6 +1196,9 @@ export default function Home() {
     window.addEventListener("load", onLoad);
 
     return () => {
+      if (rafId !== null) {
+        cancelAnimationFrame(rafId);
+      }
       window.removeEventListener("scroll", onScrollOrResize);
       window.removeEventListener("resize", onResize);
       window.removeEventListener("load", onLoad);
@@ -1603,16 +1617,23 @@ export default function Home() {
 
           <section className="mobile-showcase-list">
             {mobileShowcaseScenes.map((scene) => (
-              <article className="mobile-showcase-item" key={scene.id}>
-                <img
-                  className="mobile-showcase-media"
-                  src={scene.media}
-                  alt={scene.mediaAlt}
-                  width={343}
-                  height={343}
-                  loading="lazy"
-                  decoding="async"
-                />
+              <article
+                className="mobile-showcase-item"
+                data-mobile-scene={scene.id}
+                data-active="false"
+                key={scene.id}
+              >
+                <div className="mobile-showcase-media-shell">
+                  <img
+                    className="mobile-showcase-media"
+                    src={scene.media}
+                    alt={scene.mediaAlt}
+                    width={343}
+                    height={343}
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
                 <h2 className="mobile-showcase-title">{scene.title}</h2>
                 <p className="mobile-showcase-description">{scene.description}</p>
               </article>
