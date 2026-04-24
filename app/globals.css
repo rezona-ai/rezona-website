@@ -158,8 +158,8 @@ body {
   position: absolute;
   left: 50%;
   top: var(--hero-focus-top);
-  width: min(100vw, calc(100vh * var(--hero-stage-aspect)));
-  height: min(100vh, calc(100vw / var(--hero-stage-aspect)));
+  width: max(100vw, calc(100vh * var(--hero-stage-aspect)));
+  height: max(100vh, calc(100vw / var(--hero-stage-aspect)));
   z-index: 4;
 }
 
@@ -170,8 +170,8 @@ body {
   position: absolute;
   left: 50%;
   top: var(--hero-world-top);
-  width: calc(min(100vw, calc(100vh * var(--hero-stage-aspect))) * var(--hero-world-size-multiplier));
-  height: calc(min(100vh, calc(100vw / var(--hero-stage-aspect))) * var(--hero-world-size-multiplier));
+  width: calc(max(100vw, calc(100vh * var(--hero-stage-aspect))) * var(--hero-world-size-multiplier));
+  height: calc(max(100vh, calc(100vw / var(--hero-stage-aspect))) * var(--hero-world-size-multiplier));
   z-index: 3;
 }
 
@@ -1764,6 +1764,18 @@ body {
     font-size: clamp(18px, 1.75vw, 24px);
   }
 
+}
+
+@media (max-width: 1460px) and (min-width: 901px) {
+  .hero-bg-slice[data-slice-id="top"] {
+    top: -2.6% !important;
+    height: 22.6% !important;
+  }
+
+  .hero-bg-slice[data-slice-id="bottom"] {
+    top: 79% !important;
+    height: 22.2% !important;
+  }
 }
 
 @media (max-width: 900px) {

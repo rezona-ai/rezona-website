@@ -515,34 +515,34 @@ const heroBgSlices: HeroSlice[] = [
   {
     id: "left",
     asset: "/figma/WebsiteMaterials/Mobile/Desktop/PC_YOURIDEAS.webp",
-    xPct: -0.5,
-    yPct: 5.3,
-    wPct: 25.5,
-    hPct: 88,
+    xPct: -1.2,
+    yPct: 4.9,
+    wPct: 26.4,
+    hPct: 89.8,
   },
   {
     id: "right",
     asset: "/figma/WebsiteMaterials/Mobile/Desktop/PC_YourTool.webp",
-    xPct: 74.5,
-    yPct: 5.3,
-    wPct: 25.5,
-    hPct: 88,
+    xPct: 74.8,
+    yPct: 4.9,
+    wPct: 26.4,
+    hPct: 89.8,
   },
   {
     id: "bottom",
     asset: "/figma/WebsiteMaterials/Mobile/Desktop/PC_Games.webp",
-    xPct: -2.5,
-    yPct: 82.4,
-    wPct: 106,
-    hPct: 18.4,
+    xPct: -3.6,
+    yPct: 81,
+    wPct: 107.4,
+    hPct: 20,
   },
   {
     id: "top",
     asset: "/figma/WebsiteMaterials/Mobile/Desktop/PC_RZNAI.webp",
-    xPct: -1.2,
-    yPct: 0.7,
-    wPct: 102.4,
-    hPct: 18.1,
+    xPct: -2,
+    yPct: -0.6,
+    wPct: 104,
+    hPct: 19.5,
   },
 ];
 
@@ -949,28 +949,15 @@ export default function Home() {
   useEffect(() => {
     if (isMobile !== false) return;
 
-    const scenes = Array.from(
-      document.querySelectorAll<HTMLElement>("[data-scene]")
+    const heroFlyScene = document.querySelector<HTMLElement>(
+      '[data-scene="hero-fly"]'
     );
-    const byName = new Map<string, HTMLElement>();
-
-    scenes.forEach((scene) => {
-      const key = scene.dataset.scene;
-      if (key) byName.set(key, scene);
-    });
+    if (!heroFlyScene) return;
 
     const clamp = (value: number, min: number, max: number) =>
       Math.min(max, Math.max(min, value));
     const easeInOutCubic = (value: number) =>
       value < 0.5 ? 4 * value * value * value : 1 - Math.pow(-2 * value + 2, 3) / 2;
-
-    const getProgress = (element: HTMLElement) => {
-      const viewHeight = window.innerHeight;
-      const rect = element.getBoundingClientRect();
-      return clamp((viewHeight - rect.top) / (viewHeight + rect.height), 0, 1);
-    };
-
-    const heroFlyScene = byName.get("hero-fly");
     const heroCopyExitParticleStart = 0.88;
     const heroCopyExitTriggerPx = 360;
     const heroCopyExitTravelPx = 140;
@@ -978,31 +965,31 @@ export default function Home() {
       value < 0.5
         ? Math.cbrt(value / 4)
         : 1 - Math.cbrt((1 - value) / 4);
+    let heroTravel = 1;
+    let particleStartPx = 0;
+
+    const syncHeroMetrics = () => {
+      const viewportHeight = Math.max(window.innerHeight, 1);
+      heroTravel = Math.max(heroFlyScene.offsetHeight - viewportHeight, 1);
+      const particleStartRaw = invertEaseInOutCubic(heroCopyExitParticleStart);
+      particleStartPx = heroTravel * particleStartRaw;
+    };
+
     const update = () => {
-      scenes.forEach((scene) => {
-        const p = getProgress(scene);
-        scene.style.setProperty("--p", p.toFixed(4));
-      });
+      const rectTop = heroFlyScene.getBoundingClientRect().top;
+      const heroOutRaw = clamp(-rectTop / heroTravel, 0, 1);
+      const heroOut = easeInOutCubic(heroOutRaw);
+      heroFlyScene.style.setProperty("--hero-out", heroOut.toFixed(4));
 
-      if (heroFlyScene) {
-        const rect = heroFlyScene.getBoundingClientRect();
-        const travel = Math.max(heroFlyScene.offsetHeight - window.innerHeight, 1);
-        const heroOutRaw = clamp(-rect.top / travel, 0, 1);
-        const heroOut = easeInOutCubic(heroOutRaw);
-        heroFlyScene.style.setProperty("--hero-out", heroOut.toFixed(4));
-
-        const particleStartRaw = invertEaseInOutCubic(heroCopyExitParticleStart);
-        const particleStartPx = travel * particleStartRaw;
-        const scrolledInHeroPx = Math.max(0, -rect.top);
-        const particleScrolledPx = Math.max(0, scrolledInHeroPx - particleStartPx);
-        const exitRaw = clamp(
-          (particleScrolledPx - heroCopyExitTriggerPx) / heroCopyExitTravelPx,
-          0,
-          1
-        );
-        const heroCopyExit = easeInOutCubic(exitRaw);
-        heroFlyScene.style.setProperty("--hero-copy-exit", heroCopyExit.toFixed(4));
-      }
+      const scrolledInHeroPx = Math.max(0, -rectTop);
+      const particleScrolledPx = Math.max(0, scrolledInHeroPx - particleStartPx);
+      const exitRaw = clamp(
+        (particleScrolledPx - heroCopyExitTriggerPx) / heroCopyExitTravelPx,
+        0,
+        1
+      );
+      const heroCopyExit = easeInOutCubic(exitRaw);
+      heroFlyScene.style.setProperty("--hero-copy-exit", heroCopyExit.toFixed(4));
     };
 
     let ticking = false;
@@ -1014,16 +1001,25 @@ export default function Home() {
         ticking = false;
       });
     };
+    const onResize = () => {
+      syncHeroMetrics();
+      onScrollOrResize();
+    };
+    const onLoad = () => {
+      syncHeroMetrics();
+      update();
+    };
 
+    syncHeroMetrics();
     update();
     window.addEventListener("scroll", onScrollOrResize, { passive: true });
-    window.addEventListener("resize", onScrollOrResize);
-    window.addEventListener("load", update);
+    window.addEventListener("resize", onResize);
+    window.addEventListener("load", onLoad);
 
     return () => {
       window.removeEventListener("scroll", onScrollOrResize);
-      window.removeEventListener("resize", onScrollOrResize);
-      window.removeEventListener("load", update);
+      window.removeEventListener("resize", onResize);
+      window.removeEventListener("load", onLoad);
     };
   }, [isMobile]);
 
@@ -1076,6 +1072,7 @@ export default function Home() {
                 <img
                   key={slice.id}
                   className="hero-slice hero-bg-slice"
+                  data-slice-id={slice.id}
                   style={asVars({
                     "--x": `${slice.xPct}%`,
                     "--y": `${slice.yPct}%`,
@@ -1084,7 +1081,7 @@ export default function Home() {
                   })}
                   src={slice.asset}
                   alt={`Hero background ${slice.id}`}
-                  loading={slice.id === "bot-bot" ? "eager" : "lazy"}
+                  loading="eager"
                   decoding="async"
                 />
               ))}
