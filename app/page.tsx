@@ -1297,13 +1297,29 @@ export default function Home() {
       {isMobile && (
         <div className="mobile-layout">
         <section className="mobile-hero-section">
-          <img
-            className="mobile-hero-bg"
-            src="/figma/assets/mobile-hero-bg-1110-1766@2x.webp"
-            alt="Mobile hero background"
-            loading="eager"
-            decoding="async"
-          />
+          <div className="mobile-hero-panels" aria-hidden="true">
+            <img
+              className="mobile-hero-panel mobile-hero-panel-1"
+              src="/figma/WebsiteMaterials/Mobile/MB_YourIDEA.webp"
+              alt=""
+              loading="eager"
+              decoding="async"
+            />
+            <img
+              className="mobile-hero-panel mobile-hero-panel-2"
+              src="/figma/WebsiteMaterials/Mobile/MB_YourTOOL.webp"
+              alt=""
+              loading="eager"
+              decoding="async"
+            />
+            <img
+              className="mobile-hero-panel mobile-hero-panel-3"
+              src="/figma/WebsiteMaterials/Mobile/MB_YourGame.webp"
+              alt=""
+              loading="eager"
+              decoding="async"
+            />
+          </div>
 
           <div className="mobile-top-nav">
             <img
@@ -1335,15 +1351,7 @@ export default function Home() {
           </div>
 
           <div className="mobile-hero-copy">
-            <img
-              className="mobile-hero-title"
-              src="/figma/assets/mobile-hero-title-1110-1786@2x.png"
-              alt="Meme culture, now a social platform."
-              width={343}
-              height={62}
-              loading="eager"
-              decoding="async"
-            />
+            <h1 className="mobile-hero-title">Meme culture, now a social platform.</h1>
             <a
               className="mobile-hero-cta"
               href="https://apps.apple.com/us/app/rezona-ai-game-maker/id6752310101"
