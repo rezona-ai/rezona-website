@@ -78,7 +78,7 @@ type TailScene = {
 const flyCards: FlyCard[] = [
   {
     id: "1",
-    asset: "/figma/assets/fly-1.png",
+    asset: "/figma/assets/fly-1.webp",
     width: 195,
     height: 315,
     xPct: 2.653,
@@ -114,7 +114,7 @@ const flyCards: FlyCard[] = [
   },
   {
     id: "10",
-    asset: "/figma/assets/fly-10.png",
+    asset: "/figma/assets/fly-10.webp",
     width: 141,
     height: 169,
     xPct: 25.182,
@@ -126,7 +126,7 @@ const flyCards: FlyCard[] = [
   },
   {
     id: "4",
-    asset: "/figma/assets/fly-4.png",
+    asset: "/figma/assets/fly-4.webp",
     width: 136,
     height: 241,
     xPct: 18.106,
@@ -138,7 +138,7 @@ const flyCards: FlyCard[] = [
   },
   {
     id: "9",
-    asset: "/figma/assets/fly-9.png",
+    asset: "/figma/assets/fly-9.webp",
     width: 89,
     height: 144,
     xPct: 66.857,
@@ -150,7 +150,7 @@ const flyCards: FlyCard[] = [
   },
   {
     id: "6",
-    asset: "/figma/assets/fly-6.png",
+    asset: "/figma/assets/fly-6.webp",
     width: 157,
     height: 254,
     xPct: 50.0,
@@ -186,7 +186,7 @@ const flyCards: FlyCard[] = [
   },
   {
     id: "104",
-    asset: "/figma/assets/fly-104.png",
+    asset: "/figma/assets/fly-104.webp",
     width: 160,
     height: 160,
     xPct: 54.006,
@@ -198,7 +198,7 @@ const flyCards: FlyCard[] = [
   },
   {
     id: "3",
-    asset: "/figma/assets/fly-3.png",
+    asset: "/figma/assets/fly-3.webp",
     width: 164,
     height: 265,
     xPct: 48.075,
@@ -210,7 +210,7 @@ const flyCards: FlyCard[] = [
   },
   {
     id: "105",
-    asset: "/figma/assets/fly-105.png",
+    asset: "/figma/assets/fly-105.webp",
     width: 191,
     height: 245,
     xPct: 21.977,
@@ -660,10 +660,10 @@ const showcaseScenes: ShowcaseScene[] = [
 ];
 
 const swiperStates = [
-  { id: "yellow", asset: "/figma/swiper/1.png", alt: "10M game play yellow card" },
-  { id: "pink", asset: "/figma/swiper/3.png", alt: "10M game play pink card" },
-  { id: "blue", asset: "/figma/swiper/4'.png", alt: "10M game play blue card" },
-  { id: "green", asset: "/figma/swiper/2'.png", alt: "10M game play green card" },
+  { id: "yellow", asset: "/figma/swiper/1.webp", alt: "10M game play yellow card" },
+  { id: "pink", asset: "/figma/swiper/3.webp", alt: "10M game play pink card" },
+  { id: "blue", asset: "/figma/swiper/4'.webp", alt: "10M game play blue card" },
+  { id: "green", asset: "/figma/swiper/2'.webp", alt: "10M game play green card" },
 ];
 
 const swiperStripOrder = [
@@ -1408,7 +1408,7 @@ export default function Home() {
                 onClick={() => switchHeroGame(-1)}
               >
                 <img
-                  src="/figma/assets/mobile-hero-up-1110-1782@2x.png"
+                  src="/figma/assets/hero-game-up-941-22455@2x.png"
                   alt=""
                   width={58}
                   height={58}
@@ -1423,7 +1423,7 @@ export default function Home() {
                 onClick={() => switchHeroGame(1)}
               >
                 <img
-                  src="/figma/assets/mobile-hero-down-1110-1784@2x.png"
+                  src="/figma/assets/hero-game-down-941-22455@2x.png"
                   alt=""
                   width={58}
                   height={58}

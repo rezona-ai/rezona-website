@@ -1218,7 +1218,7 @@ body {
 .mobile-hero-panels {
   position: absolute;
   left: 50%;
-  top: calc(var(--mobile-w) * 52 / 375);
+  top: calc(var(--mobile-w) * 60 / 375);
   width: calc(var(--mobile-w) * 357 / 375);
   height: calc(var(--mobile-w) * 620 / 375);
   transform: translateX(-50%);
@@ -1501,7 +1501,7 @@ body {
   width: 100%;
   height: calc(var(--mobile-w) * 58 / 343);
   display: flex;
-  justify-content: center;
+  justify-content: right;
   gap: calc(var(--mobile-w) * 20 / 343);
 }
 
@@ -1694,8 +1694,8 @@ body {
 
 .mobile-footer-social a {
   flex: 0 0 auto;
-  width: calc(var(--mobile-w) * 35 / 375);
-  height: calc(var(--mobile-w) * 35 / 375);
+  width: calc(var(--mobile-w) * 17 / 375);
+  height: calc(var(--mobile-w) * 17 / 375);
   display: grid;
   place-items: center;
 }
@@ -1703,8 +1703,8 @@ body {
 .mobile-footer-social img {
   width: 100%;
   height: 100%;
-  max-width: calc(var(--mobile-w) * 35 / 375);
-  max-height: calc(var(--mobile-w) * 35 / 375);
+  max-width: calc(var(--mobile-w) * 17 / 375);
+  max-height: calc(var(--mobile-w) * 17 / 375);
   display: block;
   object-fit: contain;
 }
