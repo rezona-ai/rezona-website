@@ -558,7 +558,7 @@ const heroGameSlices: HeroSlice[] = [
   {
     id: "up",
     asset: "/figma/assets/hero-game-up-941-22455@2x.png",
-    xPct: 74.6,
+    xPct: 75.6,
     yPct: 65.8,
     wPct: 4.562422,
     hPct: 4.562422,
@@ -566,7 +566,7 @@ const heroGameSlices: HeroSlice[] = [
   {
     id: "down",
     asset: "/figma/assets/hero-game-down-941-22455@2x.png",
-    xPct: 74.6,
+    xPct: 75.6,
     yPct: 73.7,
     wPct: 4.562422,
     hPct: 4.562422,
@@ -659,10 +659,18 @@ const showcaseScenes: ShowcaseScene[] = [
   },
 ];
 
-const statsStates = [
-  { id: "state-1", asset: "/figma/assets/stats-state-1.webp", alt: "Stats state 1" },
-  { id: "state-2", asset: "/figma/assets/stats-state-2.webp", alt: "Stats state 2" },
-  { id: "state-3", asset: "/figma/assets/stats-state-3.webp", alt: "Stats state 3" },
+const swiperStates = [
+  { id: "yellow", asset: "/figma/swiper/1.png", alt: "10M game play yellow card" },
+  { id: "pink", asset: "/figma/swiper/3.png", alt: "10M game play pink card" },
+  { id: "blue", asset: "/figma/swiper/4'.png", alt: "10M game play blue card" },
+  { id: "green", asset: "/figma/swiper/2'.png", alt: "10M game play green card" },
+];
+
+const swiperStripOrder = [
+  swiperStates[3],
+  swiperStates[0],
+  swiperStates[1],
+  swiperStates[2],
 ];
 
 const tailScenes: TailScene[] = [
@@ -678,44 +686,50 @@ const footerSocialSlices = [
   {
     id: "x",
     asset: "/figma/assets/footer-social-x-968-23986@2x.png",
-    left: 69.1667,
+    left: 66.1667,
     href: "https://x.com/rezona_ai",
   },
   {
     id: "telegram",
     asset: "/figma/assets/footer-social-telegram-968-23986@2x.png",
-    left: 73.3333,
+    left: 70.3333,
     href: "https://t.me/rezona_ai",
   },
   {
     id: "discord",
     asset: "/figma/assets/footer-social-discord-968-23986@2x.png",
-    left: 77.5,
+    left: 74.5,
     href: "https://discord.gg/rezona",
   },
   {
     id: "tiktok",
     asset: "/figma/assets/footer-social-tiktok-968-23986@2x.png",
-    left: 81.6667,
+    left: 78.6667,
     href: "https://www.tiktok.com/@rezona.ai",
   },
   {
     id: "youtube",
     asset: "/figma/assets/footer-social-youtube-968-23986@2x.png",
-    left: 85.8333,
+    left: 82.8333,
     href: "https://www.youtube.com/@rezona-app",
   },
   {
     id: "instagram",
     asset: "/figma/assets/footer-social-instagram-968-23986@2x.png",
-    left: 90.0,
+    left: 87.0,
     href: "https://www.instagram.com/rezona.ai",
   },
   {
     id: "threads",
     asset: "/figma/assets/footer-social-threads-968-23986@2x.png",
-    left: 94.1667,
+    left: 91.1667,
     href: "https://www.threads.com/@rezona.ai",
+  },
+  {
+    id: "social",
+    asset: "/figma/assets/social.png",
+    left: 95.1667,
+    href: "https://www.reddit.com/r/rezona/",
   },
 ];
 
@@ -755,6 +769,11 @@ const mobileFooterSocialSlices = [
     asset: "/figma/assets/mobile-social-threads-1110-1877@2x.png",
     href: "https://www.threads.com/@rezona.ai",
   },
+  {
+    id: "social",
+    asset: "/figma/assets/social-mobile.png",
+    href: "https://www.reddit.com/r/rezona/",
+  },
 ];
 
 const asVars = (values: Record<string, string | number>) =>
@@ -762,10 +781,13 @@ const asVars = (values: Record<string, string | number>) =>
 
 const StatsLoopScene = memo(function StatsLoopScene() {
   const [statsActiveIndex, setStatsActiveIndex] = useState(0);
+  const statsPrevIndex =
+    (statsActiveIndex - 1 + swiperStates.length) % swiperStates.length;
+  const statsNextIndex = (statsActiveIndex + 1) % swiperStates.length;
 
   useEffect(() => {
     const timer = window.setInterval(() => {
-      setStatsActiveIndex((prev) => (prev + 1) % statsStates.length);
+      setStatsActiveIndex((prev) => (prev + 1) % swiperStates.length);
     }, 1200);
     return () => window.clearInterval(timer);
   }, []);
@@ -774,16 +796,35 @@ const StatsLoopScene = memo(function StatsLoopScene() {
     <section className="scene stats-loop-scene" data-scene="stats-loop" id="scene3">
       <div className="sticky">
         <div className="stats-carousel-shell" aria-hidden="true">
+          <div className="stats-strip">
+            <div className="stats-strip-track">
+              {[0, 1, 2].flatMap((copy) =>
+                swiperStripOrder.map((state, index) => (
+                  <div className="stats-strip-card" key={`${state.id}-strip-${copy}-${index}`}>
+                    <img
+                      src={state.asset}
+                      alt={state.alt}
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
+                ))
+              )}
+            </div>
+          </div>
+
           <div className="stats-carousel-stage">
-            {statsStates.map((state, index) => (
+            {swiperStates.map((state, index) => (
               <div
                 key={state.id}
                 className={`stats-state ${
                   index === statsActiveIndex
                     ? "is-active"
-                    : index === (statsActiveIndex + 1) % statsStates.length
+                    : index === statsNextIndex
                       ? "is-next"
-                      : "is-prev"
+                      : index === statsPrevIndex
+                        ? "is-prev"
+                        : "is-hidden"
                 }`}
               >
                 <img
@@ -796,17 +837,6 @@ const StatsLoopScene = memo(function StatsLoopScene() {
               </div>
             ))}
           </div>
-        </div>
-
-        <div className="stats-intro-copy">
-          <img
-            src="/figma/assets/stats-text.png"
-            alt="Where games built from your ideas"
-            width={414}
-            height={249}
-            loading="lazy"
-            decoding="async"
-          />
         </div>
       </div>
     </section>
