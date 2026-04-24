@@ -1,5 +1,13 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: "Wister";
+  src: url("/fonts/Wister-Bold.otf") format("opentype");
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
+
 :root {
   --bg: #000000;
   --fg: #ffffff;
@@ -13,6 +21,7 @@
     "Helvetica Neue",
     Arial,
     sans-serif;
+  --font-wister: "Wister", var(--font-montserrat), sans-serif;
   --font-anton: "Anton", "Arial Black", "Helvetica Neue", Arial, sans-serif;
 }
 
@@ -83,6 +92,7 @@ body {
 .hero-fly-scene {
   --p: 0;
   --hero-out: 0;
+  --hero-stage-aspect: 2.0042; /* 1920 / 958 */
   --hero-out-soft: clamp(0, calc(var(--hero-out) * 0.82), 1);
   --hero-out-strong: clamp(0, calc(var(--hero-out) * 1.16), 1);
   --hero-out-enter: clamp(0, calc((var(--hero-out) - 0.16) * 1.4), 1);
@@ -148,8 +158,8 @@ body {
   position: absolute;
   left: 50%;
   top: var(--hero-focus-top);
-  width: min(100vw, calc(100vh * 1.5));
-  height: min(100vh, calc(100vw / 1.5));
+  width: min(100vw, calc(100vh * var(--hero-stage-aspect)));
+  height: min(100vh, calc(100vw / var(--hero-stage-aspect)));
   z-index: 4;
 }
 
@@ -160,8 +170,8 @@ body {
   position: absolute;
   left: 50%;
   top: var(--hero-world-top);
-  width: calc(min(100vw, calc(100vh * 1.5)) * var(--hero-world-size-multiplier));
-  height: calc(min(100vh, calc(100vw / 1.5)) * var(--hero-world-size-multiplier));
+  width: calc(min(100vw, calc(100vh * var(--hero-stage-aspect))) * var(--hero-world-size-multiplier));
+  height: calc(min(100vh, calc(100vw / var(--hero-stage-aspect))) * var(--hero-world-size-multiplier));
   z-index: 3;
 }
 
@@ -180,28 +190,43 @@ body {
 
 .hero-center-text {
   position: absolute;
-  left: 34.583333%;
-  top: 54.609375%;
-  width: 21.5625%;
-  height: 12.890625%;
-  display: block;
+  left: 25.4%;
+  top: 36.8%;
+  width: 31.5%;
+  margin: 0;
+  color: #f3f3f3;
+  font-family: var(--font-wister);
+  font-size: clamp(34px, 3.35vw, 66px);
+  line-height: 0.98;
+  letter-spacing: 0.01em;
+  text-wrap: balance;
   pointer-events: none;
 }
 
 .hero-center-cta {
   position: absolute;
-  left: 34.583333%;
-  top: 69.375%;
-  width: 11.822917%;
-  height: 4.6875%;
-  display: block;
+  left: 25.4%;
+  top: 58.2%;
+  width: 17.2%;
+  height: 6.7%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  background: #f0f0f0;
+  color: #1e1f23;
+  text-decoration: none;
+  font-family: var(--font-wister);
+  font-size: clamp(19px, 1.34vw, 26px);
+  line-height: 1;
+  letter-spacing: 0.01em;
   pointer-events: auto;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
 }
 
-.hero-center-cta img {
-  width: 100%;
-  height: 100%;
-  display: block;
+.hero-center-cta span {
+  display: inline-block;
+  transform: translateY(0.02em);
 }
 
 .hero-world {
@@ -1588,6 +1613,7 @@ body {
     top: 60%;
     width: min(68vw, 420px);
     transform: translateX(-50%);
+    text-align: center;
   }
 
   .hero-center-cta {

@@ -513,60 +513,36 @@ const mobileFlyCards: MobileFlyCard[] = [
 
 const heroBgSlices: HeroSlice[] = [
   {
-    id: "left-bot",
-    asset: "/figma/assets/hero-bg-left-bot-941-22455@2x.png",
-    xPct: -16.2,
-    yPct: 36.643984,
-    wPct: 36.875,
-    hPct: 67.184062,
+    id: "left",
+    asset: "/figma/WebsiteMaterials/Mobile/Desktop/PC_YOURIDEAS.webp",
+    xPct: -0.5,
+    yPct: 5.3,
+    wPct: 25.5,
+    hPct: 88,
   },
   {
-    id: "left-top",
-    asset: "/figma/assets/hero-bg-left-top-941-22455@2x.png",
-    xPct: -16.2,
-    yPct: 0.78125,
-    wPct: 37.005208,
-    hPct: 44.026875,
+    id: "right",
+    asset: "/figma/WebsiteMaterials/Mobile/Desktop/PC_YourTool.webp",
+    xPct: 74.5,
+    yPct: 5.3,
+    wPct: 25.5,
+    hPct: 88,
   },
   {
-    id: "right-bot",
-    asset: "/figma/assets/hero-bg-right-bot-941-22455@2x.png",
-    xPct: 94.2,
-    yPct: 40.745547,
-    wPct: 19.53125,
-    hPct: 56.441875,
-  },
-  {
-    id: "right-top",
-    asset: "/figma/assets/hero-bg-right-top-941-22455@2x.png",
-    xPct: 94.2,
-    yPct: 7.464297,
-    wPct: 19.765625,
-    hPct: 40.078125,
-  },
-  {
-    id: "bot-bot",
-    asset: "/figma/assets/hero-bg-bot-bot-941-22455@2x.webp",
-    xPct: -0.533854,
-    yPct: 83.671875,
-    wPct: 105.364583,
-    hPct: 29.316406,
-  },
-  {
-    id: "bot-top",
-    asset: "/figma/assets/hero-bg-bot-top-941-22455@2x.png",
-    xPct: 34.114583,
-    yPct: 77.542422,
-    wPct: 47.682292,
-    hPct: 5.273438,
+    id: "bottom",
+    asset: "/figma/WebsiteMaterials/Mobile/Desktop/PC_Games.webp",
+    xPct: -2.5,
+    yPct: 82.4,
+    wPct: 106,
+    hPct: 18.4,
   },
   {
     id: "top",
-    asset: "/figma/assets/hero-bg-top-941-22455@2x.png",
-    xPct: 2.341302,
-    yPct: -0.699766,
-    wPct: 101.614583,
-    hPct: 28.384844,
+    asset: "/figma/WebsiteMaterials/Mobile/Desktop/PC_RZNAI.webp",
+    xPct: -1.2,
+    yPct: 0.7,
+    wPct: 102.4,
+    hPct: 18.1,
   },
 ];
 
@@ -574,24 +550,24 @@ const heroGameSlices: HeroSlice[] = [
   {
     id: "main",
     asset: "/figma/assets/hero-game-main-941-22455@2x.avif",
-    xPct: 59.308333,
-    yPct: 30.625,
-    wPct: 18.195313,
-    hPct: 43.424297,
+    xPct: 53.2,
+    yPct: 20.8,
+    wPct: 21.8,
+    hPct: 59.5,
   },
   {
     id: "up",
     asset: "/figma/assets/hero-game-up-941-22455@2x.png",
-    xPct: 77.920417,
-    yPct: 63.295078,
+    xPct: 75.4,
+    yPct: 65.8,
     wPct: 3.041615,
     hPct: 4.562422,
   },
   {
     id: "down",
     asset: "/figma/assets/hero-game-down-941-22455@2x.png",
-    xPct: 77.920417,
-    yPct: 69.486875,
+    xPct: 75.4,
+    yPct: 73.7,
     wPct: 3.041615,
     hPct: 4.562422,
   },
@@ -1089,16 +1065,13 @@ export default function Home() {
             </div>
 
             <div className="hero-center-copy-layer">
-              <img
-                className="hero-center-text"
-                src="/figma/assets/hero-copy-text-941-22479@2x.png"
-                alt="Meme culture, now a social platform."
-                width={414}
-                height={165}
-                loading="eager"
-                fetchPriority="high"
-                decoding="async"
-              />
+              <h1 className="hero-center-text">
+                Meme culture,
+                <br />
+                now a social
+                <br />
+                platform.
+              </h1>
               <a
                 className="hero-center-cta"
                 href="https://apps.apple.com/us/app/rezona-ai-game-maker/id6752310101"
@@ -1107,14 +1080,7 @@ export default function Home() {
                 aria-label="Get App Now"
                 onClick={openAppModal}
               >
-                <img
-                  src="/figma/assets/hero-copy-cta-941-22481@2x.png"
-                  alt="Get App Now"
-                  width={227}
-                  height={60}
-                  loading="lazy"
-                  decoding="async"
-                />
+                <span>Get App Now</span>
               </a>
             </div>
           </div>
