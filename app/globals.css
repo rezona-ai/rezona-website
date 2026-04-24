@@ -1900,7 +1900,7 @@ body {
 .mobile-fly-section .meme-static-card {
   left: var(--mobile-particle-center-x);
   top: var(--mobile-particle-center-y);
-  width: clamp(86px, calc(var(--size) * 2.1), 390px) !important;
+  width: clamp(148px, calc(var(--size) * 3.42), 640px) !important;
   border-radius: clamp(2px, 0.8vw, 6px) !important;
   filter: drop-shadow(0 7px 14px rgba(0, 0, 0, 0.3)) blur(0.55px)
     saturate(0.88) brightness(0.86);
