@@ -944,7 +944,7 @@ const StatsLoopScene = memo(function StatsLoopScene() {
   useEffect(() => {
     const timer = window.setInterval(() => {
       setStatsActiveIndex((prev) => (prev + 1) % swiperStates.length);
-    }, 1200);
+    }, 1600);
     return () => window.clearInterval(timer);
   }, []);
 
@@ -1008,7 +1008,7 @@ const MobileStatsLoopScene = memo(function MobileStatsLoopScene() {
   useEffect(() => {
     const timer = window.setInterval(() => {
       setStatsActiveIndex((prev) => (prev + 1) % swiperStates.length);
-    }, 1200);
+    }, 1600);
     return () => window.clearInterval(timer);
   }, []);
 
