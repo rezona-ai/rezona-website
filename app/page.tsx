@@ -715,7 +715,7 @@ const showcaseScenes: ShowcaseScene[] = [
     id: "showcase-sec4",
     media: "/figma/assets/sec4-media-2x.webp",
     mediaAlt: "Fresh memes collage",
-    title: "Freshest memes\nfrom every\ncorner",
+    title: "Freshest Memes\nFrom Every\nCorner",
     description:
       "A library that never gets stale. Memes from every culture, every trend cycle, every timezone — drop one into a game before it even peaks.",
     reverse: false,
@@ -724,7 +724,7 @@ const showcaseScenes: ShowcaseScene[] = [
     id: "showcase-sec5",
     media: "/figma/assets/sec5-media-2x.webp",
     mediaAlt: "VR creator portrait",
-    title: "Total creative\ncontrol",
+    title: "Total Creative\nControl",
     description:
       "Upload whatever assets you want — no limits on what you bring in. Remix, layer, and personalize until the game feels exactly like you made it (welp actually you did).",
     reverse: true,
@@ -733,7 +733,7 @@ const showcaseScenes: ShowcaseScene[] = [
     id: "showcase-sec6",
     media: "/figma/assets/sec6-media-2x.webp",
     mediaAlt: "Sound production studio",
-    title: "Your sounds – or Ours",
+    title: "Your Sounds –Or Ours",
     description:
       "Bring your own beats, voice clips, or effects—or let Rezo build it from scratch. Either path lands you a game with sound design that actually slaps.",
     reverse: false,
