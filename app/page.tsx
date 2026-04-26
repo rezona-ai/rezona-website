@@ -1562,6 +1562,17 @@ export default function Home() {
                 <img src={item.asset} alt={item.id} loading="lazy" decoding="async" />
               </a>
             ))}
+
+            <div className="footer-legal" aria-label="Legal information">
+              <div className="footer-legal-links">
+                <span className="footer-legal-link">Privacy Policy</span>
+                <span aria-hidden="true">|</span>
+                <span className="footer-legal-link">Term of Service</span>
+                <span aria-hidden="true">|</span>
+                <span className="footer-legal-link">Cookie Policy</span>
+              </div>
+              <p className="footer-legal-copy">© 2026 All Rights Reserved, Rezona</p>
+            </div>
           </div>
         </div>
       </section>
@@ -1838,6 +1849,17 @@ export default function Home() {
               fallbackSrc="/figma/assets/footer-dino-loading-animation-1.svg"
               alt="Dino walking"
             />
+
+            <div className="mobile-footer-legal" aria-label="Legal information">
+              <div className="mobile-footer-legal-links">
+                <span className="mobile-footer-legal-link">Privacy Policy</span>
+                <span aria-hidden="true">|</span>
+                <span className="mobile-footer-legal-link">Term of Service</span>
+                <span aria-hidden="true">|</span>
+                <span className="mobile-footer-legal-link">Cookie Policy</span>
+              </div>
+              <p className="mobile-footer-legal-copy">© 2026 All Rights Reserved, Rezona</p>
+            </div>
           </footer>
         </div>
         </div>
