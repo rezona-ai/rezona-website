@@ -1539,13 +1539,15 @@ export default function Home() {
                 decoding="async"
               />
             </a>
-            <img
-              className="footer-bottom-qr"
-              src="/figma/assets/store-googleplay-new.webp"
-              alt="QR"
-              loading="lazy"
-              decoding="async"
-            />
+            <div className="footer-bottom-qr-wrap">
+              <img
+                className="footer-bottom-qr"
+                src="/figma/assets/popup-qr-content-2x.webp"
+                alt="QR"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
 
             {footerSocialSlices.map((item) => (
               <a
@@ -1756,15 +1758,17 @@ export default function Home() {
 
           <footer className="mobile-footer">
             <div className="mobile-footer-top">
-            <img
-              className="mobile-footer-qr"
-              src="/figma/assets/store-googleplay-new.webp"
-              alt="QR code"
-              width={61}
-              height={61}
-                loading="lazy"
-                decoding="async"
-              />
+              <div className="mobile-footer-qr-wrap">
+                <img
+                  className="mobile-footer-qr"
+                  src="/figma/assets/popup-qr-content-2x.webp"
+                  alt="QR code"
+                  width={61}
+                  height={61}
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
               <div className="mobile-footer-store">
                 <a
                   href="https://apps.apple.com/us/app/rezona-ai-game-maker/id6752310101"
