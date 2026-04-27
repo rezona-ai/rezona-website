@@ -718,7 +718,7 @@ const showcaseScenes: ShowcaseScene[] = [
     mediaAlt: "Fresh memes collage",
     title: "Freshest Memes\nFrom Every\nCorner",
     description:
-      "A library that never gets stale. Memes from every culture, every trend cycle, every timezone — drop one into a game before it even peaks.",
+      "A library that never gets stale. Memes from every culture, every trend cycle, every timezone drop one into a game before it even peaks.",
     reverse: false,
   },
   {
@@ -727,7 +727,7 @@ const showcaseScenes: ShowcaseScene[] = [
     mediaAlt: "VR creator portrait",
     title: "Total Creative\nControl",
     description:
-      "Upload whatever assets you want — no limits on what you bring in. Remix, layer, and personalize until the game feels exactly like you made it (welp actually you did).",
+      "Upload whatever assets you want no limits on what you bring in. Remix, layer, and personalize until the game feels exactly like you made it (welp actually you did).",
     reverse: true,
   },
   {
@@ -745,7 +745,7 @@ const showcaseScenes: ShowcaseScene[] = [
     mediaAlt: "Cyber crew group portrait",
     title: "Bring The Crew",
     description:
-      "The first - and only - AI game platform with real multiplayer. Build a game, share the lobby, and drop in together. Nobody else does this like Rezo.",
+      "The first and only AI game platform with real multiplayer. Build a game, share the lobby, and drop in together. Nobody else does this like Rezo.",
     reverse: true,
   },
 ];
