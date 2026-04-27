@@ -2,6 +2,7 @@
 "use client";
 
 import type { CSSProperties, MouseEvent } from "react";
+import Link from "next/link";
 import { memo, useEffect, useRef, useState } from "react";
 import heroParticleUgcAssets from "./data/hero-particle-ugc.json";
 import footerDinoAnimation from "./data/footer-dino-animation.json";
@@ -1565,7 +1566,9 @@ export default function Home() {
 
             <div className="footer-legal" aria-label="Legal information">
               <div className="footer-legal-links">
-                <span className="footer-legal-link">Privacy Policy</span>
+                <Link className="footer-legal-link" href="/privacy">
+                  Privacy Policy
+                </Link>
                 <span aria-hidden="true">|</span>
                 <span className="footer-legal-link">Term of Service</span>
                 <span aria-hidden="true">|</span>
@@ -1852,7 +1855,9 @@ export default function Home() {
 
             <div className="mobile-footer-legal" aria-label="Legal information">
               <div className="mobile-footer-legal-links">
-                <span className="mobile-footer-legal-link">Privacy Policy</span>
+                <Link className="mobile-footer-legal-link" href="/privacy">
+                  Privacy Policy
+                </Link>
                 <span aria-hidden="true">|</span>
                 <span className="mobile-footer-legal-link">Term of Service</span>
                 <span aria-hidden="true">|</span>
