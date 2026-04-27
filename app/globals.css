@@ -1568,14 +1568,14 @@ select {
 
 .footer-bottom-appstore {
   left: 2.5%;
-  top: 23.5294%;
+  top: calc(23.5294% + 12px);
   width: 10%;
   height: 10.7563%;
 }
 
 .footer-bottom-googleplay {
   left: 14.5833%;
-  top: 23.5294%;
+  top: calc(23.5294% + 12px);
   width: 10%;
   height: 10.7563%;
 }
@@ -2460,7 +2460,7 @@ select {
   width: calc(var(--mobile-w) * 340 / 375);
   height: calc(var(--mobile-w) * 72 / 375);
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: space-between;
 }
 

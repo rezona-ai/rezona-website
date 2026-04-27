@@ -617,7 +617,7 @@ const heroBgSlices: HeroSlice[] = [
     xPct: 74.8,
     yPct: 4.9,
     wPct: 26.4,
-    hPct: 89.8,
+    hPct: 86.8,
   },
   {
     id: "bottom",
