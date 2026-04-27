@@ -2543,22 +2543,28 @@ select {
   left: 0;
   bottom: calc(var(--mobile-w) * 18 / 375);
   width: 100%;
-  padding-top: calc(var(--mobile-w) * 18 / 375);
+  padding-top: 0;
   color: rgba(255, 255, 255, 0.32);
   font-family: var(--font-montserrat);
   box-sizing: border-box;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: calc(var(--mobile-w) * 8 / 375);
 }
 
 .mobile-footer-legal-links {
-  display: inline-flex;
+  display: flex;
   align-items: center;
   justify-content: flex-start;
-  gap: calc(var(--mobile-w) * 10 / 375);
+  gap: 0;
   font-size: 14px;
   line-height: 1.2;
   white-space: nowrap;
-  width: 100%;
+  width: auto;
   text-align: left;
+  flex: 0 0 auto;
 }
 
 .mobile-footer-legal-link {
@@ -2575,13 +2581,16 @@ select {
 }
 
 .mobile-footer-legal-copy {
-  margin: calc(var(--mobile-w) * 16 / 375) 0 0;
+  margin: 0;
   color: inherit;
   font-size: 14px;
   line-height: 1.2;
   font-family: var(--font-montserrat);
   font-weight: 400;
-  width: 100%;
+  width: auto;
+  white-space: nowrap;
+  text-align: right;
+  flex: 0 0 auto;
 }
 
 @keyframes stats-strip-marquee {
@@ -3200,9 +3209,10 @@ select {
 
   .privacy-mobile-footer .mobile-footer-legal-links {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     gap: 0;
-    min-width: 0;
+    width: auto;
+    min-width: auto;
   }
 
   .privacy-page .privacy-brand,

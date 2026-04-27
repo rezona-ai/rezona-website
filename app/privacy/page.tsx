@@ -366,10 +366,6 @@ export default function PrivacyPage() {
                 <Link className="footer-legal-link" href="/privacy">
                   Privacy Policy
                 </Link>
-                <span aria-hidden="true">|</span>
-                <span className="footer-legal-link">Term of Service</span>
-                <span aria-hidden="true">|</span>
-                <span className="footer-legal-link">Cookie Policy</span>
               </div>
               <p className="footer-legal-copy">© 2026 All Rights Reserved, Rezona</p>
             </div>
@@ -466,10 +462,6 @@ export default function PrivacyPage() {
               <Link className="mobile-footer-legal-link" href="/privacy">
                 Privacy Policy
               </Link>
-              <span aria-hidden="true">|</span>
-              <span className="mobile-footer-legal-link">Term of Service</span>
-              <span aria-hidden="true">|</span>
-              <span className="mobile-footer-legal-link">Cookie Policy</span>
             </div>
             <p className="mobile-footer-legal-copy">© 2026 All Rights Reserved, Rezona</p>
           </div>
