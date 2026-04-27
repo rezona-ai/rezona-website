@@ -1719,11 +1719,13 @@ select {
 .app-download-modal-header h2 {
   margin: 0;
   text-align: center;
-  font-family: var(--font-wister);
+  font-family: var(--font-montserrat);
   font-size: 24px;
   line-height: 1.4;
   font-weight: 700;
   color: #fafafa;
+  letter-spacing: 0;
+  white-space: nowrap;
 }
 
 .app-download-modal-close {
@@ -1760,24 +1762,26 @@ select {
   transform: translateY(-1px);
 }
 
-.app-download-modal-qr-frame {
-  width: min(100%, 280px);
-  aspect-ratio: 1 / 1;
+.app-download-modal-qr-inner {
+  position: relative;
+  width: 280px;
+  height: 280px;
   border-radius: 26.67px;
+  padding: 26px;
+  overflow: hidden;
   background: #fff;
-  border: 1.11px solid #8a38f5;
-  display: grid;
-  place-items: center;
+  box-sizing: border-box;
   z-index: 1;
 }
 
-.app-download-modal-qr-inner {
-  width: calc(100% - 14px);
-  height: calc(100% - 14px);
-  border-radius: 17.78px;
+.app-download-modal-qr-inner::after {
+  content: "";
+  position: absolute;
+  inset: 0;
   border: 3.5px solid #ff6200;
-  overflow: hidden;
-  background: #fff;
+  border-radius: inherit;
+  box-sizing: border-box;
+  pointer-events: none;
 }
 
 .app-download-modal-qr-inner img {
@@ -2765,10 +2769,7 @@ select {
 
   .app-download-modal-header h2 {
     font-size: 20px;
-  }
-
-  .app-download-modal-qr-frame {
-    width: min(100%, 274px);
+    white-space: nowrap;
   }
 
   .app-download-modal-mascot {

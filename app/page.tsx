@@ -1894,25 +1894,15 @@ export default function Home() {
               <div className="app-download-modal-header">
                 <span className="app-download-modal-close-spacer" aria-hidden="true" />
                 <h2 id="app-download-modal-title">Use the app for more fun</h2>
-                <button
-                  type="button"
-                  className="app-download-modal-close"
-                  aria-label="Close app download modal"
-                  onClick={closeAppModal}
-                >
-                  <span aria-hidden="true">×</span>
-                </button>
               </div>
 
-              <div className="app-download-modal-qr-frame">
-                <div className="app-download-modal-qr-inner">
-                  <img
-                    src="/figma/assets/popup-qr-content-2x.webp"
-                    alt="Scan QR code to download the app"
-                    width={262}
-                    height={267}
-                  />
-                </div>
+              <div className="app-download-modal-qr-inner">
+                <img
+                  src="/figma/assets/popup-qr-content-2x.webp"
+                  alt="Scan QR code to download the app"
+                  width={262}
+                  height={267}
+                />
               </div>
             </div>
 
