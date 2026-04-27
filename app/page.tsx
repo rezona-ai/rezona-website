@@ -1569,6 +1569,10 @@ export default function Home() {
                 <Link className="footer-legal-link" href="/privacy">
                   Privacy Policy
                 </Link>
+                <span aria-hidden="true"> | </span>
+                <Link className="footer-legal-link" href="/terms">
+                  Term of Service
+                </Link>
               </div>
               <p className="footer-legal-copy">© 2026 All Rights Reserved, Rezona</p>
             </div>
@@ -1853,6 +1857,10 @@ export default function Home() {
               <div className="mobile-footer-legal-links">
                 <Link className="mobile-footer-legal-link" href="/privacy">
                   Privacy Policy
+                </Link>
+                <span aria-hidden="true"> | </span>
+                <Link className="mobile-footer-legal-link" href="/terms">
+                  Term of Service
                 </Link>
               </div>
               <p className="mobile-footer-legal-copy">© 2026 All Rights Reserved, Rezona</p>

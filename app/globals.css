@@ -2543,28 +2543,22 @@ select {
   left: 0;
   bottom: calc(var(--mobile-w) * 18 / 375);
   width: 100%;
-  padding-top: 0;
+  padding-top: calc(var(--mobile-w) * 18 / 375);
   color: rgba(255, 255, 255, 0.32);
   font-family: var(--font-montserrat);
   box-sizing: border-box;
-  display: flex;
-  flex-wrap: nowrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: calc(var(--mobile-w) * 8 / 375);
+  display: block;
 }
 
 .mobile-footer-legal-links {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  justify-content: flex-start;
-  gap: 0;
+  gap: clamp(10px, 0.7vw, 14px);
   font-size: 14px;
   line-height: 1.2;
   white-space: nowrap;
-  width: auto;
+  width: 100%;
   text-align: left;
-  flex: 0 0 auto;
 }
 
 .mobile-footer-legal-link {
@@ -2577,20 +2571,21 @@ select {
 }
 
 .mobile-footer-legal-links > span[aria-hidden="true"] {
+  display: inline-block;
+  margin: 0 calc(var(--mobile-w) * 6 / 375);
   text-align: left;
 }
 
 .mobile-footer-legal-copy {
-  margin: 0;
+  margin: calc(var(--mobile-w) * 16 / 375) 0 0;
   color: inherit;
   font-size: 14px;
   line-height: 1.2;
   font-family: var(--font-montserrat);
   font-weight: 400;
-  width: auto;
+  width: 100%;
   white-space: nowrap;
-  text-align: right;
-  flex: 0 0 auto;
+  text-align: left;
 }
 
 @keyframes stats-strip-marquee {
@@ -3008,6 +3003,11 @@ select {
   letter-spacing: 0;
 }
 
+.terms-page .privacy-title {
+  font-size: 47px;
+  line-height: 35px;
+}
+
 .privacy-date {
   margin: 52px auto 0;
   width: max-content;
@@ -3129,6 +3129,11 @@ select {
     line-height: 31.5px;
   }
 
+  .terms-page .privacy-title {
+    font-size: 35px;
+    line-height: 35px;
+  }
+
   .privacy-date {
     margin-top: 34px;
     font-size: 14px;
@@ -3211,8 +3216,8 @@ select {
     display: flex;
     justify-content: flex-start;
     gap: 0;
-    width: auto;
-    min-width: auto;
+    width: 100%;
+    min-width: 0;
   }
 
   .privacy-page .privacy-brand,
