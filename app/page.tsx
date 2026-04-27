@@ -240,9 +240,33 @@ const heroBurstUgcPoolAssets: HeroBurstVisualAsset[] = heroParticleUgcAssets.map
 );
 
 const heroBurstVisualAssets: HeroBurstVisualAsset[] = [...heroBurstUgcPoolAssets];
+const heroBurstGifVisualAssets: HeroBurstVisualAsset[] = heroBurstVisualAssets.filter(
+  (item) => item.asset.toLowerCase().endsWith(".gif")
+);
+const heroBurstNonGifVisualAssets: HeroBurstVisualAsset[] = heroBurstVisualAssets.filter(
+  (item) => !item.asset.toLowerCase().endsWith(".gif")
+);
+
+const HERO_BURST_VISUAL_RECENT_WINDOW = 10;
+const HERO_BURST_GIF_RATE = 0.16;
+const heroBurstRecentVisualIds: string[] = [];
+
+const deterministicUnitBySeed = (seed: number) => {
+  const x = Math.sin(seed * 12.9898) * 43758.5453;
+  return x - Math.floor(x);
+};
 
 const pickHeroBurstVisualAssetBySeed = (seed: number): HeroBurstVisualAsset => {
-  const total = heroBurstVisualAssets.length;
+  const shouldUseGif =
+    heroBurstGifVisualAssets.length > 0 &&
+    deterministicUnitBySeed(seed) < HERO_BURST_GIF_RATE;
+  const pool =
+    shouldUseGif && heroBurstGifVisualAssets.length > 0
+      ? heroBurstGifVisualAssets
+      : heroBurstNonGifVisualAssets.length > 0
+        ? heroBurstNonGifVisualAssets
+        : heroBurstVisualAssets;
+  const total = pool.length;
   if (total === 0) {
     return {
       id: "ugc-fallback",
@@ -251,8 +275,30 @@ const pickHeroBurstVisualAssetBySeed = (seed: number): HeroBurstVisualAsset => {
     };
   }
 
-  const index = ((seed % total) + total) % total;
-  return heroBurstVisualAssets[index];
+  const recentWindow = Math.min(HERO_BURST_VISUAL_RECENT_WINDOW, Math.max(total - 1, 0));
+  const recentSet = new Set(heroBurstRecentVisualIds.slice(-recentWindow));
+  let index = ((seed % total) + total) % total;
+
+  // Avoid showing recently-used assets back-to-back to reduce visible repetition.
+  if (recentSet.has(pool[index]?.id) && recentSet.size < total) {
+    const stride = 7;
+    for (let step = 1; step <= total; step += 1) {
+      const candidate = (index + step * stride) % total;
+      if (!recentSet.has(pool[candidate]?.id)) {
+        index = candidate;
+        break;
+      }
+    }
+  }
+
+  const picked = pool[index];
+  heroBurstRecentVisualIds.push(picked.id);
+  const maxHistory = Math.max(recentWindow * 2, 20);
+  if (heroBurstRecentVisualIds.length > maxHistory) {
+    heroBurstRecentVisualIds.splice(0, heroBurstRecentVisualIds.length - maxHistory);
+  }
+
+  return picked;
 };
 
 const HERO_BURST_PARTICLE_COUNT = Math.round(flyCards.length * 2.35);
@@ -261,6 +307,7 @@ const HERO_BURST_PARTICLE_COUNT_LITE = Math.max(
   Math.round(HERO_BURST_PARTICLE_COUNT * 0.4)
 );
 const HERO_BURST_SECONDARY_EMITTER_RATE = 0.62;
+const HERO_BURST_ALPHA_GAIN = 0.72;
 
 const randomBetween = (min: number, max: number) =>
   min + Math.random() * (max - min);
@@ -268,7 +315,10 @@ const randomBetween = (min: number, max: number) =>
 const pickRandom = <T,>(items: readonly T[]) =>
   items[Math.floor(Math.random() * items.length)];
 
-const createRandomHeroBurstParticle = (seed: number): HeroBurstParticle => {
+const createRandomHeroBurstParticle = (
+  seed: number,
+  options?: { prefillPhase?: boolean }
+): HeroBurstParticle => {
   const motionSource = pickRandom(flyCards);
   const visualSource = pickHeroBurstVisualAssetBySeed(seed);
   const nearWeight = Math.min(
@@ -306,7 +356,7 @@ const createRandomHeroBurstParticle = (seed: number): HeroBurstParticle => {
   const tangentX = -directionY;
   const tangentY = directionX;
   const curveBias =
-    randomBetween(-15, 15) *
+    randomBetween(-11, 11) *
     (0.62 + farWeight * 0.38) *
     (isNearPass ? randomBetween(1.18, 1.38) : 1);
 
@@ -335,9 +385,17 @@ const createRandomHeroBurstParticle = (seed: number): HeroBurstParticle => {
   );
 
   const durationS =
-    randomBetween(isNearPass ? 5.8 : 6.8, isNearPass ? 8.2 : 9.8) *
-    (1 + farWeight * 0.1);
-  const delayS = randomBetween(0, 0.06);
+    randomBetween(isNearPass ? 9.6 : 11.2, isNearPass ? 13.4 : 15.8) *
+    (1 + farWeight * 0.14);
+  const delayMin = Math.max(0, farWeight * 0.12 - nearWeight * 0.02);
+  const delayMax = Math.min(
+    0.4,
+    0.26 + farWeight * 0.14 + (isNearPass ? -0.04 : 0.02)
+  );
+  const baseDelayS = randomBetween(delayMin, Math.max(delayMin + 0.01, delayMax));
+  const delayS = options?.prefillPhase
+    ? -randomBetween(durationS * 0.08, durationS * 0.72)
+    : baseDelayS;
   const startScale = randomBetween(0.07, 0.14) + nearWeight * 0.02;
   const midScale = randomBetween(0.46, isNearPass ? 0.82 : 0.72) + nearWeight * 0.08;
   const endScale = randomBetween(isNearPass ? 1.24 : 1.02, isNearPass ? 1.56 : 1.28) +
@@ -346,11 +404,12 @@ const createRandomHeroBurstParticle = (seed: number): HeroBurstParticle => {
   const zMidPx = randomBetween(-940, -460) + nearWeight * 150;
   const zEndPx = randomBetween(isNearPass ? -24 : -120, isNearPass ? 224 : 84) +
     nearWeight * (isNearPass ? 156 : 120);
-  const alpha = Math.min(
-    isNearPass ? 0.84 : 0.76,
-    randomBetween(isNearPass ? 0.46 : 0.38, isNearPass ? 0.7 : 0.62) +
-      nearWeight * (isNearPass ? 0.12 : 0.1)
-  );
+  const alpha =
+    Math.min(
+      isNearPass ? 0.84 : 0.76,
+      randomBetween(isNearPass ? 0.46 : 0.38, isNearPass ? 0.7 : 0.62) +
+        nearWeight * (isNearPass ? 0.12 : 0.1)
+    ) * HERO_BURST_ALPHA_GAIN;
 
   return {
     id: `${visualSource.id}-${seed}-${Math.random().toString(36).slice(2, 7)}`,
@@ -380,21 +439,25 @@ const createRandomHeroBurstParticle = (seed: number): HeroBurstParticle => {
 const HeroBurstParticleCard = memo(function HeroBurstParticleCard({
   cardId,
   seed,
+  prefillPhase = false,
   performanceLite = false,
   onExited,
 }: {
   cardId: number;
   seed: number;
+  prefillPhase?: boolean;
   performanceLite?: boolean;
   onExited: (cardId: number) => void;
 }) {
-  const [particle] = useState<HeroBurstParticle>(() => createRandomHeroBurstParticle(seed));
+  const [particle] = useState<HeroBurstParticle>(() =>
+    createRandomHeroBurstParticle(seed, { prefillPhase })
+  );
   const durationS = performanceLite ? particle.durationS * 1.24 : particle.durationS;
   const alpha = performanceLite ? particle.alpha * 0.88 : particle.alpha;
 
   return (
     <img
-      className="meme-static-card"
+      className={`meme-static-card${performanceLite ? " meme-static-card--lite" : ""}`}
       style={asVars({
         "--size": `${particle.sizeVw.toFixed(3)}vw`,
         "--ratio": particle.ratio.toFixed(4),
@@ -437,10 +500,13 @@ const HeroBurstCanvas = memo(function HeroBurstCanvas({
   const particleCardIdRef = useRef(particleCount);
   const pendingExitedIdsRef = useRef<number[]>([]);
   const recycleFrameRef = useRef<number | null>(null);
-  const [cards, setCards] = useState<{ id: number; seed: number }[]>(() =>
+  const [cards, setCards] = useState<
+    { id: number; seed: number; prefillPhase: boolean }[]
+  >(() =>
     Array.from({ length: particleCount }, (_, index) => ({
       id: index,
       seed: index,
+      prefillPhase: true,
     }))
   );
 
@@ -456,6 +522,7 @@ const HeroBurstCanvas = memo(function HeroBurstCanvas({
       Array.from({ length: particleCount }, (_, index) => ({
         id: index,
         seed: index,
+        prefillPhase: true,
       }))
     );
     return () => {
@@ -489,6 +556,7 @@ const HeroBurstCanvas = memo(function HeroBurstCanvas({
         nextCards.push({
           id: nextCardId,
           seed: nextSeed,
+          prefillPhase: false,
         });
       });
 
@@ -504,12 +572,17 @@ const HeroBurstCanvas = memo(function HeroBurstCanvas({
 
   return (
     <div className="meme-transition-canvas">
-      <div className="meme-transition-stage">
+      <div
+        className={`meme-transition-stage${
+          performanceLite ? " meme-transition-stage--lite" : ""
+        }`}
+      >
         {cards.map((card) => (
           <HeroBurstParticleCard
             key={`meme-transition-card-${card.id}`}
             cardId={card.id}
             seed={card.seed}
+            prefillPhase={card.prefillPhase}
             performanceLite={performanceLite}
             onExited={handleCardExited}
           />
@@ -1671,7 +1744,7 @@ export default function Home() {
         </section>
         <div className="mobile-content-shell">
           <section className="mobile-fly-section">
-            <HeroBurstCanvas />
+            <HeroBurstCanvas performanceLite />
           </section>
 
           <section className="mobile-content-game-section">
