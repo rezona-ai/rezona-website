@@ -1950,7 +1950,7 @@ select {
 }
 
 .mobile-top-cta img {
-  width: calc(var(--mobile-w) * 90 / 375);
+  width: calc(var(--mobile-w) * 127 / 375);
   height: calc(var(--mobile-w) * 40 / 375);
   display: block;
 }
