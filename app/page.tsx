@@ -596,7 +596,7 @@ const HeroBurstCanvas = memo(function HeroBurstCanvas({
 const mobileFlyCards: MobileFlyCard[] = [
   {
     id: "1",
-    asset: "/figma/assets/mobile-fly-1-2x.png",
+    asset: "/figma/assets/mobile-fly-1-2x.webp",
     xPct: 2.1333,
     yPct: 1.81,
     wPct: 21.3333,
@@ -604,7 +604,7 @@ const mobileFlyCards: MobileFlyCard[] = [
   },
   {
     id: "8",
-    asset: "/figma/assets/mobile-fly-8-2x.png",
+    asset: "/figma/assets/mobile-fly-8-2x.webp",
     xPct: 61.0667,
     yPct: 0,
     wPct: 21.3333,
@@ -612,7 +612,7 @@ const mobileFlyCards: MobileFlyCard[] = [
   },
   {
     id: "4",
-    asset: "/figma/assets/mobile-fly-4-2x.png",
+    asset: "/figma/assets/mobile-fly-4-2x.webp",
     xPct: 76.5333,
     yPct: 18.0995,
     wPct: 21.3333,
@@ -620,7 +620,7 @@ const mobileFlyCards: MobileFlyCard[] = [
   },
   {
     id: "6",
-    asset: "/figma/assets/mobile-fly-6-2x.png",
+    asset: "/figma/assets/mobile-fly-6-2x.webp",
     xPct: 31.7333,
     yPct: 5.8824,
     wPct: 21.3333,
@@ -628,7 +628,7 @@ const mobileFlyCards: MobileFlyCard[] = [
   },
   {
     id: "11",
-    asset: "/figma/assets/mobile-fly-11-2x.png",
+    asset: "/figma/assets/mobile-fly-11-2x.webp",
     xPct: 50.1333,
     yPct: 29.1855,
     wPct: 21.3333,
@@ -636,7 +636,7 @@ const mobileFlyCards: MobileFlyCard[] = [
   },
   {
     id: "5",
-    asset: "/figma/assets/mobile-fly-5-2x.png",
+    asset: "/figma/assets/mobile-fly-5-2x.webp",
     xPct: 2.1333,
     yPct: 35.7466,
     wPct: 21.3333,
@@ -644,7 +644,7 @@ const mobileFlyCards: MobileFlyCard[] = [
   },
   {
     id: "3",
-    asset: "/figma/assets/mobile-fly-3-2x.png",
+    asset: "/figma/assets/mobile-fly-3-2x.webp",
     xPct: 71.7333,
     yPct: 56.5611,
     wPct: 21.3333,
@@ -652,7 +652,7 @@ const mobileFlyCards: MobileFlyCard[] = [
   },
   {
     id: "10",
-    asset: "/figma/assets/mobile-fly-10-2x.png",
+    asset: "/figma/assets/mobile-fly-10-2x.webp",
     xPct: 26.1333,
     yPct: 54.9774,
     wPct: 21.3333,
@@ -660,7 +660,7 @@ const mobileFlyCards: MobileFlyCard[] = [
   },
   {
     id: "9",
-    asset: "/figma/assets/mobile-fly-9-2x.png",
+    asset: "/figma/assets/mobile-fly-9-2x.webp",
     xPct: 14.6667,
     yPct: 69.0045,
     wPct: 21.3333,
@@ -668,7 +668,7 @@ const mobileFlyCards: MobileFlyCard[] = [
   },
   {
     id: "7",
-    asset: "/figma/assets/mobile-fly-7-2x.png",
+    asset: "/figma/assets/mobile-fly-7-2x.webp",
     xPct: 43.2,
     yPct: 69.0045,
     wPct: 21.3333,
@@ -722,7 +722,7 @@ const heroGameSlices: HeroSlice[] = [
   },
   {
     id: "up",
-    asset: "/figma/assets/hero-game-up-2x.png",
+    asset: "/figma/assets/hero-game-up-2x.webp",
     xPct: 75.6,
     yPct: 65.8,
     wPct: 4.562422,
@@ -730,7 +730,7 @@ const heroGameSlices: HeroSlice[] = [
   },
   {
     id: "down",
-    asset: "/figma/assets/hero-game-down-2x.png",
+    asset: "/figma/assets/hero-game-down-2x.webp",
     xPct: 75.6,
     yPct: 73.7,
     wPct: 4.562422,
@@ -852,43 +852,43 @@ const tailScenes: TailScene[] = [
 const footerSocialSlices = [
   {
     id: "x",
-    asset: "/figma/assets/footer-social-x-2x.png",
+    asset: "/figma/assets/footer-social-x-2x.webp",
     left: 66.1667,
     href: "https://x.com/rezona_ai",
   },
   {
     id: "telegram",
-    asset: "/figma/assets/footer-social-telegram-2x.png",
+    asset: "/figma/assets/footer-social-telegram-2x.webp",
     left: 70.3333,
     href: "https://t.me/rezona_ai",
   },
   {
     id: "discord",
-    asset: "/figma/assets/footer-social-discord-2x.png",
+    asset: "/figma/assets/footer-social-discord-2x.webp",
     left: 74.5,
     href: "https://discord.gg/rezona",
   },
   {
     id: "tiktok",
-    asset: "/figma/assets/footer-social-tiktok-2x.png",
+    asset: "/figma/assets/footer-social-tiktok-2x.webp",
     left: 78.6667,
     href: "https://www.tiktok.com/@rezona.ai",
   },
   {
     id: "youtube",
-    asset: "/figma/assets/footer-social-youtube-2x.png",
+    asset: "/figma/assets/footer-social-youtube-2x.webp",
     left: 82.8333,
     href: "https://www.youtube.com/@rezona-app",
   },
   {
     id: "instagram",
-    asset: "/figma/assets/footer-social-instagram-2x.png",
+    asset: "/figma/assets/footer-social-instagram-2x.webp",
     left: 87.0,
     href: "https://www.instagram.com/rezona.ai",
   },
   {
     id: "threads",
-    asset: "/figma/assets/footer-social-threads-2x.png",
+    asset: "/figma/assets/footer-social-threads-2x.webp",
     left: 91.1667,
     href: "https://www.threads.com/@rezona.ai",
   },
@@ -903,37 +903,37 @@ const footerSocialSlices = [
 const mobileFooterSocialSlices = [
   {
     id: "x",
-    asset: "/figma/assets/mobile-social-x-2x.png",
+    asset: "/figma/assets/mobile-social-x-2x.webp",
     href: "https://x.com/rezona_ai",
   },
   {
     id: "telegram",
-    asset: "/figma/assets/mobile-social-telegram-2x.png",
+    asset: "/figma/assets/mobile-social-telegram-2x.webp",
     href: "https://t.me/rezona_ai",
   },
   {
     id: "discord",
-    asset: "/figma/assets/mobile-social-discord-2x.png",
+    asset: "/figma/assets/mobile-social-discord-2x.webp",
     href: "https://discord.gg/rezona",
   },
   {
     id: "tiktok",
-    asset: "/figma/assets/mobile-social-tiktok-2x.png",
+    asset: "/figma/assets/mobile-social-tiktok-2x.webp",
     href: "https://www.tiktok.com/@rezona.ai",
   },
   {
     id: "youtube",
-    asset: "/figma/assets/mobile-social-youtube-2x.png",
+    asset: "/figma/assets/mobile-social-youtube-2x.webp",
     href: "https://www.youtube.com/@rezona-app",
   },
   {
     id: "instagram",
-    asset: "/figma/assets/mobile-social-instagram-2x.png",
+    asset: "/figma/assets/mobile-social-instagram-2x.webp",
     href: "https://www.instagram.com/rezona.ai",
   },
   {
     id: "threads",
-    asset: "/figma/assets/mobile-social-threads-2x.png",
+    asset: "/figma/assets/mobile-social-threads-2x.webp",
     href: "https://www.threads.com/@rezona.ai",
   },
   {
@@ -1013,20 +1013,41 @@ const DinoLottie = memo(function DinoLottie({
 });
 
 const StatsLoopScene = memo(function StatsLoopScene() {
+  const sectionRef = useRef<HTMLElement | null>(null);
+  const [isSceneActive, setIsSceneActive] = useState(true);
   const [statsActiveIndex, setStatsActiveIndex] = useState(0);
   const statsPrevIndex =
     (statsActiveIndex - 1 + swiperStates.length) % swiperStates.length;
   const statsNextIndex = (statsActiveIndex + 1) % swiperStates.length;
 
   useEffect(() => {
+    const section = sectionRef.current;
+    if (!section) return;
+
+    const syncActive = () =>
+      setIsSceneActive(section.getAttribute("data-active") !== "false");
+
+    syncActive();
+    const observer = new MutationObserver(syncActive);
+    observer.observe(section, { attributes: true, attributeFilter: ["data-active"] });
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!isSceneActive) return;
     const timer = window.setInterval(() => {
       setStatsActiveIndex((prev) => (prev + 1) % swiperStates.length);
     }, 1600);
     return () => window.clearInterval(timer);
-  }, []);
+  }, [isSceneActive]);
 
   return (
-    <section className="scene stats-loop-scene" data-scene="stats-loop" id="scene3">
+    <section
+      className="scene stats-loop-scene"
+      data-scene="stats-loop"
+      id="scene3"
+      ref={sectionRef}
+    >
       <div className="sticky">
         <div className="stats-carousel-shell" aria-hidden="true">
           <div className="stats-strip">
@@ -1077,20 +1098,40 @@ const StatsLoopScene = memo(function StatsLoopScene() {
 });
 
 const MobileStatsLoopScene = memo(function MobileStatsLoopScene() {
+  const sectionRef = useRef<HTMLElement | null>(null);
+  const [isSceneActive, setIsSceneActive] = useState(true);
   const [statsActiveIndex, setStatsActiveIndex] = useState(0);
   const statsPrevIndex =
     (statsActiveIndex - 1 + swiperStates.length) % swiperStates.length;
   const statsNextIndex = (statsActiveIndex + 1) % swiperStates.length;
 
   useEffect(() => {
+    const section = sectionRef.current;
+    if (!section) return;
+
+    const syncActive = () =>
+      setIsSceneActive(section.getAttribute("data-active") !== "false");
+
+    syncActive();
+    const observer = new MutationObserver(syncActive);
+    observer.observe(section, { attributes: true, attributeFilter: ["data-active"] });
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!isSceneActive) return;
     const timer = window.setInterval(() => {
       setStatsActiveIndex((prev) => (prev + 1) % swiperStates.length);
     }, 1600);
     return () => window.clearInterval(timer);
-  }, []);
+  }, [isSceneActive]);
 
   return (
-    <section className="mobile-fly-divider mobile-stats-loop" aria-label="Game play stats">
+    <section
+      className="mobile-fly-divider mobile-stats-loop"
+      aria-label="Game play stats"
+      ref={sectionRef}
+    >
       <div className="mobile-stats-loop-canvas" aria-hidden="true">
         <div className="stats-carousel-shell">
           <div className="stats-strip">
@@ -1546,7 +1587,7 @@ export default function Home() {
             />
             <img
               className="footer-bottom-brand"
-              src="/figma/assets/footer-rezona-text-2x.png"
+              src="/figma/assets/footer-rezona-text-2x.webp"
               alt="REZONA.AI"
               loading="lazy"
               decoding="async"
@@ -1661,7 +1702,7 @@ export default function Home() {
           <div className="mobile-top-nav">
             <img
               className="mobile-top-logo"
-              src="/figma/assets/mobile-top-logo-2x.png"
+              src="/figma/assets/mobile-top-logo-2x.webp"
               alt="Rezona"
               width={173}
               height={28}
@@ -1674,7 +1715,7 @@ export default function Home() {
               aria-label="Explore more"
             >
               <img
-                src="/figma/assets/mobile-top-cta-2x.png"
+                src="/figma/assets/mobile-top-cta-2x.webp"
                 alt="Explore more"
                 width={90}
                 height={40}
@@ -1692,7 +1733,7 @@ export default function Home() {
               label="Get App Now"
             >
               <img
-                src="/figma/assets/mobile-hero-cta-2x.png"
+                src="/figma/assets/mobile-hero-cta-2x.webp"
                 alt="Get App Now"
                 width={156}
                 height={44}
@@ -1729,7 +1770,7 @@ export default function Home() {
                 onClick={() => switchHeroGame(-1)}
               >
                 <img
-                  src="/figma/assets/hero-game-up-2x.png"
+                  src="/figma/assets/hero-game-up-2x.webp"
                   alt=""
                   width={58}
                   height={58}
@@ -1744,7 +1785,7 @@ export default function Home() {
                 onClick={() => switchHeroGame(1)}
               >
                 <img
-                  src="/figma/assets/hero-game-down-2x.png"
+                  src="/figma/assets/hero-game-down-2x.webp"
                   alt=""
                   width={58}
                   height={58}
@@ -1784,7 +1825,7 @@ export default function Home() {
 
           <section className="mobile-built-section">
             <img
-              src="/figma/assets/mobile-built-2x.png"
+              src="/figma/assets/mobile-built-2x.webp"
               alt="Built for meme"
               width={359}
               height={102}
@@ -1863,7 +1904,7 @@ export default function Home() {
 
             <img
               className="mobile-footer-brand"
-              src="/figma/assets/mobile-footer-brand-2x.png"
+              src="/figma/assets/mobile-footer-brand-2x.webp"
               alt="REZONA.AI"
               width={343}
               height={47}

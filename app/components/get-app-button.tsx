@@ -82,7 +82,7 @@ export default function GetAppButton({
                 <div className="app-download-modal-card">
                   <img
                     className="app-download-modal-texture"
-                    src="/figma/assets/popup-bg-texture-2x.png"
+                    src="/figma/assets/popup-bg-texture-2x.webp"
                     alt=""
                     aria-hidden="true"
                   />
@@ -104,7 +104,7 @@ export default function GetAppButton({
 
                 <img
                   className="app-download-modal-mascot"
-                  src="/figma/assets/popup-mascot-2x.png"
+                  src="/figma/assets/popup-mascot-2x.webp"
                   alt=""
                   aria-hidden="true"
                 />

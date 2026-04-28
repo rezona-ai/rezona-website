@@ -208,12 +208,26 @@ function ExploreMoreCard({ card }: { card: ExploreCard }) {
 }
 
 export default function ExploreMoreClient() {
+  const [isMobile, setIsMobile] = useState<boolean | null>(null);
+
+  useEffect(() => {
+    const query = window.matchMedia("(max-width: 900px)");
+    const sync = () => setIsMobile(query.matches);
+    sync();
+    if (typeof query.addEventListener === "function") {
+      query.addEventListener("change", sync);
+      return () => query.removeEventListener("change", sync);
+    }
+    query.addListener(sync);
+    return () => query.removeListener(sync);
+  }, []);
+
   return (
     <main className="explore-more-page">
       <header className="explore-more-top-nav">
         <Link href="/" className="explore-more-top-logo" aria-label="Go back to home">
           <img
-            src="/figma/assets/mobile-top-logo-2x.png"
+            src="/figma/assets/mobile-top-logo-2x.webp"
             alt="REZONA"
             width={261}
             height={60}
@@ -243,50 +257,52 @@ export default function ExploreMoreClient() {
           Play and share
         </h1>
 
-        <div className="explore-more-desktop-grid">
-          <div className="explore-more-card-row">
-            {desktopCards.slice(0, 5).map((card) => (
+        {isMobile === null ? null : !isMobile ? (
+          <div className="explore-more-desktop-grid">
+            <div className="explore-more-card-row">
+              {desktopCards.slice(0, 5).map((card) => (
+                <ExploreMoreCard key={card.id} card={card} />
+              ))}
+            </div>
+            <div className="explore-more-card-row">
+              {desktopCards.slice(5, 10).map((card) => (
+                <ExploreMoreCard key={card.id} card={card} />
+              ))}
+            </div>
+            <img
+              className="explore-more-tagline-desktop"
+              src="/figma/assets/explore-more/tagline-desktop-2x.webp"
+              alt="Built for meme"
+              width={2598}
+              height={750}
+              loading="lazy"
+              decoding="async"
+            />
+            <div className="explore-more-card-row">
+              {desktopCards.slice(10, 15).map((card) => (
+                <ExploreMoreCard key={card.id} card={card} />
+              ))}
+            </div>
+          </div>
+        ) : (
+          <div className="explore-more-mobile-list">
+            {mobileCards.slice(0, 7).map((card) => (
+              <ExploreMoreCard key={card.id} card={card} />
+            ))}
+            <img
+              className="explore-more-tagline-mobile"
+              src="/figma/assets/explore-more/tagline-mobile-2x.webp"
+              alt="Built for meme"
+              width={684}
+              height={204}
+              loading="lazy"
+              decoding="async"
+            />
+            {mobileCards.slice(7).map((card) => (
               <ExploreMoreCard key={card.id} card={card} />
             ))}
           </div>
-          <div className="explore-more-card-row">
-            {desktopCards.slice(5, 10).map((card) => (
-              <ExploreMoreCard key={card.id} card={card} />
-            ))}
-          </div>
-          <img
-            className="explore-more-tagline-desktop"
-            src="/figma/assets/explore-more/tagline-desktop-2x.webp"
-            alt="Built for meme"
-            width={2598}
-            height={750}
-            loading="lazy"
-            decoding="async"
-          />
-          <div className="explore-more-card-row">
-            {desktopCards.slice(10, 15).map((card) => (
-              <ExploreMoreCard key={card.id} card={card} />
-            ))}
-          </div>
-        </div>
-
-        <div className="explore-more-mobile-list">
-          {mobileCards.slice(0, 7).map((card) => (
-            <ExploreMoreCard key={card.id} card={card} />
-          ))}
-          <img
-            className="explore-more-tagline-mobile"
-            src="/figma/assets/explore-more/tagline-mobile-2x.webp"
-            alt="Built for meme"
-            width={684}
-            height={204}
-            loading="lazy"
-            decoding="async"
-          />
-          {mobileCards.slice(7).map((card) => (
-            <ExploreMoreCard key={card.id} card={card} />
-          ))}
-        </div>
+        )}
       </section>
 
       <SiteFooter />
