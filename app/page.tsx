@@ -307,7 +307,7 @@ const HERO_BURST_PARTICLE_COUNT_LITE = Math.max(
   Math.round(HERO_BURST_PARTICLE_COUNT * 0.4)
 );
 const HERO_BURST_SECONDARY_EMITTER_RATE = 0.62;
-const HERO_BURST_ALPHA_GAIN = 0.72;
+const HERO_BURST_ALPHA_GAIN = 0.92;
 
 const randomBetween = (min: number, max: number) =>
   min + Math.random() * (max - min);
@@ -787,7 +787,7 @@ const mobileShowcaseScenes: ShowcaseScene[] = [
 const showcaseScenes: ShowcaseScene[] = [
   {
     id: "showcase-sec4",
-    media: "/figma/assets/sec4-media-2x.webp",
+    media: "/figma/assets/mobile-sec4-media-2x.webp",
     mediaAlt: "Fresh memes collage",
     title: "Freshest Memes\nFrom Every\nCorner",
     description:
@@ -796,7 +796,7 @@ const showcaseScenes: ShowcaseScene[] = [
   },
   {
     id: "showcase-sec5",
-    media: "/figma/assets/sec5-media-2x.webp",
+    media: "/figma/assets/mobile-sec5-media-2x.webp",
     mediaAlt: "VR creator portrait",
     title: "Total Creative\nControl",
     description:
@@ -805,7 +805,7 @@ const showcaseScenes: ShowcaseScene[] = [
   },
   {
     id: "showcase-sec6",
-    media: "/figma/assets/sec6-media-2x.webp",
+    media: "/figma/assets/mobile-sec6-media-2x.webp",
     mediaAlt: "Sound production studio",
     title: "Your Sounds –Or Ours",
     description:
@@ -814,7 +814,7 @@ const showcaseScenes: ShowcaseScene[] = [
   },
   {
     id: "showcase-sec7",
-    media: "/figma/assets/sec7-media-2x.webp",
+    media: "/figma/assets/mobile-sec7-media-2x.webp",
     mediaAlt: "Cyber crew group portrait",
     title: "Bring The Crew",
     description:
