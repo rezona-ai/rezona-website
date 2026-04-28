@@ -738,11 +738,13 @@ const heroGameSlices: HeroSlice[] = [
 ];
 
 const heroGameUrls = [
+  "https://storage.googleapis.com/rezona-ai-prod/agent-jobs/dist/5812251/12621602/index.html",
+  "https://storage.googleapis.com/rezona-ai-prod/agent-jobs/minigame/e927a528-687b-4189-b26d-e817c6bc1983/cartman_kfc.html",
+  "https://storage.googleapis.com/rezona-ai-prod/agent-jobs/minigame/37575c0a-1269-4815-86ab-f0d62fe14b4c/nuke-darts.html",
   "https://storage.googleapis.com/rezona-ai-prod/agent-jobs/minigame/18e7ae65-afcc-4cfc-8d01-a1b2d53b9ff0/escape-herbert.html",
   "https://storage.googleapis.com/rezona-ai-prod/agent-jobs/minigame/5eea8523-1e7c-4034-9e2c-49ecf6484e17/italian-brainrot-surfers.html",
-  "https://storage.googleapis.com/rezona-ai-dev/minigame/fe302bce-01c6-40d2-b305-78f24af81890/index.html",
-  "https://storage.googleapis.com/rezona-ai-prod/games/pgc/game3/video-fighters.html",
-  "https://storage.googleapis.com/rezona-ai-prod/minigame/a8479c74-1bfe-4bde-8cd3-7a7c9f22b35c/index.html",
+  "https://storage.googleapis.com/rezona-ai-prod/agent-jobs/dist/5812884/12623016/index.html",
+  "https://storage.googleapis.com/rezona-ai-prod/agent-jobs/minigame/ffcd7454-29a8-42e0-8871-b3d833d9a4c1/brainrot-solitaire.html",
 ];
 
 const mobileShowcaseScenes: ShowcaseScene[] = [
@@ -1145,10 +1147,8 @@ export default function Home() {
   const mobileHeroPanelsLoadedRef = useRef(0);
   const [heroGameIndex, setHeroGameIndex] = useState(0);
   const [heroGameLoading, setHeroGameLoading] = useState(true);
-  const [heroGameLiveMode, setHeroGameLiveMode] = useState(false);
 
   const switchHeroGame = (direction: 1 | -1) => {
-    setHeroGameLiveMode(true);
     setHeroGameIndex((prev) =>
       (prev + direction + heroGameUrls.length) % heroGameUrls.length
     );
@@ -1451,25 +1451,15 @@ export default function Home() {
                   });
                   return (
                     <div key={slice.id} className="hero-game-frame" style={sliceStyle}>
-                      {heroGameLiveMode ? (
-                        <iframe
-                          className="hero-game-iframe"
-                          src={heroGameUrls[heroGameIndex]}
-                          title="Hero game main"
-                          loading="eager"
-                          allow="autoplay; fullscreen; gamepad; gyroscope; accelerometer; xr-spatial-tracking"
-                          onLoad={() => setHeroGameLoading(false)}
-                        />
-                      ) : (
-                        <img
-                          className="hero-game-poster"
-                          src="/figma/assets/hero-game-main-2x.avif"
-                          alt="Hero game preview"
-                          loading="eager"
-                          decoding="async"
-                        />
-                      )}
-                      {heroGameLiveMode && heroGameLoading && (
+                      <iframe
+                        className="hero-game-iframe"
+                        src={heroGameUrls[heroGameIndex]}
+                        title="Hero game main"
+                        loading="eager"
+                        allow="autoplay; fullscreen; gamepad; gyroscope; accelerometer; xr-spatial-tracking"
+                        onLoad={() => setHeroGameLoading(false)}
+                      />
+                      {heroGameLoading && (
                         <div className="game-skeleton" aria-hidden="true" />
                       )}
                     </div>
@@ -1749,25 +1739,15 @@ export default function Home() {
 
           <section className="mobile-content-game-section">
             <div className="mobile-content-game-frame">
-              {heroGameLiveMode ? (
-                <iframe
-                  className="mobile-content-game-main"
-                  src={heroGameUrls[heroGameIndex]}
-                  title="Rezona game hero"
-                  loading="eager"
-                  allow="autoplay; fullscreen; gamepad; gyroscope; accelerometer; xr-spatial-tracking"
-                  onLoad={() => setHeroGameLoading(false)}
-                />
-              ) : (
-                <img
-                  className="mobile-content-game-main hero-game-poster"
-                  src="/figma/assets/hero-game-main-2x.avif"
-                  alt="Hero game preview"
-                  loading="eager"
-                  decoding="async"
-                />
-              )}
-              {heroGameLiveMode && heroGameLoading && (
+              <iframe
+                className="mobile-content-game-main"
+                src={heroGameUrls[heroGameIndex]}
+                title="Rezona game hero"
+                loading="eager"
+                allow="autoplay; fullscreen; gamepad; gyroscope; accelerometer; xr-spatial-tracking"
+                onLoad={() => setHeroGameLoading(false)}
+              />
+              {heroGameLoading && (
                 <div className="game-skeleton" aria-hidden="true" />
               )}
             </div>
