@@ -738,11 +738,11 @@ const heroGameSlices: HeroSlice[] = [
 ];
 
 const heroGameUrls = [
-  "https://storage.googleapis.com/rezona-ai-prod/minigame/8e946a5c-5e1d-48b2-b73f-1768449b29c3/index.html",
-  "https://storage.googleapis.com/rezona-ai-prod/minigame/1366b42a-687e-4794-9bf1-da98b681331e/index.html",
-  "https://storage.googleapis.com/rezona-ai-prod/minigame/3c300dab-eccb-4d3f-b8bc-55ca811f11dd/index.html",
-  "https://web.rezona.ai/bridge?src=https%3A%2F%2Fstorage.googleapis.com%2Frezona-ai-prod%2Fminigame%2F30569222-6790-4ff9-aa5f-60f841d531c5%2Findex.html&mask=https%3A%2F%2Fstorage.googleapis.com%2Frezona-ai-prod%2Fuser_upload%2Fdynamic-cover%2F381946%2Fdynamic-cover-381946-1771166941620-5ed79527-8291-43b9-9e7a-49451a1d2794.webp",
-  "https://storage.googleapis.com/rezona-ai-prod/minigame/20d90e41-52b5-41b0-aaee-9a149abf4b4f/index.html",
+  "https://storage.googleapis.com/rezona-ai-prod/agent-jobs/minigame/18e7ae65-afcc-4cfc-8d01-a1b2d53b9ff0/escape-herbert.html",
+  "https://storage.googleapis.com/rezona-ai-prod/agent-jobs/minigame/5eea8523-1e7c-4034-9e2c-49ecf6484e17/italian-brainrot-surfers.html",
+  "https://storage.googleapis.com/rezona-ai-dev/minigame/fe302bce-01c6-40d2-b305-78f24af81890/index.html",
+  "https://storage.googleapis.com/rezona-ai-prod/games/pgc/game3/video-fighters.html",
+  "https://storage.googleapis.com/rezona-ai-prod/minigame/a8479c74-1bfe-4bde-8cd3-7a7c9f22b35c/index.html",
 ];
 
 const mobileShowcaseScenes: ShowcaseScene[] = [
