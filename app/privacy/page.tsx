@@ -2,6 +2,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import DinoLottie from "../components/dino-lottie";
+import GetAppButton from "../components/get-app-button";
 
 export const metadata: Metadata = {
   title: "Rezona Privacy Policy",
@@ -116,15 +117,7 @@ export default function PrivacyPage() {
             decoding="async"
           />
         </Link>
-        <a
-          className="privacy-top-cta"
-          href="https://apps.apple.com/us/app/rezona-ai-game-maker/id6752310101"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Get App"
-        >
-          Get App
-        </a>
+        <GetAppButton className="privacy-top-cta" label="Get App" />
       </header>
 
       <section className="privacy-content-shell">

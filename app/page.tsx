@@ -1,9 +1,10 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
 
-import type { CSSProperties, MouseEvent } from "react";
+import type { CSSProperties } from "react";
 import Link from "next/link";
 import { memo, useEffect, useRef, useState } from "react";
+import GetAppButton from "./components/get-app-button";
 import heroParticleUgcAssets from "./data/hero-particle-ugc.json";
 import footerDinoAnimation from "./data/footer-dino-animation.json";
 
@@ -1142,7 +1143,6 @@ const MobileStatsLoopScene = memo(function MobileStatsLoopScene() {
 export default function Home() {
   const [isMobile, setIsMobile] = useState<boolean | null>(null);
   const [isSmallDesktop, setIsSmallDesktop] = useState(false);
-  const [isAppModalOpen, setIsAppModalOpen] = useState(false);
   const [mobileHeroPanelsReady, setMobileHeroPanelsReady] = useState(false);
   const mobileHeroPanelsLoadedRef = useRef(0);
   const [heroGameIndex, setHeroGameIndex] = useState(0);
@@ -1153,15 +1153,6 @@ export default function Home() {
       (prev + direction + heroGameUrls.length) % heroGameUrls.length
     );
     setHeroGameLoading(true);
-  };
-
-  const openAppModal = (event?: MouseEvent<HTMLAnchorElement>) => {
-    event?.preventDefault();
-    setIsAppModalOpen(true);
-  };
-
-  const closeAppModal = () => {
-    setIsAppModalOpen(false);
   };
 
   useEffect(() => {
@@ -1375,25 +1366,6 @@ export default function Home() {
     };
   }, [isMobile, isSmallDesktop]);
 
-  useEffect(() => {
-    if (!isAppModalOpen) return;
-
-    const originalOverflow = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-
-    const handleEscClose = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
-        setIsAppModalOpen(false);
-      }
-    };
-
-    window.addEventListener("keydown", handleEscClose);
-    return () => {
-      document.body.style.overflow = originalOverflow;
-      window.removeEventListener("keydown", handleEscClose);
-    };
-  }, [isAppModalOpen]);
-
   if (isMobile === null) {
     return <main className="rezona-page" style={{ minHeight: "100vh" }} />;
   }
@@ -1411,6 +1383,13 @@ export default function Home() {
               loading="eager"
               decoding="async"
             />
+            <Link
+              className="home-top-explore-link"
+              href="/explore-more"
+              aria-label="Explore more games"
+            >
+              Explore more games
+            </Link>
           </header>
 
           <div className="desktop-layout">
@@ -1505,16 +1484,13 @@ export default function Home() {
                 <br />
                 platform.
               </h1>
-              <a
+              <GetAppButton
                 className="hero-center-cta"
-                href="https://apps.apple.com/us/app/rezona-ai-game-maker/id6752310101"
-                target="_blank"
-                rel="noopener noreferrer"
                 aria-label="Get App Now"
-                onClick={openAppModal}
+                label="Get App Now"
               >
                 <span>Get App Now</span>
-              </a>
+              </GetAppButton>
             </div>
           </div>
         </div>
@@ -1694,15 +1670,12 @@ export default function Home() {
             />
             <a
               className="mobile-top-cta"
-              href="https://apps.apple.com/us/app/rezona-ai-game-maker/id6752310101"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Get App"
-              onClick={openAppModal}
+              href="/explore-more"
+              aria-label="Explore more"
             >
               <img
                 src="/figma/assets/mobile-top-cta-2x.png"
-                alt="Get App"
+                alt="Explore more"
                 width={90}
                 height={40}
                 loading="lazy"
@@ -1713,13 +1686,10 @@ export default function Home() {
 
           <div className="mobile-hero-copy">
             <h1 className="mobile-hero-title">Meme culture, now a social platform.</h1>
-            <a
+            <GetAppButton
               className="mobile-hero-cta"
-              href="https://apps.apple.com/us/app/rezona-ai-game-maker/id6752310101"
-              target="_blank"
-              rel="noopener noreferrer"
               aria-label="Get App Now"
-              onClick={openAppModal}
+              label="Get App Now"
             >
               <img
                 src="/figma/assets/mobile-hero-cta-2x.png"
@@ -1729,7 +1699,7 @@ export default function Home() {
                 loading="lazy"
                 decoding="async"
               />
-            </a>
+            </GetAppButton>
           </div>
         </section>
         <div className="mobile-content-shell">
@@ -1923,51 +1893,6 @@ export default function Home() {
         </div>
       )}
 
-      {isAppModalOpen && (
-        <div
-          className="app-download-modal-overlay"
-          role="presentation"
-          onClick={closeAppModal}
-        >
-          <div
-            className="app-download-modal-shell"
-            role="dialog"
-            aria-modal="true"
-            aria-labelledby="app-download-modal-title"
-            onClick={(event) => event.stopPropagation()}
-          >
-            <div className="app-download-modal-card">
-              <img
-                className="app-download-modal-texture"
-                src="/figma/assets/popup-bg-texture-2x.png"
-                alt=""
-                aria-hidden="true"
-              />
-
-              <div className="app-download-modal-header">
-                <span className="app-download-modal-close-spacer" aria-hidden="true" />
-                <h2 id="app-download-modal-title">Use the app for more fun</h2>
-              </div>
-
-              <div className="app-download-modal-qr-inner">
-                <img
-                  src="/figma/assets/popup-qr-content-2x.webp"
-                  alt="Scan QR code to download the app"
-                  width={262}
-                  height={267}
-                />
-              </div>
-            </div>
-
-            <img
-              className="app-download-modal-mascot"
-              src="/figma/assets/popup-mascot-2x.png"
-              alt=""
-              aria-hidden="true"
-            />
-          </div>
-        </div>
-      )}
     </main>
   );
 }
