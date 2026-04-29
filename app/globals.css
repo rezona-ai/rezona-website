@@ -2956,7 +2956,7 @@ select {
     width: 100%;
     min-height: auto;
     border-radius: 18px;
-    padding: 12px 12px 14px;
+    padding: 12px 12px 14px 0;
     gap: 10px;
   }
 
