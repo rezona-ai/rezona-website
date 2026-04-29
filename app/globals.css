@@ -970,13 +970,6 @@ select {
   }
 }
 
-@supports not (mix-blend-mode: hard-light) {
-  .app-download-modal-texture {
-    mix-blend-mode: normal;
-    opacity: 0.06;
-  }
-}
-
 .stats-loop-scene {
   --p: 0;
   --stats-stage-width: clamp(400px, 33.5vw, 640px);
@@ -1838,18 +1831,6 @@ select {
   justify-items: center;
   align-content: start;
   gap: 24px;
-}
-
-.app-download-modal-texture {
-  position: absolute;
-  left: 50%;
-  top: -142px;
-  width: 601px;
-  height: 601px;
-  transform: translateX(-50%);
-  mix-blend-mode: hard-light;
-  opacity: 0.1;
-  pointer-events: none;
 }
 
 .app-download-modal-header {

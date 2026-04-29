@@ -80,13 +80,6 @@ export default function GetAppButton({
             >
               <div className="app-download-modal-stage">
                 <div className="app-download-modal-card">
-                  <img
-                    className="app-download-modal-texture"
-                    src="/figma/assets/popup-bg-texture-2x.webp"
-                    alt=""
-                    aria-hidden="true"
-                  />
-
                   <div className="app-download-modal-header">
                     <span className="app-download-modal-close-spacer" aria-hidden="true" />
                     <h2 id="app-download-modal-title">Use the app for more fun</h2>
