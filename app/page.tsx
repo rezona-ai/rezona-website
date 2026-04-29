@@ -5,6 +5,7 @@ import type { CSSProperties } from "react";
 import Link from "next/link";
 import { memo, useEffect, useRef, useState } from "react";
 import GetAppButton from "./components/get-app-button";
+import SiteFooter from "./components/site-footer";
 import heroParticleUgcAssets from "./data/hero-particle-ugc.json";
 import footerDinoAnimation from "./data/footer-dino-animation.json";
 
@@ -918,49 +919,6 @@ const footerSocialSlices = [
     id: "social",
     asset: "/figma/assets/social.webp",
     left: 95.1667,
-    href: "https://www.reddit.com/r/rezona/",
-  },
-];
-
-const mobileFooterSocialSlices = [
-  {
-    id: "x",
-    asset: "/figma/assets/mobile-social-x-2x.webp",
-    href: "https://x.com/rezona_ai",
-  },
-  {
-    id: "telegram",
-    asset: "/figma/assets/mobile-social-telegram-2x.webp",
-    href: "https://t.me/rezona_ai",
-  },
-  {
-    id: "discord",
-    asset: "/figma/assets/mobile-social-discord-2x.webp",
-    href: "https://discord.gg/rezona",
-  },
-  {
-    id: "tiktok",
-    asset: "/figma/assets/mobile-social-tiktok-2x.webp",
-    href: "https://www.tiktok.com/@rezona.ai",
-  },
-  {
-    id: "youtube",
-    asset: "/figma/assets/mobile-social-youtube-2x.webp",
-    href: "https://www.youtube.com/@rezona-app",
-  },
-  {
-    id: "instagram",
-    asset: "/figma/assets/mobile-social-instagram-2x.webp",
-    href: "https://www.instagram.com/rezona.ai",
-  },
-  {
-    id: "threads",
-    asset: "/figma/assets/mobile-social-threads-2x.webp",
-    href: "https://www.threads.com/@rezona.ai",
-  },
-  {
-    id: "social",
-    asset: "/figma/assets/social-mobile.webp",
     href: "https://www.reddit.com/r/rezona/",
   },
 ];
@@ -1882,96 +1840,7 @@ export default function Home() {
             />
           </section>
 
-          <footer className="mobile-footer">
-            <div className="mobile-footer-top">
-              <div className="mobile-footer-qr-wrap">
-                <img
-                  className="mobile-footer-qr"
-                  src="/figma/assets/popup-qr-content-2x.webp"
-                  alt="QR code"
-                  width={61}
-                  height={61}
-                  loading="lazy"
-                  decoding="async"
-                />
-              </div>
-              <div className="mobile-footer-store">
-                <a
-                  href="https://apps.apple.com/us/app/rezona-ai-game-maker/id6752310101"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Open App Store"
-                >
-                  <img
-                    src="/figma/assets/store-appstore-new.webp"
-                    alt="App Store"
-                    width={120}
-                    height={40}
-                    loading="lazy"
-                    decoding="async"
-                  />
-                </a>
-                <a
-                  href="https://play.google.com/store/apps/details?id=ai.rezona.app"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Open Google Play"
-                >
-                  <img
-                    src="/figma/assets/store-qr-new.webp"
-                    alt="Google Play"
-                    width={120}
-                    height={40}
-                    loading="lazy"
-                    decoding="async"
-                  />
-                </a>
-              </div>
-            </div>
-
-            <div className="mobile-footer-social">
-              {mobileFooterSocialSlices.map((item) => (
-                <a
-                  key={`mobile-${item.id}`}
-                  href={item.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={`Open ${item.id}`}
-                >
-                  <img
-                    src={item.asset}
-                    alt={item.id}
-                    width={24}
-                    height={24}
-                    loading="lazy"
-                    decoding="async"
-                  />
-                </a>
-              ))}
-            </div>
-
-            <p className="mobile-footer-brand" aria-label="REZONA.AI">
-              REZONA.AI
-            </p>
-            <DinoLottie
-              className="mobile-footer-dino"
-              fallbackSrc="/figma/assets/footer-dino-loading-animation-1.svg"
-              alt="Dino walking"
-            />
-
-            <div className="mobile-footer-legal" aria-label="Legal information">
-              <div className="mobile-footer-legal-links">
-                <Link className="mobile-footer-legal-link" href="/privacy">
-                  Privacy Policy
-                </Link>
-                <span aria-hidden="true"> | </span>
-                <Link className="mobile-footer-legal-link" href="/terms">
-                  Term of Service
-                </Link>
-              </div>
-              <p className="mobile-footer-legal-copy">© 2026 All Rights Reserved, Rezona</p>
-            </div>
-          </footer>
+          <SiteFooter />
         </div>
         </div>
       )}
