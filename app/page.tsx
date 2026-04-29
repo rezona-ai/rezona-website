@@ -762,11 +762,11 @@ const heroGameSlices: HeroSlice[] = [
 ];
 
 const heroGameUrls = [
-  "https://storage.googleapis.com/rezona-ai-prod/agent-jobs/dist/5812251/12621602/index.html",
+  "https://storage.googleapis.com/rezona-ai-prod/agent-jobs/minigame/5eea8523-1e7c-4034-9e2c-49ecf6484e17/italian-brainrot-surfers.html",
   "https://storage.googleapis.com/rezona-ai-prod/agent-jobs/minigame/e927a528-687b-4189-b26d-e817c6bc1983/cartman_kfc.html",
   "https://storage.googleapis.com/rezona-ai-prod/agent-jobs/minigame/37575c0a-1269-4815-86ab-f0d62fe14b4c/nuke-darts.html",
   "https://storage.googleapis.com/rezona-ai-prod/agent-jobs/minigame/18e7ae65-afcc-4cfc-8d01-a1b2d53b9ff0/escape-herbert.html",
-  "https://storage.googleapis.com/rezona-ai-prod/agent-jobs/minigame/5eea8523-1e7c-4034-9e2c-49ecf6484e17/italian-brainrot-surfers.html",
+  "https://storage.googleapis.com/rezona-ai-prod/agent-jobs/dist/5812251/12621602/index.html",
   "https://storage.googleapis.com/rezona-ai-prod/agent-jobs/dist/5812884/12623016/index.html",
   "https://storage.googleapis.com/rezona-ai-prod/agent-jobs/minigame/ffcd7454-29a8-42e0-8871-b3d833d9a4c1/brainrot-solitaire.html",
 ];
