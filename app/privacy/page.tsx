@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import type { Metadata } from "next";
+import "../legal-pages.css";
 import Link from "next/link";
 import GetAppButton from "../components/get-app-button";
 import SiteFooter from "../components/site-footer";

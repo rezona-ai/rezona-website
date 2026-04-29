@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import "../explore-more.css";
 import ExploreMoreClient from "./page-client";
 
 export const metadata: Metadata = {
