@@ -113,6 +113,7 @@ const mobileCards = cards;
 function ExploreMoreCard({ card }: { card: ExploreCard }) {
   const [loaded, setLoaded] = useState(false);
   const [timedOut, setTimedOut] = useState(false);
+  const [reloadToken, setReloadToken] = useState(0);
   const stats = [
     { key: "plays", value: card.plays, icon: statIcons.plays },
     { key: "shares", value: card.shares, icon: statIcons.shares },
@@ -125,10 +126,16 @@ function ExploreMoreCard({ card }: { card: ExploreCard }) {
 
     const timeoutId = window.setTimeout(() => {
       setTimedOut(true);
-    }, 10000);
+    }, 15000);
 
     return () => window.clearTimeout(timeoutId);
   }, [loaded, timedOut]);
+
+  const handleRetryLoad = () => {
+    setLoaded(false);
+    setTimedOut(false);
+    setReloadToken((prev) => prev + 1);
+  };
 
   return (
     <div className="explore-more-card" aria-label={card.title}>
@@ -136,6 +143,7 @@ function ExploreMoreCard({ card }: { card: ExploreCard }) {
         {!timedOut ? (
           <>
             <iframe
+              key={`${card.id}-${reloadToken}`}
               className="explore-more-card-media-iframe"
               src={card.href}
               title={card.title}
@@ -146,15 +154,22 @@ function ExploreMoreCard({ card }: { card: ExploreCard }) {
             {!loaded && <div className="game-skeleton" aria-hidden="true" />}
           </>
         ) : (
-          <img
-            className="explore-more-card-media-cover"
-            src="/figma/assets/explore-more/card-media-2x.webp"
-            alt={card.title}
-            width={684}
-            height={1092}
-            loading="lazy"
-            decoding="async"
-          />
+          <button
+            type="button"
+            className="explore-more-card-retry"
+            onClick={handleRetryLoad}
+            aria-label={`Reload ${card.title}`}
+          >
+            <img
+              className="explore-more-card-media-cover"
+              src="/figma/assets/explore-more/card-media-2x.webp"
+              alt={card.title}
+              width={684}
+              height={1092}
+              loading="lazy"
+              decoding="async"
+            />
+          </button>
         )}
       </div>
       <div className="explore-more-card-meta">
