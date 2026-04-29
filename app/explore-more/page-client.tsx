@@ -25,21 +25,21 @@ const statIcons = {
 } as const;
 
 const exploreGameUrls = [
-  "https://storage.googleapis.com/rezona-ai-prod/agent-jobs/minigame/18e7ae65-afcc-4cfc-8d01-a1b2d53b9ff0/escape-herbert.html",
-  "https://storage.googleapis.com/rezona-ai-prod/agent-jobs/minigame/5eea8523-1e7c-4034-9e2c-49ecf6484e17/italian-brainrot-surfers.html",
-  "https://storage.googleapis.com/rezona-ai-prod/agent-jobs/dist/5812884/12623016/index.html",
-  "https://storage.googleapis.com/rezona-ai-prod/agent-jobs/minigame/cf4e870e-c812-49bb-8e8f-9c794b36689b/backrooms-hamster-3d.html",
-  "https://storage.googleapis.com/rezona-ai-prod/agent-jobs/minigame/ffcd7454-29a8-42e0-8871-b3d833d9a4c1/brainrot-solitaire.html",
-  "https://storage.googleapis.com/rezona-ai-prod/agent-jobs/dist/6511875/14464824/index.html",
-  "https://storage.googleapis.com/rezona-ai-prod/minigame/b2f6f6e5-c351-4a89-8f2e-069b1ed1a51f/index.html",
-  "https://storage.googleapis.com/rezona-ai-prod/user_upload/game/version/latest-989c3b3a-a6b1-4f1d-b0ab-6b809fcff88b.html",
-  "https://storage.googleapis.com/rezona-ai-prod/user_upload/game/version/latest-7cb252df-71cc-4312-8f56-7cb7cc8b2d3f.html",
-  "https://storage.googleapis.com/rezona-ai-dev/minigame/fe302bce-01c6-40d2-b305-78f24af81890/index.html",
+  "https://storage.googleapis.com/rezona-ai-prod/agent-jobs/minigame/c3230800-b189-4fc2-8417-f49b1bc6706f/rip-the-net_1.html",
+  "https://storage.googleapis.com/rezona-ai-prod/agent-jobs/dist/6683582/14916899/index.html",
+  "https://storage.googleapis.com/rezona-ai-prod/agent-jobs/dist/5812942/12623162/index.html",
+  "https://storage.googleapis.com/rezona-ai-prod/agent-jobs/minigame/95e60068-933b-427d-ba46-b598b6737d13/Trump Gaza Vacation/Tanning Game.html",
   "https://storage.googleapis.com/rezona-ai-prod/games/pgc/game3/video-fighters.html",
-  "https://storage.googleapis.com/rezona-ai-prod/minigame/823369f1-e19e-48a5-878b-fdf3a6ae7baa/index.html",
-  "https://storage.googleapis.com/rezona-ai-prod/minigame/2862bc43-c8f3-4745-930c-346315712497/index.html",
+  "https://storage.googleapis.com/rezona-ai-prod/agent-jobs/dist/6653609/14748402/index.html",
+  "https://storage.googleapis.com/rezona-ai-prod/agent-jobs/minigame/9e6f8c4e-ad79-4576-945f-2dae90c805d3/oil_tycoon.html",
   "https://storage.googleapis.com/rezona-ai-prod/minigame/a8479c74-1bfe-4bde-8cd3-7a7c9f22b35c/index.html",
-  "https://storage.googleapis.com/rezona-ai-prod/minigame/48073f9b-c7be-4162-a7ce-d0fa55176c52/index.html",
+  "https://storage.googleapis.com/rezona-ai-prod/minigame/2862bc43-c8f3-4745-930c-346315712497/index.html",
+  "https://storage.googleapis.com/rezona-ai-prod/minigame/22b906be-0fe4-4b1e-b1d6-dd43d8ec214b/index.html",
+  "https://storage.googleapis.com/rezona-ai-prod/agent-jobs/minigame/25e2cc83-fd50-4be5-bdd1-4b7711912579/episode1_colarina.html",
+  "https://storage.googleapis.com/rezona-ai-prod/minigame/4f724db2-2a16-4263-8740-60a2506822dc/index.html",
+  "https://storage.googleapis.com/rezona-ai-prod/minigame/87faa715-8b6a-47e0-a6cd-f5865ccd2718/index.html",
+  "https://storage.googleapis.com/rezona-ai-prod/agent-jobs/minigame/1519db18-54e9-4274-9395-95e2a64f3025/episode1_the_wolfs_secret.html",
+  "https://storage.googleapis.com/rezona-ai-prod/minigame/823369f1-e19e-48a5-878b-fdf3a6ae7baa/index.html",
 ];
 
 const cardTitles = [
