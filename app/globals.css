@@ -2051,7 +2051,8 @@ select {
   display: block;
 }
 
-.explore-more-top-cta {
+.home-mobile-top-cta,
+.home-mobile-hero-cta {
   width: 120px;
   height: 40px;
   border-radius: 999px;
@@ -2072,7 +2073,7 @@ select {
   letter-spacing: 0.14px;
 }
 
-.mobile-top-cta.explore-more-top-cta {
+.mobile-top-cta.home-mobile-top-cta {
   display: inline-flex;
 }
 

@@ -1725,7 +1725,7 @@ export default function Home() {
               decoding="async"
             />
             <a
-              className="mobile-top-cta explore-more-top-cta"
+              className="mobile-top-cta home-mobile-top-cta"
               href="/explore-more"
               aria-label="Explore more"
             >
@@ -1736,7 +1736,7 @@ export default function Home() {
           <div className="mobile-hero-copy">
             <h1 className="mobile-hero-title">Meme culture, now a social platform.</h1>
             <GetAppButton
-              className="mobile-hero-cta explore-more-top-cta"
+              className="mobile-hero-cta home-mobile-hero-cta"
               aria-label="Get App Now"
               label="Get App Now"
             />
