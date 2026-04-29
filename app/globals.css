@@ -1946,7 +1946,7 @@ select {
 
 .app-download-modal-mascot {
   position: absolute;
-  left: 8px;
+  left: -36px;
   bottom: 26px;
   width: 164px;
   height: 176px;
@@ -2980,7 +2980,7 @@ select {
   .app-download-modal-mascot {
     width: 76px;
     height: 82px;
-    left: 4px;
+    left: -16px;
     bottom: 8px;
     transform: translateX(-32%) !important;
   }
