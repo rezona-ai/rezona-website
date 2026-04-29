@@ -1433,23 +1433,24 @@ export default function Home() {
     <main className="rezona-page">
       {!isMobile && (
         <>
-          <header className="figma-header desktop-only">
+          <Link className="home-top-logo desktop-only" href="/" aria-label="Go back to home">
             <img
-              src="/figma/assets/header.webp"
-              alt="Rezona Header"
-              width={1920}
-              height={109}
+              src="/figma/assets/mobile-top-logo-2x.webp"
+              alt="REZONA"
+              width={261}
+              height={60}
               loading="eager"
               decoding="async"
             />
-            <Link
-              className="home-top-explore-link home-top-explore-pill"
-              href="/explore-more"
-              aria-label="Explore more games"
-            >
-              Explore more games
-            </Link>
-          </header>
+          </Link>
+
+          <Link
+            className="home-top-explore-link home-top-explore-pill desktop-only"
+            href="/explore-more"
+            aria-label="Explore more games"
+          >
+            Explore more games
+          </Link>
 
           <div className="desktop-layout">
       <section className="scene hero-fly-scene" data-scene="hero-fly" data-active="true">

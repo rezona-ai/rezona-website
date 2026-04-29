@@ -5,8 +5,17 @@ import GetAppButton from "../components/get-app-button";
 import SiteFooter from "../components/site-footer";
 
 export const metadata: Metadata = {
-  title: "Rezona Terms of Service",
-  description: "Read Rezona's Terms of Service and End User License Agreement.",
+  title: "REZONA",
+  description:
+    "Rezona is an AI-powered game creation platform where anyone can turn ideas into playable games in seconds. No coding, no limits, just creativity.",
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/logo.png", type: "image/png" },
+    ],
+    shortcut: "/favicon.ico",
+    apple: "/logo.png",
+  },
 };
 
 export default function TermsPage() {

@@ -135,22 +135,6 @@ select {
   overflow-x: clip;
 }
 
-.figma-header {
-  position: fixed;
-  inset: 0 0 auto 0;
-  z-index: 80;
-  display: flex;
-  justify-content: center;
-  pointer-events: none;
-}
-
-.figma-header img {
-  width: 100%;
-  height: auto;
-  display: block;
-  max-width: 1920px;
-}
-
 .home-top-explore-link {
   position: fixed;
   top: 20px;
@@ -159,13 +143,32 @@ select {
   pointer-events: auto;
 }
 
+.home-top-logo {
+  position: fixed;
+  top: 20px;
+  left: max(24px, calc((100vw - 1920px) / 2 + 42px));
+  z-index: 85;
+  pointer-events: auto;
+  display: inline-flex;
+  align-items: center;
+}
+
+.home-top-logo img {
+  width: 239px;
+  height: auto;
+  display: block;
+}
+
+.home-top-logo.desktop-only {
+  position: fixed;
+}
+
 .home-top-explore-pill {
   width: 248px;
   height: 54px;
   border-radius: 999px;
   border: 0;
-  background: transparent !important;
-  color: transparent !important;
+  background: #f0f0f0;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -173,8 +176,8 @@ select {
   cursor: pointer;
   appearance: none;
   font-family: var(--font-montserrat);
-  font-size: 0;
-  font-weight: 600;
+  font-size: 18px;
+  font-weight: 500;
   letter-spacing: 0.14px;
   line-height: 1;
   text-decoration: none;
@@ -182,6 +185,7 @@ select {
   transform: none;
   isolation: isolate;
   text-shadow: none !important;
+  color: #1e1f23;
 }
 
 .home-top-explore-pill::before,
@@ -2992,10 +2996,6 @@ select {
 
 @media (max-width: 768px) {
 
-  .figma-header {
-    top: 6px;
-  }
-
   .hero-fly-scene {
     height: 154vh;
   }
@@ -3166,7 +3166,7 @@ select {
 }
 
 .explore-more-top-logo img {
-  width: 261px;
+  width: 239px;
   height: auto;
   display: block;
 }
