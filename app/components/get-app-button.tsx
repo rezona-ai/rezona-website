@@ -85,13 +85,15 @@ export default function GetAppButton({
                     <h2 id="app-download-modal-title">Use the app for more fun</h2>
                   </div>
 
-                  <div className="app-download-modal-qr-inner">
-                    <img
-                      src="/figma/assets/popup-qr-content-2x.webp"
-                      alt="Scan QR code to download the app"
-                      width={262}
-                      height={267}
-                    />
+                  <div className="app-download-modal-qr-wrap">
+                    <div className="app-download-modal-qr-inner">
+                      <img
+                        src="/figma/assets/popup-qr-content-2x.webp"
+                        alt="Scan QR code to download the app"
+                        width={262}
+                        height={267}
+                      />
+                    </div>
                   </div>
                 </div>
 

@@ -1908,6 +1908,14 @@ select {
   z-index: 1;
 }
 
+.app-download-modal-qr-wrap {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  z-index: 1;
+}
+
 .app-download-modal-qr-inner::after {
   content: "";
   position: absolute;
@@ -2974,8 +2982,12 @@ select {
     height: 184px;
     border-radius: 16px;
     padding: 12px;
-    margin-inline: auto;
-    place-self: center;
+    position: relative;
+    left: auto;
+    transform: none;
+    margin-inline: 0;
+    justify-self: auto;
+    align-self: auto;
   }
 
   .app-download-modal-qr-inner::after {
@@ -2985,13 +2997,14 @@ select {
   .app-download-modal-mascot {
     width: 76px;
     height: 82px;
-    left: -10px;
+    left: -25px;
     bottom: 10px;
     transform: translateX(-20%) !important;
   }
 
   .app-download-modal-stage,
   .app-download-modal-card,
+  .app-download-modal-qr-wrap,
   .app-download-modal-qr-inner,
   .app-download-modal-header h2,
   .app-download-modal-mascot {
