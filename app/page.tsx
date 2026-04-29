@@ -250,6 +250,7 @@ const heroBurstNonGifVisualAssets: HeroBurstVisualAsset[] = heroBurstVisualAsset
 
 const HERO_BURST_VISUAL_RECENT_WINDOW = 10;
 const HERO_BURST_GIF_RATE = 0.16;
+const HERO_BURST_GIF_RATE_MOBILE = 0;
 const heroBurstRecentVisualIds: string[] = [];
 
 const deterministicUnitBySeed = (seed: number) => {
@@ -257,10 +258,14 @@ const deterministicUnitBySeed = (seed: number) => {
   return x - Math.floor(x);
 };
 
-const pickHeroBurstVisualAssetBySeed = (seed: number): HeroBurstVisualAsset => {
+const pickHeroBurstVisualAssetBySeed = (
+  seed: number,
+  options?: { preferNonGif?: boolean }
+): HeroBurstVisualAsset => {
+  const gifRate = options?.preferNonGif ? HERO_BURST_GIF_RATE_MOBILE : HERO_BURST_GIF_RATE;
   const shouldUseGif =
     heroBurstGifVisualAssets.length > 0 &&
-    deterministicUnitBySeed(seed) < HERO_BURST_GIF_RATE;
+    deterministicUnitBySeed(seed) < gifRate;
   const pool =
     shouldUseGif && heroBurstGifVisualAssets.length > 0
       ? heroBurstGifVisualAssets
@@ -307,6 +312,7 @@ const HERO_BURST_PARTICLE_COUNT_LITE = Math.max(
   10,
   Math.round(HERO_BURST_PARTICLE_COUNT * 0.4)
 );
+const HERO_BURST_PARTICLE_COUNT_MOBILE_LITE = 6;
 const HERO_BURST_SECONDARY_EMITTER_RATE = 0.62;
 const HERO_BURST_ALPHA_GAIN = 0.92;
 
@@ -318,10 +324,12 @@ const pickRandom = <T,>(items: readonly T[]) =>
 
 const createRandomHeroBurstParticle = (
   seed: number,
-  options?: { prefillPhase?: boolean }
+  options?: { prefillPhase?: boolean; preferNonGif?: boolean; mobileLite?: boolean }
 ): HeroBurstParticle => {
   const motionSource = pickRandom(flyCards);
-  const visualSource = pickHeroBurstVisualAssetBySeed(seed);
+  const visualSource = pickHeroBurstVisualAssetBySeed(seed, {
+    preferNonGif: options?.preferNonGif,
+  });
   const nearWeight = Math.min(
     1,
     Math.max(0, (motionSource.depth - 640) / (1450 - 640))
@@ -374,6 +382,7 @@ const createRandomHeroBurstParticle = (
     : Math.random() < 0.16
       ? randomBetween(1.18, 1.48)
       : 1;
+  const mobileScale = options?.mobileLite ? 0.82 : 1;
   const sizeVw = Math.max(
     2.5,
     Math.min(
@@ -381,7 +390,8 @@ const createRandomHeroBurstParticle = (
       motionSource.wPct *
         randomBetween(0.46, 0.66) *
         (1 + nearWeight * 0.12) *
-        rareLargeBoost
+        rareLargeBoost *
+        mobileScale
     )
   );
 
@@ -442,16 +452,20 @@ const HeroBurstParticleCard = memo(function HeroBurstParticleCard({
   seed,
   prefillPhase = false,
   performanceLite = false,
+  preferNonGif = false,
+  mobileLite = false,
   onExited,
 }: {
   cardId: number;
   seed: number;
   prefillPhase?: boolean;
   performanceLite?: boolean;
+  preferNonGif?: boolean;
+  mobileLite?: boolean;
   onExited: (cardId: number) => void;
 }) {
   const [particle] = useState<HeroBurstParticle>(() =>
-    createRandomHeroBurstParticle(seed, { prefillPhase })
+    createRandomHeroBurstParticle(seed, { prefillPhase, preferNonGif, mobileLite })
   );
   const durationS = performanceLite ? particle.durationS * 1.24 : particle.durationS;
   const alpha = performanceLite ? particle.alpha * 0.88 : particle.alpha;
@@ -491,12 +505,18 @@ const HeroBurstParticleCard = memo(function HeroBurstParticleCard({
 
 const HeroBurstCanvas = memo(function HeroBurstCanvas({
   performanceLite = false,
+  preferNonGif = false,
+  mobileLite = false,
 }: {
   performanceLite?: boolean;
+  preferNonGif?: boolean;
+  mobileLite?: boolean;
 }) {
-  const particleCount = performanceLite
-    ? HERO_BURST_PARTICLE_COUNT_LITE
-    : HERO_BURST_PARTICLE_COUNT;
+  const particleCount = mobileLite
+    ? HERO_BURST_PARTICLE_COUNT_MOBILE_LITE
+    : performanceLite
+      ? HERO_BURST_PARTICLE_COUNT_LITE
+      : HERO_BURST_PARTICLE_COUNT;
   const particleSeedRef = useRef(particleCount);
   const particleCardIdRef = useRef(particleCount);
   const pendingExitedIdsRef = useRef<number[]>([]);
@@ -585,6 +605,8 @@ const HeroBurstCanvas = memo(function HeroBurstCanvas({
             seed={card.seed}
             prefillPhase={card.prefillPhase}
             performanceLite={performanceLite}
+            preferNonGif={preferNonGif}
+            mobileLite={mobileLite}
             onExited={handleCardExited}
           />
         ))}
@@ -1184,10 +1206,13 @@ const MobileStatsLoopScene = memo(function MobileStatsLoopScene() {
 export default function Home() {
   const [isMobile, setIsMobile] = useState<boolean | null>(null);
   const [isSmallDesktop, setIsSmallDesktop] = useState(false);
+  const [isMobilePerfLite, setIsMobilePerfLite] = useState(false);
   const [mobileHeroPanelsReady, setMobileHeroPanelsReady] = useState(false);
   const mobileHeroPanelsLoadedRef = useRef(0);
+  const mobileHeroGameSectionRef = useRef<HTMLElement | null>(null);
   const [heroGameIndex, setHeroGameIndex] = useState(0);
   const [heroGameLoading, setHeroGameLoading] = useState(true);
+  const [shouldLoadMobileHeroGame, setShouldLoadMobileHeroGame] = useState(false);
 
   const switchHeroGame = (direction: 1 | -1) => {
     setHeroGameIndex((prev) =>
@@ -1224,6 +1249,41 @@ export default function Home() {
       smallDesktopQuery.removeListener(syncLayout);
     };
   }, []);
+
+  useEffect(() => {
+    if (!isMobile) {
+      setIsMobilePerfLite(false);
+      return;
+    }
+    const hardwareCores = navigator.hardwareConcurrency ?? 4;
+    const memorySize = (navigator as Navigator & { deviceMemory?: number }).deviceMemory ?? 4;
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const liteMode = reducedMotion || hardwareCores <= 6 || memorySize <= 4;
+    setIsMobilePerfLite(liteMode);
+  }, [isMobile]);
+
+  useEffect(() => {
+    if (!isMobile) {
+      setShouldLoadMobileHeroGame(false);
+      return;
+    }
+    const section = mobileHeroGameSectionRef.current;
+    if (!section) return;
+    if (typeof IntersectionObserver !== "function") {
+      setShouldLoadMobileHeroGame(true);
+      return;
+    }
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (!entries[0]?.isIntersecting) return;
+        setShouldLoadMobileHeroGame(true);
+        observer.disconnect();
+      },
+      { root: null, rootMargin: "260px 0px 260px 0px", threshold: 0.01 }
+    );
+    observer.observe(section);
+    return () => observer.disconnect();
+  }, [isMobile]);
 
   useEffect(() => {
     const syncMobileViewportHeight = () => {
@@ -1425,7 +1485,7 @@ export default function Home() {
               decoding="async"
             />
             <Link
-              className="home-top-explore-link"
+              className="home-top-explore-link home-top-explore-pill"
               href="/explore-more"
               aria-label="Explore more games"
             >
@@ -1585,13 +1645,9 @@ export default function Home() {
               fallbackSrc="/figma/assets/footer-dino-loading-animation-1.svg"
               alt="Dino"
             />
-            <img
-              className="footer-bottom-brand"
-              src="/figma/assets/footer-rezona-text-2x.webp"
-              alt="REZONA.AI"
-              loading="lazy"
-              decoding="async"
-            />
+            <p className="footer-bottom-brand" aria-label="REZONA.AI">
+              REZONA.AI
+            </p>
             <a
               className="footer-bottom-appstore"
               href="https://apps.apple.com/us/app/rezona-ai-game-maker/id6752310101"
@@ -1710,55 +1766,47 @@ export default function Home() {
               decoding="async"
             />
             <a
-              className="mobile-top-cta"
+              className="mobile-top-cta explore-more-top-cta"
               href="/explore-more"
               aria-label="Explore more"
             >
-              <img
-                src="/figma/assets/mobile-top-cta-2x.webp"
-                alt="Explore more"
-                width={90}
-                height={40}
-                loading="lazy"
-                decoding="async"
-              />
+              Explore more
             </a>
           </div>
 
           <div className="mobile-hero-copy">
             <h1 className="mobile-hero-title">Meme culture, now a social platform.</h1>
             <GetAppButton
-              className="mobile-hero-cta"
+              className="mobile-hero-cta explore-more-top-cta"
               aria-label="Get App Now"
               label="Get App Now"
-            >
-              <img
-                src="/figma/assets/mobile-hero-cta-2x.webp"
-                alt="Get App Now"
-                width={156}
-                height={44}
-                loading="lazy"
-                decoding="async"
-              />
-            </GetAppButton>
+            />
           </div>
         </section>
         <div className="mobile-content-shell">
-          <section className="mobile-fly-section">
-            <HeroBurstCanvas performanceLite />
+          <section
+            className={`mobile-fly-section${isMobilePerfLite ? " is-performance-lite" : ""}`}
+          >
+            <HeroBurstCanvas
+              performanceLite
+              preferNonGif
+              mobileLite={isMobilePerfLite}
+            />
           </section>
 
-          <section className="mobile-content-game-section">
+          <section className="mobile-content-game-section" ref={mobileHeroGameSectionRef}>
             <div className="mobile-content-game-frame">
-              <iframe
-                className="mobile-content-game-main"
-                src={heroGameUrls[heroGameIndex]}
-                title="Rezona game hero"
-                loading="eager"
-                allow="autoplay; fullscreen; gamepad; gyroscope; accelerometer; xr-spatial-tracking"
-                onLoad={() => setHeroGameLoading(false)}
-              />
-              {heroGameLoading && (
+              {shouldLoadMobileHeroGame ? (
+                <iframe
+                  className="mobile-content-game-main"
+                  src={heroGameUrls[heroGameIndex]}
+                  title="Rezona game hero"
+                  loading="lazy"
+                  allow="autoplay; fullscreen; gamepad; gyroscope; accelerometer; xr-spatial-tracking"
+                  onLoad={() => setHeroGameLoading(false)}
+                />
+              ) : null}
+              {(!shouldLoadMobileHeroGame || heroGameLoading) && (
                 <div className="game-skeleton" aria-hidden="true" />
               )}
             </div>
@@ -1902,15 +1950,9 @@ export default function Home() {
               ))}
             </div>
 
-            <img
-              className="mobile-footer-brand"
-              src="/figma/assets/mobile-footer-brand-2x.webp"
-              alt="REZONA.AI"
-              width={343}
-              height={47}
-              loading="lazy"
-              decoding="async"
-            />
+            <p className="mobile-footer-brand" aria-label="REZONA.AI">
+              REZONA.AI
+            </p>
             <DinoLottie
               className="mobile-footer-dino"
               fallbackSrc="/figma/assets/footer-dino-loading-animation-1.svg"

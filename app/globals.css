@@ -8,6 +8,46 @@
   font-display: swap;
 }
 
+/* Footer brand text hard override to avoid stale/override issues in runtime */
+.footer-tail-composed .footer-bottom-brand {
+  margin: 0 !important;
+  display: flex !important;
+  align-items: flex-end !important;
+  justify-content: flex-start !important;
+  pointer-events: none !important;
+  z-index: 1 !important;
+  color: #ff4a1a !important;
+  font-family: var(--font-wister) !important;
+  font-size: 200px !important;
+  font-style: normal !important;
+  font-weight: 700 !important;
+  line-height: 75% !important;
+  letter-spacing: 2.535px !important;
+  white-space: nowrap !important;
+  overflow: visible !important;
+  background: var(--RZN_React, linear-gradient(180deg, #ff7125 0%, #f20 100%))
+    !important;
+  background-clip: text !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+}
+
+.mobile-footer .mobile-footer-brand {
+  margin: 0 !important;
+  color: #ff4a1a !important;
+  font-family: var(--font-wister) !important;
+  font-size: calc(var(--mobile-w) * 62.136 / 375) !important;
+  font-style: normal !important;
+  font-weight: 700 !important;
+  line-height: 75% !important;
+  letter-spacing: calc(var(--mobile-w) * 0.757 / 375) !important;
+  background: var(--RZN_React, linear-gradient(180deg, #ff7125 0%, #f20 100%))
+    !important;
+  background-clip: text !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+}
+
 @font-face {
   font-family: "Wister";
   src: url("/fonts/Wister-Bold.otf") format("opentype");
@@ -27,6 +67,7 @@
 :root {
   --bg: #000000;
   --fg: #ffffff;
+  --RZN_React: linear-gradient(180deg, #ff7125 0%, #f20 100%);
   --font-montserrat:
     "Montserrat",
     "Inter",
@@ -112,16 +153,40 @@ select {
 
 .home-top-explore-link {
   position: fixed;
-  top: 16px;
+  top: 20px;
   right: max(24px, calc((100vw - 1920px) / 2 + 42px));
   z-index: 85;
+  pointer-events: auto;
+}
+
+.home-top-explore-pill {
   width: 248px;
   height: 54px;
   border-radius: 999px;
-  background: transparent;
-  color: transparent;
+  border: 0;
+  background: transparent !important;
+  color: transparent !important;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  cursor: pointer;
+  appearance: none;
+  font-family: var(--font-montserrat);
   font-size: 0;
-  pointer-events: auto;
+  font-weight: 600;
+  letter-spacing: 0.14px;
+  line-height: 1;
+  text-decoration: none;
+  box-shadow: none;
+  transform: none;
+  isolation: isolate;
+  text-shadow: none !important;
+}
+
+.home-top-explore-pill::before,
+.home-top-explore-pill::after {
+  content: none !important;
 }
 
 .scene {
@@ -1610,10 +1675,25 @@ select {
 }
 
 .footer-bottom-brand {
-  left: 16.6146%;
+  left: 21.6146%;
   top: 45.4874%;
   width: 80.8854%;
   height: 35.4622%;
+  margin: 0;
+  color: transparent;
+  font-family: var(--font-wister);
+  font-size: 200px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 75%;
+  letter-spacing: 2.535px;
+  background: var(--RZN_React, linear-gradient(180deg, #ff7125 0%, #f20 100%));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: clip;
 }
 
 .footer-bottom-appstore {
@@ -1973,10 +2053,8 @@ select {
   display: block;
 }
 
-.mobile-top-cta img {
-  width: calc(var(--mobile-w) * 127 / 375);
-  height: calc(var(--mobile-w) * 40 / 375);
-  display: block;
+.mobile-top-cta.explore-more-top-cta {
+  display: inline-flex;
 }
 
 .mobile-hero-game-wrap {
@@ -2068,19 +2146,8 @@ select {
 
 .mobile-hero-cta {
   position: absolute;
-  left: calc(var(--mobile-w) * 94 / 375);
+  left: calc(var(--mobile-w) * 126 / 375);
   top: calc(var(--mobile-w) * 94 / 375);
-  border: 0;
-  padding: 0;
-  background: transparent;
-  cursor: pointer;
-  appearance: none;
-}
-
-.mobile-hero-cta img {
-  width: calc(var(--mobile-w) * 156 / 375);
-  height: calc(var(--mobile-w) * 44 / 375);
-  display: block;
 }
 
 @keyframes mobile-hero-panel-in-left {
@@ -2171,6 +2238,21 @@ select {
   border-radius: clamp(10px, 0.78vw, 16px) !important;
   filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.18)) saturate(1.18)
     brightness(1.34);
+}
+
+.mobile-fly-section.is-performance-lite .meme-transition-canvas {
+  filter: none;
+}
+
+.mobile-fly-section.is-performance-lite .meme-transition-canvas::before,
+.mobile-fly-section.is-performance-lite .meme-transition-canvas::after {
+  opacity: 0.08;
+  filter: none;
+}
+
+.mobile-fly-section.is-performance-lite .meme-static-card {
+  filter: none;
+  border-radius: 8px !important;
 }
 
 .mobile-content-game-section {
@@ -2586,8 +2668,22 @@ select {
   left: calc(var(--mobile-w) * 17 / 375);
   top: calc(var(--mobile-w) * 480 / 375);
   width: calc(var(--mobile-w) * 343 / 375);
+  margin: 0;
   height: auto;
   display: block;
+  color: transparent;
+  font-family: var(--font-wister);
+  font-size: calc(var(--mobile-w) * 62.136 / 375);
+  font-style: normal;
+  font-weight: 700;
+  line-height: 75%;
+  letter-spacing: calc(var(--mobile-w) * 0.757 / 375);
+  background: var(--RZN_React, linear-gradient(180deg, #ff7125 0%, #f20 100%));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-align: left;
+  white-space: nowrap;
 }
 
 .mobile-footer-dino {
@@ -2803,6 +2899,8 @@ select {
 
   .app-download-modal-overlay {
     padding: 16px;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
   }
 
   .app-download-modal-shell {
@@ -3491,9 +3589,9 @@ select {
     width: 100%;
     height: 104px;
     padding: 44px 16px 20px;
-    background: rgba(255, 255, 255, 0.01);
-    -webkit-backdrop-filter: blur(40px);
-    backdrop-filter: blur(40px);
+    background: rgba(0, 0, 0, 0.35);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
   }
 
   .explore-more-top-logo img {
@@ -3501,7 +3599,7 @@ select {
   }
 
   .explore-more-top-cta {
-    width: 90px;
+    width: 120px;
     height: 40px;
     display: inline-flex;
     font-size: 14px;

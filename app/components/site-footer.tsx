@@ -131,13 +131,9 @@ export default function SiteFooter({ variant = "default" }: SiteFooterProps) {
           fallbackSrc="/figma/assets/footer-dino-loading-animation-1.svg"
           alt="Dino"
         />
-        <img
-          className="footer-bottom-brand"
-          src="/figma/assets/footer-rezona-text-2x.webp"
-          alt="REZONA.AI"
-          loading="lazy"
-          decoding="async"
-        />
+        <p className="footer-bottom-brand" aria-label="REZONA.AI">
+          REZONA.AI
+        </p>
         <a
           className="footer-bottom-appstore"
           href="https://apps.apple.com/us/app/rezona-ai-game-maker/id6752310101"
@@ -293,15 +289,9 @@ export default function SiteFooter({ variant = "default" }: SiteFooterProps) {
         ))}
       </div>
 
-      <img
-        className="mobile-footer-brand"
-        src="/figma/assets/mobile-footer-brand-2x.webp"
-        alt="REZONA.AI"
-        width={343}
-        height={47}
-        loading="lazy"
-        decoding="async"
-      />
+      <p className="mobile-footer-brand" aria-label="REZONA.AI">
+        REZONA.AI
+      </p>
       <DinoLottie
         className="mobile-footer-dino"
         fallbackSrc="/figma/assets/footer-dino-loading-animation-1.svg"

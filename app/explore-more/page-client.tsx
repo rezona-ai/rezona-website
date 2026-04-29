@@ -2,7 +2,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import GetAppButton from "../components/get-app-button";
 import SiteFooter from "../components/site-footer";
 
@@ -109,10 +109,41 @@ const cards: ExploreCard[] = exploreGameUrls.map((href, index) => ({
 
 const desktopCards = cards;
 const mobileCards = cards;
+const MAX_CONCURRENT_IFRAME_LOADS = 2;
+let activeIframeLoads = 0;
+const iframeLoadQueue: Array<() => void> = [];
 
-function ExploreMoreCard({ card }: { card: ExploreCard }) {
+const acquireIframeLoadSlot = (start: () => void) => {
+  if (activeIframeLoads < MAX_CONCURRENT_IFRAME_LOADS) {
+    activeIframeLoads += 1;
+    start();
+    return;
+  }
+  iframeLoadQueue.push(start);
+};
+
+const releaseIframeLoadSlot = () => {
+  activeIframeLoads = Math.max(0, activeIframeLoads - 1);
+  const next = iframeLoadQueue.shift();
+  if (!next) return;
+  activeIframeLoads += 1;
+  next();
+};
+
+function ExploreMoreCard({
+  card,
+  strictInView = false,
+}: {
+  card: ExploreCard;
+  strictInView?: boolean;
+}) {
+  const cardRef = useRef<HTMLDivElement | null>(null);
+  const requestSerialRef = useRef(0);
+  const hasSlotRef = useRef(false);
+  const [inView, setInView] = useState(false);
   const [loaded, setLoaded] = useState(false);
   const [timedOut, setTimedOut] = useState(false);
+  const [canLoad, setCanLoad] = useState(false);
   const [reloadToken, setReloadToken] = useState(0);
   const stats = [
     { key: "plays", value: card.plays, icon: statIcons.plays },
@@ -122,25 +153,100 @@ function ExploreMoreCard({ card }: { card: ExploreCard }) {
   ] as const;
 
   useEffect(() => {
-    if (loaded || timedOut) return;
+    const target = cardRef.current;
+    if (!target) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries[0]?.isIntersecting ?? false;
+        setInView(visible);
+      },
+      strictInView
+        ? { root: null, rootMargin: "0px", threshold: 0.12 }
+        : { root: null, rootMargin: "220px 0px 220px 0px", threshold: 0.01 }
+    );
+    observer.observe(target);
+    return () => observer.disconnect();
+  }, [strictInView]);
+
+  useEffect(() => {
+    if (!inView || loaded || timedOut || canLoad) return;
+
+    const requestId = ++requestSerialRef.current;
+    acquireIframeLoadSlot(() => {
+      if (
+        requestId !== requestSerialRef.current ||
+        !inView ||
+        loaded ||
+        timedOut
+      ) {
+        releaseIframeLoadSlot();
+        return;
+      }
+      hasSlotRef.current = true;
+      setCanLoad(true);
+    });
+  }, [inView, loaded, timedOut, canLoad, reloadToken]);
+
+  useEffect(() => {
+    if (!canLoad || loaded || timedOut) return;
 
     const timeoutId = window.setTimeout(() => {
       setTimedOut(true);
+      setCanLoad(false);
+      if (hasSlotRef.current) {
+        hasSlotRef.current = false;
+        releaseIframeLoadSlot();
+      }
     }, 15000);
 
     return () => window.clearTimeout(timeoutId);
-  }, [loaded, timedOut]);
+  }, [canLoad, loaded, timedOut]);
+
+  useEffect(() => {
+    if (inView || !canLoad || loaded || timedOut) return;
+    requestSerialRef.current += 1;
+    setCanLoad(false);
+    if (hasSlotRef.current) {
+      hasSlotRef.current = false;
+      releaseIframeLoadSlot();
+    }
+  }, [inView, canLoad, loaded, timedOut]);
+
+  useEffect(() => {
+    return () => {
+      requestSerialRef.current += 1;
+      if (hasSlotRef.current) {
+        hasSlotRef.current = false;
+        releaseIframeLoadSlot();
+      }
+    };
+  }, []);
 
   const handleRetryLoad = () => {
+    requestSerialRef.current += 1;
+    if (hasSlotRef.current) {
+      hasSlotRef.current = false;
+      releaseIframeLoadSlot();
+    }
     setLoaded(false);
     setTimedOut(false);
+    setCanLoad(false);
     setReloadToken((prev) => prev + 1);
   };
 
+  const handleIframeLoaded = () => {
+    setLoaded(true);
+    if (hasSlotRef.current) {
+      hasSlotRef.current = false;
+      releaseIframeLoadSlot();
+    }
+  };
+
   return (
-    <div className="explore-more-card" aria-label={card.title}>
+    <div className="explore-more-card" aria-label={card.title} ref={cardRef}>
       <div className="explore-more-card-media-frame">
-        {!timedOut ? (
+        {canLoad && !timedOut ? (
           <>
             <iframe
               key={`${card.id}-${reloadToken}`}
@@ -149,11 +255,11 @@ function ExploreMoreCard({ card }: { card: ExploreCard }) {
               title={card.title}
               loading="lazy"
               allow="autoplay; fullscreen; gamepad; gyroscope; accelerometer; xr-spatial-tracking"
-              onLoad={() => setLoaded(true)}
+              onLoad={handleIframeLoaded}
             />
             {!loaded && <div className="game-skeleton" aria-hidden="true" />}
           </>
-        ) : (
+        ) : timedOut ? (
           <button
             type="button"
             className="explore-more-card-retry"
@@ -170,6 +276,8 @@ function ExploreMoreCard({ card }: { card: ExploreCard }) {
               decoding="async"
             />
           </button>
+        ) : (
+          <div className="game-skeleton" aria-hidden="true" />
         )}
       </div>
       <div className="explore-more-card-meta">
@@ -302,7 +410,7 @@ export default function ExploreMoreClient() {
         ) : (
           <div className="explore-more-mobile-list">
             {mobileCards.slice(0, 7).map((card) => (
-              <ExploreMoreCard key={card.id} card={card} />
+              <ExploreMoreCard key={card.id} card={card} strictInView />
             ))}
             <img
               className="explore-more-tagline-mobile"
@@ -314,7 +422,7 @@ export default function ExploreMoreClient() {
               decoding="async"
             />
             {mobileCards.slice(7).map((card) => (
-              <ExploreMoreCard key={card.id} card={card} />
+              <ExploreMoreCard key={card.id} card={card} strictInView />
             ))}
           </div>
         )}
