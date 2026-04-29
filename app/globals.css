@@ -1766,6 +1766,19 @@ select {
   text-decoration: none;
 }
 
+.footer-legal-links > span[aria-hidden="true"] {
+  width: 1px;
+  min-width: 1px;
+  height: 1em;
+  display: inline-block;
+  background: currentColor;
+  font-size: 0;
+  line-height: 0;
+  overflow: hidden;
+  opacity: 0.75;
+  height: 14px;
+}
+
 .footer-legal-copy {
   margin: 0;
   color: inherit;
@@ -2728,9 +2741,18 @@ select {
 }
 
 .mobile-footer-legal-links > span[aria-hidden="true"] {
+  width: 1px;
+  min-width: 1px;
+  height: 1em;
   display: inline-block;
-  margin: 0 calc(var(--mobile-w) * 6 / 375);
+  background: currentColor;
+  font-size: 0;
+  line-height: 0;
+  overflow: hidden;
+  margin: 0 calc(var(--mobile-w) * 4 / 375);
   text-align: left;
+  opacity: 0.75;
+  height: 14px;
 }
 
 .mobile-footer-legal-copy {
