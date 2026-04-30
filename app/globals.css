@@ -11,20 +11,19 @@
 /* Footer brand text hard override to avoid stale/override issues in runtime */
 .footer-tail-composed .footer-bottom-brand {
   margin: 0 !important;
-  display: flex !important;
-  align-items: flex-end !important;
-  justify-content: flex-start !important;
+  display: block !important;
   pointer-events: none !important;
   z-index: 1 !important;
   color: #ff4a1a !important;
   font-family: var(--font-wister) !important;
-  font-size: 200px !important;
+  font-size: clamp(108px, 10.42vw, 200px) !important;
   font-style: normal !important;
   font-weight: 700 !important;
   line-height: 75% !important;
-  letter-spacing: 2.535px !important;
+  letter-spacing: clamp(1.35px, 0.132vw, 2.535px) !important;
   white-space: nowrap !important;
-  overflow: visible !important;
+  overflow: hidden !important;
+  text-overflow: clip !important;
   background: var(--RZN_React, linear-gradient(180deg, #ff7125 0%, #f20 100%))
     !important;
   background-clip: text !important;
@@ -1691,6 +1690,13 @@ select {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: clip;
+}
+
+@media (max-width: 1366px) {
+  .footer-bottom-brand {
+    font-size: clamp(96px, 9.5vw, 180px);
+    letter-spacing: clamp(1.1px, 0.12vw, 2.2px);
+  }
 }
 
 .footer-bottom-appstore {
