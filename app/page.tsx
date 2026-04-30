@@ -277,7 +277,7 @@ const pickHeroBurstVisualAssetBySeed = (
   if (total === 0) {
     return {
       id: "ugc-fallback",
-      asset: "/figma/assets/hero-particles/ugc-new/capybara.webp",
+      asset: "/figma/assets/hero-particles/ugc-new/ugc-particle-06.webp",
       ratio: 1,
     };
   }
