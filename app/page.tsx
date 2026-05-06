@@ -739,7 +739,7 @@ const heroGameSlices: HeroSlice[] = [
     id: "main",
     asset: "/figma/assets/hero-game-main-2x.avif",
     xPct: 53.2,
-    yPct: 19.8,
+    yPct: 18.6,
     wPct: 21.8,
     hPct: 61.3,
   },
@@ -760,6 +760,10 @@ const heroGameSlices: HeroSlice[] = [
     hPct: 4.562422,
   },
 ];
+
+const heroGamePosterAsset =
+  heroGameSlices.find((slice) => slice.id === "main")?.asset ??
+  "/figma/assets/hero-game-main-2x.avif";
 
 const heroGameUrls = [
   "https://storage.googleapis.com/rezona-ai-prod/agent-jobs/minigame/5eea8523-1e7c-4034-9e2c-49ecf6484e17/italian-brainrot-surfers.html",
@@ -1167,10 +1171,13 @@ export default function Home() {
   const [isMobilePerfLite, setIsMobilePerfLite] = useState(false);
   const [mobileHeroPanelsReady, setMobileHeroPanelsReady] = useState(false);
   const mobileHeroPanelsLoadedRef = useRef(0);
+  const desktopHeroSceneRef = useRef<HTMLElement | null>(null);
   const mobileHeroGameSectionRef = useRef<HTMLElement | null>(null);
-  const [heroGameIndex, setHeroGameIndex] = useState(0);
+  const [heroGameIndex, setHeroGameIndex] = useState(1);
   const [heroGameLoading, setHeroGameLoading] = useState(true);
   const [shouldLoadMobileHeroGame, setShouldLoadMobileHeroGame] = useState(false);
+  const [isDesktopHeroGameVisible, setIsDesktopHeroGameVisible] = useState(true);
+  const [isMobileHeroGameVisible, setIsMobileHeroGameVisible] = useState(false);
 
   const switchHeroGame = (direction: 1 | -1) => {
     setHeroGameIndex((prev) =>
@@ -1223,6 +1230,7 @@ export default function Home() {
   useEffect(() => {
     if (!isMobile) {
       setShouldLoadMobileHeroGame(false);
+      setIsMobileHeroGameVisible(false);
       return;
     }
     const section = mobileHeroGameSectionRef.current;
@@ -1240,6 +1248,43 @@ export default function Home() {
       { root: null, rootMargin: "260px 0px 260px 0px", threshold: 0.01 }
     );
     observer.observe(section);
+    return () => observer.disconnect();
+  }, [isMobile]);
+
+  useEffect(() => {
+    if (isMobile === null) return;
+    const target = isMobile ? mobileHeroGameSectionRef.current : desktopHeroSceneRef.current;
+    if (!target) return;
+
+    if (typeof IntersectionObserver !== "function") {
+      if (isMobile) {
+        setIsMobileHeroGameVisible(true);
+      } else {
+        setIsDesktopHeroGameVisible(true);
+      }
+      return;
+    }
+
+    const visibilityThreshold = isMobile ? 0.2 : 0.16;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const entry = entries[0];
+        const inView = Boolean(
+          entry?.isIntersecting && entry.intersectionRatio >= visibilityThreshold
+        );
+        if (isMobile) {
+          setIsMobileHeroGameVisible(inView);
+        } else {
+          setIsDesktopHeroGameVisible(inView);
+        }
+        if (!inView) {
+          setHeroGameLoading(true);
+        }
+      },
+      { threshold: [0, visibilityThreshold, 0.33, 0.5] }
+    );
+
+    observer.observe(target);
     return () => observer.disconnect();
   }, [isMobile]);
 
@@ -1429,6 +1474,10 @@ export default function Home() {
     return <main className="rezona-page" style={{ minHeight: "100vh" }} />;
   }
 
+  const shouldRunDesktopHeroGame = !isMobile && isDesktopHeroGameVisible;
+  const shouldRunMobileHeroGame =
+    isMobile && shouldLoadMobileHeroGame && isMobileHeroGameVisible;
+
   return (
     <main className="rezona-page">
       {!isMobile && (
@@ -1453,7 +1502,12 @@ export default function Home() {
           </Link>
 
           <div className="desktop-layout">
-      <section className="scene hero-fly-scene" data-scene="hero-fly" data-active="true">
+      <section
+        ref={desktopHeroSceneRef}
+        className="scene hero-fly-scene"
+        data-scene="hero-fly"
+        data-active="true"
+      >
         <div className="sticky">
           <div className="hero-canvas">
             <HeroBurstCanvas performanceLite={isSmallDesktop} />
@@ -1490,15 +1544,25 @@ export default function Home() {
                   });
                   return (
                     <div key={slice.id} className="hero-game-frame" style={sliceStyle}>
-                      <iframe
-                        className="hero-game-iframe"
-                        src={heroGameUrls[heroGameIndex]}
-                        title="Hero game main"
-                        loading="eager"
-                        allow="autoplay; fullscreen; gamepad; gyroscope; accelerometer; xr-spatial-tracking"
-                        onLoad={() => setHeroGameLoading(false)}
-                      />
-                      {heroGameLoading && (
+                      {shouldRunDesktopHeroGame ? (
+                        <iframe
+                          className="hero-game-iframe"
+                          src={heroGameUrls[heroGameIndex]}
+                          title="Hero game main"
+                          loading="eager"
+                          allow="autoplay; fullscreen; gamepad; gyroscope; accelerometer; xr-spatial-tracking"
+                          onLoad={() => setHeroGameLoading(false)}
+                        />
+                      ) : (
+                        <img
+                          className="hero-game-poster"
+                          src={heroGamePosterAsset}
+                          alt="Hero game preview"
+                          loading="lazy"
+                          decoding="async"
+                        />
+                      )}
+                      {shouldRunDesktopHeroGame && heroGameLoading && (
                         <div className="game-skeleton" aria-hidden="true" />
                       )}
                     </div>
@@ -1755,7 +1819,7 @@ export default function Home() {
 
           <section className="mobile-content-game-section" ref={mobileHeroGameSectionRef}>
             <div className="mobile-content-game-frame">
-              {shouldLoadMobileHeroGame ? (
+              {shouldRunMobileHeroGame ? (
                 <iframe
                   className="mobile-content-game-main"
                   src={heroGameUrls[heroGameIndex]}
@@ -1764,8 +1828,16 @@ export default function Home() {
                   allow="autoplay; fullscreen; gamepad; gyroscope; accelerometer; xr-spatial-tracking"
                   onLoad={() => setHeroGameLoading(false)}
                 />
-              ) : null}
-              {(!shouldLoadMobileHeroGame || heroGameLoading) && (
+              ) : (
+                <img
+                  className="hero-game-poster"
+                  src={heroGamePosterAsset}
+                  alt="Hero game preview"
+                  loading="lazy"
+                  decoding="async"
+                />
+              )}
+              {shouldRunMobileHeroGame && heroGameLoading && (
                 <div className="game-skeleton" aria-hidden="true" />
               )}
             </div>

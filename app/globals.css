@@ -274,6 +274,8 @@ select {
 .hero-focus-stage {
   --hero-focus-scale-base: 0.92;
   --hero-focus-top: 51.2%;
+  --hero-game-main-top-shift: clamp(22px, 2.9vh, 44px);
+  --hero-game-main-height-grow: clamp(58px, 7.6vh, 102px);
   position: absolute;
   left: 50%;
   top: var(--hero-focus-top);
@@ -483,9 +485,9 @@ select {
 .hero-game-frame {
   position: absolute;
   left: var(--x);
-  top: var(--y);
+  top: calc(var(--y) - var(--hero-game-main-top-shift));
   width: var(--w);
-  height: var(--h);
+  height: calc(var(--h) + var(--hero-game-main-height-grow));
   border-radius: clamp(20px, 1.74vw, 34px);
   box-shadow: 0 clamp(3px, 0.23vw, 5px) clamp(3px, 0.23vw, 5px)
     rgba(0, 0, 0, 0.25);
@@ -2841,6 +2843,11 @@ select {
 @media (max-width: 1366px) and (min-width: 901px) {
   .hero-fly-scene {
     height: 178vh;
+  }
+
+  .hero-focus-stage {
+    --hero-game-main-top-shift: clamp(18px, 2.4vh, 34px);
+    --hero-game-main-height-grow: clamp(46px, 6.2vh, 70px);
   }
 
   .hero-canvas::before,
