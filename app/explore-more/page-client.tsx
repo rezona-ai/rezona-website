@@ -237,6 +237,18 @@ function ExploreMoreCard({
   }, [inView, canLoad, loaded, timedOut]);
 
   useEffect(() => {
+    if (!strictInView || inView) return;
+
+    requestSerialRef.current += 1;
+    setLoaded(false);
+    setCanLoad(false);
+    if (hasSlotRef.current) {
+      hasSlotRef.current = false;
+      releaseIframeLoadSlot();
+    }
+  }, [strictInView, inView]);
+
+  useEffect(() => {
     return () => {
       requestSerialRef.current += 1;
       if (hasSlotRef.current) {
@@ -266,10 +278,12 @@ function ExploreMoreCard({
     }
   };
 
+  const shouldRenderIframe = canLoad && !timedOut && inView;
+
   return (
     <div className="explore-more-card" aria-label={card.title} ref={cardRef}>
       <div className="explore-more-card-media-frame">
-        {canLoad && !timedOut ? (
+        {shouldRenderIframe ? (
           <>
             <iframe
               key={`${card.id}-${reloadToken}`}
@@ -299,7 +313,7 @@ function ExploreMoreCard({
               decoding="async"
             />
           </button>
-        ) : (
+        ) : strictInView && !inView ? null : (
           <div className="game-skeleton" aria-hidden="true" />
         )}
       </div>
