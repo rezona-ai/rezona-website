@@ -79,29 +79,12 @@ export default function GetAppButton({
               onClick={(event) => event.stopPropagation()}
             >
               <div className="app-download-modal-stage">
-                <div className="app-download-modal-card">
-                  <div className="app-download-modal-header">
-                    <span className="app-download-modal-close-spacer" aria-hidden="true" />
-                    <h2 id="app-download-modal-title">Use the app for more fun</h2>
-                  </div>
-
-                  <div className="app-download-modal-qr-wrap">
-                    <div className="app-download-modal-qr-inner">
-                      <img
-                        src="/assets/shared/app-download/popup-qr-content-2x.webp"
-                        alt="Scan QR code to download the app"
-                        width={262}
-                        height={267}
-                      />
-                    </div>
-                  </div>
-                </div>
-
                 <img
-                  className="app-download-modal-mascot"
-                  src="/assets/shared/app-download/popup-mascot-2x.webp"
-                  alt=""
-                  aria-hidden="true"
+                  className="app-download-modal-image"
+                  src="/assets/shared/app-download/qrcode.webp"
+                  alt="Scan QR code to download the app"
+                  width={1146}
+                  height={784}
                 />
               </div>
             </div>

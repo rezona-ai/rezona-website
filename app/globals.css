@@ -959,10 +959,6 @@ select {
   .app-download-modal-overlay {
     background: rgba(0, 0, 0, 0.82);
   }
-
-  .app-download-modal-close {
-    background: rgba(255, 255, 255, 0.12);
-  }
 }
 
 @supports not (mix-blend-mode: screen) {
@@ -1809,7 +1805,7 @@ select {
 }
 
 .app-download-modal-shell {
-  width: min(100%, 557px);
+  width: min(100%, 573px);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1818,138 +1814,16 @@ select {
 
 .app-download-modal-stage {
   position: relative;
-  width: min(100%, 470px);
+  width: min(100%, 573px);
   display: flex;
   justify-content: center;
 }
 
-.app-download-modal-card {
-  position: relative;
+.app-download-modal-image {
   width: 100%;
-  min-height: 384px;
-  border-radius: 24px;
-  border: 1px solid rgba(217, 217, 217, 0.72);
-  background: linear-gradient(180deg, #000 0%, #8e3b00 100%);
-  padding: 16px 16px 24px;
-  overflow: hidden;
-  box-shadow:
-    0 24px 80px rgba(0, 0, 0, 0.58),
-    inset 0 1px 0 rgba(255, 255, 255, 0.2);
-  display: grid;
-  justify-items: center;
-  align-content: start;
-  gap: 24px;
-}
-
-.app-download-modal-header {
-  position: relative;
-  width: 100%;
-  min-height: 40px;
-  display: grid;
-  grid-template-columns: 40px 1fr 40px;
-  align-items: center;
-  column-gap: 24px;
-  z-index: 1;
-}
-
-.app-download-modal-close-spacer {
-  width: 40px;
-  height: 40px;
-  opacity: 0;
-}
-
-.app-download-modal-header h2 {
-  margin: 0;
-  text-align: center;
-  font-family: var(--font-montserrat);
-  font-size: 24px;
-  line-height: 1.4;
-  font-weight: 700;
-  color: #fafafa;
-  letter-spacing: 0;
-  white-space: nowrap;
-}
-
-.app-download-modal-close {
-  width: 40px;
-  height: 40px;
-  border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  background:
-    radial-gradient(circle at 26% 20%, rgba(255, 255, 255, 0.28), transparent 48%),
-    rgba(255, 255, 255, 0.08);
-  color: #f5f5f5;
-  display: grid;
-  place-items: center;
-  cursor: pointer;
-  padding: 0;
-  transition: transform 0.18s ease, background-color 0.18s ease;
-  -webkit-backdrop-filter: blur(8px);
-  backdrop-filter: blur(8px);
-}
-
-.app-download-modal-close:hover {
-  transform: scale(1.04);
-  background-color: rgba(255, 255, 255, 0.16);
-}
-
-.app-download-modal-close:active {
-  transform: scale(0.94);
-}
-
-.app-download-modal-close span {
+  height: auto;
   display: block;
-  font-size: 28px;
-  line-height: 1;
-  transform: translateY(-1px);
-}
-
-.app-download-modal-qr-inner {
-  position: relative;
-  width: 280px;
-  height: 280px;
-  border-radius: 26.67px;
-  padding: 26px;
-  overflow: hidden;
-  background: #fff;
-  box-sizing: border-box;
-  z-index: 1;
-}
-
-.app-download-modal-qr-wrap {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  z-index: 1;
-}
-
-.app-download-modal-qr-inner::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border: 3.5px solid #ff6200;
-  border-radius: inherit;
-  box-sizing: border-box;
-  pointer-events: none;
-}
-
-.app-download-modal-qr-inner img {
-  width: 100%;
-  height: 100%;
-  display: block;
-  object-fit: cover;
-}
-
-.app-download-modal-mascot {
-  position: absolute;
-  left: -36px;
-  bottom: 26px;
-  width: 164px;
-  height: 176px;
-  pointer-events: none;
-  filter: drop-shadow(0 4px 25px rgba(0, 0, 0, 0.5));
-  transform: translateX(-32%);
+  filter: drop-shadow(0 24px 80px rgba(0, 0, 0, 0.58));
 }
 
 @keyframes app-modal-overlay-in {
@@ -2965,62 +2839,8 @@ select {
     max-width: calc(100vw - 56px);
   }
 
-  .app-download-modal-card {
-    width: 100%;
-    min-height: auto;
-    border-radius: 18px;
-    padding: 12px 12px 14px 0;
-    gap: 10px;
-  }
-
-  .app-download-modal-header {
-    grid-template-columns: 36px 1fr 36px;
-    column-gap: 14px;
-  }
-
-  .app-download-modal-close-spacer,
-  .app-download-modal-close {
-    width: 36px;
-    height: 36px;
-  }
-
-  .app-download-modal-header h2 {
-    font-size: 16px;
-    line-height: 1.2;
-    white-space: nowrap;
-  }
-
-  .app-download-modal-qr-inner {
-    width: 184px;
-    height: 184px;
-    border-radius: 16px;
-    padding: 12px;
-    position: relative;
-    left: auto;
-    transform: none;
-    margin-inline: 0;
-    justify-self: auto;
-    align-self: auto;
-  }
-
-  .app-download-modal-qr-inner::after {
-    border-width: 2.5px;
-  }
-
-  .app-download-modal-mascot {
-    width: 76px;
-    height: 82px;
-    left: -25px;
-    bottom: 10px;
-    transform: translateX(-20%) !important;
-  }
-
   .app-download-modal-stage,
-  .app-download-modal-card,
-  .app-download-modal-qr-wrap,
-  .app-download-modal-qr-inner,
-  .app-download-modal-header h2,
-  .app-download-modal-mascot {
+  .app-download-modal-image {
     max-width: 100%;
   }
 }
