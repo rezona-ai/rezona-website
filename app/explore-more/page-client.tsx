@@ -18,10 +18,10 @@ type ExploreCard = {
 };
 
 const statIcons = {
-  plays: "/figma/assets/explore-more/icon-gamepad-2x.webp",
-  shares: "/figma/assets/explore-more/icon-share-2x.webp",
-  likes: "/figma/assets/explore-more/icon-heart-2x.webp",
-  chats: "/figma/assets/explore-more/icon-chat-2x.webp",
+  plays: "/assets/explore-more/icon-gamepad-2x.webp",
+  shares: "/assets/explore-more/icon-share-2x.webp",
+  likes: "/assets/explore-more/icon-heart-2x.webp",
+  chats: "/assets/explore-more/icon-chat-2x.webp",
 } as const;
 
 const exploreGameUrls = [
@@ -271,7 +271,7 @@ function ExploreMoreCard({
           >
             <img
               className="explore-more-card-media-cover"
-              src="/figma/assets/explore-more/card-media-2x.webp"
+              src="/assets/explore-more/card-media-2x.webp"
               alt={card.title}
               width={684}
               height={1092}
@@ -287,7 +287,7 @@ function ExploreMoreCard({
         <div className="explore-more-card-author">
           <img
             className="explore-more-card-avatar"
-            src="/figma/assets/explore-more/card-avatar-plus-2x.webp"
+            src="/assets/explore-more/card-avatar-plus-2x.webp"
             alt=""
             width={80}
             height={80}
@@ -300,7 +300,7 @@ function ExploreMoreCard({
               <span>{card.author}</span>
               <img
                 className="explore-more-verify"
-                src="/figma/assets/explore-more/icon-verify-2x.webp"
+                src="/assets/explore-more/icon-verify-2x.webp"
                 alt=""
                 width={28}
                 height={28}
@@ -353,7 +353,7 @@ export default function ExploreMoreClient() {
       <header className="explore-more-top-nav">
         <Link href="/" className="explore-more-top-logo" aria-label="Go back to home">
           <img
-            src="/figma/assets/mobile-top-logo-2x.webp"
+            src="/assets/shared/brand/mobile-top-logo-2x.webp"
             alt="REZONA"
             width={261}
             height={60}
@@ -397,7 +397,7 @@ export default function ExploreMoreClient() {
             </div>
             <img
               className="explore-more-tagline-desktop"
-              src="/figma/assets/explore-more/tagline-desktop-2x.webp"
+              src="/assets/explore-more/tagline-desktop-2x.webp"
               alt="Built for meme"
               width={2598}
               height={750}
@@ -417,7 +417,7 @@ export default function ExploreMoreClient() {
             ))}
             <img
               className="explore-more-tagline-mobile"
-              src="/figma/assets/explore-more/tagline-mobile-2x.webp"
+              src="/assets/explore-more/tagline-mobile-2x.webp"
               alt="Built for meme"
               width={684}
               height={204}

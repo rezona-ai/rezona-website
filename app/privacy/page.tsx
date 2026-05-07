@@ -25,7 +25,7 @@ export default function PrivacyPage() {
       <header className="privacy-top-nav">
         <Link href="/" className="privacy-top-logo" aria-label="Go back to home">
           <img
-            src="/figma/assets/mobile-top-logo-2x.webp"
+            src="/assets/shared/brand/mobile-top-logo-2x.webp"
             alt="REZONA"
             width={261}
             height={60}

@@ -9,49 +9,49 @@ import DinoLottie from "./dino-lottie";
 const footerSocialSlices = [
   {
     id: "x",
-    asset: "/figma/assets/footer-social-x-2x.webp",
+    asset: "/assets/shared/social/footer-social-x-2x.webp",
     left: 66.1667,
     href: "https://x.com/rezona_ai",
   },
   {
     id: "telegram",
-    asset: "/figma/assets/footer-social-telegram-2x.webp",
+    asset: "/assets/shared/social/footer-social-telegram-2x.webp",
     left: 70.3333,
     href: "https://t.me/rezona_ai",
   },
   {
     id: "discord",
-    asset: "/figma/assets/footer-social-discord-2x.webp",
+    asset: "/assets/shared/social/footer-social-discord-2x.webp",
     left: 74.5,
     href: "https://discord.gg/rezona",
   },
   {
     id: "tiktok",
-    asset: "/figma/assets/footer-social-tiktok-2x.webp",
+    asset: "/assets/shared/social/footer-social-tiktok-2x.webp",
     left: 78.6667,
     href: "https://www.tiktok.com/@rezona.ai",
   },
   {
     id: "youtube",
-    asset: "/figma/assets/footer-social-youtube-2x.webp",
+    asset: "/assets/shared/social/footer-social-youtube-2x.webp",
     left: 82.8333,
     href: "https://www.youtube.com/@rezona-app",
   },
   {
     id: "instagram",
-    asset: "/figma/assets/footer-social-instagram-2x.webp",
+    asset: "/assets/shared/social/footer-social-instagram-2x.webp",
     left: 87.0,
     href: "https://www.instagram.com/rezona.ai",
   },
   {
     id: "threads",
-    asset: "/figma/assets/footer-social-threads-2x.webp",
+    asset: "/assets/shared/social/footer-social-threads-2x.webp",
     left: 91.1667,
     href: "https://www.threads.com/@rezona.ai",
   },
   {
     id: "social",
-    asset: "/figma/assets/social.webp",
+    asset: "/assets/shared/social/social.webp",
     left: 95.1667,
     href: "https://www.reddit.com/r/rezona/",
   },
@@ -60,42 +60,42 @@ const footerSocialSlices = [
 const mobileFooterSocialSlices = [
   {
     id: "x",
-    asset: "/figma/assets/mobile-social-x-2x.webp",
+    asset: "/assets/shared/social/mobile-social-x-2x.webp",
     href: "https://x.com/rezona_ai",
   },
   {
     id: "telegram",
-    asset: "/figma/assets/mobile-social-telegram-2x.webp",
+    asset: "/assets/shared/social/mobile-social-telegram-2x.webp",
     href: "https://t.me/rezona_ai",
   },
   {
     id: "discord",
-    asset: "/figma/assets/mobile-social-discord-2x.webp",
+    asset: "/assets/shared/social/mobile-social-discord-2x.webp",
     href: "https://discord.gg/rezona",
   },
   {
     id: "tiktok",
-    asset: "/figma/assets/mobile-social-tiktok-2x.webp",
+    asset: "/assets/shared/social/mobile-social-tiktok-2x.webp",
     href: "https://www.tiktok.com/@rezona.ai",
   },
   {
     id: "youtube",
-    asset: "/figma/assets/mobile-social-youtube-2x.webp",
+    asset: "/assets/shared/social/mobile-social-youtube-2x.webp",
     href: "https://www.youtube.com/@rezona-app",
   },
   {
     id: "instagram",
-    asset: "/figma/assets/mobile-social-instagram-2x.webp",
+    asset: "/assets/shared/social/mobile-social-instagram-2x.webp",
     href: "https://www.instagram.com/rezona.ai",
   },
   {
     id: "threads",
-    asset: "/figma/assets/mobile-social-threads-2x.webp",
+    asset: "/assets/shared/social/mobile-social-threads-2x.webp",
     href: "https://www.threads.com/@rezona.ai",
   },
   {
     id: "social",
-    asset: "/figma/assets/social-mobile.webp",
+    asset: "/assets/shared/social/social-mobile.webp",
     href: "https://www.reddit.com/r/rezona/",
   },
 ];
@@ -128,7 +128,7 @@ export default function SiteFooter({ variant = "default" }: SiteFooterProps) {
       <>
         <DinoLottie
           className="footer-bottom-dino"
-          fallbackSrc="/figma/assets/footer-dino-loading-animation-1.svg"
+          fallbackSrc="/assets/shared/footer/footer-dino-loading-animation-1.svg"
           alt="Dino"
         />
         <p className="footer-bottom-brand" aria-label="REZONA.AI">
@@ -142,7 +142,7 @@ export default function SiteFooter({ variant = "default" }: SiteFooterProps) {
           aria-label="Open App Store"
         >
           <img
-            src="/figma/assets/store-appstore-new.webp"
+            src="/assets/shared/store/store-appstore-new.webp"
             alt="App Store"
             loading="lazy"
             decoding="async"
@@ -156,7 +156,7 @@ export default function SiteFooter({ variant = "default" }: SiteFooterProps) {
           aria-label="Open Google Play"
         >
           <img
-            src="/figma/assets/store-qr-new.webp"
+            src="/assets/shared/store/store-qr-new.webp"
             alt="Google Play"
             loading="lazy"
             decoding="async"
@@ -165,7 +165,7 @@ export default function SiteFooter({ variant = "default" }: SiteFooterProps) {
         <div className="footer-bottom-qr-wrap">
           <img
             className="footer-bottom-qr"
-            src="/figma/assets/popup-qr-content-2x.webp"
+            src="/assets/shared/app-download/popup-qr-content-2x.webp"
             alt="QR"
             loading="lazy"
             decoding="async"
@@ -226,7 +226,7 @@ export default function SiteFooter({ variant = "default" }: SiteFooterProps) {
         <div className="mobile-footer-qr-wrap">
           <img
             className="mobile-footer-qr"
-            src="/figma/assets/popup-qr-content-2x.webp"
+            src="/assets/shared/app-download/popup-qr-content-2x.webp"
             alt="QR"
             width={61}
             height={61}
@@ -242,7 +242,7 @@ export default function SiteFooter({ variant = "default" }: SiteFooterProps) {
             aria-label="Open App Store"
           >
             <img
-              src="/figma/assets/store-appstore-new.webp"
+              src="/assets/shared/store/store-appstore-new.webp"
               alt="App Store"
               width={120}
               height={40}
@@ -257,7 +257,7 @@ export default function SiteFooter({ variant = "default" }: SiteFooterProps) {
             aria-label="Open Google Play"
           >
             <img
-              src="/figma/assets/store-qr-new.webp"
+              src="/assets/shared/store/store-qr-new.webp"
               alt="Google Play"
               width={120}
               height={40}
@@ -294,7 +294,7 @@ export default function SiteFooter({ variant = "default" }: SiteFooterProps) {
       </p>
       <DinoLottie
         className="mobile-footer-dino"
-        fallbackSrc="/figma/assets/footer-dino-loading-animation-1.svg"
+        fallbackSrc="/assets/shared/footer/footer-dino-loading-animation-1.svg"
         alt="Dino walking"
       />
 
