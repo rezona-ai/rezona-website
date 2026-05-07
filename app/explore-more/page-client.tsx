@@ -158,11 +158,14 @@ function ExploreMoreCard({
 
     const observer = new IntersectionObserver(
       (entries) => {
-        const visible = entries[0]?.isIntersecting ?? false;
+        const entry = entries[0];
+        const visible = strictInView
+          ? Boolean(entry?.isIntersecting && entry.intersectionRatio >= 0.35)
+          : Boolean(entry?.isIntersecting);
         setInView(visible);
       },
       strictInView
-        ? { root: null, rootMargin: "0px", threshold: 0.12 }
+        ? { root: null, rootMargin: "-8% 0px -8% 0px", threshold: [0, 0.35, 0.55] }
         : { root: null, rootMargin: "220px 0px 220px 0px", threshold: 0.01 }
     );
     observer.observe(target);
