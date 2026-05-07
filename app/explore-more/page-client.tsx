@@ -10,6 +10,7 @@ type ExploreCard = {
   id: string;
   title: string;
   author: string;
+  avatar: string;
   plays: string;
   shares: string;
   likes: string;
@@ -43,39 +44,57 @@ const exploreGameUrls = [
 ];
 
 const cardTitles = [
-  "Escape Herbert",
-  "Italian Brainrot Surfers",
-  "Pixel Drift",
-  "Backrooms Hamster 3D",
-  "Brainrot Solitaire",
-  "Turbo Quest",
-  "Orbit Clash",
-  "Rezona UGC One",
-  "Rezona UGC Two",
-  "Brainrot Arena",
-  "Video Fighters",
-  "Meme Dash",
-  "Neon Vault",
-  "Retro Arena",
-  "Chaos Loop",
+  "RIP the net",
+  "World Leader Bullet Hell: Boss Rush",
+  "Help Trump Find Oil",
+  "Trump and Kim Gaza Vacation",
+  "Fruit Fight",
+  "Sperm Race: The Great Swim",
+  "Oil Tycoon",
+  "Five Nights at Mom's",
+  "los river game",
+  "Dungeon Blade v2.0",
+  "Interactive Story: Colarina",
+  "dinosaur game",
+  "Nailoong Run!",
+  "The Wolf's Secret",
+  "Army of Light: White Knight",
 ];
 
 const cardAuthors = [
-  "@Maika",
-  "@Nova",
-  "@Riku",
-  "@Yuna",
-  "@Kai",
-  "@Ivy",
-  "@Luca",
-  "@Milo",
-  "@Sena",
-  "@Ari",
-  "@Toma",
-  "@Rei",
-  "@Niko",
-  "@Uma",
-  "@Zed",
+  "@Nhân Xa",
+  "@non",
+  "@feminomnomnom",
+  "@feminomnomnom",
+  "@Ali Chhipa",
+  "@non",
+  "@non",
+  "@True Art 🎭",
+  "@Abdulhadi",
+  "@горох",
+  "@dblswrddhrs",
+  "@Syed Mursaleen",
+  "@Serenox",
+  "@dblswrddhrs",
+  "@Hadi Ghandour",
+];
+
+const cardAvatars = [
+  "/assets/avatar/nhan-xa.webp",
+  "/assets/avatar/non.webp",
+  "/assets/avatar/feminimnomnom.webp",
+  "/assets/avatar/feminimnomnom.webp",
+  "/assets/avatar/ali-chhipa.webp",
+  "/assets/avatar/non.webp",
+  "/assets/avatar/non.webp",
+  "/assets/avatar/true-art.webp",
+  "/assets/avatar/abdulhadi.webp",
+  "/assets/avatar/ropox.webp",
+  "/assets/avatar/dblswrddhrs.webp",
+  "/assets/avatar/syed-mursaleen.webp",
+  "/assets/avatar/serenox.webp",
+  "/assets/avatar/dblswrddhrs.webp",
+  "/assets/avatar/hadi-ghandour.webp",
 ];
 
 const cardStats = [
@@ -100,6 +119,7 @@ const cards: ExploreCard[] = exploreGameUrls.map((href, index) => ({
   id: `explore-card-${index + 1}`,
   title: cardTitles[index],
   author: cardAuthors[index],
+  avatar: cardAvatars[index],
   plays: cardStats[index][0],
   shares: cardStats[index][1],
   likes: cardStats[index][2],
@@ -287,13 +307,12 @@ function ExploreMoreCard({
         <div className="explore-more-card-author">
           <img
             className="explore-more-card-avatar"
-            src="/assets/explore-more/card-avatar-plus-2x.webp"
-            alt=""
+            src={card.avatar}
+            alt={`${card.author} avatar`}
             width={80}
             height={80}
             loading="lazy"
             decoding="async"
-            aria-hidden="true"
           />
           <div className="explore-more-card-author-copy">
             <div className="explore-more-card-author-line">
