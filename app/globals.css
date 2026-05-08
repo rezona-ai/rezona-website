@@ -530,55 +530,64 @@ select {
   inset: 0;
   display: grid;
   place-items: center;
-  background: #101114;
+  container-type: inline-size;
+  background: #171717;
+  border: 0.5px solid #404040;
+  border-radius: inherit;
   overflow: hidden;
   pointer-events: none;
   z-index: 1;
+  isolation: isolate;
 }
 
 .game-skeleton::before {
   content: "";
   position: absolute;
-  left: 50%;
-  top: 50%;
-  width: 46px;
-  aspect-ratio: 1;
-  border-radius: 999px;
-  border: 2.5px solid rgba(245, 248, 255, 0.92);
-  border-right-color: transparent;
-  transform: translate(-50%, -50%);
-  animation: game-skeleton-spinner-spin 0.82s linear infinite;
-  will-change: transform, opacity;
-}
-
-@media (min-width: 901px) {
-  .game-skeleton::before {
-    border-width: 2.2px;
-  }
+  inset: -45%;
+  z-index: 1;
+  background: linear-gradient(
+    135deg,
+    transparent 44%,
+    rgba(255, 255, 255, 0.03) 47.5%,
+    rgba(255, 255, 255, 0.38) 50%,
+    rgba(255, 255, 255, 0.05) 52.5%,
+    transparent 56%
+  );
+  filter: blur(14px);
+  transform: translate3d(-54%, -54%, 0);
+  animation: game-skeleton-light-sweep 3.2s cubic-bezier(0.4, 0, 0.2, 1)
+    infinite;
+  will-change: transform;
 }
 
 .game-skeleton::after {
   content: "";
   position: absolute;
-  inset: 0;
-  background: transparent;
+  left: 50%;
+  top: 50%;
+  z-index: 2;
+  width: clamp(44px, 14.5cqw, 86px);
+  aspect-ratio: 93 / 97;
+  background: url("/assets/shared/game-loading/game-skeleton-logo-2x.webp") center / contain
+    no-repeat;
+  transform: translate(-50%, -50%);
 }
 
-@keyframes game-skeleton-spinner-spin {
+@keyframes game-skeleton-light-sweep {
   to {
-    transform: translate(-50%, -50%) rotate(360deg);
+    transform: translate3d(54%, 54%, 0);
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .game-skeleton {
-    background: #101114;
+    background: #171717;
   }
 
   .game-skeleton::before {
     animation: none;
-    opacity: 0;
-    transform: translate(-50%, -50%);
+    opacity: 0.34;
+    transform: translate3d(0, 0, 0);
   }
 }
 
