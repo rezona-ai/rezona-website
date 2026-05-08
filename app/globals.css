@@ -2852,6 +2852,9 @@ select {
   .app-download-modal-image {
     max-width: 100%;
   }
+  .app-download-modal-image {
+    margin-left: -25px;
+  }
 }
 
 @media (max-width: 768px) {
