@@ -5,6 +5,8 @@ import { type KeyboardEvent as ReactKeyboardEvent, useEffect, useState } from "r
 import { createPortal } from "react-dom";
 import type { ReactNode } from "react";
 
+const appDownloadQrSrc = "/assets/shared/app-download/qrcode.webp";
+
 type GetAppButtonProps = {
   className: string;
   label: string;
@@ -20,6 +22,11 @@ export default function GetAppButton({
 }: GetAppButtonProps) {
   const [isOpen, setIsOpen] = useState(false);
   const canUsePortal = typeof document !== "undefined";
+
+  useEffect(() => {
+    const image = new Image();
+    image.src = appDownloadQrSrc;
+  }, []);
 
   useEffect(() => {
     if (!isOpen) return;
@@ -81,7 +88,7 @@ export default function GetAppButton({
               <div className="app-download-modal-stage">
                 <img
                   className="app-download-modal-image"
-                  src="/assets/shared/app-download/qrcode.webp"
+                  src={appDownloadQrSrc}
                   alt="Scan QR code to download the app"
                   width={1146}
                   height={784}
