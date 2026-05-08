@@ -130,6 +130,7 @@ const cards: ExploreCard[] = exploreGameUrls.map((href, index) => ({
 const desktopCards = cards;
 const mobileCards = cards;
 const MAX_CONCURRENT_IFRAME_LOADS = 2;
+const MIN_GAME_SKELETON_MS = 650;
 let activeIframeLoads = 0;
 const iframeLoadQueue: Array<() => void> = [];
 
@@ -160,10 +161,12 @@ function ExploreMoreCard({
   const cardRef = useRef<HTMLDivElement | null>(null);
   const requestSerialRef = useRef(0);
   const hasSlotRef = useRef(false);
+  const entrySkeletonTimerRef = useRef<number | null>(null);
   const [inView, setInView] = useState(false);
   const [loaded, setLoaded] = useState(false);
   const [timedOut, setTimedOut] = useState(false);
   const [canLoad, setCanLoad] = useState(false);
+  const [showEntrySkeleton, setShowEntrySkeleton] = useState(false);
   const [reloadToken, setReloadToken] = useState(0);
   const stats = [
     { key: "plays", value: card.plays, icon: statIcons.plays },
@@ -194,6 +197,15 @@ function ExploreMoreCard({
 
   useEffect(() => {
     if (!inView || loaded || timedOut || canLoad) return;
+
+    setShowEntrySkeleton(true);
+    if (entrySkeletonTimerRef.current) {
+      window.clearTimeout(entrySkeletonTimerRef.current);
+    }
+    entrySkeletonTimerRef.current = window.setTimeout(() => {
+      setShowEntrySkeleton(false);
+      entrySkeletonTimerRef.current = null;
+    }, MIN_GAME_SKELETON_MS);
 
     const requestId = ++requestSerialRef.current;
     acquireIframeLoadSlot(() => {
@@ -251,6 +263,10 @@ function ExploreMoreCard({
   useEffect(() => {
     return () => {
       requestSerialRef.current += 1;
+      if (entrySkeletonTimerRef.current) {
+        window.clearTimeout(entrySkeletonTimerRef.current);
+        entrySkeletonTimerRef.current = null;
+      }
       if (hasSlotRef.current) {
         hasSlotRef.current = false;
         releaseIframeLoadSlot();
@@ -267,6 +283,7 @@ function ExploreMoreCard({
     setLoaded(false);
     setTimedOut(false);
     setCanLoad(false);
+    setShowEntrySkeleton(true);
     setReloadToken((prev) => prev + 1);
   };
 
@@ -294,7 +311,9 @@ function ExploreMoreCard({
               allow="autoplay; fullscreen; gamepad; gyroscope; accelerometer; xr-spatial-tracking"
               onLoad={handleIframeLoaded}
             />
-            {!loaded && <div className="game-skeleton" aria-hidden="true" />}
+            {(!loaded || showEntrySkeleton) && (
+              <div className="game-skeleton" aria-hidden="true" />
+            )}
           </>
         ) : timedOut ? (
           <button
@@ -420,12 +439,12 @@ export default function ExploreMoreClient() {
           <div className="explore-more-desktop-grid">
             <div className="explore-more-card-row">
               {desktopCards.slice(0, 5).map((card) => (
-                <ExploreMoreCard key={card.id} card={card} />
+                <ExploreMoreCard key={card.id} card={card} strictInView />
               ))}
             </div>
             <div className="explore-more-card-row">
               {desktopCards.slice(5, 10).map((card) => (
-                <ExploreMoreCard key={card.id} card={card} />
+                <ExploreMoreCard key={card.id} card={card} strictInView />
               ))}
             </div>
             <img
@@ -439,7 +458,7 @@ export default function ExploreMoreClient() {
             />
             <div className="explore-more-card-row">
               {desktopCards.slice(10, 15).map((card) => (
-                <ExploreMoreCard key={card.id} card={card} />
+                <ExploreMoreCard key={card.id} card={card} strictInView />
               ))}
             </div>
           </div>
