@@ -154,9 +154,11 @@ const releaseIframeLoadSlot = () => {
 function ExploreMoreCard({
   card,
   strictInView = false,
+  keepIframeLoaded = false,
 }: {
   card: ExploreCard;
   strictInView?: boolean;
+  keepIframeLoaded?: boolean;
 }) {
   const cardRef = useRef<HTMLDivElement | null>(null);
   const requestSerialRef = useRef(0);
@@ -239,6 +241,7 @@ function ExploreMoreCard({
   }, [canLoad, loaded, timedOut]);
 
   useEffect(() => {
+    if (keepIframeLoaded) return;
     if (inView || !canLoad || loaded || timedOut) return;
     requestSerialRef.current += 1;
     setCanLoad(false);
@@ -246,10 +249,10 @@ function ExploreMoreCard({
       hasSlotRef.current = false;
       releaseIframeLoadSlot();
     }
-  }, [inView, canLoad, loaded, timedOut]);
+  }, [keepIframeLoaded, inView, canLoad, loaded, timedOut]);
 
   useEffect(() => {
-    if (!strictInView || inView) return;
+    if (keepIframeLoaded || !strictInView || inView) return;
 
     requestSerialRef.current += 1;
     setLoaded(false);
@@ -258,7 +261,7 @@ function ExploreMoreCard({
       hasSlotRef.current = false;
       releaseIframeLoadSlot();
     }
-  }, [strictInView, inView]);
+  }, [keepIframeLoaded, strictInView, inView]);
 
   useEffect(() => {
     return () => {
@@ -295,7 +298,10 @@ function ExploreMoreCard({
     }
   };
 
-  const shouldRenderIframe = canLoad && !timedOut && inView;
+  const shouldRenderIframe =
+    canLoad &&
+    !timedOut &&
+    (keepIframeLoaded || inView);
 
   return (
     <div className="explore-more-card" aria-label={card.title} ref={cardRef}>
@@ -439,12 +445,22 @@ export default function ExploreMoreClient() {
           <div className="explore-more-desktop-grid">
             <div className="explore-more-card-row">
               {desktopCards.slice(0, 5).map((card) => (
-                <ExploreMoreCard key={card.id} card={card} strictInView />
+                <ExploreMoreCard
+                  key={card.id}
+                  card={card}
+                  strictInView
+                  keepIframeLoaded
+                />
               ))}
             </div>
             <div className="explore-more-card-row">
               {desktopCards.slice(5, 10).map((card) => (
-                <ExploreMoreCard key={card.id} card={card} strictInView />
+                <ExploreMoreCard
+                  key={card.id}
+                  card={card}
+                  strictInView
+                  keepIframeLoaded
+                />
               ))}
             </div>
             <img
@@ -458,7 +474,12 @@ export default function ExploreMoreClient() {
             />
             <div className="explore-more-card-row">
               {desktopCards.slice(10, 15).map((card) => (
-                <ExploreMoreCard key={card.id} card={card} strictInView />
+                <ExploreMoreCard
+                  key={card.id}
+                  card={card}
+                  strictInView
+                  keepIframeLoaded
+                />
               ))}
             </div>
           </div>
