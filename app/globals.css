@@ -12,17 +12,21 @@
 .footer-tail-composed .footer-bottom-brand {
   margin: 0 !important;
   display: block !important;
+  left: auto !important;
+  right: 1.5% !important;
+  width: max-content !important;
   pointer-events: none !important;
   z-index: 1 !important;
   color: #ff4a1a !important;
   font-family: var(--font-wister) !important;
-  font-size: clamp(108px, 10.42vw, 200px) !important;
+  font-size: clamp(108px, 13.18vw, 253px) !important;
   font-style: normal !important;
   font-weight: 700 !important;
   line-height: 75% !important;
-  letter-spacing: clamp(1.35px, 0.132vw, 2.535px) !important;
+  letter-spacing: clamp(1.35px, 0.167vw, 3.2px) !important;
+  text-align: right !important;
   white-space: nowrap !important;
-  overflow: hidden !important;
+  overflow: visible !important;
   text-overflow: clip !important;
   background: var(--RZN_React, linear-gradient(180deg, #ff7125 0%, #f20 100%))
     !important;
@@ -1678,31 +1682,33 @@ select {
 }
 
 .footer-bottom-brand {
-  left: 21.6146%;
+  left: auto;
+  right: 1.5%;
   top: 45.4874%;
-  width: 80.8854%;
+  width: max-content;
   height: 35.4622%;
   margin: 0;
   color: transparent;
   font-family: var(--font-wister);
-  font-size: 200px;
+  font-size: 253px;
   font-style: normal;
   font-weight: 700;
   line-height: 75%;
-  letter-spacing: 2.535px;
+  letter-spacing: 3.2px;
+  text-align: right;
   background: var(--RZN_React, linear-gradient(180deg, #ff7125 0%, #f20 100%));
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   white-space: nowrap;
-  overflow: hidden;
+  overflow: visible;
   text-overflow: clip;
 }
 
 @media (max-width: 1366px) {
   .footer-bottom-brand {
-    font-size: clamp(96px, 9.5vw, 180px);
-    letter-spacing: clamp(1.1px, 0.12vw, 2.2px);
+    font-size: clamp(108px, 13.18vw, 253px);
+    letter-spacing: clamp(1.35px, 0.167vw, 3.2px);
   }
 }
 
