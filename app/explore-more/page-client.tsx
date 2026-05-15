@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
 
+import type { PointerEvent } from "react";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import GetAppButton from "../components/get-app-button";
@@ -150,6 +151,112 @@ const releaseIframeLoadSlot = () => {
   activeIframeLoads += 1;
   next();
 };
+
+function ExploreMoreMobileScrollControls() {
+  const frameRef = useRef<number | null>(null);
+  const holdTimerRef = useRef<number | null>(null);
+  const lastFrameTimeRef = useRef<number | null>(null);
+  const activeButtonRef = useRef<HTMLButtonElement | null>(null);
+  const activePointerIdRef = useRef<number | null>(null);
+  const directionRef = useRef<1 | -1>(1);
+
+  const stopContinuousScroll = () => {
+    if (holdTimerRef.current !== null) {
+      window.clearTimeout(holdTimerRef.current);
+      holdTimerRef.current = null;
+    }
+    if (frameRef.current !== null) {
+      window.cancelAnimationFrame(frameRef.current);
+      frameRef.current = null;
+    }
+    lastFrameTimeRef.current = null;
+    if (
+      activeButtonRef.current &&
+      activePointerIdRef.current !== null &&
+      activeButtonRef.current.hasPointerCapture(activePointerIdRef.current)
+    ) {
+      activeButtonRef.current.releasePointerCapture(activePointerIdRef.current);
+    }
+    activeButtonRef.current = null;
+    activePointerIdRef.current = null;
+  };
+
+  const scrollStep = (direction: 1 | -1) => {
+    const distance = Math.max(180, window.innerHeight * 0.38);
+    window.scrollBy({
+      top: direction * distance,
+      behavior: "auto",
+    });
+  };
+
+  const tickContinuousScroll = (timestamp: number) => {
+    const previousTime = lastFrameTimeRef.current ?? timestamp;
+    const elapsed = timestamp - previousTime;
+    lastFrameTimeRef.current = timestamp;
+
+    const pixelsPerSecond = Math.max(520, window.innerHeight * 0.9);
+    window.scrollBy({
+      top: directionRef.current * (pixelsPerSecond * elapsed) / 1000,
+      behavior: "auto",
+    });
+
+    frameRef.current = window.requestAnimationFrame(tickContinuousScroll);
+  };
+
+  const startContinuousScroll = (direction: 1 | -1) => {
+    stopContinuousScroll();
+    directionRef.current = direction;
+    scrollStep(direction);
+    holdTimerRef.current = window.setTimeout(() => {
+      lastFrameTimeRef.current = null;
+      frameRef.current = window.requestAnimationFrame(tickContinuousScroll);
+    }, 220);
+  };
+
+  const handlePointerDown = (
+    event: PointerEvent<HTMLButtonElement>,
+    direction: 1 | -1
+  ) => {
+    event.preventDefault();
+    activeButtonRef.current = event.currentTarget;
+    activePointerIdRef.current = event.pointerId;
+    event.currentTarget.setPointerCapture(event.pointerId);
+    startContinuousScroll(direction);
+  };
+
+  useEffect(() => stopContinuousScroll, []);
+
+  return (
+    <div
+      className="explore-more-scroll-controls"
+      role="group"
+      aria-label="Page scroll controls"
+    >
+      <button
+        type="button"
+        className="explore-more-scroll-button explore-more-scroll-button-up"
+        onPointerDown={(event) => handlePointerDown(event, -1)}
+        onPointerUp={stopContinuousScroll}
+        onPointerCancel={stopContinuousScroll}
+        onPointerLeave={stopContinuousScroll}
+        onLostPointerCapture={stopContinuousScroll}
+        onContextMenu={(event) => event.preventDefault()}
+        aria-label="Scroll up"
+      />
+      <button
+        type="button"
+        className="explore-more-scroll-button explore-more-scroll-button-down"
+        onPointerDown={(event) => handlePointerDown(event, 1)}
+        onPointerUp={stopContinuousScroll}
+        onPointerCancel={stopContinuousScroll}
+        onPointerLeave={stopContinuousScroll}
+        onLostPointerCapture={stopContinuousScroll}
+        onContextMenu={(event) => event.preventDefault()}
+        aria-label="Scroll down"
+      />
+    </div>
+  );
+}
 
 function ExploreMoreCard({
   card,
@@ -500,6 +607,7 @@ export default function ExploreMoreClient() {
             {mobileCards.slice(7).map((card) => (
               <ExploreMoreCard key={card.id} card={card} strictInView />
             ))}
+            <ExploreMoreMobileScrollControls />
           </div>
         )}
       </section>
