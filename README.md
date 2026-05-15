@@ -41,8 +41,10 @@ REZONA 官网项目，基于 Next.js App Router 实现。当前站点包含首�
 
 `/explore-more` 的客户端逻辑在 `app/explore-more/page-client.tsx`：
 
-- 桌面端以 3 行展示 15 张游戏卡片。
-- 移动端滚动到当前可视窗口后再加载对应游戏 iframe。
+- 桌面端以 3 行展示 15 张游戏卡片，游戏渲染区域高度固定为 `425px`。
+- 桌面端游戏 iframe 首次进入加载条件后会保留在 DOM 中，滚动离屏不重新加载。
+- 移动端滚动到当前可视窗口后再加载对应游戏 iframe，并保留离屏卸载/重载逻辑。
+- 移动端除首个游戏外，后续游戏卡片按一屏高度排布，右下角提供上下翻屏按钮，缓解 iframe 抢占触摸滚动的问题。
 - iframe 加载并发限制为 2。
 - 15 秒未加载成功则显示封面，点击封面可重新加载。
 
@@ -67,6 +69,7 @@ public/
       footer/           Footer 动画 fallback
       social/           社媒 icon
       store/            App Store / Google Play 素材
+    avatar/             Explore More 创作者头像
     explore-more/       Explore More 页面卡片与统计 icon
   fonts/
     Wister-Bold.otf
@@ -85,6 +88,7 @@ public/
 - 移动端通过 `visualViewport` / `innerHeight` 同步 `--mobile-screen-h`，用于处理不同手机浏览器可视高度。
 - 根布局导出了 `viewport`，移动端禁止缩放，避免素材对齐在缩放后漂移。
 - 样式文件按页面拆分：全站与首页在 `globals.css`，Explore More 在 `explore-more.css`，法律页在 `legal-pages.css`。
+- Footer 的 `REZONA.AI` 桌面文字使用 `width: max-content` + `right` 定位对齐社媒 icon，调整时要同时确认完整显示与右边缘对齐。
 
 ## Components
 
@@ -131,6 +135,8 @@ npx next build --webpack
 - 新增图片优先使用 `webp` / `avif`，命名使用 kebab-case。
 - 新增页面素材优先放入 `public/assets/<page-or-module>`，跨页面复用素材放入 `public/assets/shared`。
 - 更新素材目录后，检查代码中是否仍有旧路径，并确认 `public` 下真实文件存在。
-- 改动 iframe 游戏逻辑时，同时验证桌面首页、移动首页和 `/explore-more` 的加载/超时/离屏行为。
+- 清理素材时，先对 `app`、配置文件和数据 JSON 做引用扫描；头像、粒子池和社媒 icon 多数通过数组/JSON 间接引用，避免只按页面文本人工判断。
+- 改动 iframe 游戏逻辑时，同时验证桌面首页、移动首页和 `/explore-more` 的加载/超时/离屏行为；`/explore-more` 桌面与移动端离屏策略不同。
+- 外部游戏 iframe 的资源报错可能来自游戏内部域名和 CDN 的 CORS 配置，父页面通常无法用 iframe 属性修复。
 - 改动移动端高度相关样式时，重点检查 `--mobile-screen-h`、`mobile-fly-section`、`mobile-content-game-section`。
 - 改动 Next.js metadata、viewport、路由行为前，先对照 Next.js 16 文档。
