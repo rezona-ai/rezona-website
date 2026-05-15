@@ -26,10 +26,9 @@ const statIcons = {
 } as const;
 
 const exploreGameUrls = [
-  // "https://storage.googleapis.com/rezona-ai-prod/agent-jobs/minigame/c3230800-b189-4fc2-8417-f49b1bc6706f/rip-the-net_1.html",
   "https://prod.cdn-rezona.com/agent-jobs/minigame/861576ea-173f-4739-9e6a-b05819d1573d/index.html",
   "https://storage.googleapis.com/rezona-ai-prod/agent-jobs/minigame/3e3cf72e-6c46-4833-852f-1d5c6f283a39/index.html",
-  "https://storage.googleapis.com/rezona-ai-prod/minigame/8c2f3b01-2529-4bf6-9bbf-9ef081aefa4d/index.html",
+  "https://prod.cdn-rezona.com/minigame/8c2f3b01-2529-4bf6-9bbf-9ef081aefa4d/index.html",
   "https://storage.googleapis.com/rezona-ai-prod/agent-jobs/dist/6734420/15315675/index.html",
   "https://storage.googleapis.com/rezona-ai-prod/games/pgc/game3/video-fighters.html",
   "https://storage.googleapis.com/rezona-ai-prod/agent-jobs/minigame/5eea8523-1e7c-4034-9e2c-49ecf6484e17/italian-brainrot-surfers.html",
