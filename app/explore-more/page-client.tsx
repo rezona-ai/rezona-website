@@ -154,6 +154,7 @@ const releaseIframeLoadSlot = () => {
 
 function ExploreMoreMobileScrollControls() {
   const frameRef = useRef<number | null>(null);
+  const stepFrameRef = useRef<number | null>(null);
   const holdTimerRef = useRef<number | null>(null);
   const lastFrameTimeRef = useRef<number | null>(null);
   const activeButtonRef = useRef<HTMLButtonElement | null>(null);
@@ -169,6 +170,10 @@ function ExploreMoreMobileScrollControls() {
       window.cancelAnimationFrame(frameRef.current);
       frameRef.current = null;
     }
+    if (stepFrameRef.current !== null) {
+      window.cancelAnimationFrame(stepFrameRef.current);
+      stepFrameRef.current = null;
+    }
     lastFrameTimeRef.current = null;
     if (
       activeButtonRef.current &&
@@ -182,11 +187,35 @@ function ExploreMoreMobileScrollControls() {
   };
 
   const scrollStep = (direction: 1 | -1) => {
-    const distance = Math.max(180, window.innerHeight * 0.38);
-    window.scrollBy({
-      top: direction * distance,
-      behavior: "auto",
-    });
+    if (stepFrameRef.current !== null) {
+      window.cancelAnimationFrame(stepFrameRef.current);
+      stepFrameRef.current = null;
+    }
+
+    const distance = direction * Math.max(260, window.innerHeight * 0.62);
+    const startY = window.scrollY;
+    const maxY = document.documentElement.scrollHeight - window.innerHeight;
+    const targetY = Math.min(Math.max(startY + distance, 0), maxY);
+    const duration = 260;
+    let startTime: number | null = null;
+
+    const animateStep = (timestamp: number) => {
+      if (startTime === null) startTime = timestamp;
+      const progress = Math.min((timestamp - startTime) / duration, 1);
+      const easedProgress = 1 - Math.pow(1 - progress, 3);
+      window.scrollTo({
+        top: startY + (targetY - startY) * easedProgress,
+        behavior: "auto",
+      });
+
+      if (progress < 1) {
+        stepFrameRef.current = window.requestAnimationFrame(animateStep);
+        return;
+      }
+      stepFrameRef.current = null;
+    };
+
+    stepFrameRef.current = window.requestAnimationFrame(animateStep);
   };
 
   const tickContinuousScroll = (timestamp: number) => {
@@ -194,7 +223,7 @@ function ExploreMoreMobileScrollControls() {
     const elapsed = timestamp - previousTime;
     lastFrameTimeRef.current = timestamp;
 
-    const pixelsPerSecond = Math.max(520, window.innerHeight * 0.9);
+    const pixelsPerSecond = Math.max(720, window.innerHeight * 1.18);
     window.scrollBy({
       top: directionRef.current * (pixelsPerSecond * elapsed) / 1000,
       behavior: "auto",
@@ -208,6 +237,10 @@ function ExploreMoreMobileScrollControls() {
     directionRef.current = direction;
     scrollStep(direction);
     holdTimerRef.current = window.setTimeout(() => {
+      if (stepFrameRef.current !== null) {
+        window.cancelAnimationFrame(stepFrameRef.current);
+        stepFrameRef.current = null;
+      }
       lastFrameTimeRef.current = null;
       frameRef.current = window.requestAnimationFrame(tickContinuousScroll);
     }, 220);
