@@ -194,7 +194,9 @@ export default function PrivacyPage() {
           <h2>Contact Us</h2>
           <p>If you have questions or suggestions about our Privacy Policy, please contact us:</p>
           <p>
-            <strong>Email:</strong> support@rezona.ai
+            <a className="privacy-email-link" href="mailto:support@rezona.ai">
+              <u>Email: </u>support@rezona.ai
+            </a>
             <br />
             <strong>Contact:</strong> Stratava Group
           </p>
