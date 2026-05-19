@@ -5,7 +5,7 @@ import Link from "next/link";
 import SiteFooter from "../components/site-footer";
 
 export const metadata: Metadata = {
-  title: "REZONA",
+  title: "REZONA | Term of Service",
   description:
     "Rezona is an AI-powered game creation platform where anyone can turn ideas into playable games in seconds. No coding, no limits, just creativity.",
   icons: {
