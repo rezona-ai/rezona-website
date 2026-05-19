@@ -167,6 +167,20 @@
   margin-top: 20px;
 }
 
+.privacy-email-link {
+  color: inherit;
+  font-family: var(--font-montserrat);
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+  text-decoration: none;
+}
+
+.privacy-email-link strong,
+.privacy-email-link u {
+  font-family: inherit;
+}
+
 .privacy-desktop-footer {
   margin-top: 122px;
 }
