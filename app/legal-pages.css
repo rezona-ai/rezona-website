@@ -159,6 +159,122 @@
   margin-top: 20px;
 }
 
+.faq-content-shell {
+  margin-top: 80px;
+}
+
+.faq-title {
+  margin-top: 36px;
+  font-size: 47px;
+  line-height: 41px;
+}
+
+.faq-date {
+  margin-top: 78px;
+}
+
+.faq-list {
+  width: 100%;
+  margin-top: 82px;
+}
+
+.faq-item {
+  width: 100%;
+  border: 1px solid #404040;
+  border-radius: 18px;
+  background: #050505;
+  color: #d4d4d4;
+  overflow: hidden;
+}
+
+.faq-item + .faq-item {
+  margin-top: 16px;
+}
+
+.faq-item.is-open {
+  background: linear-gradient(180deg, #4a4a4a 0%, #303030 100%);
+}
+
+.faq-question {
+  width: 100%;
+  min-height: 54px;
+  padding: 15px 16px;
+  display: grid;
+  grid-template-columns: 13px minmax(0, 1fr) 16px;
+  align-items: center;
+  gap: 10px;
+  border: 0;
+  background: transparent;
+  color: #fafafa;
+  cursor: pointer;
+  appearance: none;
+  text-align: left;
+  font-family: var(--font-montserrat);
+}
+
+.faq-question-mark {
+  width: 12px;
+  height: 12px;
+  display: block;
+  justify-self: center;
+}
+
+.faq-question-text {
+  color: #fafafa;
+  font-family: var(--font-montserrat);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+}
+
+.faq-question-chevron {
+  width: 8px;
+  height: 8px;
+  justify-self: center;
+  border-right: 1.5px solid #fafafa;
+  border-bottom: 1.5px solid #fafafa;
+  transform: rotate(45deg);
+  transition: transform 160ms ease;
+}
+
+.faq-item.is-open .faq-question-chevron {
+  transform: rotate(225deg);
+}
+
+.faq-answer {
+  padding: 0 16px 16px;
+}
+
+.faq-answer p,
+.faq-answer li {
+  margin: 0;
+  color: #d4d4d4;
+  font-family: var(--font-montserrat);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+}
+
+.faq-answer ul {
+  margin: 8px 0 0;
+  padding-left: 22px;
+}
+
+.faq-contact {
+  margin-top: 82px;
+}
+
+.faq-email-link {
+  color: inherit;
+  font-family: var(--font-montserrat);
+  text-decoration: none;
+}
+
+.faq-email-link strong,
+.faq-email-link u {
+  font-family: inherit;
+}
+
 .privacy-desktop-footer {
   margin-top: 122px;
 }
@@ -316,8 +432,77 @@
   .privacy-page .privacy-title,
   .privacy-page .privacy-intro p,
   .privacy-page .privacy-section p,
-  .privacy-page .privacy-section li {
+  .privacy-page .privacy-section li,
+  .faq-question-text,
+  .faq-answer p,
+  .faq-answer li {
     overflow-wrap: break-word;
     word-break: break-word;
+  }
+
+  .faq-content-shell {
+    margin-top: 40px;
+  }
+
+  .faq-title {
+    margin-top: 12px;
+    font-size: 18px;
+    line-height: 15px;
+  }
+
+  .faq-date {
+    margin-top: 40px;
+  }
+
+  .faq-list {
+    margin-top: 40px;
+  }
+
+  .faq-item {
+    border-radius: 12px;
+  }
+
+  .faq-item + .faq-item {
+    margin-top: 12px;
+  }
+
+  .faq-question {
+    min-height: 78px;
+    padding: 16px;
+    grid-template-columns: 13px minmax(0, 1fr) 16px;
+    gap: 8px;
+    align-items: start;
+  }
+
+  .faq-question-mark {
+    margin-top: 4px;
+  }
+
+  .faq-question-text {
+    font-size: 14px;
+    line-height: 21px;
+  }
+
+  .faq-question-chevron {
+    margin-top: 3px;
+  }
+
+  .faq-answer {
+    padding: 0 16px 16px;
+  }
+
+  .faq-answer p,
+  .faq-answer li {
+    font-size: 14px;
+    line-height: 21px;
+  }
+
+  .faq-answer ul {
+    margin-top: 8px;
+    padding-left: 18px;
+  }
+
+  .faq-contact {
+    margin-top: 40px;
   }
 }
