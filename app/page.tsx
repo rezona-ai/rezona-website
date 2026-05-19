@@ -408,10 +408,10 @@ const createRandomHeroBurstParticle = (
   const delayS = options?.prefillPhase
     ? -randomBetween(durationS * 0.08, durationS * 0.72)
     : baseDelayS;
-  const startScale = randomBetween(0.07, 0.14) + nearWeight * 0.02;
-  const midScale = randomBetween(0.46, isNearPass ? 0.82 : 0.72) + nearWeight * 0.08;
-  const endScale = randomBetween(isNearPass ? 1.24 : 1.02, isNearPass ? 1.56 : 1.28) +
-    nearWeight * (isNearPass ? 0.28 : 0.2);
+  const startScale = randomBetween(0.018, 0.06) + nearWeight * 0.008;
+  const midScale = randomBetween(0.7, isNearPass ? 1.18 : 1.02) + nearWeight * 0.14;
+  const endScale = randomBetween(isNearPass ? 1.9 : 1.48, isNearPass ? 2.45 : 1.98) +
+    nearWeight * (isNearPass ? 0.48 : 0.34);
   const zStartPx = randomBetween(-1520, -980) + nearWeight * 160;
   const zMidPx = randomBetween(-940, -460) + nearWeight * 150;
   const zEndPx = randomBetween(isNearPass ? -24 : -120, isNearPass ? 224 : 84) +
