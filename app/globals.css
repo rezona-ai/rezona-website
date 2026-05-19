@@ -83,6 +83,7 @@
     sans-serif;
   --font-wister: "Wister", var(--font-montserrat), sans-serif;
   --font-anton: "Anton", "Arial Black", "Helvetica Neue", Arial, sans-serif;
+  --top-nav-bg: rgba(6, 6, 10, 0.68);
 }
 
 * {
@@ -138,19 +139,39 @@ select {
   overflow-x: clip;
 }
 
-.home-top-explore-link {
+.home-top-nav {
   position: fixed;
-  top: 20px;
-  right: max(24px, calc((100vw - 1920px) / 2 + 42px));
-  z-index: 85;
+  inset: 0 0 auto;
+  width: 100%;
+  height: 96px;
+  padding: 0 max(24px, calc((100vw - 1920px) / 2 + 42px));
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: transparent;
+  z-index: 10000;
+  pointer-events: auto;
+  box-sizing: border-box;
+  transition:
+    background-color 180ms ease,
+    backdrop-filter 180ms ease;
+}
+
+.home-top-nav.has-nav-bg {
+  background: var(--top-nav-bg);
+  backdrop-filter: blur(18px) saturate(140%);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+}
+
+.home-top-explore-link {
+  position: relative;
+  z-index: 1;
   pointer-events: auto;
 }
 
 .home-top-logo {
-  position: fixed;
-  top: 20px;
-  left: max(24px, calc((100vw - 1920px) / 2 + 42px));
-  z-index: 85;
+  position: relative;
+  z-index: 1;
   pointer-events: auto;
   display: inline-flex;
   align-items: center;
@@ -160,10 +181,6 @@ select {
   width: 239px;
   height: auto;
   display: block;
-}
-
-.home-top-logo.desktop-only {
-  position: fixed;
 }
 
 .home-top-explore-pill {
@@ -1937,17 +1954,22 @@ select {
 }
 
 .mobile-top-nav {
-  position: absolute;
-  left: 50%;
+  position: fixed;
+  left: 0;
+  right: 0;
   top: 0;
-  width: var(--mobile-w);
-  transform: translateX(-50%);
-  height: calc(var(--mobile-w) * 60 / 375);
+  width: 100%;
+  transform: none;
+  height: 60px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: calc(var(--mobile-w) * 8 / 375) calc(var(--mobile-w) * 16 / 375);
-  z-index: 3;
+  padding: 8px max(16px, calc((100vw - 375px) / 2 + 16px));
+  background: var(--top-nav-bg);
+  backdrop-filter: blur(18px) saturate(140%);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+  z-index: 10000;
+  box-sizing: border-box;
 }
 
 .mobile-top-logo {

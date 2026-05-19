@@ -408,10 +408,10 @@ const createRandomHeroBurstParticle = (
   const delayS = options?.prefillPhase
     ? -randomBetween(durationS * 0.08, durationS * 0.72)
     : baseDelayS;
-  const startScale = randomBetween(0.07, 0.14) + nearWeight * 0.02;
-  const midScale = randomBetween(0.46, isNearPass ? 0.82 : 0.72) + nearWeight * 0.08;
-  const endScale = randomBetween(isNearPass ? 1.24 : 1.02, isNearPass ? 1.56 : 1.28) +
-    nearWeight * (isNearPass ? 0.28 : 0.2);
+  const startScale = randomBetween(0.018, 0.06) + nearWeight * 0.008;
+  const midScale = randomBetween(0.7, isNearPass ? 1.18 : 1.02) + nearWeight * 0.14;
+  const endScale = randomBetween(isNearPass ? 1.9 : 1.48, isNearPass ? 2.45 : 1.98) +
+    nearWeight * (isNearPass ? 0.48 : 0.34);
   const zStartPx = randomBetween(-1520, -980) + nearWeight * 160;
   const zMidPx = randomBetween(-940, -460) + nearWeight * 150;
   const zEndPx = randomBetween(isNearPass ? -24 : -120, isNearPass ? 224 : 84) +
@@ -1178,6 +1178,7 @@ export default function Home() {
   const [shouldLoadMobileHeroGame, setShouldLoadMobileHeroGame] = useState(false);
   const [isDesktopHeroGameVisible, setIsDesktopHeroGameVisible] = useState(true);
   const [isMobileHeroGameVisible, setIsMobileHeroGameVisible] = useState(false);
+  const [hasHomeTopNavBg, setHasHomeTopNavBg] = useState(false);
 
   const switchHeroGame = (direction: 1 | -1) => {
     setHeroGameIndex((prev) =>
@@ -1225,6 +1226,26 @@ export default function Home() {
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const liteMode = reducedMotion || hardwareCores <= 6 || memorySize <= 4;
     setIsMobilePerfLite(liteMode);
+  }, [isMobile]);
+
+  useEffect(() => {
+    if (isMobile !== false) {
+      setHasHomeTopNavBg(false);
+      return;
+    }
+
+    const syncHomeTopNavBg = () => {
+      const firstScreenExitY = Math.max(window.innerHeight - 96, 0);
+      setHasHomeTopNavBg(window.scrollY >= firstScreenExitY);
+    };
+
+    syncHomeTopNavBg();
+    window.addEventListener("scroll", syncHomeTopNavBg, { passive: true });
+    window.addEventListener("resize", syncHomeTopNavBg);
+    return () => {
+      window.removeEventListener("scroll", syncHomeTopNavBg);
+      window.removeEventListener("resize", syncHomeTopNavBg);
+    };
   }, [isMobile]);
 
   useEffect(() => {
@@ -1482,24 +1503,28 @@ export default function Home() {
     <main className="rezona-page">
       {!isMobile && (
         <>
-          <Link className="home-top-logo desktop-only" href="/" aria-label="Go back to home">
-            <img
-              src="/assets/shared/brand/mobile-top-logo-2x.webp"
-              alt="REZONA"
-              width={261}
-              height={60}
-              loading="eager"
-              decoding="async"
-            />
-          </Link>
-
-          <Link
-            className="home-top-explore-link home-top-explore-pill desktop-only"
-            href="/explore-more"
-            aria-label="Explore more games"
+          <header
+            className={`home-top-nav desktop-only${hasHomeTopNavBg ? " has-nav-bg" : ""}`}
           >
-            Explore more games
-          </Link>
+            <Link className="home-top-logo" href="/" aria-label="Go back to home">
+              <img
+                src="/assets/shared/brand/mobile-top-logo-2x.webp"
+                alt="REZONA"
+                width={261}
+                height={60}
+                loading="eager"
+                decoding="async"
+              />
+            </Link>
+
+            <Link
+              className="home-top-explore-link home-top-explore-pill"
+              href="/explore-more"
+              aria-label="Explore more games"
+            >
+              Explore more games
+            </Link>
+          </header>
 
           <div className="desktop-layout">
       <section
