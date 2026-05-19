@@ -5,16 +5,24 @@
   width: 100%;
   overflow-x: hidden;
   overflow-x: clip;
+  padding-top: 96px;
 }
 
 .privacy-top-nav {
-  width: min(100%, 1440px);
-  height: 108px;
-  margin: 0 auto;
-  padding: 16px 48px;
+  position: fixed;
+  inset: 0 0 auto;
+  width: 100%;
+  height: 96px;
+  margin: 0;
+  padding: 0 max(24px, calc((100vw - 1920px) / 2 + 42px));
   display: flex;
   align-items: center;
   justify-content: space-between;
+  background: var(--top-nav-bg);
+  backdrop-filter: blur(18px) saturate(140%);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+  z-index: 10000;
+  box-sizing: border-box;
 }
 
 .privacy-top-logo {
@@ -169,17 +177,20 @@
 }
 
 @media (max-width: 900px) {
+  .privacy-page {
+    padding-top: 60px;
+  }
+
   .privacy-top-nav {
     --mobile-header-w: min(100vw, 375px);
-    width: var(--mobile-header-w);
-    height: calc(var(--mobile-header-w) * 60 / 375);
-    margin: 0 auto;
-    padding: calc(var(--mobile-header-w) * 8 / 375)
-      calc(var(--mobile-header-w) * 16 / 375);
+    width: 100%;
+    height: 60px;
+    margin: 0;
+    padding: 8px max(16px, calc((100vw - 375px) / 2 + 16px));
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background: transparent;
+    background: var(--top-nav-bg);
   }
 
   .privacy-top-logo img {

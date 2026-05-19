@@ -1178,6 +1178,7 @@ export default function Home() {
   const [shouldLoadMobileHeroGame, setShouldLoadMobileHeroGame] = useState(false);
   const [isDesktopHeroGameVisible, setIsDesktopHeroGameVisible] = useState(true);
   const [isMobileHeroGameVisible, setIsMobileHeroGameVisible] = useState(false);
+  const [hasHomeTopNavBg, setHasHomeTopNavBg] = useState(false);
 
   const switchHeroGame = (direction: 1 | -1) => {
     setHeroGameIndex((prev) =>
@@ -1225,6 +1226,26 @@ export default function Home() {
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const liteMode = reducedMotion || hardwareCores <= 6 || memorySize <= 4;
     setIsMobilePerfLite(liteMode);
+  }, [isMobile]);
+
+  useEffect(() => {
+    if (isMobile !== false) {
+      setHasHomeTopNavBg(false);
+      return;
+    }
+
+    const syncHomeTopNavBg = () => {
+      const firstScreenExitY = Math.max(window.innerHeight - 96, 0);
+      setHasHomeTopNavBg(window.scrollY >= firstScreenExitY);
+    };
+
+    syncHomeTopNavBg();
+    window.addEventListener("scroll", syncHomeTopNavBg, { passive: true });
+    window.addEventListener("resize", syncHomeTopNavBg);
+    return () => {
+      window.removeEventListener("scroll", syncHomeTopNavBg);
+      window.removeEventListener("resize", syncHomeTopNavBg);
+    };
   }, [isMobile]);
 
   useEffect(() => {
@@ -1482,24 +1503,28 @@ export default function Home() {
     <main className="rezona-page">
       {!isMobile && (
         <>
-          <Link className="home-top-logo desktop-only" href="/" aria-label="Go back to home">
-            <img
-              src="/assets/shared/brand/mobile-top-logo-2x.webp"
-              alt="REZONA"
-              width={261}
-              height={60}
-              loading="eager"
-              decoding="async"
-            />
-          </Link>
-
-          <Link
-            className="home-top-explore-link home-top-explore-pill desktop-only"
-            href="/explore-more"
-            aria-label="Explore more games"
+          <header
+            className={`home-top-nav desktop-only${hasHomeTopNavBg ? " has-nav-bg" : ""}`}
           >
-            Explore more games
-          </Link>
+            <Link className="home-top-logo" href="/" aria-label="Go back to home">
+              <img
+                src="/assets/shared/brand/mobile-top-logo-2x.webp"
+                alt="REZONA"
+                width={261}
+                height={60}
+                loading="eager"
+                decoding="async"
+              />
+            </Link>
+
+            <Link
+              className="home-top-explore-link home-top-explore-pill"
+              href="/explore-more"
+              aria-label="Explore more games"
+            >
+              Explore more games
+            </Link>
+          </header>
 
           <div className="desktop-layout">
       <section
