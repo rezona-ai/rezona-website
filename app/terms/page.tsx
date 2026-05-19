@@ -2,7 +2,6 @@
 import type { Metadata } from "next";
 import "../legal-pages.css";
 import Link from "next/link";
-import GetAppButton from "../components/get-app-button";
 import SiteFooter from "../components/site-footer";
 
 export const metadata: Metadata = {
@@ -33,7 +32,9 @@ export default function TermsPage() {
             decoding="async"
           />
         </Link>
-        <GetAppButton className="privacy-top-cta" label="Get App" />
+        <Link href="/explore-more" className="privacy-top-cta">
+          Explore more games
+        </Link>
       </header>
 
       <section className="privacy-content-shell">
