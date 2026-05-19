@@ -1,5 +1,36 @@
 @import "tailwindcss";
 
+@keyframes footer-brand-drift {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  100% {
+    transform: translate3d(-4%, 0, 0);
+  }
+}
+
+@keyframes footer-brand-drift-mobile {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  100% {
+    transform: translate3d(3%, 0, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .footer-tail-composed .footer-bottom-brand,
+  .footer-bottom-brand,
+  .mobile-footer .mobile-footer-brand,
+  .mobile-footer-brand {
+    animation: none !important;
+    transform: none !important;
+    will-change: auto !important;
+  }
+}
+
 @font-face {
   font-family: "Wister";
   src: url("/fonts/Wister-Bold.otf") format("opentype");
@@ -28,6 +59,9 @@
   white-space: nowrap !important;
   overflow: visible !important;
   text-overflow: clip !important;
+  animation: footer-brand-drift 8s ease-in-out infinite alternate !important;
+  transform-origin: 50% 50% !important;
+  will-change: transform !important;
   background: var(--RZN_React, linear-gradient(180deg, #ff7125 0%, #f20 100%))
     !important;
   background-clip: text !important;
@@ -49,6 +83,9 @@
   background-clip: text !important;
   -webkit-background-clip: text !important;
   -webkit-text-fill-color: transparent !important;
+  animation: footer-brand-drift-mobile 7s ease-in-out infinite alternate !important;
+  transform-origin: 50% 50% !important;
+  will-change: transform !important;
 }
 
 @font-face {
@@ -1720,6 +1757,9 @@ select {
   white-space: nowrap;
   overflow: visible;
   text-overflow: clip;
+  animation: footer-brand-drift 8s ease-in-out infinite alternate;
+  transform-origin: 50% 50%;
+  will-change: transform;
 }
 
 @media (max-width: 1366px) {
@@ -2631,6 +2671,9 @@ select {
   -webkit-text-fill-color: transparent;
   text-align: left;
   white-space: nowrap;
+  animation: footer-brand-drift-mobile 7s ease-in-out infinite alternate;
+  transform-origin: 50% 50%;
+  will-change: transform;
 }
 
 .mobile-footer-dino {
