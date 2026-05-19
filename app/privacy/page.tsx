@@ -33,7 +33,7 @@ export default function PrivacyPage() {
           />
         </Link>
         <Link href="/explore-more" className="privacy-top-cta">
-          Explore more games
+          Explore more<span className="privacy-top-cta-extra"> games</span>
         </Link>
       </header>
 

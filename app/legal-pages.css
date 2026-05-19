@@ -48,6 +48,10 @@
   text-decoration: none;
 }
 
+.privacy-top-cta-extra {
+  font-family: inherit;
+}
+
 .privacy-content-shell {
   width: min(901px, calc(100vw - 96px));
   margin: 76px auto 0;
@@ -183,11 +187,15 @@
   }
 
   .privacy-top-cta {
-    width: 158px;
+    width: 127px;
     height: 40px;
     display: inline-flex;
     font-size: 13px;
     line-height: 20px;
+  }
+
+  .privacy-top-cta-extra {
+    display: none;
   }
 
   .privacy-content-shell {
