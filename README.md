@@ -1,6 +1,6 @@
 # REZONA Website
 
-REZONA 官网项目，基于 Next.js App Router 实现。当前站点包含首页、Explore More 游戏列表页、隐私政策页、EULA 条款页，以及账号删除跳转页。
+REZONA 官网项目，基于 Next.js App Router 实现。当前站点包含首页、Explore More 游戏列表页、隐私政策页、EULA 条款页、FAQ 页，以及账号删除跳转页。
 
 站点视觉主要由切图素材、滚动驱动动画、游戏 iframe 预览和 Lottie 动画组成。首页使用桌面、窄 PC、移动端三套适配规则，其余页面主要按桌面与移动端两套规则适配。
 
@@ -22,6 +22,7 @@ REZONA 官网项目，基于 Next.js App Router 实现。当前站点包含首�
 /explore-more     游戏探索页，15 个游戏卡片
 /privacy          Privacy Policy
 /terms            End User License Agreement (EULA)
+/faq              Frequently Asked Questions
 /delete-account   重定向到 Google Form
 ```
 
@@ -50,6 +51,15 @@ REZONA 官网项目，基于 Next.js App Router 实现。当前站点包含首�
 - iframe 加载并发限制为 2。
 - 15 秒未加载成功则显示封面，点击封面可重新加载。
 
+Legal 页面与 FAQ 页面共用 `app/legal-pages.css` 和 `SiteFooter variant="legal"`：
+
+- `/privacy`、`/terms`、`/faq` 顶部 logo 回到首页，右侧 CTA 跳转 `/explore-more`。
+- 顶部 CTA 桌面端显示 `Explore more games`，移动端隐藏 `games`，显示为 `Explore more`。
+- `/faq` 的手风琴逻辑在 `app/faq/page-client.tsx`，默认展开第一个问题；当前所有问题暂时复用第一条答案。
+- FAQ 问题左侧 bullet 使用 `public/assets/faq/Bullet.svg`。
+- FAQ 联系邮箱使用 `mailto:support@rezona.ai`，点击后唤起系统默认邮箱客户端。
+- Footer legal 链接为 `Privacy Policy | Term of Service | Faq`，桌面端和移动端都在 `app/components/site-footer.tsx` 中维护；首页桌面内联 footer 也在 `app/page.tsx` 中同步维护。
+
 ## Assets
 
 资源目录已经去掉旧的 `public/figma` 层级，统一放在 `public/assets`：
@@ -65,6 +75,7 @@ public/
       particles/        UGC 粒子图片池
       showcase/         移动端 showcase 素材
       stats/            轮播统计素材
+    faq/                FAQ 页面 bullet 等素材
     shared/
       app-download/     Get App 弹窗素材
       brand/            Logo/header 相关素材
@@ -88,9 +99,13 @@ public/
 
 - 全局默认字体为 `Wister`，通过 `app/globals.css` 的 `@font-face` 引入。
 - 正常正文、法律页正文、面包屑、部分按钮文案使用 `var(--font-montserrat)` 保持可读性。
+<<<<<<< HEAD
+- 法律页与 FAQ 顶部 CTA 使用 `.privacy-top-cta-extra` 控制 `games` 的桌面间距与移动端隐藏，避免在 `inline-flex` 中依赖文本前导空格。
+=======
 - 顶部导航固定在页面顶部：PC 高度 `96px`，移动端高度 `60px`，背景使用 `--top-nav-bg` 加 blur；首页 PC 首屏初始透明，首屏滚走后再显示背景。
 - 当前断点策略：首页移动端为 `<=1024px`，首页窄 PC 为 `1025px` - `1366px`；Explore More、Privacy、Terms 等非首页移动端为 `<=640px`。
 - 首页移动端主体宽度通过 `--mobile-w` 控制，最大参考宽度为 `430px`；`641px` - `1024px` 有单独的宽屏移动/平板过渡规则。
+>>>>>>> origin/main
 - 移动端通过 `visualViewport` / `innerHeight` 同步 `--mobile-screen-h`，用于处理不同手机浏览器可视高度。
 - 根布局导出了 `viewport`，移动端禁止缩放，避免素材对齐在缩放后漂移。
 - 样式文件按页面拆分：全站与首页在 `globals.css`，Explore More 在 `explore-more.css`，法律页在 `legal-pages.css`。
@@ -135,7 +150,9 @@ npm run lint     ESLint 检查
 本项目常用构建校验：
 
 ```bash
-npx next build --webpack
+npx next typegen
+npx tsc --noEmit
+npm run build
 ```
 
 ## Maintenance Checklist
@@ -150,4 +167,7 @@ npx next build --webpack
 - 改动 iframe 游戏逻辑时，同时验证桌面首页、移动首页和 `/explore-more` 的加载/超时/离屏行为；`/explore-more` 桌面与移动端离屏策略不同。
 - 外部游戏 iframe 的资源报错可能来自游戏内部域名和 CDN 的 CORS 配置，父页面通常无法用 iframe 属性修复。
 - 改动移动端高度相关样式时，重点检查 `--mobile-screen-h`、`mobile-fly-section`、`mobile-content-game-section`。
+- 改动 legal footer 链接时，同时检查 `app/components/site-footer.tsx` 和首页 `app/page.tsx` 的桌面 footer 链接是否一致。
+- 改动 `/privacy`、`/terms`、`/faq` 顶部 CTA 时，同时检查 PC 文案 `Explore more games`、移动端文案 `Explore more` 和按钮宽度。
+- 改动 FAQ 页面时，检查 `app/faq/page-client.tsx`、`app/legal-pages.css` 和 `public/assets/faq` 的资源引用是否同步。
 - 改动 Next.js metadata、viewport、路由行为前，先对照 Next.js 16 文档。

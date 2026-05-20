@@ -12,10 +12,14 @@ export const sharedIcons: NonNullable<Metadata["icons"]> = {
   apple: "/logo.png",
 };
 
-export function createPageMetadata(title: string): Metadata {
+export function createPageMetadata(
+  title: string,
+  overrides: Omit<Metadata, "title" | "icons"> = {}
+): Metadata {
   return {
     title,
     description: sharedDescription,
     icons: sharedIcons,
+    ...overrides,
   };
 }
