@@ -1251,30 +1251,37 @@ export default function Home() {
 
   useEffect(() => {
     const mobileQuery = window.matchMedia("(max-width: 1024px)");
-    const smallDesktopQuery = window.matchMedia(
+    const narrowDesktopQuery = window.matchMedia(
       "(max-width: 1366px) and (min-width: 1025px)"
+    );
+    const tallDesktopQuery = window.matchMedia(
+      "(min-width: 1025px) and (max-aspect-ratio: 3/2)"
     );
     const syncLayout = () => {
       setIsMobile(mobileQuery.matches);
-      setIsSmallDesktop(smallDesktopQuery.matches);
+      setIsSmallDesktop(narrowDesktopQuery.matches || tallDesktopQuery.matches);
     };
 
     syncLayout();
 
     if (typeof mobileQuery.addEventListener === "function") {
       mobileQuery.addEventListener("change", syncLayout);
-      smallDesktopQuery.addEventListener("change", syncLayout);
+      narrowDesktopQuery.addEventListener("change", syncLayout);
+      tallDesktopQuery.addEventListener("change", syncLayout);
       return () => {
         mobileQuery.removeEventListener("change", syncLayout);
-        smallDesktopQuery.removeEventListener("change", syncLayout);
+        narrowDesktopQuery.removeEventListener("change", syncLayout);
+        tallDesktopQuery.removeEventListener("change", syncLayout);
       };
     }
 
     mobileQuery.addListener(syncLayout);
-    smallDesktopQuery.addListener(syncLayout);
+    narrowDesktopQuery.addListener(syncLayout);
+    tallDesktopQuery.addListener(syncLayout);
     return () => {
       mobileQuery.removeListener(syncLayout);
-      smallDesktopQuery.removeListener(syncLayout);
+      narrowDesktopQuery.removeListener(syncLayout);
+      tallDesktopQuery.removeListener(syncLayout);
     };
   }, []);
 

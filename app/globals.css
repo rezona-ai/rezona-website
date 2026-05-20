@@ -2153,7 +2153,10 @@ select {
   }
 
   .mobile-hero-copy {
-    top: calc(var(--mobile-w) * 540 / 375);
+    top: min(
+      calc(var(--mobile-w) * 540 / 375),
+      calc(var(--mobile-screen-h, 1vh) * 62)
+    );
     width: min(calc(var(--mobile-w) * 360 / 375), calc(100vw - 96px));
   }
 
@@ -2826,7 +2829,7 @@ select {
 
 }
 
-@media (max-width: 1366px) and (min-width: 1025px) {
+@media (min-width: 1025px) and (max-width: 1366px), (min-width: 1025px) and (max-aspect-ratio: 3 / 2) {
   .hero-fly-scene {
     height: 178vh;
   }
