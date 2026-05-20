@@ -1230,6 +1230,7 @@ const MobileStatsLoopScene = memo(function MobileStatsLoopScene() {
 export default function Home() {
   const [isMobile, setIsMobile] = useState<boolean | null>(null);
   const [isSmallDesktop, setIsSmallDesktop] = useState(false);
+  const [useCompactHeroGame, setUseCompactHeroGame] = useState(false);
   const [isMobilePerfLite, setIsMobilePerfLite] = useState(false);
   const [mobileHeroPanelsReady, setMobileHeroPanelsReady] = useState(false);
   const mobileHeroPanelsLoadedRef = useRef(0);
@@ -1260,6 +1261,7 @@ export default function Home() {
     const syncLayout = () => {
       setIsMobile(mobileQuery.matches);
       setIsSmallDesktop(narrowDesktopQuery.matches || tallDesktopQuery.matches);
+      setUseCompactHeroGame(narrowDesktopQuery.matches);
     };
 
     syncLayout();
@@ -1568,7 +1570,7 @@ export default function Home() {
   const shouldRunMobileHeroGame =
     isMobile && shouldLoadMobileHeroGame && isMobileHeroGameVisible;
   const activeHeroBgSlices = isSmallDesktop ? narrowPcHeroBgSlices : heroBgSlices;
-  const activeHeroGameSlices = isSmallDesktop ? narrowPcHeroGameSlices : heroGameSlices;
+  const activeHeroGameSlices = useCompactHeroGame ? narrowPcHeroGameSlices : heroGameSlices;
 
   return (
     <main className="rezona-page">
@@ -1639,7 +1641,12 @@ export default function Home() {
                     "--h": `${slice.hPct}%`,
                   });
                   return (
-                    <div key={slice.id} className="hero-game-frame" style={sliceStyle}>
+                    <div
+                      key={slice.id}
+                      className="hero-game-frame"
+                      data-slice-id={slice.id}
+                      style={sliceStyle}
+                    >
                       {shouldRunDesktopHeroGame ? (
                         <iframe
                           className="hero-game-iframe"
@@ -1675,6 +1682,7 @@ export default function Home() {
                         key={slice.id}
                         type="button"
                         className="hero-game-nav"
+                        data-slice-id={slice.id}
                         style={asVars({
                           "--x": `${slice.xPct}%`,
                           "--y": `${slice.yPct}%`,

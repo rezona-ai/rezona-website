@@ -1920,11 +1920,14 @@ select {
 
 .mobile-hero-section {
   padding: 0;
-  --mobile-w: min(100vw, 430px);
+  --mobile-w: calc(100vw - 32px);
   position: relative;
   width: 100%;
   margin: 0;
-  height: calc(var(--mobile-screen-h, 1vh) * 100);
+  height: max(
+    calc(var(--mobile-screen-h, 1vh) * 100),
+    calc(var(--mobile-w) * 700 / 375)
+  );
   overflow: hidden;
 }
 
@@ -2139,7 +2142,11 @@ select {
 
 @media (min-width: 641px) and (max-width: 1024px) {
   .mobile-hero-section {
-    --mobile-w: min(720px, calc(100vw - 64px), calc(var(--mobile-screen-h, 1vh) * 72));
+    --mobile-w: calc(100vw - 32px);
+    height: max(
+      calc(var(--mobile-screen-h, 1vh) * 100),
+      calc(var(--mobile-w) * 700 / 375)
+    );
   }
 
   .mobile-hero-bg {
@@ -2157,7 +2164,7 @@ select {
       calc(var(--mobile-w) * 540 / 375),
       calc(var(--mobile-screen-h, 1vh) * 62)
     );
-    width: min(calc(var(--mobile-w) * 360 / 375), calc(100vw - 96px));
+    width: min(calc(var(--mobile-w) * 360 / 375), calc(100vw - 32px));
   }
 
   .mobile-hero-title {
@@ -2850,12 +2857,40 @@ select {
   .hero-focus-stage {
     --hero-focus-scale-base: 1;
     --hero-focus-top: 50%;
-    --hero-game-main-top-shift: clamp(14px, 1.8vh, 24px);
-    --hero-game-main-height-grow: clamp(18px, 3vh, 28px);
+    --hero-game-main-top-shift: 0px;
+    --hero-game-main-height-grow: 0px;
     transform: translate3d(-50%, -50%, 0)
       translateX(calc(-20px + var(--hero-out-strong) * 10.8vw))
       translateY(calc(var(--hero-out-soft) * -1.25vh))
       scale(calc(var(--hero-focus-scale-base) * (1 + var(--hero-out) * 0.4)));
+  }
+
+  .hero-game-frame[data-slice-id="main"] {
+    --compact-game-left: clamp(52%, 54.5vw, 57%);
+    --compact-game-width: clamp(300px, min(29vw, 46vh), 430px);
+    left: var(--compact-game-left);
+    top: clamp(19%, 20.8vh, 23%);
+    width: var(--compact-game-width);
+    height: auto;
+    aspect-ratio: 342 / 546;
+  }
+
+  .hero-game-nav[data-slice-id="up"],
+  .hero-game-nav[data-slice-id="down"] {
+    left: calc(
+      clamp(52%, 54.5vw, 57%) + clamp(300px, min(29vw, 46vh), 430px) +
+        clamp(10px, 1.1vw, 18px)
+    );
+    width: clamp(44px, 4vw, 58px);
+    height: clamp(44px, 4vw, 58px);
+  }
+
+  .hero-game-nav[data-slice-id="up"] {
+    top: clamp(57%, 63vh, 67%);
+  }
+
+  .hero-game-nav[data-slice-id="down"] {
+    top: clamp(65%, 72vh, 76%);
   }
 
   .hero-canvas::before,
