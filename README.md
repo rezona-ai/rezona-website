@@ -99,13 +99,7 @@ public/
 
 - 全局默认字体为 `Wister`，通过 `app/globals.css` 的 `@font-face` 引入。
 - 正常正文、法律页正文、面包屑、部分按钮文案使用 `var(--font-montserrat)` 保持可读性。
-<<<<<<< HEAD
 - 法律页与 FAQ 顶部 CTA 使用 `.privacy-top-cta-extra` 控制 `games` 的桌面间距与移动端隐藏，避免在 `inline-flex` 中依赖文本前导空格。
-=======
-- 顶部导航固定在页面顶部：PC 高度 `96px`，移动端高度 `60px`，背景使用 `--top-nav-bg` 加 blur；首页 PC 首屏初始透明，首屏滚走后再显示背景。
-- 当前断点策略：首页移动端为 `<=1024px`，首页窄 PC 为 `1025px` - `1366px`；Explore More、Privacy、Terms 等非首页移动端为 `<=640px`。
-- 首页移动端主体宽度通过 `--mobile-w` 控制，最大参考宽度为 `430px`；`641px` - `1024px` 有单独的宽屏移动/平板过渡规则。
->>>>>>> origin/main
 - 移动端通过 `visualViewport` / `innerHeight` 同步 `--mobile-screen-h`，用于处理不同手机浏览器可视高度。
 - 根布局导出了 `viewport`，移动端禁止缩放，避免素材对齐在缩放后漂移。
 - 样式文件按页面拆分：全站与首页在 `globals.css`，Explore More 在 `explore-more.css`，法律页在 `legal-pages.css`。
