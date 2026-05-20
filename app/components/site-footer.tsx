@@ -195,10 +195,10 @@ export default function SiteFooter({ variant = "default" }: SiteFooterProps) {
             <Link className="footer-legal-link" href="/terms">
               Term of Service
             </Link>
-            <span aria-hidden="true"> | </span>
+            {/* <span aria-hidden="true"> | </span>
             <Link className="footer-legal-link" href="/faq">
               Faq
-            </Link>
+            </Link> */}
           </div>
           <p className="footer-legal-copy">© 2026 All Rights Reserved, Rezona</p>
         </div>
