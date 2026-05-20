@@ -6,6 +6,7 @@ import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import GetAppButton from "../components/get-app-button";
 import SiteFooter from "../components/site-footer";
+import exploreGamesData from "../data/explore-more-games.json";
 
 type ExploreCard = {
   id: string;
@@ -26,106 +27,16 @@ const statIcons = {
   chats: "/assets/explore-more/icon-chat-2x.webp",
 } as const;
 
-const exploreGameUrls = [
-  "https://prod.cdn-rezona.com/agent-jobs/minigame/861576ea-173f-4739-9e6a-b05819d1573d/index.html",
-  "https://storage.googleapis.com/rezona-ai-prod/agent-jobs/minigame/3e3cf72e-6c46-4833-852f-1d5c6f283a39/index.html",
-  "https://prod.cdn-rezona.com/minigame/8c2f3b01-2529-4bf6-9bbf-9ef081aefa4d/index.html",
-  "https://storage.googleapis.com/rezona-ai-prod/agent-jobs/dist/6734420/15315675/index.html",
-  "https://storage.googleapis.com/rezona-ai-prod/games/pgc/game3/video-fighters.html",
-  "https://storage.googleapis.com/rezona-ai-prod/agent-jobs/minigame/5eea8523-1e7c-4034-9e2c-49ecf6484e17/italian-brainrot-surfers.html",
-  "https://storage.googleapis.com/rezona-ai-prod/agent-jobs/minigame/9e6f8c4e-ad79-4576-945f-2dae90c805d3/oil_tycoon.html",
-  "https://storage.googleapis.com/rezona-ai-prod/minigame/a8479c74-1bfe-4bde-8cd3-7a7c9f22b35c/index.html",
-  "https://storage.googleapis.com/rezona-ai-prod/minigame/2862bc43-c8f3-4745-930c-346315712497/index.html",
-  "https://storage.googleapis.com/rezona-ai-prod/agent-jobs/minigame/1ac6405c-b6dc-4d12-b3c3-ff54ecc86b53/cartman_kfc.html",
-  "https://storage.googleapis.com/rezona-ai-prod/agent-jobs/minigame/25e2cc83-fd50-4be5-bdd1-4b7711912579/episode1_colarina.html",
-  "https://storage.googleapis.com/rezona-ai-prod/minigame/4f724db2-2a16-4263-8740-60a2506822dc/index.html",
-  "https://storage.googleapis.com/rezona-ai-prod/minigame/87faa715-8b6a-47e0-a6cd-f5865ccd2718/index.html",
-  "https://storage.googleapis.com/rezona-ai-prod/agent-jobs/minigame/1519db18-54e9-4274-9395-95e2a64f3025/episode1_the_wolfs_secret.html",
-  "https://storage.googleapis.com/rezona-ai-prod/minigame/823369f1-e19e-48a5-878b-fdf3a6ae7baa/index.html",
-];
-
-const cardTitles = [
-  "Mr. Hankey's Adventure",
-  "Steel Ball run",
-  "Dragonball R: The Saiyan Arrival V3",
-  "Un día en el Oxxo",
-  "Fruit Fight",
-  "Italian Brainrot Surfers",
-  "Oil Tycoon",
-  "Five Nights at Mom's",
-  "los river game",
-  "Eric Cartman's Bucket Run",
-  "Interactive Story: Colarina",
-  "dinosaur game",
-  "Nailoong Run!",
-  "The Wolf's Secret",
-  "Army of Light: White Knight",
-];
-
-const cardAuthors = [
-  "@Ladis Washerum",
-  "@DuongVatAKAMasterBaiter",
-  "@Goshumio",
-  "@Senior Juniors",
-  "@Ali Chhipa",
-  "@non",
-  "@non",
-  "@True Art 🎭",
-  "@Abdulhadi",
-  "@Ladis Washerum",
-  "@dblswrddhrs",
-  "@Syed Mursaleen",
-  "@Serenox",
-  "@dblswrddhrs",
-  "@Hadi Ghandour",
-];
-
-const cardAvatars = [
-  "/assets/avatar/nhan-xa.webp",
-  "/assets/avatar/non.webp",
-  "/assets/avatar/game-3.webp",
-  "/assets/avatar/game-4.webp",
-  "/assets/avatar/ali-chhipa.webp",
-  "/assets/avatar/non.webp",
-  "/assets/avatar/non.webp",
-  "/assets/avatar/true-art.webp",
-  "/assets/avatar/abdulhadi.webp",
-  "/assets/avatar/game-10.webp",
-  "/assets/avatar/dblswrddhrs.webp",
-  "/assets/avatar/syed-mursaleen.webp",
-  "/assets/avatar/serenox.webp",
-  "/assets/avatar/dblswrddhrs.webp",
-  "/assets/avatar/hadi-ghandour.webp",
-];
-
-const cardStats = [
-  ["3.5K", "3.5K", "3.5K", "3.5K"],
-  ["4.2K", "1.8K", "5.1K", "2.0K"],
-  ["8.4K", "2.4K", "6.6K", "1.5K"],
-  ["6.9K", "3.1K", "4.8K", "1.9K"],
-  ["5.3K", "2.2K", "4.3K", "1.2K"],
-  ["7.2K", "2.9K", "5.7K", "2.4K"],
-  ["3.8K", "1.6K", "4.0K", "1.1K"],
-  ["9.1K", "4.3K", "8.5K", "2.7K"],
-  ["6.1K", "2.0K", "4.9K", "1.6K"],
-  ["7.9K", "3.2K", "6.2K", "2.3K"],
-  ["5.8K", "2.1K", "5.0K", "1.7K"],
-  ["4.7K", "1.7K", "4.2K", "1.4K"],
-  ["6.6K", "2.6K", "5.6K", "2.1K"],
-  ["5.0K", "1.9K", "4.5K", "1.5K"],
-  ["8.8K", "3.8K", "7.4K", "2.8K"],
-] as const;
-
-const cards: ExploreCard[] = exploreGameUrls.map((href, index) => ({
-  id: `explore-card-${index + 1}`,
-  title: cardTitles[index],
-  author: cardAuthors[index],
-  avatar: cardAvatars[index],
-  plays: cardStats[index][0],
-  shares: cardStats[index][1],
-  likes: cardStats[index][2],
-  chats: cardStats[index][3],
-  href,
+const cards: ExploreCard[] = exploreGamesData.map((game) => ({
+  id: game.id,
+  title: game.title,
+  author: game.author,
+  avatar: game.avatar,
+  href: game.href,
+  plays: game.stats.plays,
+  shares: game.stats.shares,
+  likes: game.stats.likes,
+  chats: game.stats.chats,
 }));
 
 const desktopCards = cards;
@@ -161,7 +72,11 @@ function ExploreMoreMobileScrollControls() {
   const activePointerIdRef = useRef<number | null>(null);
   const directionRef = useRef<1 | -1>(1);
 
-  const stopContinuousScroll = () => {
+  const stopContinuousScroll = ({
+    cancelStep = true,
+  }: {
+    cancelStep?: boolean;
+  } = {}) => {
     if (holdTimerRef.current !== null) {
       window.clearTimeout(holdTimerRef.current);
       holdTimerRef.current = null;
@@ -170,7 +85,7 @@ function ExploreMoreMobileScrollControls() {
       window.cancelAnimationFrame(frameRef.current);
       frameRef.current = null;
     }
-    if (stepFrameRef.current !== null) {
+    if (cancelStep && stepFrameRef.current !== null) {
       window.cancelAnimationFrame(stepFrameRef.current);
       stepFrameRef.current = null;
     }
@@ -186,23 +101,32 @@ function ExploreMoreMobileScrollControls() {
     activePointerIdRef.current = null;
   };
 
+  const stopHoldScroll = () => {
+    stopContinuousScroll({ cancelStep: false });
+  };
+
+  const cancelScroll = () => {
+    stopContinuousScroll({ cancelStep: true });
+  };
+
   const scrollStep = (direction: 1 | -1) => {
     if (stepFrameRef.current !== null) {
       window.cancelAnimationFrame(stepFrameRef.current);
       stepFrameRef.current = null;
     }
 
-    const distance = direction * Math.max(260, window.innerHeight * 0.62);
+    const distance = direction * Math.max(360, window.innerHeight * 0.9);
     const startY = window.scrollY;
     const maxY = document.documentElement.scrollHeight - window.innerHeight;
     const targetY = Math.min(Math.max(startY + distance, 0), maxY);
-    const duration = 260;
+    const duration = 420;
     let startTime: number | null = null;
 
     const animateStep = (timestamp: number) => {
       if (startTime === null) startTime = timestamp;
       const progress = Math.min((timestamp - startTime) / duration, 1);
-      const easedProgress = 1 - Math.pow(1 - progress, 3);
+      const easedProgress =
+        progress * progress * progress * (progress * (progress * 6 - 15) + 10);
       window.scrollTo({
         top: startY + (targetY - startY) * easedProgress,
         behavior: "auto",
@@ -223,7 +147,7 @@ function ExploreMoreMobileScrollControls() {
     const elapsed = timestamp - previousTime;
     lastFrameTimeRef.current = timestamp;
 
-    const pixelsPerSecond = Math.max(720, window.innerHeight * 1.18);
+    const pixelsPerSecond = Math.max(960, window.innerHeight * 1.42);
     window.scrollBy({
       top: directionRef.current * (pixelsPerSecond * elapsed) / 1000,
       behavior: "auto",
@@ -233,7 +157,7 @@ function ExploreMoreMobileScrollControls() {
   };
 
   const startContinuousScroll = (direction: 1 | -1) => {
-    stopContinuousScroll();
+    stopContinuousScroll({ cancelStep: true });
     directionRef.current = direction;
     scrollStep(direction);
     holdTimerRef.current = window.setTimeout(() => {
@@ -257,7 +181,7 @@ function ExploreMoreMobileScrollControls() {
     startContinuousScroll(direction);
   };
 
-  useEffect(() => stopContinuousScroll, []);
+  useEffect(() => () => stopContinuousScroll({ cancelStep: true }), []);
 
   return (
     <div
@@ -269,10 +193,10 @@ function ExploreMoreMobileScrollControls() {
         type="button"
         className="explore-more-scroll-button explore-more-scroll-button-up"
         onPointerDown={(event) => handlePointerDown(event, -1)}
-        onPointerUp={stopContinuousScroll}
-        onPointerCancel={stopContinuousScroll}
-        onPointerLeave={stopContinuousScroll}
-        onLostPointerCapture={stopContinuousScroll}
+        onPointerUp={stopHoldScroll}
+        onPointerCancel={cancelScroll}
+        onPointerLeave={stopHoldScroll}
+        onLostPointerCapture={stopHoldScroll}
         onContextMenu={(event) => event.preventDefault()}
         aria-label="Scroll up"
       />
@@ -280,10 +204,10 @@ function ExploreMoreMobileScrollControls() {
         type="button"
         className="explore-more-scroll-button explore-more-scroll-button-down"
         onPointerDown={(event) => handlePointerDown(event, 1)}
-        onPointerUp={stopContinuousScroll}
-        onPointerCancel={stopContinuousScroll}
-        onPointerLeave={stopContinuousScroll}
-        onLostPointerCapture={stopContinuousScroll}
+        onPointerUp={stopHoldScroll}
+        onPointerCancel={cancelScroll}
+        onPointerLeave={stopHoldScroll}
+        onLostPointerCapture={stopHoldScroll}
         onContextMenu={(event) => event.preventDefault()}
         aria-label="Scroll down"
       />

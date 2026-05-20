@@ -1,41 +1,15 @@
-/* eslint-disable @next/next/no-img-element */
 import type { Metadata } from "next";
 import "../legal-pages.css";
-import Link from "next/link";
+import LegalHeader from "../components/legal-header";
 import SiteFooter from "../components/site-footer";
+import { createPageMetadata } from "../shared-metadata";
 
-export const metadata: Metadata = {
-  title: "REZONA | Privacy Policy",
-  description:
-    "Rezona is an AI-powered game creation platform where anyone can turn ideas into playable games in seconds. No coding, no limits, just creativity.",
-  icons: {
-    icon: [
-      { url: "/favicon.ico", sizes: "any" },
-      { url: "/logo.png", type: "image/png" },
-    ],
-    shortcut: "/favicon.ico",
-    apple: "/logo.png",
-  },
-};
+export const metadata: Metadata = createPageMetadata("REZONA | Privacy Policy");
 
 export default function PrivacyPage() {
   return (
     <main className="privacy-page">
-      <header className="privacy-top-nav">
-        <Link href="/" className="privacy-top-logo" aria-label="Go back to home">
-          <img
-            src="/assets/shared/brand/mobile-top-logo-2x.webp"
-            alt="REZONA"
-            width={261}
-            height={60}
-            loading="eager"
-            decoding="async"
-          />
-        </Link>
-        <Link href="/explore-more" className="privacy-top-cta">
-          Explore more<span className="privacy-top-cta-extra">games</span>
-        </Link>
-      </header>
+      <LegalHeader />
 
       <section className="privacy-content-shell">
         <div className="privacy-title-block">
