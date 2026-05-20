@@ -56,7 +56,7 @@
 }
 
 .explore-more-content {
-  width: min(1320px, calc(100vw - 120px));
+  width: min(1319px, calc(100vw - 120px));
   margin: 0 auto;
 }
 
@@ -155,8 +155,9 @@
 
 .explore-more-card-row {
   display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: 11.62px;
+  grid-template-columns: repeat(auto-fit, 255px);
+  justify-content: center;
+  gap: 29.76px 11px;
 }
 
 .explore-more-card-row + .explore-more-card-row {
@@ -175,8 +176,7 @@
 }
 
 .explore-more-card {
-  width: 254.48px;
-  max-width: 100%;
+  width: 255px;
   display: block;
   color: inherit;
   text-decoration: none;
@@ -321,7 +321,7 @@
   display: none;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 640px) {
   .explore-more-page {
     padding-top: 60px;
   }

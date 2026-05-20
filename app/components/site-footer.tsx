@@ -108,7 +108,7 @@ export default function SiteFooter({ variant = "default" }: SiteFooterProps) {
   const [isMobile, setIsMobile] = useState<boolean | null>(null);
 
   useEffect(() => {
-    const query = window.matchMedia("(max-width: 900px)");
+    const query = window.matchMedia("(max-width: 640px)");
     const sync = () => setIsMobile(query.matches);
     sync();
     if (typeof query.addEventListener === "function") {

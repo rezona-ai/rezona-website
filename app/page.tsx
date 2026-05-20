@@ -734,6 +734,41 @@ const heroBgSlices: HeroSlice[] = [
   },
 ];
 
+const narrowPcHeroBgSlices: HeroSlice[] = [
+  {
+    id: "left",
+    asset: "/assets/home/hero-bg/desktop/pc-yourideas.webp",
+    xPct: 2,
+    yPct: 22,
+    wPct: 16,
+    hPct: 60,
+  },
+  {
+    id: "right",
+    asset: "/assets/home/hero-bg/desktop/pc-yourtool.webp",
+    xPct: 82,
+    yPct: 22,
+    wPct: 16,
+    hPct: 60,
+  },
+  {
+    id: "bottom",
+    asset: "/assets/home/hero-bg/desktop/pc-games.webp",
+    xPct: 2,
+    yPct: 87,
+    wPct: 96,
+    hPct: 12,
+  },
+  {
+    id: "top",
+    asset: "/assets/home/hero-bg/desktop/pc-rznai.webp",
+    xPct: 2,
+    yPct: 1,
+    wPct: 96,
+    hPct: 12,
+  },
+];
+
 const heroGameSlices: HeroSlice[] = [
   {
     id: "main",
@@ -758,6 +793,33 @@ const heroGameSlices: HeroSlice[] = [
     yPct: 74.7,
     wPct: 4.562422,
     hPct: 4.562422,
+  },
+];
+
+const narrowPcHeroGameSlices: HeroSlice[] = [
+  {
+    id: "main",
+    asset: "/assets/home/hero-game/hero-game-main-2x.avif",
+    xPct: 54.5,
+    yPct: 21.5,
+    wPct: 28,
+    hPct: 49,
+  },
+  {
+    id: "up",
+    asset: "/assets/home/hero-game/hero-game-up-2x.webp",
+    xPct: 83.6,
+    yPct: 61,
+    wPct: 5.2,
+    hPct: 5.2,
+  },
+  {
+    id: "down",
+    asset: "/assets/home/hero-game/hero-game-down-2x.webp",
+    xPct: 83.6,
+    yPct: 68.5,
+    wPct: 5.2,
+    hPct: 5.2,
   },
 ];
 
@@ -1188,9 +1250,9 @@ export default function Home() {
   };
 
   useEffect(() => {
-    const mobileQuery = window.matchMedia("(max-width: 900px)");
+    const mobileQuery = window.matchMedia("(max-width: 1024px)");
     const smallDesktopQuery = window.matchMedia(
-      "(max-width: 1366px) and (min-width: 901px)"
+      "(max-width: 1366px) and (min-width: 1025px)"
     );
     const syncLayout = () => {
       setIsMobile(mobileQuery.matches);
@@ -1498,6 +1560,8 @@ export default function Home() {
   const shouldRunDesktopHeroGame = !isMobile && isDesktopHeroGameVisible;
   const shouldRunMobileHeroGame =
     isMobile && shouldLoadMobileHeroGame && isMobileHeroGameVisible;
+  const activeHeroBgSlices = isSmallDesktop ? narrowPcHeroBgSlices : heroBgSlices;
+  const activeHeroGameSlices = isSmallDesktop ? narrowPcHeroGameSlices : heroGameSlices;
 
   return (
     <main className="rezona-page">
@@ -1538,7 +1602,7 @@ export default function Home() {
             <HeroBurstCanvas performanceLite={isSmallDesktop} />
 
             <div className="hero-world">
-              {heroBgSlices.map((slice) => (
+              {activeHeroBgSlices.map((slice) => (
                 <img
                   key={slice.id}
                   className="hero-slice hero-bg-slice"
@@ -1558,7 +1622,7 @@ export default function Home() {
             </div>
 
             <div className="hero-focus-stage">
-              {heroGameSlices
+              {activeHeroGameSlices
                 .filter((slice) => slice.id === "main")
                 .map((slice) => {
                   const sliceStyle = asVars({
@@ -1595,7 +1659,7 @@ export default function Home() {
                 })}
 
               <div className="hero-game-controls">
-                {heroGameSlices
+                {activeHeroGameSlices
                   .filter((slice) => slice.id !== "main")
                   .map((slice) => {
                     const isUp = slice.id === "up";
