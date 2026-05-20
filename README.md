@@ -37,7 +37,7 @@ REZONA 官网项目，基于 Next.js App Router 实现。当前站点包含首�
 - 移动首屏：三张背景图入场、顶部导航、CTA、独立粒子屏、独立游戏预览屏。
 - 游戏预览：离开当前屏时卸载 iframe，避免游戏和背景乐继续运行；回到当前屏后重新加载。
 - 粒子屏：素材池来自 `app/data/hero-particle-ugc.json`，资源在 `public/assets/home/particles/ugc-new`。
-- 轮播统计区：桌面和移动端复用统计素材，保持 3D 空间感与循环动画。
+- 轮播统计区：桌面和移动端复用 `HomeStatsLoop` 组件逻辑，保持 3D 空间感与循环动画。
 - Showcase 区：桌面分屏展示，移动端列表展示。
 - Footer：下载入口、二维码、社媒链接、版权信息、Dino Lottie 动画。
 
@@ -59,6 +59,21 @@ Legal 页面与 FAQ 页面共用 `app/legal-pages.css` 和 `SiteFooter variant="
 - FAQ 问题左侧 bullet 使用 `public/assets/faq/Bullet.svg`。
 - FAQ 联系邮箱使用 `mailto:support@rezona.ai`，点击后唤起系统默认邮箱客户端。
 - Footer legal 链接为 `Privacy Policy | Term of Service | Faq`，桌面端和移动端都在 `app/components/site-footer.tsx` 中维护；首页桌面内联 footer 也在 `app/page.tsx` 中同步维护。
+- Footer 社媒链接集中维护在 `app/data/social-links.ts`，首页内联 footer 与通用 `SiteFooter` 共用同一份数据。
+
+## Data Modules
+
+页面中的静态配置优先放在 `app/data`，避免组件文件继续膨胀：
+
+```text
+app/data/explore-more-games.json   Explore More 游戏卡片、iframe、封面、作者与统计数据
+app/data/footer-dino-animation.json Footer Dino Lottie 动画数据
+app/data/hero-particle-ugc.json    首页粒子素材池
+app/data/home.ts                   首页 hero / showcase / stats / footer tail 配置
+app/data/social-links.ts           Footer 桌面与移动端社媒链接配置
+```
+
+`app/data/home.ts` 目前包含桌面、窄 PC、移动端三类首页切图配置，以及首页游戏 URL、showcase、stats 和 tail section 数据。新增首页素材或调整首屏布局时，优先改这里，再在组件里消费数据。
 
 ## Assets
 
@@ -112,10 +127,12 @@ app/components/get-app-button.tsx   Get App 按钮与二维码弹窗
 app/components/legal-header.tsx     Privacy / Terms 顶部导航
 app/components/site-footer.tsx      桌面/移动 Footer
 app/components/dino-lottie.tsx      Lottie 动画封装
+app/components/home-stats-loop.tsx  首页桌面/移动 stats 轮播
 ```
 
 `GetAppButton` 已包含遮罩关闭、Esc 关闭、滚动锁定和移动端尺寸适配。
 `LegalHeader` 的 CTA 指向 `/explore-more`，PC 文案为 `Explore more games`，移动端隐藏 `games` 后显示 `Explore more`。
+`HomeStatsLoop` 内部共用 `useStatsLoop` 与 `StatsCarousel`，桌面和移动端只保留外层 section 结构差异。
 
 ## Development
 
@@ -154,6 +171,8 @@ npm run build
 - 新增图片优先使用 `webp` / `avif`，命名使用 kebab-case。
 - 新增页面素材优先放入 `public/assets/<page-or-module>`，跨页面复用素材放入 `public/assets/shared`。
 - 新增或调整 Explore More 游戏时，优先修改 `app/data/explore-more-games.json`，避免在页面组件里重复维护卡片数据。
+- 新增或调整首页 hero、showcase、stats、tail 配置时，优先修改 `app/data/home.ts`，避免把静态数据重新写回 `app/page.tsx`。
+- 新增或调整 footer 社媒账号时，优先修改 `app/data/social-links.ts`，首页内联 footer 和 `SiteFooter` 会同步消费。
 - 更新素材目录后，检查代码中是否仍有旧路径，并确认 `public` 下真实文件存在。
 - 清理素材时，先对 `app`、配置文件和数据 JSON 做引用扫描；头像、粒子池和社媒 icon 多数通过数组/JSON 间接引用，避免只按页面文本人工判断。
 - 改动首页首屏切图时，同时检查桌面 `heroBgSlices` / `heroGameSlices`、窄 PC `narrowPcHeroBgSlices` / `narrowPcHeroGameSlices`，以及移动端首屏素材。
@@ -162,6 +181,8 @@ npm run build
 - 外部游戏 iframe 的资源报错可能来自游戏内部域名和 CDN 的 CORS 配置，父页面通常无法用 iframe 属性修复。
 - 改动移动端高度相关样式时，重点检查 `--mobile-screen-h`、`mobile-fly-section`、`mobile-content-game-section`。
 - 改动 legal footer 链接时，同时检查 `app/components/site-footer.tsx` 和首页 `app/page.tsx` 的桌面 footer 链接是否一致。
+- 改动 footer 社媒链接时，只改 `app/data/social-links.ts`；如果调整布局坐标，再检查首页底部和 legal footer 的桌面/移动端显示。
 - 改动 `/privacy`、`/terms`、`/faq` 顶部 CTA 时，同时检查 PC 文案 `Explore more games`、移动端文案 `Explore more` 和按钮宽度。
 - 改动 FAQ 页面时，检查 `app/faq/page-client.tsx`、`app/legal-pages.css` 和 `public/assets/faq` 的资源引用是否同步。
+- 改动首页 stats 轮播时，优先修改 `app/components/home-stats-loop.tsx`；素材顺序仍由 `app/data/home.ts` 的 `swiperStates` / `swiperStripOrder` 决定。
 - 改动 Next.js metadata、viewport、路由行为前，先对照 Next.js 16 文档。
