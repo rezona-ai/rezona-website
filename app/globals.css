@@ -2799,9 +2799,28 @@ select {
     height: 178vh;
   }
 
+  .hero-world,
   .hero-focus-stage {
-    --hero-game-main-top-shift: clamp(18px, 2.4vh, 34px);
-    --hero-game-main-height-grow: clamp(46px, 6.2vh, 70px);
+    width: 100vw;
+    height: 100vh;
+    height: 100svh;
+  }
+
+  .hero-world {
+    --hero-world-scale-base: 1;
+    --hero-world-size-multiplier: 1;
+    --hero-world-top: 50%;
+  }
+
+  .hero-focus-stage {
+    --hero-focus-scale-base: 1;
+    --hero-focus-top: 50%;
+    --hero-game-main-top-shift: clamp(14px, 1.8vh, 24px);
+    --hero-game-main-height-grow: clamp(18px, 3vh, 28px);
+    transform: translate3d(-50%, -50%, 0)
+      translateX(calc(-20px + var(--hero-out-strong) * 10.8vw))
+      translateY(calc(var(--hero-out-soft) * -1.25vh))
+      scale(calc(var(--hero-focus-scale-base) * (1 + var(--hero-out) * 0.4)));
   }
 
   .hero-canvas::before,
@@ -2860,7 +2879,7 @@ select {
   }
 
   .hero-center-copy-layer {
-    transform: translate3d(0, calc(var(--hero-copy-exit) * -26vh), 0)
+    transform: translate3d(-20px, calc(var(--hero-copy-exit) * -26vh), 0)
       scale(calc(1 - var(--hero-copy-exit) * 0.08));
   }
 
@@ -2879,7 +2898,7 @@ select {
   }
 }
 
-@media (max-width: 1460px) and (min-width: 1025px) {
+@media (max-width: 1460px) and (min-width: 1367px) {
   .hero-bg-slice[data-slice-id="top"] {
     top: -2.6% !important;
     height: 22.6% !important;
