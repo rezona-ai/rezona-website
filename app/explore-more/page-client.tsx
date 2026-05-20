@@ -459,7 +459,7 @@ export default function ExploreMoreClient() {
   const [isMobile, setIsMobile] = useState<boolean | null>(null);
 
   useEffect(() => {
-    const query = window.matchMedia("(max-width: 900px)");
+    const query = window.matchMedia("(max-width: 640px)");
     const sync = () => setIsMobile(query.matches);
     sync();
     if (typeof query.addEventListener === "function") {
@@ -508,17 +508,7 @@ export default function ExploreMoreClient() {
         {isMobile === null ? null : !isMobile ? (
           <div className="explore-more-desktop-grid">
             <div className="explore-more-card-row">
-              {desktopCards.slice(0, 5).map((card) => (
-                <ExploreMoreCard
-                  key={card.id}
-                  card={card}
-                  strictInView
-                  keepIframeLoaded
-                />
-              ))}
-            </div>
-            <div className="explore-more-card-row">
-              {desktopCards.slice(5, 10).map((card) => (
+              {desktopCards.slice(0, 10).map((card) => (
                 <ExploreMoreCard
                   key={card.id}
                   card={card}

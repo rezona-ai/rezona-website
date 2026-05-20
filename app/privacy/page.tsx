@@ -13,7 +13,10 @@ export default function PrivacyPage() {
 
       <section className="privacy-content-shell">
         <div className="privacy-title-block">
-          <p className="privacy-brand">REZONA.AI</p>
+          <p className="privacy-brand">
+            REZONA.<wbr />
+            AI
+          </p>
           <h1 className="privacy-title">Privacy Policy</h1>
         </div>
 

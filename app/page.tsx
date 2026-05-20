@@ -1188,9 +1188,9 @@ export default function Home() {
   };
 
   useEffect(() => {
-    const mobileQuery = window.matchMedia("(max-width: 900px)");
+    const mobileQuery = window.matchMedia("(max-width: 1024px)");
     const smallDesktopQuery = window.matchMedia(
-      "(max-width: 1366px) and (min-width: 901px)"
+      "(max-width: 1366px) and (min-width: 1025px)"
     );
     const syncLayout = () => {
       setIsMobile(mobileQuery.matches);

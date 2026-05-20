@@ -13,7 +13,10 @@ export default function TermsPage() {
 
       <section className="privacy-content-shell">
         <div className="privacy-title-block">
-          <p className="privacy-brand">REZONA.AI</p>
+          <p className="privacy-brand">
+            REZONA.<wbr />
+            AI
+          </p>
           <h1 className="privacy-title">
             End User License Agreement (EULA)
           </h1>

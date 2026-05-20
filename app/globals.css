@@ -2794,7 +2794,7 @@ select {
 
 }
 
-@media (max-width: 1366px) and (min-width: 901px) {
+@media (max-width: 1366px) and (min-width: 1025px) {
   .hero-fly-scene {
     height: 178vh;
   }
@@ -2879,7 +2879,7 @@ select {
   }
 }
 
-@media (max-width: 1460px) and (min-width: 901px) {
+@media (max-width: 1460px) and (min-width: 1025px) {
   .hero-bg-slice[data-slice-id="top"] {
     top: -2.6% !important;
     height: 22.6% !important;
@@ -2891,7 +2891,7 @@ select {
   }
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1024px) {
   .desktop-only,
   .desktop-layout {
     display: none !important;
@@ -3068,7 +3068,7 @@ select {
 }
 
 
-@media (max-width: 900px) {
+@media (max-width: 1024px) {
   .home-top-explore-link {
     display: none;
   }
