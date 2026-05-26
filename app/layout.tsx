@@ -2,9 +2,7 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { createPageMetadata } from "./shared-metadata";
 
-export const metadata: Metadata = createPageMetadata(
-  "REZONA | AI-powered game creation platform where anyone can turn ideas into playable games in seconds. No coding, no limits, just creativity."
-);
+export const metadata: Metadata = createPageMetadata();
 
 export const viewport: Viewport = {
   width: "device-width",

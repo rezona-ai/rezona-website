@@ -2,8 +2,10 @@ import type { Metadata } from "next";
 
 export const siteUrl = "https://rezona.ai";
 
+export const sharedTitle = "Rezona — Make Memeplays";
+
 export const sharedDescription =
-  "Rezona is an AI-powered game creation platform where anyone can turn ideas into playable games in seconds. No coding, no limits, just creativity.";
+  "Rezona is the home of memeplays — interactive memes that you tap, play, remix, and ruin. Create yours in minutes with no code, no limits, and only pure chaos.";
 
 export const sharedIcons: NonNullable<Metadata["icons"]> = {
   icon: [
@@ -15,7 +17,7 @@ export const sharedIcons: NonNullable<Metadata["icons"]> = {
 };
 
 export function createPageMetadata(
-  title: string,
+  title: string = sharedTitle,
   overrides: Omit<Metadata, "title" | "icons"> = {}
 ): Metadata {
   return {

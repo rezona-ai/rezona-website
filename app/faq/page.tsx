@@ -5,10 +5,7 @@ import SiteFooter from "../components/site-footer";
 import { createPageMetadata } from "../shared-metadata";
 import FaqList from "./page-client";
 
-export const metadata: Metadata = createPageMetadata("REZONA | FAQ", {
-  description:
-    "Frequently asked questions about Rezona, an AI-powered game creation platform.",
-});
+export const metadata: Metadata = createPageMetadata();
 
 export default function FaqPage() {
   return (

@@ -4,7 +4,7 @@ import LegalHeader from "../components/legal-header";
 import SiteFooter from "../components/site-footer";
 import { createPageMetadata } from "../shared-metadata";
 
-export const metadata: Metadata = createPageMetadata("REZONA | Term of Service");
+export const metadata: Metadata = createPageMetadata();
 
 export default function TermsPage() {
   return (
