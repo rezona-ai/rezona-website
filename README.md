@@ -28,6 +28,22 @@ REZONA 官网项目，基于 Next.js App Router 实现。当前站点包含首�
 
 所有页面的 metadata 保持统一，图标资源使用 `/favicon.ico` 和 `/logo.png`。
 
+当前全站 SEO 标题与描述统一维护在 `app/shared-metadata.ts`：
+
+```text
+Title: Rezona — Make Memeplays
+Description: Rezona is the home of memeplays — interactive memes that you tap, play, remix, and ruin. Create yours in minutes with no code, no limits, and only pure chaos.
+```
+
+Canonical 主域名为 `https://rezona.ai`。`app/sitemap.ts` 和 `app/robots.ts` 使用 Next.js App Router 的 metadata file convention 自动生成：
+
+```text
+https://rezona.ai/sitemap.xml
+https://rezona.ai/robots.txt
+```
+
+注意 URL 是 `sitemap.xml`，不是 `sitmap.xml`。
+
 ## Main Features
 
 首页 `app/page.tsx` 负责桌面端、窄 PC 和移动端渲染链路：
@@ -185,4 +201,6 @@ npm run build
 - 改动 `/privacy`、`/terms`、`/faq` 顶部 CTA 时，同时检查 PC 文案 `Explore more games`、移动端文案 `Explore more` 和按钮宽度。
 - 改动 FAQ 页面时，检查 `app/faq/page-client.tsx`、`app/legal-pages.css` 和 `public/assets/faq` 的资源引用是否同步。
 - 改动首页 stats 轮播时，优先修改 `app/components/home-stats-loop.tsx`；素材顺序仍由 `app/data/home.ts` 的 `swiperStates` / `swiperStripOrder` 决定。
+- 改动全站 SEO title、description、canonical 域名时，优先修改 `app/shared-metadata.ts`，并检查 `app/sitemap.ts`、`app/robots.ts` 与 `next.config.ts` 的域名跳转是否一致。
+- 改动 sitemap 或 robots 时，不需要手动新增静态 XML/TXT 文件；Next.js 会通过 `app/sitemap.ts` 和 `app/robots.ts` 在运行时生成 `/sitemap.xml` 与 `/robots.txt`。
 - 改动 Next.js metadata、viewport、路由行为前，先对照 Next.js 16 文档。
