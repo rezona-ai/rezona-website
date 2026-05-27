@@ -54,11 +54,15 @@
   font-weight: 600;
   letter-spacing: 0.14px;
   text-decoration: none;
+  white-space: nowrap;
 }
 
 .privacy-top-cta-extra {
-  font-family: inherit;
-  margin-left: 0.25em;
+  font-family: var(--font-montserrat) !important;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+  letter-spacing: inherit;
 }
 
 .privacy-content-shell {
