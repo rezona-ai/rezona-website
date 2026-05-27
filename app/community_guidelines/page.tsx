@@ -20,7 +20,7 @@ export default function CommunityGuidelinesPage() {
           <h1 className="privacy-title">Community Guidelines</h1>
         </div>
 
-        <p className="privacy-date">Last updated: 01 June 2026</p>
+        <p className="privacy-date">Last updated: 27 May 2026</p>
 
         <div className="privacy-intro">
           <p>
