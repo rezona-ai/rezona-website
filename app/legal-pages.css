@@ -163,12 +163,16 @@
 }
 
 .privacy-section ul {
-  margin: 12px 0 0;
+  margin: 16px 0 0;
   padding-left: 22px;
 }
 
+.privacy-section li {
+  padding-left: 4px;
+}
+
 .privacy-section li + li {
-  margin-top: 6px;
+  margin-top: 14px;
 }
 
 .privacy-divider {
@@ -430,12 +434,16 @@
   }
 
   .privacy-section ul {
-    margin-top: 10px;
+    margin-top: 14px;
     padding-left: 18px;
   }
 
+  .privacy-section li {
+    padding-left: 3px;
+  }
+
   .privacy-section li + li {
-    margin-top: 8px;
+    margin-top: 12px;
   }
 
   .privacy-divider {
