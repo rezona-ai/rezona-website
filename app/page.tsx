@@ -3,12 +3,13 @@
 
 import type { CSSProperties } from "react";
 import Link from "next/link";
-import { memo, useEffect, useRef, useState } from "react";
+import { Fragment, memo, useEffect, useRef, useState } from "react";
 import GetAppButton from "./components/get-app-button";
 import SiteFooter from "./components/site-footer";
 import DinoLottie from "./components/dino-lottie";
 import { MobileStatsLoopScene, StatsLoopScene } from "./components/home-stats-loop";
 import heroParticleUgcAssets from "./data/hero-particle-ugc.json";
+import { legalLinks } from "./data/legal-links";
 import {
   flyCards,
   heroBgSlices,
@@ -1044,17 +1045,14 @@ export default function Home() {
 
             <div className="footer-legal" aria-label="Legal information">
               <div className="footer-legal-links">
-                <Link className="footer-legal-link" href="/privacy">
-                  Privacy Policy
-                </Link>
-                <span aria-hidden="true"> | </span>
-                <Link className="footer-legal-link" href="/terms">
-                  Term of Service
-                </Link>
-                {/* <span aria-hidden="true"> | </span>
-                <Link className="footer-legal-link" href="/faq">
-                  Faq
-                </Link> */}
+                {legalLinks.map((item, index) => (
+                  <Fragment key={item.href}>
+                    {index > 0 && <span aria-hidden="true">{" | "}</span>}
+                    <Link className="footer-legal-link" href={item.href}>
+                      {item.label}
+                    </Link>
+                  </Fragment>
+                ))}
               </div>
               <p className="footer-legal-copy">© 2026 All Rights Reserved, Rezona</p>
             </div>

@@ -2,9 +2,10 @@
 "use client";
 
 import type { CSSProperties } from "react";
-import { useEffect, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import Link from "next/link";
 import DinoLottie from "./dino-lottie";
+import { legalLinks } from "../data/legal-links";
 import { footerSocialSlices, mobileFooterSocialSlices } from "../data/social-links";
 
 type SiteFooterProps = {
@@ -95,17 +96,18 @@ export default function SiteFooter({ variant = "default" }: SiteFooterProps) {
 
         <div className="footer-legal" aria-label="Legal information">
           <div className="footer-legal-links">
-            <Link className="footer-legal-link" href="/privacy">
-              Privacy Policy
-            </Link>
-            <span aria-hidden="true"> | </span>
-            <Link className="footer-legal-link" href="/terms">
-              Term of Service
-            </Link>
-            {/* <span aria-hidden="true"> | </span>
-            <Link className="footer-legal-link" href="/faq">
-              Faq
-            </Link> */}
+            {legalLinks.map((item, index) => (
+              <Fragment key={item.href}>
+                {index > 0 && (
+                  <span aria-hidden="true">
+                    {" | "}
+                  </span>
+                )}
+                <Link className="footer-legal-link" href={item.href}>
+                  {item.label}
+                </Link>
+              </Fragment>
+            ))}
           </div>
           <p className="footer-legal-copy">© 2026 All Rights Reserved, Rezona</p>
         </div>
@@ -211,17 +213,25 @@ export default function SiteFooter({ variant = "default" }: SiteFooterProps) {
 
       <div className="mobile-footer-legal" aria-label="Legal information">
         <div className="mobile-footer-legal-links">
-          <Link className="mobile-footer-legal-link" href="/privacy">
-            Privacy Policy
-          </Link>
-          <span aria-hidden="true"> | </span>
-          <Link className="mobile-footer-legal-link" href="/terms">
-            Term of Service
-          </Link>
-          {/* <span aria-hidden="true"> | </span>
-          <Link className="mobile-footer-legal-link" href="/faq">
-            Faq
-          </Link> */}
+          {legalLinks.map((item, index) => (
+            <Fragment key={`mobile-${item.href}`}>
+              {index > 0 && (
+                <span
+                  className={
+                    item.href === "/community_guidelines"
+                      ? "mobile-footer-legal-break-separator"
+                      : undefined
+                  }
+                  aria-hidden="true"
+                >
+                  {" | "}
+                </span>
+              )}
+              <Link className="mobile-footer-legal-link" href={item.href}>
+                {item.label}
+              </Link>
+            </Fragment>
+          ))}
         </div>
         <p className="mobile-footer-legal-copy">© 2026 All Rights Reserved, Rezona</p>
       </div>

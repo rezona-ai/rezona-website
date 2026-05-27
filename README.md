@@ -22,6 +22,7 @@ REZONA 官网项目，基于 Next.js App Router 实现。当前站点包含首�
 /explore-more     游戏探索页，15 个游戏卡片
 /privacy          Privacy Policy
 /terms            End User License Agreement (EULA)
+/community_guidelines  Community Guidelines
 /faq              Frequently Asked Questions
 /delete-account   重定向到 Google Form
 ```
@@ -74,7 +75,7 @@ Legal 页面与 FAQ 页面共用 `app/legal-pages.css` 和 `SiteFooter variant="
 - `/faq` 的手风琴逻辑在 `app/faq/page-client.tsx`，默认展开第一个问题；当前所有问题暂时复用第一条答案。
 - FAQ 问题左侧 bullet 使用 `public/assets/faq/Bullet.svg`。
 - FAQ 联系邮箱使用 `mailto:support@rezona.ai`，点击后唤起系统默认邮箱客户端。
-- Footer legal 链接为 `Privacy Policy | Term of Service | Faq`，桌面端和移动端都在 `app/components/site-footer.tsx` 中维护；首页桌面内联 footer 也在 `app/page.tsx` 中同步维护。
+- Footer legal 链接为 `Privacy Policy | Term of Service | Community Guidelines`，桌面端和移动端都通过 `app/data/legal-links.ts` 维护；首页桌面内联 footer 与通用 `SiteFooter` 共用同一份数据。
 - Footer 社媒链接集中维护在 `app/data/social-links.ts`，首页内联 footer 与通用 `SiteFooter` 共用同一份数据。
 
 ## Data Modules
@@ -86,6 +87,7 @@ app/data/explore-more-games.json   Explore More 游戏卡片、iframe、封面�
 app/data/footer-dino-animation.json Footer Dino Lottie 动画数据
 app/data/hero-particle-ugc.json    首页粒子素材池
 app/data/home.ts                   首页 hero / showcase / stats / footer tail 配置
+app/data/legal-links.ts            Footer legal 链接配置
 app/data/social-links.ts           Footer 桌面与移动端社媒链接配置
 ```
 
@@ -196,7 +198,7 @@ npm run build
 - 改动 iframe 游戏逻辑时，同时验证桌面首页、移动首页和 `/explore-more` 的加载/超时/离屏行为；`/explore-more` 桌面与移动端离屏策略不同。
 - 外部游戏 iframe 的资源报错可能来自游戏内部域名和 CDN 的 CORS 配置，父页面通常无法用 iframe 属性修复。
 - 改动移动端高度相关样式时，重点检查 `--mobile-screen-h`、`mobile-fly-section`、`mobile-content-game-section`。
-- 改动 legal footer 链接时，同时检查 `app/components/site-footer.tsx` 和首页 `app/page.tsx` 的桌面 footer 链接是否一致。
+- 改动 legal footer 链接时，优先修改 `app/data/legal-links.ts`，首页桌面 footer 和 `SiteFooter` 会同步消费。
 - 改动 footer 社媒链接时，只改 `app/data/social-links.ts`；如果调整布局坐标，再检查首页底部和 legal footer 的桌面/移动端显示。
 - 改动 `/privacy`、`/terms`、`/faq` 顶部 CTA 时，同时检查 PC 文案 `Explore more games`、移动端文案 `Explore more` 和按钮宽度。
 - 改动 FAQ 页面时，检查 `app/faq/page-client.tsx`、`app/legal-pages.css` 和 `public/assets/faq` 的资源引用是否同步。

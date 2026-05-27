@@ -2621,8 +2621,8 @@ select {
   position: relative;
   width: var(--mobile-w);
   margin: calc(var(--mobile-w) * 40 / 375) 0 0;
-  height: calc(var(--mobile-w) * 640 / 375);
-  overflow: hidden;
+  min-height: calc(var(--mobile-w) * 680 / 375);
+  overflow: visible;
 }
 
 .mobile-footer-top {
@@ -2737,15 +2737,17 @@ select {
   font-family: var(--font-montserrat);
   box-sizing: border-box;
   display: block;
+  overflow: visible;
 }
 
 .mobile-footer-legal-links {
   display: inline-flex;
   align-items: center;
+  flex-wrap: wrap;
   gap: clamp(10px, 0.7vw, 14px);
   font-size: 14px;
   line-height: 1.2;
-  white-space: nowrap;
+  white-space: normal;
   width: 100%;
   text-align: left;
 }
@@ -2757,6 +2759,26 @@ select {
   white-space: nowrap;
   text-align: left;
   text-decoration: none;
+}
+
+.mobile-footer-legal-link[href="/community_guidelines"] {
+  flex-basis: 100%;
+  margin-top: 6px;
+}
+
+.mobile-footer-legal-break-separator {
+  display: none !important;
+}
+
+.mobile-footer-legal-link[href="/community_guidelines"]::before {
+  content: "";
+  width: 1px;
+  height: 14px;
+  display: inline-block;
+  margin-right: calc(var(--mobile-w) * 12 / 375);
+  background: currentColor;
+  opacity: 0.75;
+  vertical-align: -2px;
 }
 
 .mobile-footer-legal-links > span[aria-hidden="true"] {
