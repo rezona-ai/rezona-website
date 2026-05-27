@@ -308,7 +308,9 @@
   font-size: inherit;
   font-weight: inherit;
   line-height: inherit;
-  text-decoration: none;
+  text-decoration-line: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.16em;
 }
 
 .privacy-email-link strong,
