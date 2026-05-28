@@ -204,6 +204,16 @@
   margin-top: 78px;
 }
 
+.faq-intro {
+  margin: 48px 0 0;
+  color: #d4d4d4;
+  font-family: var(--font-montserrat);
+  font-size: 18px;
+  font-style: italic;
+  font-weight: 400;
+  line-height: 30px;
+}
+
 .faq-list {
   width: 100%;
   margin-top: 82px;
@@ -538,6 +548,12 @@
 
   .faq-date {
     margin-top: 40px;
+  }
+
+  .faq-intro {
+    margin-top: 32px;
+    font-size: 14px;
+    line-height: 22px;
   }
 
   .faq-list {

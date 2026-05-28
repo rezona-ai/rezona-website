@@ -20,6 +20,11 @@ export default function FaqPage() {
 
         <p className="privacy-date faq-date">Last updated: 28 May 2026</p>
 
+        <p className="faq-intro">
+          Welcome to Rezona! Here&apos;s everything you need to know - from getting started
+          to making, playing, and remixing memeplays.
+        </p>
+
         <FaqList />
 
         <section className="privacy-section privacy-contact faq-contact">
