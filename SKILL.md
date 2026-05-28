@@ -329,4 +329,3 @@ npx next typegen
 - Footer legal 链接是共享数据，手动改某一个 footer 容易造成页面不一致。
 - Privacy、Terms、Community Guidelines、FAQ 共用 legal 样式，CSS 改动会影响全部页面。
 - 外部 iframe 游戏失败可能来自游戏 URL、CDN、CORS 或上游服务，不一定是父页面问题。
-- Google App Hosting / Envoy 报错 `upstream connect error or disconnect/reset before headers` 通常表示代理在响应头返回前没有从上游拿到有效响应，可能是服务崩溃、冷启动、代理目标错误、iframe src 或 game proxy 上游不可用。
