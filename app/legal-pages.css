@@ -233,6 +233,7 @@
 }
 
 .faq-item {
+  --faq-copy-line-height: 24px;
   width: 100%;
   border: 1px solid #404040;
   border-radius: 18px;
@@ -264,6 +265,7 @@
   appearance: none;
   text-align: left;
   font-family: var(--font-montserrat);
+  line-height: var(--faq-copy-line-height);
 }
 
 .faq-question-mark {
@@ -278,7 +280,7 @@
   font-family: var(--font-montserrat);
   font-size: 16px;
   font-weight: 600;
-  line-height: 24px;
+  line-height: var(--faq-copy-line-height);
 }
 
 .faq-question-chevron {
@@ -306,7 +308,7 @@
   font-family: var(--font-montserrat);
   font-size: 16px;
   font-weight: 400;
-  line-height: 24px;
+  line-height: var(--faq-copy-line-height);
 }
 
 .faq-answer ul {
@@ -571,6 +573,7 @@
   }
 
   .faq-item {
+    --faq-copy-line-height: 21px;
     border-radius: 12px;
   }
 
@@ -579,7 +582,7 @@
   }
 
   .faq-question {
-    min-height: 78px;
+    min-height: 53px;
     padding: 16px;
     grid-template-columns: 13px minmax(0, 1fr) 16px;
     gap: 8px;
@@ -592,7 +595,6 @@
 
   .faq-question-text {
     font-size: 14px;
-    line-height: 21px;
   }
 
   .faq-question-chevron {
@@ -606,7 +608,6 @@
   .faq-answer p,
   .faq-answer li {
     font-size: 14px;
-    line-height: 21px;
   }
 
   .faq-answer ul {
