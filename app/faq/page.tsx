@@ -18,19 +18,19 @@ export default function FaqPage() {
           <h1 className="privacy-title faq-title">Frequently Asked Questions</h1>
         </div>
 
-        <p className="privacy-date faq-date">Last updated: 24 April 2026</p>
+        <p className="privacy-date faq-date">Last updated: 28 May 2026</p>
 
         <FaqList />
 
         <section className="privacy-section privacy-contact faq-contact">
           <h2>Contact Us</h2>
-          <p>If you have questions or suggestions about our Privacy Policy, please contact us:</p>
+          <p>If you have questions or suggestions about Rezona, please contact us:</p>
           <p>
             <a className="faq-email-link" href="mailto:support@rezona.ai">
-              <u>Email:</u> <strong>support@rezona.ai</strong>
+              Email: <strong><u>support@rezona.ai</u></strong>
             </a>
             <br />
-            <u>Contact:</u> <strong>Stratava Group</strong>
+            Contact: <strong>Stratava Group</strong>
           </p>
         </section>
       </section>
