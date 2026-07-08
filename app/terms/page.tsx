@@ -155,10 +155,8 @@ export default function TermsPage() {
             irrevocable, transferable, and fully sublicensable worldwide license to host,
             store, use, copy, reproduce, modify, adapt, publish, run, create derivative works
             of, distribute, and publicly display Your Content, in any media or format now
-            known or hereafter developed, for the purposes of operating, maintaining, and
-            improving the Service; developing new features including training and deploying
-            AI models; promoting and publicizing the Service; and enforcing these Terms and
-            complying with legal obligations.
+            known or hereafter developed, for the purposes of operating, maintaining, and improving the Service; researching, developing, and offering new features, products, and services, including training, developing, and deploying AI models and systems; promoting and publicizing the Service; and enforcing these Terms and complying with legal obligations.
+            Nothing in this Section 4.3 limits or affects any statutory rights you may have under applicable data protection law, including your right to object to the use of your AI Inputs for model training as described in our Privacy Policy. Where you exercise such a right, this license remains valid for uses already made and for uses not covered by that right.
           </p>
 
           <h3>4.4. License You Grant to Other Users</h3>
@@ -248,10 +246,15 @@ export default function TermsPage() {
 
           <h3>4.11. Survival of Licenses</h3>
           <p>
-            The licenses granted in Sections 4.3, 4.4, 4.5, and 4.8 survive termination of
+            The licenses granted in Sections 4.3, 4.4, 4.5, 4.8, and 4.12 survive termination of
             your account, termination of these Terms, and any discontinuation of the Service.
             Content published, remixed, or used to train AI models before termination may
             continue to exist and be used in accordance with these Terms after termination.
+          </p>
+
+          <h3>4.12. De-identified & Aggregated Data</h3>
+          <p>
+Stratava may create de-identified, anonymized, or aggregated data from Your Content, AI Inputs, AI Outputs, and your use of the Service. Such data does not identify you. Stratava may use, retain, license, and disclose such data for any lawful purpose, without restriction, attribution, or compensation, during and after the term of this Agreement.
           </p>
         </section>
 

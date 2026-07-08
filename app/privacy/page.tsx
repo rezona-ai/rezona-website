@@ -206,10 +206,10 @@ export default function PrivacyPage() {
           <ul>
             <li>Operating AI-powered features within the Service.</li>
             <li>
-              Improving and developing our AI models using AI inputs, outputs, and
-              interaction data, in accordance with the license granted in our Terms of
-              Service.
+              Improving and developing our AI models and systems using AI inputs, outputs, and interaction data, in accordance with the license granted in our Terms of Service.
             </li>
+            <li>Researching and developing new features, products, and services, using Your Content and usage data in accordance with the license granted in our Terms of Service.</li>
+            <li>Creating de-identified, anonymized, or aggregated data, which we may use for any lawful purpose.</li>
           </ul>
 
           <h3>Legal &amp; Compliance</h3>
@@ -304,6 +304,7 @@ export default function PrivacyPage() {
             inputs for new model training going forward. However, we cannot and will not
             &quot;untrain&quot; AI models that have already been trained using your data.
             Anonymized or aggregated data derived from your inputs may be retained.
+            Such anonymized or aggregated data is no longer personal information and may be used by us without restriction.
           </p>
         </section>
 
