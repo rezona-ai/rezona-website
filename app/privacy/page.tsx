@@ -21,520 +21,520 @@ export default function PrivacyPage() {
         </div>
 
         <p className="privacy-date">
-          Effective Date: 01 June 2026
+          Rezona: Make Memeplays
           <br />
-          Last updated: 01 June 2026
+          Operated by: Stratava HK Limited
+          <br />
+          <br />
+          Effective Date: July 24, 2026
+          <br />
+          Last Updated: July 24, 2026
         </p>
 
-        <div className="privacy-intro">
-          <p>
-            The Service is provided by Stratava HK Limited (&quot;Stratava,&quot;
-            &quot;we,&quot; &quot;us,&quot; or &quot;our&quot;), a company incorporated
-            in the Hong Kong Special Administrative Region. This Privacy Policy explains how
-            we collect, use, store, share, and protect your personal information when you use
-            the Service.
-          </p>
-          <p>
-            By using the Service, you agree to the collection and use of your information as
-            described in this Privacy Policy. If you do not agree, please do not use the
-            Service.
-          </p>
-          <p>
-            This Privacy Policy should be read together with our Terms of Service and
-            Community Guidelines, which govern your use of the Service.
-          </p>
-        </div>
-
         <section className="privacy-section">
-          <h2>1. Who This Policy Applies To</h2>
+          <h2>Introduction</h2>
           <p>
-            This Privacy Policy applies to all users of the Service, regardless of age or
-            location. The Service is intended for a general audience. Parents and guardians
-            who permit minors to use the Service are responsible for supervising that use and
-            are subject to this Privacy Policy in connection with the minor&apos;s account
-            and data.
+            This Privacy Policy explains how Stratava HK Limited (&ldquo;we&rdquo;,
+            &ldquo;us&rdquo; or &ldquo;the Company&rdquo;) collects, uses, discloses,
+            transfers, stores and otherwise processes your personal data when you access or
+            use the Rezona mobile application, the Rezona website (https://rezona.ai) and
+            related features and services (collectively, &ldquo;Rezona&rdquo; or the
+            &ldquo;Service&rdquo;).
           </p>
           <p>
-            We may apply additional data protections for certain users as required by
-            applicable law in their jurisdiction. If you have questions about how we handle
-            data for a minor in your care, contact us at{" "}
-            <a className="privacy-email-link" href="mailto:support@rezona.ai">
-              support@rezona.ai
-            </a>
-            .
+            Rezona is an AI-powered creation and social platform where users can generate
+            playable interactive content (&ldquo;memeplays&rdquo;) from a single
+            natural-language prompt. You can generate content with our AI, browse and play in
+            a vertical feed, remix others&rsquo; works with one tap, follow and message other
+            users, join community discussions and multiplayer games, and purchase and use the
+            in-app virtual currency (Rezo Coins).
+          </p>
+          <p>
+            With respect to your personal data, we are a &ldquo;data user&rdquo; under the
+            Personal Data (Privacy) Ordinance (Cap. 486) (the &ldquo;PDPO&rdquo;). We are
+            committed to handling your personal data in accordance with the six Data
+            Protection Principles (DPPs) of the PDPO and relevant PCPD guidance.
+          </p>
+          <p>
+            This Policy applies to the Rezona apps and websites offered to markets outside
+            mainland China. For the mainland China channel (app name &ldquo;Mowan&rdquo; /
+            RezonaCN, package name ai.rezona.app.cn), we will separately establish and apply
+            an independent privacy policy that complies with mainland Chinese laws, including
+            the Personal Information Protection Law.
+          </p>
+          <p>
+            Please read this Policy carefully. By creating an account or using Rezona, you
+            acknowledge that you have read and understood this Policy. Where we rely on your
+            consent to process personal data, we will seek that consent separately, and you
+            may withdraw it at any time (see Section 5).
           </p>
         </section>
 
         <section className="privacy-section">
-          <h2>2. Information We Collect</h2>
+          <h2>1. Information We Collect</h2>
+          <p>
+            We collect personal data only by lawful and fair means, and only to the extent
+            necessary and not excessive for the purposes described in this Policy (DPP1). Some
+            information is provided by you directly; some is generated or collected
+            automatically when you use Rezona.
+          </p>
 
-          <h3>2.1. Information You Provide</h3>
-          <p>When you create an account or use the Service, you may provide us with:</p>
+          <h3>1.1 Information You Provide</h3>
           <ul>
             <li>
-              Account registration data: Username, email address, and any other information
-              submitted at sign-up.
+              <strong>Account and profile:</strong> Username, nickname, email address, phone
+              number and country/region code, avatar, bio and any other public profile
+              information you choose to provide. Rezona verifies your identity through
+              third-party sign-in or SMS verification codes and does not set a separate
+              password for your account.
             </li>
             <li>
-              User-generated content: Memeplays, memes, remixes, text inputs, audio
-              recordings, images, videos, AI prompts, comments, and any other content you
-              create, upload, or publish on the Service (&quot;Your Content&quot;).
+              <strong>Third-party sign-in information:</strong> When you sign in through
+              Apple, Google, Facebook or other third parties, we obtain a basic account
+              identifier and the associated email address, depending on that service&rsquo;s
+              settings. You may also sign in with an SMS verification code or use Rezona in
+              guest mode; in guest mode, we still generate a device identifier and collect
+              limited information before you sign in, in order to maintain basic
+              functionality.
             </li>
             <li>
-              Communications: Direct messages, comments, reactions, and any communications
-              you send to other users or to us through support channels.
-            </li>
-          </ul>
-
-          <h3>2.2. Identity Verification Data</h3>
-          <p>
-            To access certain features of the Service, we may collect identity or consent
-            verification data as required. The type of data collected depends on the feature
-            being accessed and the laws and regulations applicable in your jurisdiction.
-            Verification data is stored securely and used only for the purpose for which it
-            was collected.
-          </p>
-
-          <h3>2.3. Virtual Items &amp; Transaction Data</h3>
-          <p>
-            When you use virtual item features within the Service, we collect and process
-            transaction data necessary to operate those features, including records of
-            purchases, transfers, and balances associated with your account at the specific
-            purchasing time. All purchases of virtual items are processed through authorized
-            third-party payment merchants and platform vendors.
-          </p>
-          <p>
-            Stratava does not collect, receive, or store your payment card details, bank
-            account information, or any other raw payment credentials. Your payment data is
-            governed by the relevant authorized vendors&apos; privacy policy.
-          </p>
-
-          <h3>2.4. Automatically Collected Data</h3>
-          <p>
-            When you use the Service, we automatically collect certain technical and usage
-            data:
-          </p>
-          <ul>
-            <li>
-              Log data: IP address, device name, operating system version, app
-              configuration, timestamps of use, in-app actions, and crash logs, collected via
-              third-party diagnostic tools when an error occurs.
+              <strong>Content and creative input:</strong> The natural-language prompts you
+              enter, the memeplays and interactive content you generate or remix, materials
+              you upload such as images, audio and video, and the titles, covers,
+              descriptions, comments, likes and community posts you publish.
             </li>
             <li>
-              Analytics data: We use analytics tools to understand how users interact with
-              the Service. We have disabled all features of these tools that collect or
-              report personal data, including Demographics and Interest Reports, User ID
-              features, Advertising Reporting Features, and data sharing within analytics
-              tools.
+              <strong>Social and communication information:</strong> Your follower and
+              following relationships, and the content and metadata of in-app communications
+              such as direct messages.
             </li>
             <li>
-              Push notification interaction data: Whether a push notification was delivered
-              and whether it was tapped, tied to Service activity events.
-            </li>
-          </ul>
-
-          <h3>2.5. Social &amp; Interaction Data</h3>
-          <p>
-            When you interact with other users on the Service, we generate and store data
-            associated with those interactions. This includes, but is not limited to, data
-            related to your connections with other users, the nature and frequency of your
-            communications, and any actions you take in relation to other users&apos;
-            accounts or content.
-          </p>
-
-          <h3>2.6. Risk &amp; Anti-Fraud Data</h3>
-          <p>
-            To protect the integrity of the Service and its users, we collect and process
-            signals for fraud detection and risk control purposes, including transaction
-            frequency and velocity, high-value transaction flags, and device identifiers and
-            behavioral signals used to detect unauthorized or suspicious activity. This data
-            is used solely for risk management and anti-fraud enforcement and is not used for
-            advertising purposes.
-          </p>
-
-          <h3>2.7. AI Feature Data</h3>
-          <p>
-            When you use our AI-powered features, we collect AI inputs (prompts, source
-            content, images, voice recordings, and any other materials you submit), AI
-            outputs generated in response to your inputs, and your interactions with AI
-            features including ratings, edits, and regenerations. See Section 5 for
-            information on how AI data is used.
-          </p>
-
-          <h3>2.8. Third-Party Data</h3>
-          <p>
-            We may receive limited data from third parties in connection with your use of the
-            Service, including from Apple and Google in connection with in-app purchases,
-            account authentication, and platform compliance, and from third-party service
-            providers who help us operate the Service, subject to contractual restrictions.
-          </p>
-        </section>
-
-        <section className="privacy-section">
-          <h2>3. How We Use Your Information</h2>
-          <p>We use the information we collect for the following purposes:</p>
-
-          <h3>Operating the Service</h3>
-          <ul>
-            <li>Providing, maintaining, and improving the Service and its features.</li>
-            <li>Creating and managing your account.</li>
-            <li>Displaying your content to other users in accordance with your settings.</li>
-            <li>
-              Enabling and enforcing social features (follow relationships, DM eligibility,
-              block status).
-            </li>
-          </ul>
-
-          <h3>Virtual Items &amp; Transactions</h3>
-          <ul>
-            <li>Processing, recording, and displaying virtual item purchase and transfer transactions.</li>
-            <li>Maintaining accurate virtual item balances.</li>
-            <li>Sending push notifications and in-app alerts for transaction events.</li>
-            <li>Enforcing transaction eligibility rules.</li>
-          </ul>
-
-          <h3>Safety &amp; Security</h3>
-          <ul>
-            <li>Detecting and preventing fraud, unauthorized transactions, and abuse.</li>
-            <li>Risk control and anti-cheat enforcement.</li>
-            <li>Enforcing our Community Guidelines and Terms of Service.</li>
-            <li>Moderating content and taking enforcement action where necessary.</li>
-            <li>Reporting illegal content to relevant authorities where required by law.</li>
-          </ul>
-
-          <h3>AI Development</h3>
-          <ul>
-            <li>Operating AI-powered features within the Service.</li>
-            <li>
-              Improving and developing our AI models and systems using AI inputs, outputs, and interaction data, in accordance with the license granted in our Terms of Service.
-            </li>
-            <li>Researching and developing new features, products, and services, using Your Content and usage data in accordance with the license granted in our Terms of Service.</li>
-            <li>Creating de-identified, anonymized, or aggregated data, which we may use for any lawful purpose.</li>
-          </ul>
-
-          <h3>Legal &amp; Compliance</h3>
-          <ul>
-            <li>Complying with applicable laws, regulations, and legal processes.</li>
-            <li>Responding to intellectual property complaints.</li>
-            <li>Retaining records as required by applicable law.</li>
-          </ul>
-
-          <h3>Communications</h3>
-          <ul>
-            <li>Responding to support requests.</li>
-            <li>Notifying you of changes to these policies or the Service.</li>
-          </ul>
-        </section>
-
-        <section className="privacy-section">
-          <h2>4. How We Share Your Information</h2>
-          <p>
-            We do not sell your personal information to third parties. We share your
-            information only in the following circumstances:
-          </p>
-
-          <h3>With other users</h3>
-          <ul>
-            <li>
-              Content you publish on the Service is visible to other users in accordance
-              with your privacy settings.
+              <strong>Transaction and purchase information:</strong> Purchases, balances and
+              spending records of Rezo Coins. We also process auto-renewing subscription
+              memberships (such as Rezo Hero and Rezo Boss, including free trials,
+              subscription status and renewal or cancellation information), Diamonds (a
+              virtual asset convertible into Rezo Coins), tips, Usage Packs and in-app shop
+              purchases and spending records. Payments are processed by the Apple App Store or
+              Google Play; we do not collect or store your full card number and receive only
+              transaction confirmations and limited information.
             </li>
             <li>
-              Virtual item transfers may display sender and recipient usernames to the
-              relevant parties.
-            </li>
-            <li>Direct messages are visible only to the participants in the conversation.</li>
-          </ul>
-
-          <h3>With service providers</h3>
-          <ul>
-            <li>
-              We work with third-party companies to help operate the Service, including
-              analytics providers, content moderation tools, identity verification services,
-              and fraud detection systems. These providers access only the data necessary to
-              perform their tasks and are contractually prohibited from disclosing or
-              misusing it.
-            </li>
-          </ul>
-
-          <h3>With Apple and Google</h3>
-          <ul>
-            <li>
-              In connection with in-app purchases, authentication, and platform compliance,
-              we share and receive limited data with Apple Inc. and Google LLC as necessary
-              to operate the Service on their platforms.
-            </li>
-          </ul>
-
-          <h3>With law enforcement and authorities</h3>
-          <ul>
-            <li>
-              We may disclose personal data where required by law, court order, or
-              governmental authority, or where we reasonably believe disclosure is necessary
-              to protect the safety of any person, prevent fraud, or enforce our Terms of
-              Service. We report suspected child sexual abuse material (CSAM) to the
-              applicable authorities as required by law.
-            </li>
-          </ul>
-
-          <h3>In connection with a business transfer</h3>
-          <ul>
-            <li>
-              In the event of a merger, acquisition, asset sale, or restructuring involving
-              Stratava, your personal data may be transferred to the acquiring entity. We
-              will notify you of any such transfer through the Service or by email before it
-              takes effect.
-            </li>
-          </ul>
-        </section>
-
-        <section className="privacy-section">
-          <h2>5. AI-Generated Content &amp; Data</h2>
-          <p>
-            When you use our AI features, your AI inputs and the outputs generated from them
-            are treated as Your Content under our Terms of Service. We may use your AI
-            inputs, AI outputs, and your interactions with AI features to improve and develop
-            our AI models and systems, in accordance with the license you grant us under our
-            Terms of Service.
-          </p>
-          <p>
-            AI inputs and outputs are stored on our servers and associated with your account
-            for as long as your account is active, subject to our data retention practices in
-            Section 6. If you delete Your Content or your account, we will stop using your AI
-            inputs for new model training going forward. However, we cannot and will not
-            &quot;untrain&quot; AI models that have already been trained using your data.
-            Anonymized or aggregated data derived from your inputs may be retained.
-            Such anonymized or aggregated data is no longer personal information and may be used by us without restriction.
-          </p>
-        </section>
-
-        <section className="privacy-section">
-          <h2>6. Data Retention</h2>
-          <p>
-            We retain your personal data for as long as necessary to fulfill the purposes
-            described in this Privacy Policy, subject to the following:
-          </p>
-          <ul>
-            <li>
-              Account data: Retained while your account is active and for a defined period
-              following account deletion, as required for legal and operational purposes.
-            </li>
-            <li>
-              Transaction and financial data: Purchase and transfer records are retained for
-              the period required by applicable financial recordkeeping laws in relevant
-              jurisdictions, which may extend beyond account deletion.
-            </li>
-            <li>
-              Risk and fraud data: Transaction frequency, behavioral signals, and fraud flags
-              are retained for a defined period for anti-fraud and platform integrity
-              purposes.
-            </li>
-            <li>
-              Push notification interaction data: Retained for a defined period for analytics
-              and operational purposes.
-            </li>
-            <li>
-              AI input and output data: Retained for model training purposes as described in
-              Section 5. Deletion requests are honored prospectively.
-            </li>
-            <li>
-              Log and diagnostic data: Retained for a defined period for security, debugging,
-              and service improvement purposes.
-            </li>
-            <li>
-              Verification data: Retained for the period required by applicable identity
-              verification and compliance laws in relevant jurisdictions.
-            </li>
-            <li>
-              Social and interaction data: Retained while your account is active and deleted
-              upon account deletion, subject to any applicable legal hold.
-            </li>
-            <li>
-              Content in remixed works: Where Your Content has been incorporated into another
-              user&apos;s memeplay through the remix feature, it may persist on the Service
-              after you delete the original, in accordance with the remix license described
-              in our Terms of Service.
-            </li>
-          </ul>
-          <p>When data is no longer required for any of the above purposes, we delete or anonymize it.</p>
-        </section>
-
-        <section className="privacy-section">
-          <h2>7. Data Security</h2>
-          <p>
-            We use HTTPS and other commercially reasonable technical and organizational
-            measures to protect your personal data against unauthorized access, disclosure,
-            alteration, and destruction. You are responsible for maintaining the security of
-            your account credentials and for any activity that occurs under your account. If
-            you believe your account has been compromised, contact us at{" "}
-            <a className="privacy-email-link" href="mailto:support@rezona.ai">
-              support@rezona.ai
-            </a>{" "}
-            immediately.
-          </p>
-          <p>
-            No method of electronic transmission or storage is 100% secure. While we take
-            reasonable steps to protect your data, we cannot guarantee absolute security. In
-            the event of a data breach that is likely to result in a risk to your rights, we
-            will notify you and the relevant authorities in accordance with applicable law.
-          </p>
-        </section>
-
-        <section className="privacy-section">
-          <h2>8. Cross-Border Data Transfers</h2>
-          <p>
-            Stratava HK Limited is based in Hong Kong. However, the data we collect may be
-            processed, stored, or transferred to countries or territories outside Hong Kong
-            where our service providers operate. These jurisdictions may have data protection
-            laws that differ from those in your country of residence.
-          </p>
-          <p>
-            Where we transfer personal data across borders, we apply appropriate safeguards -
-            such as standard contractual clauses or equivalent mechanisms recognized under
-            applicable law - to ensure your data is protected to a standard consistent with
-            this Privacy Policy.
-          </p>
-          <p>
-            By using the Service, you acknowledge that your data may be transferred to and
-            processed in countries outside your own.
-          </p>
-        </section>
-
-        <section className="privacy-section">
-          <h2>9. Your Rights &amp; Controls</h2>
-          <p>
-            Depending on your jurisdiction, you may have the following rights in relation to
-            your personal data:
-          </p>
-          <ul>
-            <li>Access: Request a copy of the personal data we hold about you.</li>
-            <li>
-              Correction: Request that we correct inaccurate or incomplete personal data.
-            </li>
-            <li>
-              Deletion: Request deletion of your account and associated personal data,
-              subject to the limitations described in Section 6 and our Terms of Service.
-            </li>
-            <li>
-              Portability: Request that we provide your personal data in a structured,
-              commonly used, machine-readable format where technically feasible.
-            </li>
-            <li>
-              Objection: Object to certain uses of your personal data, including the use of
-              your AI inputs for model training, where permitted by applicable law.
-            </li>
-            <li>
-              Withdrawal of consent: Where we process your data on the basis of consent, you
-              may withdraw that consent at any time. Withdrawal does not affect the
-              lawfulness of processing carried out before the withdrawal.
-            </li>
-          </ul>
-          <p>
-            To exercise any of these rights, contact us at{" "}
-            <a className="privacy-email-link" href="mailto:support@rezona.ai">
-              support@rezona.ai
-            </a>
-            . We will respond within a reasonable timeframe and in accordance with applicable
-            law. We may need to verify your identity before processing your request.
-          </p>
-        </section>
-
-        <section className="privacy-section">
-          <h2>10. Third-Party Links &amp; Services</h2>
-          <p>
-            The Service may contain links to or interoperate with third-party websites,
-            services, or content. Stratava does not control and is not responsible for the
-            privacy practices of any third-party service. We encourage you to review the
-            privacy policies of any third-party services you access through or in connection
-            with the Service.
-          </p>
-        </section>
-
-        <section className="privacy-section">
-          <h2>11. User Data Deletion Request</h2>
-          <p>You may request deletion of your personal data in the following ways:</p>
-          <ul>
-            <li>
-              By email: Send a request to{" "}
+              <strong>Support and correspondence:</strong> Information you provide when you
+              contact{" "}
               <a className="privacy-email-link" href="mailto:support@rezona.ai">
                 support@rezona.ai
-              </a>{" "}
-              with the subject line &quot;Data Deletion Request,&quot; including the email
-              address or username associated with your account.
+              </a>
+              , submit a report or complaint, seek assistance or take part in surveys. When
+              you contact support or submit feedback in the app, we may collect application
+              diagnostic logs (which may include user identifiers, device status and similar
+              information).
             </li>
-            <li>In-app: Go to Profile -&gt; Settings -&gt; Account Deletion -&gt; Delete Account.</li>
           </ul>
+
+          <h3>1.2 Information Collected Automatically</h3>
+          <ul>
+            <li>
+              <strong>Device and technical information:</strong> Operating system and version,
+              device identifiers, app version, language and region settings, network
+              information and performance diagnostics; information such as device model and
+              carrier is collected automatically by our analytics and crash-reporting service
+              providers.
+            </li>
+            <li>
+              <strong>Usage and interaction data:</strong> The content you browse, play,
+              create, remix, like, comment on or share; time spent; features used; search
+              history; and your interactions in the feed.
+            </li>
+            <li>
+              <strong>Logs, analytics and diagnostic data:</strong> IP address, access times,
+              crash reports, error logs and similar data, used for operations, security and
+              service improvement.
+            </li>
+            <li>
+              <strong>Cookies and similar technologies:</strong> On our website and in certain
+              in-app browser containers, we use cookies, SDKs and similar technologies to keep
+              you signed in, remember preferences and measure performance. You can manage these
+              through your browser or device settings. In in-app H5 games (which run in a
+              WebView), games may obtain your account identifiers (such as user ID and
+              username) and device identifiers through a built-in bridge in order to provide
+              interactive features.
+            </li>
+            <li>
+              <strong>Push and notifications:</strong> To send you service notices,
+              direct-message alerts and interaction reminders, we collect device push tokens
+              (such as FCM tokens).
+            </li>
+          </ul>
+
+          <h3>1.3 AI Processing</h3>
           <p>
-            We will process your request within a reasonable timeframe. Please be aware of
-            the following limitations:
+            Because Rezona is AI-powered, the prompts and materials you submit are processed by
+            our AI systems (and AI service providers processing on our behalf) to generate
+            playable content. We handle such data with reference to the PCPD&rsquo;s
+            &ldquo;Artificial Intelligence: Model Personal Data Protection Framework&rdquo;.
+            Please do not include unnecessary personal data in prompts, as generated content
+            may be published and remixed by others.
+          </p>
+
+          <h3>1.4 Advertising Identifiers and Attribution</h3>
+          <p>
+            At present, we do not display personalised advertising and do not monetise through
+            in-app ads. However, to measure advertising performance and user acquisition
+            (attribution), we use advertising identifiers (IDFA on iOS and the Advertising
+            ID/GAID on Android) and work with the attribution provider Adjust and platforms
+            such as Meta/Facebook to process these identifiers and app events. On iOS devices,
+            we request your permission as required by Apple&rsquo;s App Tracking Transparency
+            (ATT) framework; you may decline, in which case we will not read the IDFA to track
+            you across apps. If we introduce new uses such as personalised advertising in the
+            future, we will obtain your separate consent in advance and update this Policy.
+          </p>
+
+          <h3>1.5 Sensitive Information</h3>
+          <p>
+            Rezona is not designed to collect sensitive personal data such as health,
+            biometric, religious or political information. Please do not submit such
+            information through prompts, content or messages; if you nevertheless choose to do
+            so, you consent to our processing it in accordance with this Policy.
+          </p>
+        </section>
+
+        <section className="privacy-section">
+          <h2>2. How We Use Your Information</h2>
+          <p>
+            Under DPP1 and DPP3 of the PDPO, we use your personal data only for the purposes
+            for which it was collected or purposes directly related to them. We will not use it
+            for a new purpose without your express and voluntary (&ldquo;prescribed&rdquo;)
+            consent. We use your personal data to:
+          </p>
+          <ul>
+            <li>Create, verify and manage your account, and provide Rezona&rsquo;s core features;</li>
+            <li>
+              Generate, host, display, enable play of, remix and distribute interactive content
+              in the feed, communities and multiplayer games;
+            </li>
+            <li>
+              Operate social features, including following, likes, comments, sharing and direct
+              messages;
+            </li>
+            <li>
+              Process and account for Rezo Coins purchases and spending, and prevent fraud or
+              unauthorised transactions;
+            </li>
+            <li>
+              Personalise your experience, such as recommending content and remembering
+              preferences;
+            </li>
+            <li>
+              Operate, maintain, secure, debug and improve the Service, including analysing
+              usage, diagnosing crashes and developing new features;
+            </li>
+            <li>
+              Maintain platform safety &mdash; detecting, reviewing and acting on
+              inappropriate, explicit, illegal or violating user content, and protecting users
+              (especially minors) through content moderation and abuse prevention;
+            </li>
+            <li>
+              Respond to your enquiries, requests, reports and complaints, and provide customer
+              support;
+            </li>
+            <li>
+              Comply with applicable laws and regulations, lawful requests and our legal
+              obligations, and establish, exercise or defend legal rights.
+            </li>
+            <li>
+              Send you service notices, direct-message alerts and interaction reminders (such
+              as push notifications);
+            </li>
+            <li>
+              Measure advertising performance and user acquisition (attribution) to evaluate
+              and optimise our promotional campaigns;
+            </li>
+          </ul>
+
+          <h3>2.1 Direct Marketing</h3>
+          <p>
+            We do not currently send you direct marketing messages. If we introduce marketing
+            features in the future, we will first obtain your consent in accordance with Part
+            6A of the PDPO, and every marketing message will include a simple, free opt-out;
+            you may opt out at any time, after which we will no longer use your data for direct
+            marketing, at no charge.
+          </p>
+        </section>
+
+        <section className="privacy-section">
+          <h2>3. How We Share Your Information</h2>
+          <p>
+            We do not sell your personal data. We disclose personal data only in the following
+            circumstances and consistently with the purposes of collection (DPP3):
           </p>
           <ul>
             <li>
-              Remixed content: Where Your Content has been incorporated into another
-              user&apos;s memeplay, it may remain on the Service after your account is
-              deleted, in accordance with the remix license in our Terms of Service.
+              <strong>Other users and the public:</strong> Your profile page, published
+              memeplays, community posts, comments, likes and other public activity are visible
+              to other users; when content is shared outside the app, it may also be seen by
+              the public. Content you publish may be played and remixed by others. Your
+              membership tier badge (such as Rezo Hero or Rezo Boss) may be publicly displayed
+              to other users on your profile page and on feed cards.
             </li>
             <li>
-              Financial records: Transaction records may be retained for the period required
-              by applicable financial recordkeeping laws, even after account deletion.
+              <strong>Service providers and data processors:</strong> We engage trusted vendors
+              to provide cloud hosting and storage, AI models and generation, content delivery,
+              analytics and attribution (advertising measurement), crash reporting, push
+              notifications, instant messaging (direct-message delivery), real-time audio/video
+              and signalling, customer support and communications services. They may process
+              personal data only on our instructions and for our purposes. Under DPP2 and DPP4,
+              we use contracts and other means to ensure they protect the data properly, do not
+              retain it longer than necessary and do not use it for their own purposes.
             </li>
             <li>
-              AI model training: We will stop using your data for new AI model training upon
-              deletion, but we cannot reverse training that has already taken place.
+              <strong>App stores and payment processors:</strong> The Apple App Store and
+              Google Play process your Rezo Coins purchases and provide us with transaction
+              confirmations.
             </li>
             <li>
-              Fraud and risk data: Data used for anti-fraud purposes may be retained for a
-              defined period to prevent circumvention of enforcement actions.
+              <strong>Legal, safety and compliance:</strong> We may disclose personal data
+              where necessary to comply with applicable law or lawful requests, enforce our
+              terms, detect or prevent fraud and security or technical issues, or protect the
+              rights, property and safety of users, the public or the Company.
             </li>
             <li>
-              Legal holds: We may be required to retain certain data where required by law,
-              court order, or regulatory authority.
+              <strong>Corporate transactions:</strong> In a merger, acquisition, financing or
+              asset sale, personal data may be transferred as part of the transaction, subject
+              to appropriate confidentiality and data protection safeguards.
             </li>
           </ul>
         </section>
 
         <section className="privacy-section">
-          <h2>12. Changes to This Privacy Policy</h2>
+          <h2>4. Where We Store Your Information</h2>
           <p>
-            We may update this Privacy Policy from time to time to reflect changes in our
-            practices, features, or applicable law. For material changes - such as new data
-            collection practices, new sharing arrangements, or changes that affect your
-            rights - we will provide advance notice through the Service, by email to the
-            address associated with your account, or by other reasonable means, at least [30]
-            days before the changes take effect.
+            Rezona is operated from Hong Kong and offered to users globally. Your personal data
+            may be stored and processed in Hong Kong and in other regions where we or our
+            service providers operate, and may therefore be transferred outside Hong Kong and
+            processed there. For example, some of our analytics and crash-reporting data (which
+            may include search terms, comment content, usernames and browsing behaviour) is
+            transmitted to service providers located in the United States (such as PostHog and
+            Firebase/Google) for processing.
           </p>
           <p>
-            Non-material changes or updates required for legal or regulatory compliance may
-            take effect immediately. We encourage you to review this page periodically.
+            When transferring personal data outside Hong Kong, we take measures consistent with
+            section 33 of the PDPO and the PCPD&rsquo;s &ldquo;Guidance on Recommended Model
+            Contractual Clauses for Cross-border Transfer of Personal Data&rdquo;, including
+            contractual clauses requiring the recipient to provide a level of protection
+            comparable to the PDPO, transfer impact assessments, and appropriate technical and
+            organisational safeguards such as encryption and access controls.
           </p>
+        </section>
+
+        <section className="privacy-section">
+          <h2>5. Your Rights and Choices</h2>
           <p>
-            Your continued use of the Service after the effective date of a revised Privacy
-            Policy constitutes your acceptance of the changes. If you do not agree to the
-            revised policy, you must stop using the Service.
+            The PDPO gives you important rights over your personal data, and we are committed to
+            helping you exercise them. To the extent permitted by the PDPO, you may:
+          </p>
+          <ul>
+            <li>
+              <strong>Access your data (data access request):</strong> Ask whether we hold your
+              personal data and request a copy. Under the PDPO, we will respond within 40 days
+              and may charge a reasonable fee that is not excessive.
+            </li>
+            <li>
+              <strong>Correct your data (data correction request):</strong> Request correction
+              of inaccurate personal data; you can also update most profile information directly
+              in the app.
+            </li>
+            <li>
+              <strong>Withdraw consent:</strong> Withdraw any consent you have previously given
+              (including direct marketing consent) at any time, free of charge.
+            </li>
+            <li>
+              <strong>Opt out of direct marketing:</strong> Require us at any time to stop using
+              your personal data for direct marketing.
+            </li>
+            <li>
+              <strong>Delete your account and data:</strong> You can delete your account
+              directly in the in-app Settings, or ask us to delete your account and related
+              personal data. Content you have published or that has been remixed by others, and
+              records we must retain by law, may continue to exist as described in Section 7.
+            </li>
+            <li>
+              <strong>Manage device permissions:</strong> Control notifications, tracking
+              permission and access to device features through your device and app settings.
+            </li>
+          </ul>
+          <p>
+            To exercise these rights, please contact us using the details in Section 10. We may
+            need to verify your identity before handling a request. If you are dissatisfied with
+            how we handle your personal data, you may complain to the Office of the Privacy
+            Commissioner for Personal Data, Hong Kong (
+            <a
+              className="privacy-email-link"
+              href="https://www.pcpd.org.hk"
+              target="_blank"
+              rel="noreferrer"
+            >
+              www.pcpd.org.hk
+            </a>
+            ).
+          </p>
+        </section>
+
+        <section className="privacy-section">
+          <h2>6. Security of Your Information</h2>
+          <p>
+            Under DPP4 of the PDPO, we take all reasonably practicable steps to protect your
+            personal data against unauthorised or accidental access, processing, erasure, loss
+            or use, having regard to the kind of data, the harm that could result, and how it is
+            stored and transmitted. With reference to the PCPD&rsquo;s &ldquo;Guidance Note on
+            Data Security Measures for Information and Communications Technology&rdquo; and
+            privacy-by-design practices, our measures include:
+          </p>
+          <ul>
+            <li>Encrypting personal data in transit (and, where appropriate, at rest);</li>
+            <li>
+              Access controls, authentication and least-privilege principles for personnel and
+              systems;
+            </li>
+            <li>Secure software development, testing and regular security reviews;</li>
+            <li>
+              Logging, monitoring and measures to detect and respond to security incidents;
+            </li>
+            <li>Contractual security obligations imposed on data processors.</li>
+          </ul>
+          <p>
+            Despite these safeguards, no method of transmission or storage is completely secure.
+            We maintain a data breach response plan and, with reference to the PCPD&rsquo;s
+            &ldquo;Guidance on Data Breach Handling and Data Breach Notifications&rdquo;, assess
+            any suspected breach; where there is a real risk of harm, we will notify affected
+            individuals and the PCPD as soon as practicable and take containment and remediation
+            measures.
+          </p>
+        </section>
+
+        <section className="privacy-section">
+          <h2>7. How Long We Keep Your Information</h2>
+          <p>
+            Under DPP2 of the PDPO and PCPD guidance on erasure and anonymisation of personal
+            data, we retain your personal data only for as long as necessary to fulfil the
+            purposes of collection, or for the period required by law.
+          </p>
+          <ul>
+            <li>Account and profile data is retained for as long as your account exists;</li>
+            <li>
+              Content you publish may remain visible to other users (and persist in others&rsquo;
+              remixes) until removed;
+            </li>
+            <li>
+              Transaction records are retained for the periods required by applicable
+              accounting, tax and consumer protection laws;
+            </li>
+            <li>
+              Logs, diagnostics and analytics data are retained for the limited periods needed
+              to operate and secure the Service.
+            </li>
+          </ul>
+          <p>
+            When personal data is no longer needed, we delete it securely or irreversibly
+            anonymise it so that it can no longer identify you. After account deletion, some
+            data may remain briefly in backups until routinely overwritten; we may retain
+            limited information where necessary to comply with legal obligations, resolve
+            disputes or enforce agreements.
+          </p>
+        </section>
+
+        <section className="privacy-section">
+          <h2>8. Information Relating to Children and Teens</h2>
+          <p>
+            We value the privacy of children and teens and follow PCPD guidance on the
+            collection and use of personal data over the internet and on the protection of
+            children&rsquo;s personal data.
+          </p>
+          <ul>
+            <li>
+              <strong>Minimum age:</strong> Rezona is intended for users aged 13 and above. If
+              you are under 13, please do not create an account or use the Service.
+            </li>
+            <li>
+              <strong>Users under 18:</strong> If you are between 13 and 17, you must use Rezona
+              with the involvement and verifiable consent of a parent or legal guardian. We
+              encourage parents to supervise their children&rsquo;s use, including creation,
+              Rezo Coins spending, community participation and direct messages.
+            </li>
+            <li>
+              <strong>Data minimisation for minors:</strong> We collect only the personal data
+              necessary to provide the Service and are especially careful with content
+              moderation and safety features affecting minor users.
+            </li>
+            <li>
+              <strong>Parental rights:</strong> Parents or guardians may contact us to access,
+              correct or delete their child&rsquo;s personal data, withdraw consent or close
+              their child&rsquo;s account.
+            </li>
+          </ul>
+          <p>
+            If we learn that we have collected personal data from a child below the minimum age
+            without appropriate consent, we will take reasonable steps to delete such data and
+            close the account.
+          </p>
+        </section>
+
+        <section className="privacy-section">
+          <h2>9. Updates to This Privacy Policy</h2>
+          <p>
+            We may update this Privacy Policy from time to time to reflect changes in the
+            Service, technology, legal requirements or business practices. When we do, we will
+            revise the &ldquo;Last Updated&rdquo; date at the top of this Policy; for material
+            changes, we will notify you more prominently (for example, by in-app notice) before
+            they take effect. Where required by law, we will seek your consent separately. Your
+            continued use of Rezona after an update takes effect indicates your awareness of the
+            revised Policy.
           </p>
         </section>
 
         <div className="privacy-divider" aria-hidden="true" />
 
         <section className="privacy-section privacy-contact">
-          <h2>13. Contact &amp; Data Controller</h2>
-          <p>The data controller for the purposes of this Privacy Policy is:</p>
+          <h2>10. Contact</h2>
           <p>
-            Stratava HK Limited [Registered Address - TBD]
-            <br />
-            Hong Kong Special Administrative Region
+            If you have any questions, requests or complaints about this Policy or how we handle
+            your personal data (including access and correction requests), please contact our
+            data protection officer / privacy team:
           </p>
           <p>
-            For privacy-related inquiries, requests, or complaints, contact us at{" "}
+            <strong>Data user:</strong> Stratava HK Limited
+            <br />
+            <strong>Contact:</strong> Privacy Team / Data Protection Officer (DPO)
+            <br />
+            <strong>Email:</strong>{" "}
             <a className="privacy-email-link" href="mailto:support@rezona.ai">
               support@rezona.ai
             </a>
-            . We will acknowledge your inquiry promptly and respond within the timeframe
-            required by applicable law.
+            <br />
+            <strong>Website:</strong>{" "}
+            <a
+              className="privacy-email-link"
+              href="https://rezona.ai"
+              target="_blank"
+              rel="noreferrer"
+            >
+              https://rezona.ai
+            </a>
+            <br />
+            <strong>Registered address:</strong> Room 1006, 10/F, Po Yip Building, 23 Hing Yip
+            Street, Kwun Tong, Hong Kong
           </p>
           <p>
-            The Service is provided by Stratava HK Limited. &copy; 2026 Stratava HK Limited.
-            All rights reserved.
+            If you believe your rights under the PDPO have not been respected, you may also
+            contact the Office of the Privacy Commissioner for Personal Data, Hong Kong (
+            <a
+              className="privacy-email-link"
+              href="https://www.pcpd.org.hk"
+              target="_blank"
+              rel="noreferrer"
+            >
+              www.pcpd.org.hk
+            </a>
+            ).
           </p>
         </section>
       </section>
