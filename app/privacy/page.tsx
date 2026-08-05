@@ -28,7 +28,7 @@ export default function PrivacyPage() {
           <br />
           Effective Date: July 24, 2026
           <br />
-          Last Updated: July 24, 2026
+          Last Updated: August 5, 2026
         </p>
 
         <section className="privacy-section">
@@ -37,30 +37,23 @@ export default function PrivacyPage() {
             This Privacy Policy explains how Stratava HK Limited (&ldquo;we&rdquo;,
             &ldquo;us&rdquo; or &ldquo;the Company&rdquo;) collects, uses, discloses,
             transfers, stores and otherwise processes your personal data when you access or
-            use the Rezona mobile application, the Rezona website (https://rezona.ai) and
-            related features and services (collectively, &ldquo;Rezona&rdquo; or the
-            &ldquo;Service&rdquo;).
+            use the Rezona mobile application, the Rezona website (https://rezona.ai), the
+            Rezona Lab (https://lab.rezona.ai) and related features and services (collectively,
+            &ldquo;Rezona&rdquo; or the &ldquo;Service&rdquo;).
           </p>
           <p>
             Rezona is an AI-powered creation and social platform where users can generate
             playable interactive content (&ldquo;memeplays&rdquo;) from a single
             natural-language prompt. You can generate content with our AI, browse and play in
             a vertical feed, remix others&rsquo; works with one tap, follow and message other
-            users, join community discussions and multiplayer games, and purchase and use the
-            in-app virtual currency (Rezo Coins).
+            users, join community discussions and multiplayer games, and purchase and use
+            virtual items and paid features within the Service.
           </p>
           <p>
             With respect to your personal data, we are a &ldquo;data user&rdquo; under the
             Personal Data (Privacy) Ordinance (Cap. 486) (the &ldquo;PDPO&rdquo;). We are
             committed to handling your personal data in accordance with the six Data
             Protection Principles (DPPs) of the PDPO and relevant PCPD guidance.
-          </p>
-          <p>
-            This Policy applies to the Rezona apps and websites offered to markets outside
-            mainland China. For the mainland China channel (app name &ldquo;Mowan&rdquo; /
-            RezonaCN, package name ai.rezona.app.cn), we will separately establish and apply
-            an independent privacy policy that complies with mainland Chinese laws, including
-            the Personal Information Protection Law.
           </p>
           <p>
             Please read this Policy carefully. By creating an account or using Rezona, you
@@ -105,18 +98,24 @@ export default function PrivacyPage() {
             </li>
             <li>
               <strong>Social and communication information:</strong> Your follower and
-              following relationships, and the content and metadata of in-app communications
-              such as direct messages.
+              following relationships, and the content and metadata of communications within
+              the Service.
             </li>
             <li>
-              <strong>Transaction and purchase information:</strong> Purchases, balances and
-              spending records of Rezo Coins. We also process auto-renewing subscription
-              memberships (such as Rezo Hero and Rezo Boss, including free trials,
-              subscription status and renewal or cancellation information), Diamonds (a
-              virtual asset convertible into Rezo Coins), tips, Usage Packs and in-app shop
-              purchases and spending records. Payments are processed by the Apple App Store or
-              Google Play; we do not collect or store your full card number and receive only
-              transaction confirmations and limited information.
+              <strong>Transaction and purchase information:</strong> We collect and process
+              information relating to all purchases, transactions, subscriptions and virtual
+              items you acquire, hold, consume or transact in connection with the Service,
+              however and wherever acquired, including through the Rezona mobile application,
+              the Rezona website, Rezona Lab or any other Rezona property, and whether via an
+              app store or web-based payment channel. This includes but is not limited to
+              balances, top-ups, consumption and spending records for all Rezona virtual
+              currencies, credits and consumable units, auto-renewing subscription memberships
+              (including free trials, status and renewal or cancellation information). All such
+              purchases and virtual items are recorded and maintained by us regardless of the
+              channel or platform through which they are transacted. Payments are processed by
+              the Apple App Store, Google Play, or our third-party web payment processor; we do
+              not collect or store your full card number and receive only transaction
+              confirmations and limited information.
             </li>
             <li>
               <strong>Support and correspondence:</strong> Information you provide when you
@@ -125,9 +124,9 @@ export default function PrivacyPage() {
                 support@rezona.ai
               </a>
               , submit a report or complaint, seek assistance or take part in surveys. When
-              you contact support or submit feedback in the app, we may collect application
-              diagnostic logs (which may include user identifiers, device status and similar
-              information).
+              you contact support or submit feedback within the Service, we may collect
+              application diagnostic logs (which may include user identifiers, device status
+              and similar information).
             </li>
           </ul>
 
@@ -135,10 +134,10 @@ export default function PrivacyPage() {
           <ul>
             <li>
               <strong>Device and technical information:</strong> Operating system and version,
-              device identifiers, app version, language and region settings, network
-              information and performance diagnostics; information such as device model and
-              carrier is collected automatically by our analytics and crash-reporting service
-              providers.
+              device identifiers, app version or browser type and version, language and region
+              settings, network information and performance diagnostics; information such as
+              device model and carrier is collected automatically by our analytics and
+              crash-reporting service providers.
             </li>
             <li>
               <strong>Usage and interaction data:</strong> The content you browse, play,
@@ -154,15 +153,15 @@ export default function PrivacyPage() {
               <strong>Cookies and similar technologies:</strong> On our website and in certain
               in-app browser containers, we use cookies, SDKs and similar technologies to keep
               you signed in, remember preferences and measure performance. You can manage these
-              through your browser or device settings. In in-app H5 games (which run in a
-              WebView), games may obtain your account identifiers (such as user ID and
-              username) and device identifiers through a built-in bridge in order to provide
-              interactive features.
+              through your browser or device settings. In H5 games (which run in a WebView or
+              browser environment), games may obtain your account identifiers (such as user ID
+              and username) and device identifiers through a built-in bridge in order to
+              provide interactive features.
             </li>
             <li>
               <strong>Push and notifications:</strong> To send you service notices,
-              direct-message alerts and interaction reminders, we collect device push tokens
-              (such as FCM tokens).
+              direct-message alerts and interaction reminders, we collect device or browser
+              push tokens (such as FCM tokens).
             </li>
           </ul>
 
@@ -178,15 +177,14 @@ export default function PrivacyPage() {
 
           <h3>1.4 Advertising Identifiers and Attribution</h3>
           <p>
-            At present, we do not display personalised advertising and do not monetise through
-            in-app ads. However, to measure advertising performance and user acquisition
-            (attribution), we use advertising identifiers (IDFA on iOS and the Advertising
-            ID/GAID on Android) and work with the attribution provider Adjust and platforms
-            such as Meta/Facebook to process these identifiers and app events. On iOS devices,
-            we request your permission as required by Apple&rsquo;s App Tracking Transparency
-            (ATT) framework; you may decline, in which case we will not read the IDFA to track
-            you across apps. If we introduce new uses such as personalised advertising in the
-            future, we will obtain your separate consent in advance and update this Policy.
+            To measure advertising performance and user acquisition (attribution), we use
+            advertising identifiers (IDFA on iOS and the Advertising ID/GAID on Android) and
+            work with the attribution provider and platforms to process these identifiers and
+            app events. On iOS devices, we request your permission as required by
+            Apple&rsquo;s App Tracking Transparency (ATT) framework; you may decline, in which
+            case we will not read the IDFA to track you across apps. If we introduce new uses
+            such as personalised advertising in the future, we will obtain your separate
+            consent in advance and update this Policy.
           </p>
 
           <h3>1.5 Sensitive Information</h3>
@@ -217,8 +215,9 @@ export default function PrivacyPage() {
               messages;
             </li>
             <li>
-              Process and account for Rezo Coins purchases and spending, and prevent fraud or
-              unauthorised transactions;
+              Process and account for purchases of virtual items, subscriptions and other paid
+              features, and related balances and spending, and prevent fraud or unauthorised
+              transactions;
             </li>
             <li>
               Personalise your experience, such as recommending content and remembering
@@ -253,11 +252,10 @@ export default function PrivacyPage() {
 
           <h3>2.1 Direct Marketing</h3>
           <p>
-            We do not currently send you direct marketing messages. If we introduce marketing
-            features in the future, we will first obtain your consent in accordance with Part
-            6A of the PDPO, and every marketing message will include a simple, free opt-out;
-            you may opt out at any time, after which we will no longer use your data for direct
-            marketing, at no charge.
+            If we introduce marketing features in the future, we will first obtain your consent
+            in accordance with Part 6A of the PDPO, and every marketing message will include a
+            simple, free opt-out; you may opt out at any time, after which we will no longer use
+            your data for direct marketing, at no charge.
           </p>
         </section>
 
@@ -271,10 +269,10 @@ export default function PrivacyPage() {
             <li>
               <strong>Other users and the public:</strong> Your profile page, published
               memeplays, community posts, comments, likes and other public activity are visible
-              to other users; when content is shared outside the app, it may also be seen by
+              to other users; when content is shared outside the Service, it may also be seen by
               the public. Content you publish may be played and remixed by others. Your
-              membership tier badge (such as Rezo Hero or Rezo Boss) may be publicly displayed
-              to other users on your profile page and on feed cards.
+              membership tier badge (if any) may be publicly displayed to other users on your
+              profile page and on feed cards.
             </li>
             <li>
               <strong>Service providers and data processors:</strong> We engage trusted vendors
@@ -287,9 +285,11 @@ export default function PrivacyPage() {
               retain it longer than necessary and do not use it for their own purposes.
             </li>
             <li>
-              <strong>App stores and payment processors:</strong> The Apple App Store and
-              Google Play process your Rezo Coins purchases and provide us with transaction
-              confirmations.
+              <strong>App stores and payment processors:</strong> The Apple App Store, Google
+              Play and our third-party web payment processor process your purchases of virtual
+              items, subscriptions and other paid features (depending on the channel through
+              which you purchase) and provide us with transaction confirmations and limited
+              transaction information.
             </li>
             <li>
               <strong>Legal, safety and compliance:</strong> We may disclose personal data
@@ -313,8 +313,7 @@ export default function PrivacyPage() {
             service providers operate, and may therefore be transferred outside Hong Kong and
             processed there. For example, some of our analytics and crash-reporting data (which
             may include search terms, comment content, usernames and browsing behaviour) is
-            transmitted to service providers located in the United States (such as PostHog and
-            Firebase/Google) for processing.
+            transmitted to service providers located in the United States for processing.
           </p>
           <p>
             When transferring personal data outside Hong Kong, we take measures consistent with
@@ -341,7 +340,7 @@ export default function PrivacyPage() {
             <li>
               <strong>Correct your data (data correction request):</strong> Request correction
               of inaccurate personal data; you can also update most profile information directly
-              in the app.
+              within the Service.
             </li>
             <li>
               <strong>Withdraw consent:</strong> Withdraw any consent you have previously given
@@ -353,13 +352,15 @@ export default function PrivacyPage() {
             </li>
             <li>
               <strong>Delete your account and data:</strong> You can delete your account
-              directly in the in-app Settings, or ask us to delete your account and related
-              personal data. Content you have published or that has been remixed by others, and
-              records we must retain by law, may continue to exist as described in Section 7.
+              directly in Settings within the Service, or ask us to delete your account and
+              related personal data. Content you have published or that has been remixed by
+              others, and records we must retain by law, may continue to exist as described in
+              Section 7.
             </li>
             <li>
               <strong>Manage device permissions:</strong> Control notifications, tracking
-              permission and access to device features through your device and app settings.
+              permission and access to device features through your device, browser and app
+              settings.
             </li>
           </ul>
           <p>
@@ -458,7 +459,8 @@ export default function PrivacyPage() {
               <strong>Users under 18:</strong> If you are between 13 and 17, you must use Rezona
               with the involvement and verifiable consent of a parent or legal guardian. We
               encourage parents to supervise their children&rsquo;s use, including creation,
-              Rezo Coins spending, community participation and direct messages.
+              spending on virtual items and paid features, community participation and direct
+              messages.
             </li>
             <li>
               <strong>Data minimisation for minors:</strong> We collect only the personal data
@@ -484,10 +486,10 @@ export default function PrivacyPage() {
             We may update this Privacy Policy from time to time to reflect changes in the
             Service, technology, legal requirements or business practices. When we do, we will
             revise the &ldquo;Last Updated&rdquo; date at the top of this Policy; for material
-            changes, we will notify you more prominently (for example, by in-app notice) before
-            they take effect. Where required by law, we will seek your consent separately. Your
-            continued use of Rezona after an update takes effect indicates your awareness of the
-            revised Policy.
+            changes, we will notify you more prominently (for example, by notice within the
+            Service) before they take effect. Where required by law, we will seek your consent
+            separately. Your continued use of Rezona after an update takes effect indicates your
+            awareness of the revised Policy.
           </p>
         </section>
 
@@ -501,9 +503,7 @@ export default function PrivacyPage() {
             data protection officer / privacy team:
           </p>
           <p>
-            <strong>Data user:</strong> Stratava HK Limited
-            <br />
-            <strong>Contact:</strong> Privacy Team / Data Protection Officer (DPO)
+            Stratava HK Limited &mdash; Privacy Team / Data Protection Officer (DPO)
             <br />
             <strong>Email:</strong>{" "}
             <a className="privacy-email-link" href="mailto:support@rezona.ai">
@@ -519,9 +519,13 @@ export default function PrivacyPage() {
             >
               https://rezona.ai
             </a>
+          </p>
+          <p>
+            Stratava HK Limited
             <br />
-            <strong>Registered address:</strong> Room 1006, 10/F, Po Yip Building, 23 Hing Yip
-            Street, Kwun Tong, Hong Kong
+            Room 1006, 10/F, Po Yip Building, 23 Hing Yip Street, Kwun Tong, Hong Kong
+            <br />
+            Hong Kong Special Administrative Region
           </p>
           <p>
             If you believe your rights under the PDPO have not been respected, you may also
@@ -535,6 +539,10 @@ export default function PrivacyPage() {
               www.pcpd.org.hk
             </a>
             ).
+          </p>
+          <p>
+            The Service is provided by Stratava HK Limited. &copy; 2026 Stratava HK Limited.
+            All rights reserved.
           </p>
         </section>
       </section>

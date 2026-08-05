@@ -158,6 +158,16 @@
   line-height: 28px;
 }
 
+/* 4级小标题（如条款 §5.2.1~5.2.4），比 h3 略小 */
+.privacy-section h4 {
+  margin: 20px 0 0;
+  color: #d4d4d4;
+  font-family: var(--font-montserrat);
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 24px;
+}
+
 .privacy-section p {
   margin-top: 20px;
 }
@@ -463,6 +473,12 @@
     margin-top: 24px;
     font-size: 18px;
     line-height: 27px;
+  }
+
+  .privacy-section h4 {
+    margin-top: 18px;
+    font-size: 16px;
+    line-height: 23px;
   }
 
   .privacy-section p {
